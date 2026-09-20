@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHG Capital Humano Group | Consultoría en RRHH</title>
+    <title>CHG Capital Humano Group | Consultoría Estratégica en RRHH</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -14,32 +14,84 @@
         <div class="container nav-container">
             <a href="#" class="logo">CHG <span>Capital Humano</span></a>
             <ul class="nav-links">
-                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#rubros">Sectores</a></li>
                 <li><a href="#packs">Packs</a></li>
-                <li><a href="#contacto" class="btn-nav">Agendar Consulta</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="https://wa.me/?text=Hola!%20Quisiera%20agendar%20una%20consulta%20con%20CHG" target="_blank" class="btn-nav">Agendar Consulta</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
     <header class="hero">
-        <div class="container hero-content">
-            <span class="badge">Gestión de RRHH + Project Management</span>
-            <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
-            <p>Estructuramos, ordenamos y profesionalizamos el área de personas de tu empresa. Soluciones adaptables desde comercios y gastronomía hasta PyMEs industriales.</p>
-            <div class="hero-btns">
-                <a href="#packs" class="btn-primary">Ver Planes y Packs</a>
-                <a href="https://wa.me/tu-numero-aqui" target="_blank" class="btn-secondary">Hablar por WhatsApp</a>
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge">Gestión de RRHH + Project Management</span>
+                <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
+                <p>Estructuramos, ordenamos y profesionalizamos el área de personas de tu empresa. Soluciones adaptables para comercios, servicios e industria.</p>
+                <div class="hero-btns">
+                    <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
+                    <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20asesoramiento%20sobre%20los%20servicios%20de%20CHG" target="_blank" class="btn-secondary">Consultar por WhatsApp</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Consultoría en RRHH y Equipo de Trabajo">
             </div>
         </div>
     </header>
+
+    <!-- SECCIÓN NOSOTROS / PROPUESTA DE VALOR -->
+    <section id="nosotros" class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Gestión Profesional de Recursos Humanos">
+            </div>
+            <div class="about-text">
+                <h2>Transformamos la gestión humana de tu empresa</h2>
+                <p>No somos solo una consultora tradicional. Combinamos la gestión de personas con metodologías de <strong>Project Management</strong> para entregarte métricas claras, tableros de control y orden organizativo mensual.</p>
+                <ul class="check-list">
+                    <li>✔️ Transparencia total en el seguimiento de contrataciones.</li>
+                    <li>✔️ Eliminación de riesgos legales e inconsistencias normativas.</li>
+                    <li>✔️ Indicadores de gestión (KPIs) entregados mes a mes.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTOR ADAPTABILIDAD -->
+    <section id="rubros" class="rubros-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Soluciones a la medida de tu sector</h2>
+                <p>Diseñado para adaptarse dinámicamente según la escala y complejidad de tu negocio.</p>
+            </div>
+            <div class="rubros-grid">
+                <div class="rubro-card">
+                    <span class="rubro-icon">🏪</span>
+                    <h3>Comercio y Kioscos</h3>
+                    <p>Organización de turnos, control de ausentismo y contratos claros para evitar contingencias.</p>
+                </div>
+                <div class="rubro-card">
+                    <span class="rubro-icon">🍽️</span>
+                    <h3>Gastronomía y Servicios</h3>
+                    <p>Gestión eficiente de rotación, incorporación rápida de personal y clima laboral interno.</p>
+                </div>
+                <div class="rubro-card">
+                    <span class="rubro-icon">🏭</span>
+                    <h3>Industria y Metalúrgicas</h3>
+                    <p>Estructuración de legajos, cálculo preciso de novedades para liquidación y matriz RACI de roles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- PACKS / PRECIOS -->
     <section id="packs" class="packs-section">
         <div class="container">
             <div class="section-title">
-                <h2>Nuestros Packs de Servicios</h2>
-                <p>Elegí la solución mensual que mejor se adapte al momento actual de tu organización.</p>
+                <h2>Packs de Servicios Mensuales</h2>
+                <p>Elegí la solución que mejor responda al momento actual de tu organización.</p>
             </div>
 
             <div class="packs-grid">
@@ -50,7 +102,7 @@
                         <span class="icon">🎯</span>
                         <h3>Pack 1: Esencial</h3>
                         <p class="pack-tagline">Cimientos Firmes</p>
-                        <p class="pack-desc">Diseñado para ordenar el área de personal, cumplir normativas legales y construir una base sólida para crecer sin riesgos.</p>
+                        <p class="pack-desc">Ideal para ordenar el área de personal, cumplir normativas legales y construir una base sólida sin riesgos.</p>
                     </div>
                     <ul class="pack-features">
                         <li>✔️ Búsqueda, selección e inducción básica</li>
@@ -60,17 +112,17 @@
                         <li>✔️ Atención al empleado y Manual de Convivencia</li>
                     </ul>
                     <div class="accordion">
-                        <button class="accordion-btn">📂 Ver Entregable PM e Indicadores</button>
+                        <button class="accordion-btn">📂 Ver Entregable PM e Indicadores ▾</button>
                         <div class="accordion-content">
-                            <p><strong>Estructuración Documental:</strong> Arquitectura de carpetas corporativas en la nube.</p>
+                            <p><strong>Estructuración Documental:</strong> Arquitectura de carpetas en la nube.</p>
                             <p><strong>KPIs Incluidos:</strong></p>
                             <ul>
-                                <li>• Nivel de Contingencia y Riesgo Laboral (Semáforo Mensual).</li>
-                                <li>• Balance Operativo de Novedades para liquidación.</li>
+                                <li>• Semáforo Mensual de Riesgo Laboral.</li>
+                                <li>• Balance Operativo de Novedades.</li>
                             </ul>
                         </div>
                     </div>
-                    <a href="https://wa.me/tu-numero-aqui?text=Hola,%20quiero%20más%20información%20del%20Pack%20Esencial" class="btn-pack">Contratar Pack 1</a>
+                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%201%20Esencial" target="_blank" class="btn-pack">Contratar Pack 1</a>
                 </div>
 
                 <!-- PACK 2 (DESTACADO) -->
@@ -80,27 +132,27 @@
                         <span class="icon">🚀</span>
                         <h3>Pack 2: Evolución</h3>
                         <p class="pack-tagline">Crecimiento y Estructura</p>
-                        <p class="pack-desc">Tu departamento de RRHH en expansión. Para PyMEs en proceso de ordenamiento y mejora continua.</p>
+                        <p class="pack-desc">Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento y mejora continua.</p>
                     </div>
                     <ul class="pack-features">
                         <li>✔️ <strong>Todo lo incluido en el Pack Esencial</strong></li>
-                        <li>✔️ Búsqueda con seguimiento de desempeño inicial</li>
+                        <li>✔️ Búsqueda con seguimiento inicial de desempeño</li>
                         <li>✔️ 1 Capacitación interactiva mensual</li>
-                        <li>✔️ WhatsApp Libre y canal prioritario de resolución</li>
+                        <li>✔️ WhatsApp Libre y canal prioritario</li>
                         <li>✔️ 1 Visita o reunión mensual con líderes</li>
                     </ul>
                     <div class="accordion">
-                        <button class="accordion-btn">📂 Ver Entregable PM e Indicadores</button>
+                        <button class="accordion-btn">📂 Ver Entregable PM e Indicadores ▾</button>
                         <div class="accordion-content">
                             <p><strong>Entregables PM:</strong> Matriz RACI de roles y Minutas Aumentadas con planes de acción.</p>
                             <p><strong>KPIs Incluidos:</strong></p>
                             <ul>
-                                <li>• eNPS (Medidor de satisfacción y clima laboral).</li>
+                                <li>• eNPS (Sondeo de satisfacción y clima).</li>
                                 <li>• Tasa de Ausentismo y Presentismo Efectivo.</li>
                             </ul>
                         </div>
                     </div>
-                    <a href="https://wa.me/tu-numero-aqui?text=Hola,%20quiero%20más%20información%20del%20Pack%20Evolucion" class="btn-pack">Contratar Pack 2</a>
+                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%202%20Evolución" target="_blank" class="btn-pack">Contratar Pack 2</a>
                 </div>
 
                 <!-- PACK 3 -->
@@ -109,7 +161,7 @@
                         <span class="icon">⚡</span>
                         <h3>Pack 3: Estratégico</h3>
                         <p class="pack-tagline">Máximo Rendimiento</p>
-                        <p class="pack-desc">Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad del negocio.</p>
+                        <p class="pack-desc">Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.</p>
                     </div>
                     <ul class="pack-features">
                         <li>✔️ <strong>Todo lo incluido en Packs 1 y 2</strong></li>
@@ -117,10 +169,9 @@
                         <li>✔️ Programa intensivo de fidelización</li>
                         <li>✔️ Evaluaciones de Desempeño 360°</li>
                         <li>✔️ Auditoría de estructura orgánica y rotación</li>
-                        <li>✔️ Gestión de eventos corporativos</li>
                     </ul>
                     <div class="accordion">
-                        <button class="accordion-btn">📂 Ver Entregable PM e Indicadores</button>
+                        <button class="accordion-btn">📂 Ver Entregable PM e Indicadores ▾</button>
                         <div class="accordion-content">
                             <p><strong>Entregables PM:</strong> Planificación por Objetivos (OKRs) y Optimización de Procesos (BPMN).</p>
                             <p><strong>KPIs Incluidos:</strong></p>
@@ -131,9 +182,33 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="https://wa.me/tu-numero-aqui?text=Hola,%20quiero%20más%20información%20del%20Pack%20Estrategico" class="btn-pack">Contratar Pack 3</a>
+                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%203%20Estratégico" target="_blank" class="btn-pack">Contratar Pack 3</a>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas antes de comenzar a trabajar juntos.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-btn">¿Cómo se implementa el servicio en mi PyME? ▾</button>
+                    <div class="faq-content">
+                        <p>Realizamos una primera reunión de relevamiento (presencial o por Google Meet) para diagnosticar la situación actual de tu personal y configurar las herramientas digitales en cuestión de días.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-btn">¿Existe un tiempo mínimo de permanencia? ▾</button>
+                    <div class="faq-content">
+                        <p>No exigimos contratos permanentes a largo plazo. Trabajamos mediante un esquema de abono mensual renovable según los resultados y el nivel de satisfacción de tu empresa.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -145,8 +220,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPT ACCORDION -->
+    <!-- SCRIPT INTERACTIVO -->
     <script>
+        // Acordeones de los Packs
         const acc = document.querySelectorAll(".accordion-btn");
         acc.forEach(btn => {
             btn.addEventListener("click", function() {
@@ -156,6 +232,20 @@
                     panel.style.maxHeight = null;
                 } else {
                     panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Acordeones de Preguntas Frecuentes
+        const faqs = document.querySelectorAll(".faq-btn");
+        faqs.forEach(btn => {
+            btn.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
                 }
             });
         });

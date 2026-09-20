@@ -65,11 +65,17 @@ body {
     border-radius: 6px;
 }
 
-/* HERO SECTION */
+/* HERO GRID */
 .hero {
-    padding: 90px 0 60px;
-    text-align: center;
+    padding: 80px 0 60px;
     background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
 .badge {
@@ -83,29 +89,33 @@ body {
     margin-bottom: 20px;
 }
 
-.hero h1 {
-    font-size: 3rem;
+.hero-text h1 {
+    font-size: 2.8rem;
     font-weight: 800;
     color: #0f172a;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
 }
 
-.hero h1 span {
+.hero-text h1 span {
     color: #2563eb;
 }
 
-.hero p {
-    font-size: 1.15rem;
+.hero-text p {
+    font-size: 1.1rem;
     color: #64748b;
-    max-width: 700px;
-    margin: 0 auto 30px;
+    margin-bottom: 30px;
 }
 
 .hero-btns {
     display: flex;
-    justify-content: center;
     gap: 15px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
 }
 
 .btn-primary {
@@ -127,9 +137,86 @@ body {
     font-weight: 600;
 }
 
+/* SECCIÓN NOSOTROS */
+.about-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.check-list {
+    list-style: none;
+}
+
+.check-list li {
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 10px;
+}
+
+/* SECCIÓN RUBROS */
+.rubros-section {
+    padding: 80px 0;
+}
+
+.rubros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.rubro-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+.rubro-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.rubro-card h3 {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.rubro-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
 /* PACKS SECTION */
 .packs-section {
     padding: 80px 0;
+    background: #ffffff;
 }
 
 .section-title {
@@ -257,6 +344,44 @@ body {
     background: #2563eb;
 }
 
+/* FAQ SECTION */
+.faq-section {
+    padding: 80px 0;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+}
+
+.faq-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: #64748b;
+    font-size: 0.95rem;
+    padding-top: 10px;
+}
+
 /* FOOTER */
 footer {
     border-top: 1px solid #e2e8f0;
@@ -269,7 +394,8 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.2rem; }
+    .hero-grid, .about-grid { grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 2.2rem; }
     .hero-btns { flex-direction: column; }
     .nav-links { display: none; }
 }

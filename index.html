@@ -9,9 +9,6 @@
 </head>
 <body>
 
-    <!-- EFECTO DE CURSOR LUMINOSO -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -37,7 +34,7 @@
 
         <div class="container hero-content">
             <span class="badge">Gestión de RRHH + Project Management</span>
-            <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
+            <h1>Potenciamos tu PyME al <br><span class="highlight-text">máximo rendimiento</span></h1>
             <p>Estructuramos, ordenamos y profesionalizamos el área de personas de tu empresa con metodología vanguardista.</p>
             <div class="hero-btns">
                 <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
@@ -50,7 +47,7 @@
     <section id="nosotros" class="about-section">
         <div class="container about-grid">
             <div class="about-image">
-                <img src="funciones-recursos-humanos-hero.jpg" alt="Equipo de trabajo y gestión estratégica de personas">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Reunión ejecutiva de equipo y gestión humana">
             </div>
             <div class="about-text">
                 <h2>Transformamos la gestión humana de tu empresa</h2>
@@ -132,7 +129,7 @@
                         <li>✔️ Atención al empleado y Manual de Convivencia</li>
                     </ul>
                     <div class="accordion">
-                        <button class="accordion-btn"><span>📂 Entregable PM e Indicadores</span> <span>▾</span></button>
+                        <button class="accordion-btn"><span>📂 Entregables PM e Indicadores</span> <span>▾</span></button>
                         <div class="accordion-content">
                             <p class="accordion-subtitle"><strong>Entregables Project Management:</strong></p>
                             <ul class="accordion-list">
@@ -184,7 +181,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%202%20Evolución" target="_blank" class="btn-pack">Contratar Pack 2</a>
+                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%202%20Evolución" target="_blank" class="btn-pack btn-pack-featured">Contratar Pack 2</a>
                 </div>
 
                 <!-- PACK 3 -->
@@ -275,19 +272,6 @@
         }
 
         setInterval(nextSlide, 5000);
-
-        // CURSOR LUMINOSO
-        const glow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-
-        const interactives = document.querySelectorAll('a, button, .interactive-card');
-        interactives.forEach(el => {
-            el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
-            el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
-        });
 
         // ACORDEONES
         const acc = document.querySelectorAll(".accordion-btn");

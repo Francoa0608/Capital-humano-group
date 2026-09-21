@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- EFECTO DE CURSOR LUMINOSO (CUSTOM GLOW CURSOR) -->
+    <!-- PUNTO CURSOR PERSONALIZADO -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- NAVBAR -->
@@ -26,20 +26,25 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION CON SLIDER DE FONDO DINÁMICO -->
     <header class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <span class="badge">Gestión de RRHH + Project Management</span>
-                <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
-                <p>Estructuramos, ordenamos y profesionalizamos el área de personas de tu empresa con metodología vanguardista.</p>
-                <div class="hero-btns">
-                    <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
-                    <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20asesoramiento%20sobre%20los%20servicios%20de%20CHG" target="_blank" class="btn-secondary">Consultar por WhatsApp</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1000&q=80" alt="Consultoría corporativa estratégica RRHH">
+        <!-- CARRUSEL DE IMÁGENES DE FONDO -->
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        
+        <!-- CAPA DE OSCURECIMIENTO -->
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <span class="badge">Gestión de RRHH + Project Management</span>
+            <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
+            <p>Estructuramos, ordenamos y profesionalizamos el área de personas de tu empresa con metodología vanguardista.</p>
+            <div class="hero-btns">
+                <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
+                <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20asesoramiento%20sobre%20los%20servicios%20de%20CHG" target="_blank" class="btn-secondary">Consultar por WhatsApp</a>
             </div>
         </div>
     </header>
@@ -54,7 +59,6 @@
                 <h2>Transformamos la gestión humana de tu empresa</h2>
                 <p>No somos solo una consultora tradicional. Combinamos la gestión de personas con herramientas de <strong>Project Management</strong> para darte claridad, control y orden organizativo.</p>
                 
-                <!-- LISTA CON ÍCONOS SVG ELEGANTES -->
                 <ul class="check-list">
                     <li>
                         <span class="check-icon">
@@ -227,7 +231,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT -->
+    <!-- SCRIPTS -->
     <script>
         // Lógica de Acordeones
         const acc = document.querySelectorAll(".accordion-btn");
@@ -256,20 +260,30 @@
             });
         });
 
-        // EFECTO DE CURSOR VANGUARDISTA DE SEGUIMIENTO CON LUZ
+        // EFECTO DE CURSOR VANGUARDISTA
         const glow = document.getElementById('cursorGlow');
-        
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
 
-        // Agrandar la luz al hacer hover sobre elementos interactivos
         const interactives = document.querySelectorAll('a, button, .interactive-card');
         interactives.forEach(el => {
             el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
             el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
         });
+
+        // ROTACIÓN AUTOMÁTICA DEL FONDO (SLIDER)
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000); // Cambia de foto cada 5 segundos
     </script>
 </body>
 </html>

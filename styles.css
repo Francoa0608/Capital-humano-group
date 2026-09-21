@@ -1,13 +1,15 @@
-/* VARIABLES GLOBALES */
+/* VARIABLES GLOBALES CON INTEGRACIÓN DE AZUL Y VERDE ESMERALDA */
 :root {
     --bg-dark: #0a0e17;
     --bg-card: #121826;
     --primary: #2563eb;
     --primary-glow: #3b82f6;
-    --accent: #8b5cf6;
+    --accent-green: #10b981; /* Verde esmeralda neón */
+    --accent-green-glow: #34d399;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --border-glow: rgba(59, 130, 246, 0.2);
+    --border-glow: rgba(59, 130, 246, 0.25);
+    --border-green: rgba(16, 185, 129, 0.3);
 }
 
 * {
@@ -28,25 +30,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* CURSOR GLOW */
-.cursor-glow {
-    position: fixed;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: width 0.3s, height 0.3s;
-}
-
-.glow-expand {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(0,0,0,0) 70%);
 }
 
 /* NAVBAR */
@@ -103,7 +86,7 @@ body {
     padding: 8px 18px;
     border-radius: 20px;
     font-weight: 600;
-    transition: transform 0.3s, background 0.3s !important;
+    transition: transform 0.3s, background 0.3s;
 }
 
 .btn-nav:hover {
@@ -153,7 +136,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(10, 14, 23, 0.7) 0%, rgba(10, 14, 23, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(10, 14, 23, 0.75) 0%, rgba(10, 14, 23, 0.95) 100%);
     z-index: 2;
 }
 
@@ -165,9 +148,9 @@ body {
 }
 
 .badge {
-    background: rgba(59, 130, 246, 0.15);
-    color: var(--primary-glow);
-    border: 1px solid var(--border-glow);
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--accent-green-glow);
+    border: 1px solid var(--border-green);
     padding: 6px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -183,8 +166,8 @@ body {
     margin-bottom: 20px;
 }
 
-.hero h1 span {
-    background: linear-gradient(90deg, var(--primary-glow), var(--accent));
+.highlight-text {
+    background: linear-gradient(90deg, var(--primary-glow), var(--accent-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -221,13 +204,13 @@ body {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-green-glow);
+    border: 1px solid var(--border-green);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(16, 185, 129, 0.2);
     transform: translateY(-3px);
 }
 
@@ -244,18 +227,18 @@ body {
 }
 
 .about-image {
-    position: relative;
+    width: 100%;
 }
 
 .about-image img {
     width: 100%;
-    height: 100%;
-    max-height: 380px;
+    height: 340px;
     object-fit: cover;
     object-position: center;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-glow);
+    display: block;
 }
 
 .about-text h2 {
@@ -284,7 +267,7 @@ body {
 .check-icon {
     width: 20px;
     height: 20px;
-    color: var(--primary-glow);
+    color: var(--accent-green);
     display: inline-block;
 }
 
@@ -365,20 +348,20 @@ body {
 }
 
 .pack-card.featured {
-    border-color: var(--primary);
-    box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+    border-color: var(--accent-green);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
 }
 
 .badge-card {
     position: absolute;
     top: -15px;
     right: 25px;
-    background: var(--primary);
-    color: white;
+    background: var(--accent-green);
+    color: #042f2e;
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
@@ -396,7 +379,7 @@ body {
 }
 
 .pack-tagline {
-    color: var(--primary-glow);
+    color: var(--accent-green-glow);
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 10px;
@@ -456,7 +439,7 @@ body {
 .accordion-subtitle {
     font-size: 0.8rem;
     margin-top: 10px;
-    color: var(--primary-glow);
+    color: var(--accent-green-glow);
 }
 
 .accordion-list {
@@ -483,9 +466,20 @@ body {
     transition: background 0.3s;
 }
 
-.pack-card.featured .btn-pack, .btn-pack:hover {
+.btn-pack:hover {
     background: var(--primary);
     color: white;
+}
+
+.btn-pack-featured {
+    background: var(--accent-green);
+    color: #042f2e;
+    font-weight: 700;
+}
+
+.btn-pack-featured:hover {
+    background: var(--accent-green-glow);
+    color: #042f2e;
 }
 
 /* FAQ */

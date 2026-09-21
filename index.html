@@ -1,4 +1,113 @@
-<!-- PACKS / PRECIOS -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHG Capital Humano Group | Consultoría Estratégica en RRHH</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- EFECTO DE CURSOR LUMINOSO -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">CHG <span>Capital Humano</span></a>
+            <ul class="nav-links">
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#rubros">Sectores</a></li>
+                <li><a href="#packs">Packs</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="https://wa.me/?text=Hola!%20Quisiera%20agendar%20una%20consulta%20con%20CHG" target="_blank" class="btn-nav">Agendar Consulta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION CON SLIDER / CARRUSEL DE FONDO ROTATIVO -->
+    <header class="hero">
+        <div class="hero-bg-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <span class="badge">Gestión de RRHH + Project Management</span>
+            <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
+            <p>Estructuramos, ordenamos y profesionalizamos el área de personas de tu empresa con metodología vanguardista.</p>
+            <div class="hero-btns">
+                <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
+                <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20asesoramiento%20sobre%20los%20servicios%20de%20CHG" target="_blank" class="btn-secondary">Consultar por WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="Equipo de gestión de personas">
+            </div>
+            <div class="about-text">
+                <h2>Transformamos la gestión humana de tu empresa</h2>
+                <p>No somos solo una consultora tradicional. Combinamos la gestión de personas con herramientas de <strong>Project Management</strong> para darte claridad, control y orden organizativo.</p>
+                
+                <ul class="check-list">
+                    <li>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        Transparencia total en el seguimiento de contrataciones.
+                    </li>
+                    <li>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        Eliminación de riesgos legales y contingencias normativas.
+                    </li>
+                    <li>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        Indicadores de gestión (KPIs) mensuales.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTOR ADAPTABILIDAD -->
+    <section id="rubros" class="rubros-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Soluciones a la medida de tu sector</h2>
+                <p>Diseño ágil y adaptable según la escala de tu negocio.</p>
+            </div>
+            <div class="rubros-grid">
+                <div class="interactive-card rubro-card">
+                    <span class="rubro-icon">🏪</span>
+                    <h3>Comercio y Kioscos</h3>
+                    <p>Organización de turnos, control de ausentismo y contratos para evitar contingencias.</p>
+                </div>
+                <div class="interactive-card rubro-card">
+                    <span class="rubro-icon">🍽️</span>
+                    <h3>Gastronomía y Servicios</h3>
+                    <p>Gestión eficiente de rotación, incorporación rápida de personal y clima laboral interno.</p>
+                </div>
+                <div class="interactive-card rubro-card">
+                    <span class="rubro-icon">🏭</span>
+                    <h3>Industria y Metalúrgicas</h3>
+                    <p>Estructuración de legajos, cálculo preciso de novedades para liquidación y matriz RACI de roles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKS / PRECIOS -->
     <section id="packs" class="packs-section">
         <div class="container">
             <div class="section-title">
@@ -121,3 +230,91 @@
             </div>
         </div>
     </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas antes de comenzar.</p>
+            </div>
+            <div class="faq-list">
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn"><span>¿Cómo se implementa el servicio en mi PyME?</span> <span>▾</span></button>
+                    <div class="faq-content">
+                        <p>Realizamos una primera reunión de relevamiento para diagnosticar la situación actual y configurar las herramientas digitales rápidamente.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn"><span>¿Existe un tiempo mínimo de permanencia?</span> <span>▾</span></button>
+                    <div class="faq-content">
+                        <p>No exigimos contratos a largo plazo. Trabajamos mediante un esquema de abono mensual renovable según los resultados brindados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2026 CHG Capital Humano Group. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // ROTACIÓN AUTOMÁTICA DE IMÁGENES DE FONDO (HERO SLIDER)
+        const slides = document.querySelectorAll('.hero-bg-slider .slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000);
+
+        // CURSOR LUMINOSO
+        const glow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        const interactives = document.querySelectorAll('a, button, .interactive-card');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
+            el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
+        });
+
+        // ACORDEONES
+        const acc = document.querySelectorAll(".accordion-btn");
+        acc.forEach(btn => {
+            btn.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        });
+
+        const faqs = document.querySelectorAll(".faq-btn");
+        faqs.forEach(btn => {
+            btn.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

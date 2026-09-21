@@ -6,15 +6,15 @@
 }
 
 :root {
-    --bg-france-blue: #0D1B2A;    /* Fondo principal oscuro */
-    --bg-section-blue: #111D2E;   /* Fondo de secciones */
-    --card-blue: #162436;        /* Azul elegante para tarjetas y FAQ */
-    --card-blue-hover: #1C2D42;  /* Azul al pasar el cursor */
-    --emerald-green: #10B981;    /* Verde Menta / Esmeralda principal */
-    --hover-green: #059669;      /* Verde Hover */
-    --white: #FFFFFF;            /* Texto e íconos principales */
-    --white-soft: #E2E8F0;       /* Texto secundario claro */
-    --text-muted: #94A3B8;       /* Texto descriptivo */
+    --bg-france-blue: #0D1B2A;    
+    --bg-section-blue: #111D2E;   
+    --card-blue: #162436;        
+    --card-blue-hover: #1C2D42;  
+    --emerald-green: #10B981;    
+    --hover-green: #059669;      
+    --white: #FFFFFF;            
+    --white-soft: #E2E8F0;       
+    --text-muted: #94A3B8;       
     --border-glow: rgba(255, 255, 255, 0.08);
 }
 
@@ -23,6 +23,25 @@ body {
     color: var(--white);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* CURSOR GLOW EFFECT (ESTILO ASPEN CONSULTORES) */
+.cursor-glow {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+}
+
+.cursor-glow.glow-expand {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(16, 185, 129, 0) 70%);
 }
 
 .container {
@@ -209,7 +228,7 @@ body {
     border-bottom: 1px solid var(--border-glow);
 }
 
-/* TARJETAS INTERACTIVAS (PACKS, SECTORES Y FAQ) */
+/* TARJETAS INTERACTIVAS */
 .interactive-card {
     background: var(--card-blue);
     color: var(--white);
@@ -228,7 +247,7 @@ body {
     border-color: var(--emerald-green);
 }
 
-/* NOSOTROS */
+/* NOSOTROS Y NUEVOS CHECKS MINIMALISTAS */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -257,12 +276,36 @@ body {
 
 .check-list {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .check-list li {
     font-weight: 600;
     color: var(--white-soft);
-    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1rem;
+}
+
+.check-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--emerald-green);
+}
+
+.check-icon svg {
+    width: 14px;
+    height: 14px;
 }
 
 /* TITULOS DE SECCION */
@@ -278,7 +321,7 @@ body {
 }
 
 .faq-section .section-title h2 {
-    color: var(--emerald-green); /* Verde para la sección de Preguntas Frecuentes */
+    color: var(--emerald-green);
 }
 
 .section-title p {
@@ -514,4 +557,5 @@ footer {
     .hero-text h1 { font-size: 2.3rem; }
     .hero-btns { flex-direction: column; }
     .nav-links { display: none; }
+    .cursor-glow { display: none; } /* Se deshabilita en móviles para mejor performance táctil */
 }

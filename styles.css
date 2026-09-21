@@ -412,6 +412,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding: 35px 30px;
+    position: relative;
+    overflow: hidden; /* Mantiene el panel superpuesto dentro de los bordes redondeados */
 }
 
 .pack-card.featured {
@@ -432,6 +434,7 @@ body {
     border-bottom-right-radius: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    z-index: 5;
 }
 
 .pack-header .icon {
@@ -470,69 +473,93 @@ body {
     margin-bottom: 12px;
 }
 
-/* DESPLEGABLES DENTRO DE PACKS (ACORDEÓN MEJORADO) */
-.accordion {
-    margin-bottom: 25px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.15);
-    padding-top: 15px;
-}
-
-.accordion-btn {
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    border-radius: 8px;
-    padding: 10px 14px;
+/* BOTÓN DESPLEGABLE */
+.accordion-trigger-btn {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 10px;
+    padding: 12px 16px;
     color: var(--emerald-green);
     font-weight: 700;
     font-size: 0.88rem;
     cursor: pointer;
     width: 100%;
-    text-align: left;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease;
 }
 
-.accordion-btn:hover {
-    background: rgba(16, 185, 129, 0.18);
+.accordion-trigger-btn:hover {
+    background: rgba(16, 185, 129, 0.22);
     border-color: var(--emerald-green);
 }
 
-.accordion-btn .arrow {
-    transition: transform 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.accordion-btn.active .arrow {
-    transform: rotate(180deg);
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
-    font-size: 0.88rem;
-    color: var(--text-muted);
-}
-
-.accordion-inner {
-    padding-top: 15px;
+/* PANEL DESPLEGABLE DE ABAJO HACIA ARRIBA CON DIFUMINADO (OVERLAY) */
+.pack-overlay-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 27, 42, 0.92);
+    backdrop-filter: blur(14px); /* Difuminado suave sobre el contenido anterior */
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 30px 25px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transform: translateY(100%); /* Oculto abajo inicialmente */
     opacity: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
 }
 
-.accordion-btn.active + .accordion-content .accordion-inner {
+.pack-overlay-panel.active {
+    transform: translateY(0); /* Se desliza de abajo hacia arriba */
     opacity: 1;
-    transform: translateY(0);
+}
+
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-glow);
+    padding-bottom: 10px;
+}
+
+.overlay-header h4 {
+    font-size: 1rem;
+    color: var(--emerald-green);
+    font-weight: 800;
+}
+
+.close-overlay-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-glow);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-overlay-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #EF4444;
+    color: #F87171;
 }
 
 .accordion-intro {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--white-soft);
     line-height: 1.5;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     border-left: 3px solid var(--emerald-green);
     padding: 10px 12px;
     border-radius: 0 6px 6px 0;
@@ -541,7 +568,7 @@ body {
 }
 
 .accordion-subtitle {
-    margin-top: 12px;
+    margin-top: 10px;
     margin-bottom: 6px;
     color: var(--emerald-green);
     font-size: 0.86rem;

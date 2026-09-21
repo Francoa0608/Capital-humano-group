@@ -18,9 +18,9 @@
     --border-glow: rgba(255, 255, 255, 0.08);
 }
 
-/* OCULTAMOS EL CURSOR POR DEFECTO Y APLICAMOS FONDO */
+/* OCULTAMOS EL CURSOR PREDETERMINADO */
 body, a, button, input {
-    cursor: none !important; /* Oculta la flecha blanca estándar */
+    cursor: none !important;
 }
 
 body {
@@ -30,28 +30,25 @@ body {
     overflow-x: hidden;
 }
 
-/* CURSOR GLOW EFFECT Y PUNTO VERDE POTENTE */
+/* PUNTO VERDE CLEAN (SIN AUREOLA NI MANCHA DE LUZ) */
 .cursor-glow {
     position: fixed;
-    width: 350px;
-    height: 350px;
-    /* Fondo con degradado ambiental + centro en punto verde esmeralda inteso */
-    background: 
-        radial-gradient(circle at center, #10B981 0%, #10B981 6px, rgba(16, 185, 129, 0.4) 12px, rgba(16, 185, 129, 0.15) 30%, rgba(16, 185, 129, 0) 70%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--emerald-green);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    transition: width 0.3s ease, height 0.3s ease, background 0.2s ease;
-    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.8));
+    transition: transform 0.15s ease-out, background-color 0.2s ease;
+    box-shadow: 0 0 6px var(--emerald-green); /* Sutil brillo para nitidez */
 }
 
+/* AGRANDAMIENTO LIGERO Y LIMPIO AL PASAR SOBRE BOTONES O TARJETAS */
 .cursor-glow.glow-expand {
-    width: 500px;
-    height: 500px;
-    background: 
-        radial-gradient(circle at center, #059669 0%, #10B981 8px, rgba(16, 185, 129, 0.5) 20px, rgba(16, 185, 129, 0.2) 35%, rgba(16, 185, 129, 0) 70%);
-    filter: drop-shadow(0 0 15px rgba(16, 185, 129, 1));
+    transform: translate(-50%, -50%) scale(2.2);
+    background-color: #34D399; /* Verde levemente más brillante */
+    box-shadow: 0 0 10px #34D399;
 }
 
 .container {
@@ -564,7 +561,7 @@ footer {
 /* RESPONSIVE */
 @media (max-width: 768px) {
     body, a, button, input {
-        cursor: auto !important; /* Restaura el cursor normal en dispositivos táctiles */
+        cursor: auto !important;
     }
     .hero-grid, .about-grid { grid-template-columns: 1fr; }
     .hero-text h1 { font-size: 2.3rem; }

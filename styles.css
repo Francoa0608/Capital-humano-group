@@ -29,7 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* PUNTO CURSOR (CON SUTIL TRANSPARENCIA AL RECORRER TEXTO) */
+/* CURSOR LUMINOSO (OPACIDAD SUAVE PARA NO TAPAR LAS LETRAS DEL MENÚ) */
 .cursor-glow {
     position: fixed;
     width: 10px;
@@ -39,15 +39,16 @@ body {
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    transition: transform 0.15s ease-out, opacity 0.2s ease, background-color 0.2s ease;
+    opacity: 0.85; /* Para no tapar el texto */
+    transition: transform 0.15s ease-out, background-color 0.2s ease, opacity 0.2s ease;
     box-shadow: 0 0 6px var(--emerald-green);
 }
 
-/* SE VUELVE TRANSPARENTE EN HOVER PARA NO TAPAR LAS LETRAS */
 .cursor-glow.glow-expand {
-    transform: translate(-50%, -50%) scale(1.6);
-    opacity: 0.25; 
+    transform: translate(-50%, -50%) scale(2);
     background-color: #34D399;
+    box-shadow: 0 0 10px #34D399;
+    opacity: 0.6; /* Mayor transparencia al agrandarse */
 }
 
 .container {
@@ -56,9 +57,9 @@ body {
     padding: 0 20px;
 }
 
-/* NAVBAR Y NAVEGACIÓN ENLACES */
+/* NAVBAR Y EFECTOS DEL MENÚ */
 .navbar {
-    background: rgba(13, 27, 42, 0.9);
+    background: rgba(13, 27, 42, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-glow);
     padding: 18px 0;
@@ -79,16 +80,10 @@ body {
     color: var(--white);
     text-decoration: none;
     letter-spacing: -0.5px;
-    display: inline-block;
-    transition: transform 0.25s ease;
 }
 
 .logo span {
     color: var(--emerald-green);
-}
-
-.logo:hover {
-    transform: scale(1.05);
 }
 
 .nav-links {
@@ -98,19 +93,21 @@ body {
     gap: 30px;
 }
 
-/* AGRANDAMIENTO DE LETRAS EN NAVEGACIÓN AL PASAR EL MOUSE */
-.nav-links a {
+/* EFECTO DE AGRANDAR LETRA AL PASAR EL CURSOR (HOVER) */
+.nav-links li a {
+    display: inline-block;
     text-decoration: none;
     color: var(--white-soft);
     font-weight: 600;
     font-size: 0.95rem;
-    display: inline-block;
+    position: relative;
+    z-index: 10001; /* Queda por encima del cursor */
     transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
 }
 
-.nav-links a:hover {
+.nav-links li a:hover {
     color: var(--emerald-green);
-    transform: scale(1.18); /* Agranda un punto más la letra */
+    transform: scale(1.18); /* Aumenta el tamaño de la letra al pasar por encima */
 }
 
 .btn-nav {
@@ -128,16 +125,14 @@ body {
     background: var(--hover-green);
 }
 
-/* HERO SECTION CON FONDO DINÁMICO */
+/* HERO SECTION CON FONDO ROTATIVO (CARRUSEL) */
 .hero {
     position: relative;
     padding: 140px 0 120px;
-    display: flex;
-    align-items: center;
     overflow: hidden;
 }
 
-.hero-slider {
+.hero-bg-slider {
     position: absolute;
     top: 0;
     left: 0;
@@ -146,7 +141,7 @@ body {
     z-index: 1;
 }
 
-.slide {
+.hero-bg-slider .slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -155,13 +150,13 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out, transform 6s ease;
+    transition: opacity 1.5s ease-in-out, transform 6s ease-out;
     transform: scale(1);
 }
 
-.slide.active {
+.hero-bg-slider .slide.active {
     opacity: 1;
-    transform: scale(1.05); /* Leve efecto Zoom continuo */
+    transform: scale(1.05); /* Efecto zoom suave durante la transición */
 }
 
 .hero-overlay {
@@ -170,14 +165,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(13, 27, 42, 0.92) 0%, rgba(13, 27, 42, 0.75) 60%, rgba(13, 27, 42, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(13, 27, 42, 0.92) 0%, rgba(17, 29, 46, 0.82) 100%);
     z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 3;
-    max-width: 750px;
+    max-width: 800px;
 }
 
 .badge {
@@ -190,11 +185,10 @@ body {
     display: inline-block;
     margin-bottom: 20px;
     border: 1px solid rgba(16, 185, 129, 0.4);
-    backdrop-filter: blur(4px);
 }
 
 .hero-content h1 {
-    font-size: 3.4rem;
+    font-size: 3.2rem;
     font-weight: 800;
     color: var(--white);
     letter-spacing: -0.03em;
@@ -231,27 +225,27 @@ body {
 
 .btn-primary:hover {
     background: var(--hover-green);
-    transform: translateY(-3px) scale(1.03);
+    transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     color: var(--white);
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid var(--border-glow);
     padding: 14px 28px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
     border-color: var(--emerald-green);
     color: var(--emerald-green);
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
 }
 
 /* SECCIONES GENERALES */
@@ -595,6 +589,7 @@ footer {
     }
     .hero-content h1 { font-size: 2.3rem; }
     .hero-btns { flex-direction: column; }
+    .about-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .cursor-glow { display: none; }
 }

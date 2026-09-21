@@ -18,6 +18,11 @@
     --border-glow: rgba(255, 255, 255, 0.08);
 }
 
+/* OCULTAMOS EL CURSOR POR DEFECTO Y APLICAMOS FONDO */
+body, a, button, input {
+    cursor: none !important; /* Oculta la flecha blanca estándar */
+}
+
 body {
     background-color: var(--bg-france-blue);
     color: var(--white);
@@ -25,23 +30,28 @@ body {
     overflow-x: hidden;
 }
 
-/* CURSOR GLOW EFFECT (ESTILO ASPEN CONSULTORES) */
+/* CURSOR GLOW EFFECT Y PUNTO VERDE POTENTE */
 .cursor-glow {
     position: fixed;
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 70%);
+    /* Fondo con degradado ambiental + centro en punto verde esmeralda inteso */
+    background: 
+        radial-gradient(circle at center, #10B981 0%, #10B981 6px, rgba(16, 185, 129, 0.4) 12px, rgba(16, 185, 129, 0.15) 30%, rgba(16, 185, 129, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+    transition: width 0.3s ease, height 0.3s ease, background 0.2s ease;
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.8));
 }
 
 .cursor-glow.glow-expand {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(16, 185, 129, 0) 70%);
+    background: 
+        radial-gradient(circle at center, #059669 0%, #10B981 8px, rgba(16, 185, 129, 0.5) 20px, rgba(16, 185, 129, 0.2) 35%, rgba(16, 185, 129, 0) 70%);
+    filter: drop-shadow(0 0 15px rgba(16, 185, 129, 1));
 }
 
 .container {
@@ -247,7 +257,7 @@ body {
     border-color: var(--emerald-green);
 }
 
-/* NOSOTROS Y NUEVOS CHECKS MINIMALISTAS */
+/* NOSOTROS Y CHECKS */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -553,9 +563,12 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    body, a, button, input {
+        cursor: auto !important; /* Restaura el cursor normal en dispositivos táctiles */
+    }
     .hero-grid, .about-grid { grid-template-columns: 1fr; }
     .hero-text h1 { font-size: 2.3rem; }
     .hero-btns { flex-direction: column; }
     .nav-links { display: none; }
-    .cursor-glow { display: none; } /* Se deshabilita en móviles para mejor performance táctil */
+    .cursor-glow { display: none; }
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- EFECTO DE CURSOR LUMINOSO -->
+    <!-- PUNTO CURSOR PERSONALIZADO -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- NAVBAR -->
@@ -26,13 +26,16 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION CON SLIDER / CARRUSEL DE FONDO ROTATIVO -->
+    <!-- HERO SECTION CON SLIDER DE FONDO DINÁMICO -->
     <header class="hero">
-        <div class="hero-bg-slider">
+        <!-- CARRUSEL DE IMÁGENES DE FONDO -->
+        <div class="hero-slider">
             <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80');"></div>
         </div>
+        
+        <!-- CAPA DE OSCURECIMIENTO -->
         <div class="hero-overlay"></div>
 
         <div class="container hero-content">
@@ -50,7 +53,7 @@
     <section id="nosotros" class="about-section">
         <div class="container about-grid">
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="Equipo de gestión de personas">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" alt="Equipo de gestión de personas">
             </div>
             <div class="about-text">
                 <h2>Transformamos la gestión humana de tu empresa</h2>
@@ -116,6 +119,7 @@
             </div>
 
             <div class="packs-grid">
+
                 <!-- PACK 1 -->
                 <div class="interactive-card pack-card">
                     <div class="pack-header">
@@ -191,6 +195,7 @@
                     </div>
                     <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%203%20Estratégico" target="_blank" class="btn-pack">Contratar Pack 3</a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -228,32 +233,7 @@
 
     <!-- SCRIPTS -->
     <script>
-        // ROTACIÓN AUTOMÁTICA DE IMÁGENES DE FONDO (HERO SLIDER)
-        const slides = document.querySelectorAll('.hero-bg-slider .slide');
-        let currentSlide = 0;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000); // Cambia de imagen cada 5 segundos
-
-        // CURSOR LUMINOSO
-        const glow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-
-        const interactives = document.querySelectorAll('a, button, .interactive-card');
-        interactives.forEach(el => {
-            el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
-            el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
-        });
-
-        // ACORDEONES
+        // Lógica de Acordeones
         const acc = document.querySelectorAll(".accordion-btn");
         acc.forEach(btn => {
             btn.addEventListener("click", function() {
@@ -279,6 +259,31 @@
                 }
             });
         });
+
+        // EFECTO DE CURSOR VANGUARDISTA
+        const glow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        const interactives = document.querySelectorAll('a, button, .interactive-card');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
+            el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
+        });
+
+        // ROTACIÓN AUTOMÁTICA DEL FONDO (SLIDER)
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000); // Cambia de foto cada 5 segundos
     </script>
 </body>
 </html>

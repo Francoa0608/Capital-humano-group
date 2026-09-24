@@ -1,73 +1,381 @@
-<!-- HERO SECTION CON SLIDER Y OVERLAY -->
-<section class="hero" id="inicio">
-    <div class="hero-slider">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1920&auto=format&fit=crop');"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-        <!-- CAMBIO 2: Título orientado al comprador (Marketing) -->
-        <span class="badge">Soluciones Estratégicas de Capital Humano</span>
-        <h1>Soluciones Integrales de <span>RRHH y Capital Humano</span> para Potenciar tu Empresa</h1>
-        
-        <!-- CAMBIO 1: Texto del Hero actualizado -->
-        <p>Estructuramos, ordenamos y profesionalizamos tu área de Capital Humano. Diseñamos culturas organizacionales sólidas y procesos innovadores que otorgan competitividad, posicionamiento y crecimiento sostenido en el mercado.</p>
-        
-        <div class="hero-btns">
-            <a href="#packs" class="btn-primary">Averiguá tu Pack Ideal</a>
-            <a href="#about" class="btn-secondary">Conocé Más</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHG - Capital Humano Group</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cursor personalizado -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">CHG <span>Capital Humano Group</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#rubros">Rubros</a></li>
+                    <li><a href="#packs">Packs de Gestión</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="#contacto" class="btn-nav-outline">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- SECCIÓN SOBRE NOSOTROS / TRANSFORMACIÓN (IMAGEN ADJUNTA MODIFICADA) -->
-<section class="about-section" id="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Transformación Organizacional CHG">
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="badge">Soluciones Estratégicas de Capital Humano</span>
+            <h1>Soluciones Integrales de RRHH y Capital Humano para <span>Potenciar tu Empresa</span></h1>
+            <p>Estructuramos, ordenamos y profesionalizamos tu área de Capital Humano. Diseñamos culturas organizacionales sólidas y procesos innovadores que otorgan competitividad, posicionamiento y crecimiento sostenido en el mercado.</p>
+            <div class="hero-btns">
+                <a href="#packs" class="btn-primary">Averigua tu Pack Ideal</a>
+                <a href="#nosotros" class="btn-secondary">Conocé Más</a>
             </div>
-            <div class="about-text">
-                <h2>Transformamos la gestión de tu empresa</h2>
-                
-                <p class="about-highlight-box">
-                    <strong>¡Tu pack ideal está a solo un clic de distancia!</strong> Simplifica tu vida y encuentra exactamente lo que necesitas con nuestras soluciones prácticas y personalizadas.
-                </p>
+        </div>
+    </section>
 
-                <p class="about-intro">
-                    Trascendemos el modelo de la consultoría tradicional. Impulsamos el crecimiento de tu empresa transformando la gestión humana en un sistema ordenado, ágil y transparente que te devuelve la tranquilidad y el control total de tu negocio.
-                </p>
-
-                <div class="about-pillars">
-                    <!-- PILLAR 1 -->
-                    <div class="pillar-card">
-                        <div class="pillar-header">
-                            <span class="pillar-icon">📦</span>
-                            <h4>IMPLEMENTAMOS PACKS DE GESTIÓN DE CAPITAL HUMANO</h4>
-                        </div>
-                        <p>Todo lo que tu empresa necesita para crecer en forma ordenada y personalizada.</p>
+    <!-- SECCIÓN NOSOTROS / TRANSFORMACIÓN -->
+    <section class="about-section" id="nosotros">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Reunión de equipo Capital Humano Group">
+                </div>
+                <div class="about-text">
+                    <h2>Transformamos la gestión de tu empresa</h2>
+                    <div class="about-highlight-box">
+                        <strong>¡Tu pack ideal está a solo un clic de distancia!</strong> Simplifica tu vida y encuentra exactamente lo que necesitas con nuestras soluciones prácticas y personalizadas.
                     </div>
+                    <p class="about-intro">Trascendemos el modelo de la consultoría tradicional. Impulsamos el crecimiento de tu empresa transformando la gestión humana en un sistema ordenado, ágil y transparente que te devuelve la tranquilidad y el control total de tu negocio.</p>
 
-                    <!-- PILLAR 2 -->
-                    <div class="pillar-card">
-                        <div class="pillar-header">
-                            <span class="pillar-icon">🛡️</span>
-                            <h4>SEGURIDAD LEGAL</h4>
+                    <div class="about-pillars">
+                        <div class="pillar-card">
+                            <div class="pillar-header">
+                                <span class="pillar-icon">💡</span>
+                                <h4>Estrategia a Medida</h4>
+                            </div>
+                            <p>No aplicamos fórmulas genéricas; diseñamos e implementamos procesos de RRHH alineados a tus objetivos comerciales específicos.</p>
                         </div>
-                        <p>Eliminación de riesgos legales y contingencias normativas. Auditoría y cumplimiento de documentación laboral, liquidación de sueldos, gestión de ART, altas/bajas y vencimientos.</p>
-                    </div>
 
-                    <!-- PILLAR 3 -->
-                    <div class="pillar-card">
-                        <div class="pillar-header">
-                            <span class="pillar-icon">📈</span>
-                            <h4>GESTIÓN Y CRECIMIENTO</h4>
+                        <div class="pillar-card">
+                            <div class="pillar-header">
+                                <span class="pillar-icon">🎯</span>
+                                <h4>Procesos Ágiles y Claros</h4>
+                            </div>
+                            <p>Organizamos tus equipos, estandarizamos procedimientos y eliminamos cuellos de botella para que la empresa opere sin fricciones.</p>
                         </div>
-                        <p>Indicadores de gestión (KPIs) para la toma de decisiones. Gestión de desempeño, clima laboral y planes de carrera. Onboarding y offboarding profesional, capacitaciones y comunicaciones internas estratégicas.</p>
+
+                        <div class="pillar-card">
+                            <div class="pillar-header">
+                                <span class="pillar-icon">🛡️</span>
+                                <h4>Seguridad y Tranquilidad</h4>
+                            </div>
+                            <p>Garantizamos el cumplimiento normativo e institucional, profesionalizando cada área para que tomes decisiones con confianza.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- RUBROS SECTION -->
+    <section class="rubros-section" id="rubros">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experiencia Específica por Rubro</h2>
+                <p>Comprendemos la dinámica operacional y cultural de diversos sectores clave.</p>
+            </div>
+            <div class="rubros-grid">
+                <div class="interactive-card">
+                    <span class="rubro-icon">🏢</span>
+                    <h3>Pymes y Empresas</h3>
+                    <p>Profesionalización de estructuras familiares y PyMEs en proceso de escalamiento.</p>
+                </div>
+                <div class="interactive-card">
+                    <span class="rubro-icon">💻</span>
+                    <h3>Tecnología e Innovación</h3>
+                    <p>Atracción y fidelización de talento clave en entornos altamente dinámicos.</p>
+                </div>
+                <div class="interactive-card">
+                    <span class="rubro-icon">🏭</span>
+                    <h3>Industria y Producción</h3>
+                    <p>Optimización de turnos, convenios, clima laboral y seguridad operacional.</p>
+                </div>
+                <div class="interactive-card">
+                    <span class="rubro-icon">🛍️</span>
+                    <h3>Comercio y Servicios</h3>
+                    <p>Estructuración de redes comerciales, capacitaciones y evaluación de desempeño.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKS DE GESTIÓN -->
+    <section class="packs-section" id="packs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Implementamos Packs de Gestión de Capital Humano</h2>
+                <p>Elegí la solución modular que mejor responda al momento actual de tu organización.</p>
+            </div>
+            <div class="packs-grid">
+
+                <!-- Pack 1 -->
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <span class="icon">🚀</span>
+                        <h3>Pack Inicial</h3>
+                        <div class="pack-tagline">Estructuración y Fundamentos</div>
+                        <p class="pack-desc">Ideal para PyMEs que necesitan ordenar la casa y formalizar sus primeros procesos de personas.</p>
+                    </div>
+                    <ul class="pack-features">
+                        <li>✔️ Diagnóstico Inicial Organizacional</li>
+                        <li>✔️ Organigrama y Descripción de Puestos Clave</li>
+                        <li>✔️ Legajos Digitales y Contratos</li>
+                        <li>✔️ Reglamento Interno y Básico de Convivencia</li>
+                    </ul>
+                    <button class="accordion-trigger-btn">
+                        <span>Ver detalle del programa</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="pack-overlay-panel">
+                        <div class="overlay-header">
+                            <h4>Detalle: Pack Inicial</h4>
+                            <button class="close-overlay-btn">Cerrar ✕</button>
+                        </div>
+                        <p class="accordion-intro">Ideal para establecer las bases de una gestión ordenada y evitar imprevistos legales u operacionales.</p>
+                        <div class="accordion-subtitle">Módulos Incluidos:</div>
+                        <ul class="accordion-list">
+                            <li>Diagnóstico situacional de cumplimiento y clima.</li>
+                            <li>Diseño de 5 a 10 perfiles de puesto estructurales.</li>
+                            <li>Modelos de onboarding y bienvenida de personal.</li>
+                            <li>Estandarización del proceso de altas y bajas.</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="btn-pack">Solicitar Pack Inicial</a>
+                </div>
+
+                <!-- Pack 2 (Destacado) -->
+                <div class="pack-card featured">
+                    <span class="badge-card">Más Elegido</span>
+                    <div class="pack-header">
+                        <span class="icon">📈</span>
+                        <h3>Pack Crecimiento</h3>
+                        <div class="pack-tagline">Desarrollo y Performance</div>
+                        <p class="pack-desc">Para empresas en expansión que buscan elevar la productividad y fidelizar a sus equipos.</p>
+                    </div>
+                    <ul class="pack-features">
+                        <li>✔️ Evaluación de Desempeño y Feedback</li>
+                        <li>✔️ Matriz de Capacitación y Competencias</li>
+                        <li>✔️ Esquemas de Compensación y Beneficios</li>
+                        <li>✔️ Encuestas de Clima Organizacional</li>
+                    </ul>
+                    <button class="accordion-trigger-btn">
+                        <span>Ver detalle del programa</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="pack-overlay-panel">
+                        <div class="overlay-header">
+                            <h4>Detalle: Pack Crecimiento</h4>
+                            <button class="close-overlay-btn">Cerrar ✕</button>
+                        </div>
+                        <p class="accordion-intro">Potencia a los mandos medios y líderes para acompañar la escala del negocio.</p>
+                        <div class="accordion-subtitle">Módulos Incluidos:</div>
+                        <ul class="accordion-list">
+                            <li>Implementación de indicadores (KPIs) de RRHH.</li>
+                            <li>Diseño de plan de desarrollo individual (PDI).</li>
+                            <li>Estrategia de retención y marcas empleadoras.</li>
+                            <li>Acompañamiento mensual directivo.</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="btn-pack">Solicitar Pack Crecimiento</a>
+                </div>
+
+                <!-- Pack 3 -->
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <span class="icon">👑</span>
+                        <h3>Pack Integral / Executive</h3>
+                        <div class="pack-tagline">Transformación Estratégica</div>
+                        <p class="pack-desc">Gestión 360° como tu gerencia externa de Capital Humano orientada a la alta dirección.</p>
+                    </div>
+                    <ul class="pack-features">
+                        <li>✔️ Strategic People Partner Dedicado</li>
+                        <li>✔️ Gestión del Cambio y Cultura</li>
+                        <li>✔️ Mapeo de Talento y Sucesión</li>
+                        <li>✔️ Auditoría e Indicadores directivos</li>
+                    </ul>
+                    <button class="accordion-trigger-btn">
+                        <span>Ver detalle del programa</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="pack-overlay-panel">
+                        <div class="overlay-header">
+                            <h4>Detalle: Pack Integral</h4>
+                            <button class="close-overlay-btn">Cerrar ✕</button>
+                        </div>
+                        <p class="accordion-intro">Asumimos la conducción operativa y estratégica de RRHH con reportes continuos a Gerencia General.</p>
+                        <div class="accordion-subtitle">Módulos Incluidos:</div>
+                        <ul class="accordion-list">
+                            <li>Dirección estratégica de RRHH y relaciones laborales.</li>
+                            <li>Reestructuraciones y eficiencia organizacional.</li>
+                            <li>Acompañamiento gerencial en toma de decisiones.</li>
+                            <li>Gestión continua del clima y cultura corporativa.</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="btn-pack">Solicitar Pack Executive</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Aclaramos tus dudas para iniciar el proceso de transformación.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        <span>¿Cómo sabemos cuál es el pack ideal para nuestra empresa?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>Realizamos una sesión inicial de diagnóstico gratuita de 30 minutos donde evaluamos el tamaño de la estructura, la complejidad operacional y las necesidades inmediatas para recomendarte la solución exacta.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        <span>¿Trabajan de forma presencial o remota?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>Contamos con esquemas híbridos. Combinamos encuentros presenciales para talleres, relevamientos clave e hitos con trabajo remoto dinámico para agilizar entregables.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        <span>¿Cuánto tiempo toma la implementación de un pack?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>Los proyectos iniciales duran entre 4 y 8 semanas. Los programas más avanzados o integrales se ejecutan en acompañamientos continuos trimestrales o anuales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACTO -->
+    <footer class="footer" id="contacto">
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="footer-logo">CHG <span>Capital Humano Group</span></a>
+                <p class="footer-desc">Soluciones estratégicas e integrales de gestión humana. Estructuramos organizaciones competitivas y preparadas para el futuro.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#rubros">Rubros</a></li>
+                    <li><a href="#packs">Packs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Servicios</h4>
+                <ul class="footer-links">
+                    <li><a href="#packs">Pack Inicial</a></li>
+                    <li><a href="#packs">Pack Crecimiento</a></li>
+                    <li><a href="#packs">Pack Executive</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Contacto</h4>
+                <ul class="footer-contact">
+                    <li>📍 Argentina</li>
+                    <li>📧 info@groupcapitalhumano.com</li>
+                    <li>💬 Asesoramiento personalizado</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 CHG - Capital Humano Group. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT JS INTERACTIVO PARA PANELES Y ACORDEONES -->
+    <script>
+        // Cursor personalizado
+        const cursor = id('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(elem => {
+            elem.addEventListener('mouseenter', () => cursor.classList.add('glow-expand'));
+            elem.addEventListener('mouseleave', () => cursor.classList.remove('glow-expand'));
+        });
+
+        // Lógica para Abrir / Cerrar Paneles Desplegables de Packs
+        document.querySelectorAll('.pack-card').forEach(card => {
+            const triggerBtn = card.querySelector('.accordion-trigger-btn');
+            const closeBtn = card.querySelector('.close-overlay-btn');
+            const panel = card.querySelector('.pack-overlay-panel');
+
+            if(triggerBtn && panel) {
+                triggerBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    panel.classList.add('active');
+                });
+            }
+
+            if(closeBtn && panel) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    panel.classList.remove('active');
+                });
+            }
+        });
+
+        // Lógica de FAQ
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const isOpen = content.style.maxHeight;
+
+                document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
+                
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        function id(name) { return document.getElementById(name); }
+    </script>
+</body>
+</html>

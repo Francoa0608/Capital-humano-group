@@ -8,13 +8,13 @@
 :root {
     --bg-france-blue: #0D1B2A;    
     --bg-section-blue: #111D2E;   
-    --card-blue: #162436;        
+    --card-blue: #162436;         
     --card-blue-hover: #1C2D42;  
     --emerald-green: #10B981;    
     --hover-green: #059669;      
-    --white: #FFFFFF;            
-    --white-soft: #E2E8F0;       
-    --text-muted: #94A3B8;       
+    --white: #FFFFFF;             
+    --white-soft: #E2E8F0;        
+    --text-muted: #94A3B8;        
     --border-glow: rgba(255, 255, 255, 0.08);
 }
 
@@ -327,6 +327,76 @@ body {
 .about-text p {
     color: var(--text-muted);
     margin-bottom: 25px;
+}
+
+/* CUADRO DESTACADO DE MARKETING Y NUEVA ESTRUCTURA */
+.about-highlight-box {
+    background: rgba(16, 185, 129, 0.12);
+    border-left: 4px solid var(--emerald-green);
+    padding: 14px 18px;
+    border-radius: 0 10px 10px 0;
+    color: var(--white);
+    font-size: 0.98rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.about-highlight-box strong {
+    color: var(--emerald-green);
+}
+
+.about-intro {
+    color: var(--text-muted);
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.about-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pillar-card {
+    background: var(--card-blue);
+    border: 1px solid var(--border-glow);
+    border-radius: 12px;
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+    border-color: var(--emerald-green);
+    transform: translateX(6px);
+    background: var(--card-blue-hover);
+}
+
+.pillar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.pillar-icon {
+    font-size: 1.2rem;
+}
+
+.pillar-header h4 {
+    color: var(--emerald-green);
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.pillar-card p {
+    color: var(--white-soft);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .check-list {
@@ -993,6 +1063,9 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }

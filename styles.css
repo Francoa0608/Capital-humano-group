@@ -60,7 +60,7 @@ body {
     background: rgba(13, 27, 42, 0.9);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-glow);
-    padding: 18px 0;
+    padding: 16px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -94,23 +94,43 @@ body {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 22px;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--white-soft);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     display: inline-block;
     transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
 }
 
 .nav-links a:hover {
     color: var(--emerald-green);
-    transform: scale(1.18);
+    transform: scale(1.12);
 }
 
+/* BOTÓN SECUNDARIO: POSTULATE ACÁ */
+.btn-nav-outline {
+    border: 1px solid rgba(16, 185, 129, 0.6);
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: var(--emerald-green) !important;
+    padding: 9px 18px;
+    border-radius: 30px;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease !important;
+}
+
+.btn-nav-outline:hover {
+    background: rgba(16, 185, 129, 0.25) !important;
+    border-color: var(--emerald-green) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+/* BOTÓN PRINCIPAL: AVERIGUA TU PACK IDEAL */
 .btn-nav {
     background: var(--emerald-green);
     color: var(--white) !important;
@@ -121,7 +141,7 @@ body {
 }
 
 .btn-nav:hover {
-    transform: scale(1.08) translateY(-2px) !important;
+    transform: scale(1.06) translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
     background: var(--hover-green);
 }
@@ -631,7 +651,7 @@ body {
     background: var(--hover-green);
 }
 
-/* SECCIÓN SERVICIOS EXTRAS (ORIENTADO A LA IZQUIERDA Y DESPLEGABLES) */
+/* SECCIONS EXTRAS */
 .extras-section {
     background: var(--bg-france-blue);
     border-bottom: 1px solid var(--border-glow);
@@ -768,7 +788,7 @@ body {
 }
 
 .benefit-box.save {
-    border-top: 2px solid #F59E0B; /* Tono Ámbar/Precaución para Ahorro de riesgos */
+    border-top: 2px solid #F59E0B;
 }
 
 .benefit-box h6 {

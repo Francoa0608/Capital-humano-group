@@ -82,10 +82,10 @@ body {
 
 /* Estilo para la imagen del logo incrustada */
 .brand-logo-img {
-    height: 40px; /* Ajusta la altura de la imagen en la barra superior */
+    height: 38px;
     width: auto;
     object-fit: contain;
-    border-radius: 6px;
+    display: block;
 }
 
 /* Texto del nombre junto al logo */

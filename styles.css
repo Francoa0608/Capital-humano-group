@@ -1061,18 +1061,20 @@ body {
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom-content { flex-direction: column; gap: 12px; text-align: center; }
 }
-/* 1. EFECTO VANGUARDISTA HOVER EN ENCABEZADOS PRINCIPALES */
+/* Corrección de centrado + Efecto Hover Vanguardista */
 .section-title, 
 h2.title-glow {
     color: #ffffff;
     font-size: 2.2rem;
     font-weight: 800;
+    text-align: center;
+    display: table;
+    margin: 0 auto 16px auto; /* Centra el bloque de texto en la pantalla */
     transition: all 0.4s ease-in-out;
     cursor: default;
-    display: inline-block;
 }
 
-/* Estado al pasar el cursor (Hover): Revela el brillo verde/turquesa fluido interno */
+/* Efecto hover resplandeciente */
 .section-title:hover, 
 h2.title-glow:hover {
     background: linear-gradient(135deg, #ffffff 0%, #10b981 50%, #00e5ff 100%);
@@ -1083,7 +1085,6 @@ h2.title-glow:hover {
     animation: shineGlow 2s ease infinite;
 }
 
-/* Animación fluida de la luz dentro de la tipografía */
 @keyframes shineGlow {
     0% { background-position: 0% center; }
     50% { background-position: 100% center; }

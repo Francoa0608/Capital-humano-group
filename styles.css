@@ -73,44 +73,54 @@ body {
 }
 
 /* Contenedor del logo con imagen en Base64 */
+/* Contenedor alineado y con espaciado óptimo */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     text-decoration: none;
 }
 
-/* 1. Resalta el azul oscuro del logo para que no se pierda en el fondo */
-.brand-logo-img {
-    height: 58px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.2));
+/* Oculta las siglas 'CHG' oscuras de la imagen y deja solo las 3 figuras */
+.logo-crop-wrapper {
+    height: 48px;
+    width: 52px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-/* 2. Estructura de texto armoniosa */
+.brand-logo-img {
+    height: 72px; /* Agranda la figura para cortar quirúrgicamente el texto azul de la imagen */
+    width: auto;
+    object-fit: contain;
+    margin-top: -2px;
+}
+
+/* Tipografía corporativa elegida para legibilidad */
 .brand-text-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1.1;
+    line-height: 1.05;
 }
 
 .brand-title {
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 
-/* Color extraído directamente de la gama verde-azulada clara del logo */
 .brand-subtitle {
-    color: #38ef7d; /* Verde manzana/lima suave en lugar del verde esmeralda */
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-top: 2px;
+    color: #00e5ff; /* Turquesa brillante derivado del centro del logo */
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 3px;
 }
 
 .nav-links {

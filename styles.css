@@ -82,13 +82,10 @@ body {
 
 /* Tamaño y protagonismo del logo */
 .brand-logo-img {
-    height: 42px;
+    height: 44px;
     width: auto;
     object-fit: contain;
     display: block;
-    /* Elimina visualmente el fondo blanco sobre la barra oscura */
-    mix-blend-mode: lighten; 
-    filter: contrast(1.1);
 }
 
 .brand-text {

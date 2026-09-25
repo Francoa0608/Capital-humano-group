@@ -82,12 +82,11 @@ body {
 
 /* Tamaño y protagonismo del logo */
 .brand-logo-img {
-    height: 48px; /* Aumentado para mayor definición y claridad */
+    height: 42px;
     width: auto;
+    object-fit: contain;
     display: block;
-    filter: drop-shadow(0px 2px 8px rgba(0,0,0,0.3));
 }
-
 .brand-text {
     font-size: 1.35rem;
     font-weight: 900;

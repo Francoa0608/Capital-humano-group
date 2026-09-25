@@ -72,19 +72,18 @@ body {
     align-items: center;
 }
 
-/* Contenedor del logo con imagen en Base64 */
-/* Contenedor alineado y con espaciado óptimo */
+/* Contenedor principal alineado */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     text-decoration: none;
 }
 
-/* Oculta las siglas 'CHG' oscuras de la imagen y deja solo las 3 figuras */
+/* Recorte para mostrar únicamente el isotipo (las 3 personas) y ocultar el 'CHG' oscuro inferior */
 .logo-crop-wrapper {
-    height: 48px;
-    width: 52px;
+    height: 44px;
+    width: 48px;
     overflow: hidden;
     display: flex;
     align-items: flex-start;
@@ -92,35 +91,35 @@ body {
 }
 
 .brand-logo-img {
-    height: 72px; /* Agranda la figura para cortar quirúrgicamente el texto azul de la imagen */
+    height: 66px;
     width: auto;
     object-fit: contain;
     margin-top: -2px;
 }
 
-/* Tipografía corporativa elegida para legibilidad */
+/* Tipografía alineada a la paleta del sitio */
 .brand-text-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1.05;
+    line-height: 1;
 }
 
 .brand-title {
-    color: #ffffff;
+    color: #10b981; /* Verde esmeralda alineado a los botones e ítems del hero */
     font-size: 1.15rem;
     font-weight: 800;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
 }
 
 .brand-subtitle {
-    color: #00e5ff; /* Turquesa brillante derivado del centro del logo */
-    font-size: 0.72rem;
+    color: #3b82f6; /* Azul coordinado con los tonos fríos del isotipo */
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
-    margin-top: 3px;
+    margin-top: 4px;
 }
 
 .nav-links {

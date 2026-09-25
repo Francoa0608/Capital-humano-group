@@ -36,8 +36,8 @@
     <!-- HERO SECTION CON SLIDER Y OVERLAY -->
     <section class="hero" id="inicio">
         <div class="hero-slider">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop'); class="slide active"</div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop'); class="slide"</div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1920&auto=format&fit=crop');"></div>
         </div>
         <div class="hero-overlay"></div>
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Transformación Organizacional CHG">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Transformación Organizacional CHG">]
                 </div>
                 <div class="about-text">
                     <h2>Transformamos la gestión de tu empresa</h2>
@@ -582,21 +582,21 @@
         }, 5000);
 
         // FUNCIONES DESPLEGABLES (OVERLAYS Y ACORDEONES)
-        function toggleOverlay(button) {
-            const card = button.closest('.pack-card');
+        function toggleOverlay(btn) {
+            const card = btn.closest('.pack-card');
             const panel = card.querySelector('.pack-overlay-panel');
             panel.classList.add('active');
         }
 
-        function closeOverlay(button) {
-            const panel = button.closest('.pack-overlay-panel');
+        function closeOverlay(btn) {
+            const panel = btn.closest('.pack-overlay-panel');
             panel.classList.remove('active');
         }
 
-        function toggleExtra(button) {
-            const item = button.closest('.extra-item');
+        function toggleExtra(btn) {
+            const item = btn.closest('.extra-item');
             const content = item.querySelector('.extra-content');
-            const arrow = button.querySelector('.arrow');
+            const arrow = btn.querySelector('.arrow');
             
             const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
@@ -609,10 +609,10 @@
             }
         }
 
-        function toggleFaq(button) {
-            const item = button.closest('.faq-item');
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
             const content = item.querySelector('.faq-content');
-            const arrow = button.querySelector('.arrow');
+            const arrow = btn.querySelector('.arrow');
 
             const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 

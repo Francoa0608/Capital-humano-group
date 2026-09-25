@@ -3,91 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHG Capital Humano Group | Consultoría Estratégica en RRHH</title>
+    <title>Soluciones HR & Servicios</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- PUNTO CURSOR PERSONALIZADO -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <!-- Puntero del Cursor -->
+    <div class="cursor-glow"></div>
 
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">CHG <span>Capital Humano</span></a>
+            <a href="#" class="logo">TuMarca<span>.</span></a>
             <ul class="nav-links">
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#rubros">Sectores</a></li>
                 <li><a href="#packs">Packs</a></li>
-                <li><a href="#extras">Servicios Extras</a></li>
+                <li><a href="#extras">Extras</a></li>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank" class="btn-nav-outline">¡Postulate acá!</a></li>
-                <li><a href="https://wa.me/?text=Hola!%20Quisiera%20saber%20cu%C3%A1l%20es%20el%20pack%20ideal%20para%20mi%20empresa" target="_blank" class="btn-nav">Descubrí tu pack ideal</a></li>
+                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- HERO SECTION CON SLIDER DE FONDO DINÁMICO -->
-    <header class="hero">
-        <div class="hero-slider">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80');"></div>
-        </div>
-        
+    <!-- HERO SECTION -->
+    <section class="hero">
         <div class="hero-overlay"></div>
-
-        <div class="container hero-content">
-            <span class="badge">Gestión Integral y Estratégica de Personas</span>
-            <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
-            <p>Estructuramos, ordenamos y profesionalizamos tu área de Capital Humano. Diseñamos culturas organizacionales sólidas y procesos innovadores que otorgan competitividad, posicionamiento y crecimiento sostenido en el mercado.</p>
-            <div class="hero-btns">
-                <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
-                <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20asesoramiento%20sobre%20los%20servicios%20de%20CHG" target="_blank" class="btn-secondary">Consultar por WhatsApp</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- SECCIÓN NOSOTROS -->
-    <section id="nosotros" class="about-section">
-        <div class="container about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80" alt="Consultoría estratégica de RRHH y equipo directivo">
-            </div>
-            <div class="about-text">
-                <h2>Transformamos la gestión de tu empresa.</h2>
-                <p>¡Tu pack ideal está a solo un clic de distancia! Simplifica tu vida y encuentra exactamente lo que necesitas con nuestras soluciones prácticas y personalizadas.</p>
-                <p>No somos una consultora tradicional. Integramos la gestión de RRHH con herramientas de Project Management para brindarte claridad, control y orden organizacional.</p>
-                
-                <ul class="check-list">
-                    <li>
-                        <span class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                        <span><strong>Implementamos Packs de Gestión de Capital Humano:</strong> todo lo que tu empresa necesita para crecer en forma ordenada y personalizada.</span>
-                    </li>
-                    <li>
-                        <span class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                        <span><strong>Seguridad legal:</strong> eliminación de riesgos legales y contingencias normativas. Auditoría y cumplimiento de documentación laboral. Liquidación de sueldos, gestión de ART, altas/bajas y vencimientos.</span>
-                    </li>
-                    <li>
-                        <span class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                        <span><strong>Gestión y crecimiento:</strong> indicadores de gestión (KPIs) para la toma de decisiones. Gestión de desempeño, clima laboral y planes de carrera. Onboarding y offboarding profesional. Capacitaciones y comunicaciones internas estratégicas.</span>
-                    </li>
-                </ul>
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Especialistas en Gestión Humana</span>
+                <h1>Transformamos la gestión de personas en <span>resultados reales</span></h1>
+                <p>Optimizá procesos, reducí contingencias y llevá tu organización al siguiente nivel con nuestras soluciones integrales.</p>
+                <div class="hero-btns">
+                    <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
+                    <a href="#contacto" class="btn-secondary">Consultar Ahora</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTOR ADAPTABILIDAD -->
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-title-left">
+                        <span class="badge-sub">Sobre Nosotros</span>
+                        <h2>Acompañamos el crecimiento de tu empresa</h2>
+                    </div>
+                    <p>Somos un equipo interdisciplinario dedicado a profesionalizar las áreas de Recursos Humanos en empresas de todos los tamaños.</p>
+                    <p>Diseñamos herramientas a medida que permiten prever contingencias, reducir la rotación y mejorar la productividad operativa.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Equipo de Trabajo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN RUBROS / SECTORES -->
     <section id="rubros" class="rubros-section">
         <div class="container">
             <div class="section-title">
+                <span class="section-badge">SOLUCIONES ADAPTADAS</span>
                 <h2>Soluciones a la medida de tu sector</h2>
             </div>
             <div class="rubros-grid">
@@ -110,651 +91,108 @@
         </div>
     </section>
 
-    <!-- PACKS / PRECIOS -->
+    <!-- SECCIÓN PACKS -->
     <section id="packs" class="packs-section">
         <div class="container">
             <div class="section-title">
+                <span class="section-badge">PLANES MENSUALES</span>
                 <h2>Packs de Servicios Mensuales</h2>
                 <p>Elegí la opción que mejor se adapte a tu organización</p>
             </div>
-
             <div class="packs-grid">
-
-                <!-- PACK 1 -->
+                
+                <!-- Pack 1 -->
                 <div class="interactive-card pack-card">
                     <div class="pack-header">
                         <span class="icon">🎯</span>
                         <h3>Pack 1: Esencial</h3>
-                        <p class="pack-tagline">Cimientos Firmes</p>
-                        <p class="pack-desc">Ideal para ordenar el área de personal, cumplir normativas legales y construir una base sólida.</p>
+                        <div class="pack-tagline">Cimientos Firmes</div>
+                        <p class="pack-desc">Ideal para pymes que buscan ordenar su estructura operativa básica.</p>
                     </div>
                     <ul class="pack-features">
-                        <li>✔️ Búsqueda, selección e inducción básica</li>
-                        <li>✔️ Relevamiento para análisis de clima laboral</li>
-                        <li>✔️ Gestión de Altas, Bajas y legajos digitales</li>
-                        <li>✔️ Control de Novedades (asistencias, horas extra)</li>
-                        <li>✔️ Atención al empleado y Manual de Convivencia</li>
+                        <li>✓ Gestión básica de legajos</li>
+                        <li>✓ Plantillas de contratos y sanciones</li>
+                        <li>✓ Asesoramiento ante contingencias</li>
                     </ul>
-
-                    <button class="accordion-trigger-btn"><span>📊 Mediciones e Indicadores</span> <span>▲</span></button>
-
-                    <div class="pack-overlay-panel">
-                        <div class="overlay-header">
-                            <h4>📊 Mediciones e Indicadores</h4>
-                            <button class="close-overlay-btn">✕ Cerrar</button>
-                        </div>
-                        <p class="accordion-intro">Estos indicadores permiten diagnosticar la situación real de tu PyME, identificar oportunidades de mejora continua, prevenir riesgos e innovar en la gestión de tu equipo.</p>
-                        
-                        <p class="accordion-subtitle"><strong>Entregables de Gestión Organizacional:</strong></p>
-                        <ul class="accordion-list">
-                            <li>Arquitectura de carpetas en la nube</li>
-                            <li>Legajos digitales estructurados</li>
-                        </ul>
-
-                        <p class="accordion-subtitle"><strong>Indicadores y Mediciones (KPIs):</strong></p>
-                        <ul class="accordion-list">
-                            <li>Semáforo Mensual de Riesgo Laboral</li>
-                            <li>Balance Operativo de Gestión</li>
-                        </ul>
-                    </div>
-
-                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%201%20Esencial" target="_blank" class="btn-pack">Contratar Pack 1</a>
+                    <a href="#contacto" class="btn-pack">Solicitar Pack</a>
                 </div>
 
-                <!-- PACK 2 (DESTACADO CON FUEGITO) -->
+                <!-- Pack 2 (Destacado) -->
                 <div class="interactive-card pack-card featured">
-                    <div class="badge-card">🔥 Más Elegido</div>
+                    <span class="badge-card">🔥 MÁS ELEGIDO</span>
                     <div class="pack-header">
                         <span class="icon">🚀</span>
                         <h3>Pack 2: Evolución</h3>
-                        <p class="pack-tagline">Crecimiento y Estructura</p>
-                        <p class="pack-desc">Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.</p>
+                        <div class="pack-tagline">Crecimiento y Estructura</div>
+                        <p class="pack-desc">Para empresas en expansión que requieren control y seguimiento continuo.</p>
                     </div>
                     <ul class="pack-features">
-                        <li>✔️ <strong>Todo lo incluido en Pack Esencial</strong></li>
-                        <li>✔️ Búsqueda con seguimiento inicial de desempeño</li>
-                        <li>✔️ 1 Capacitación interactiva mensual</li>
-                        <li>✔️ WhatsApp Libre y canal prioritario</li>
-                        <li>✔️ 1 Visita o reunión mensual con líderes</li>
+                        <li>✓ Todo lo del Pack Esencial</li>
+                        <li>✓ Control de ausentismo y ausencias</li>
+                        <li>✓ Evaluación de desempeño semestral</li>
                     </ul>
-
-                    <button class="accordion-trigger-btn"><span>📊 Mediciones e Indicadores</span> <span>▲</span></button>
-
-                    <div class="pack-overlay-panel">
-                        <div class="overlay-header">
-                            <h4>📊 Mediciones e Indicadores</h4>
-                            <button class="close-overlay-btn">✕ Cerrar</button>
-                        </div>
-                        <p class="accordion-intro">Estos indicadores permiten diagnosticar la situación real de tu PyME, identificar oportunidades de mejora continua, prevenir riesgos e innovar en la gestión de tu equipo.</p>
-                        
-                        <p class="accordion-subtitle"><strong>Entregables de Gestión Organizacional:</strong></p>
-                        <ul class="accordion-list">
-                            <li>Arquitectura de carpetas en la nube</li>
-                            <li>Legajos digitales estructurados</li>
-                            <li>Matriz RACI de roles y responsabilidades</li>
-                            <li>Minutas Aumentadas con plan de acción</li>
-                        </ul>
-
-                        <p class="accordion-subtitle"><strong>Indicadores y Mediciones (KPIs):</strong></p>
-                        <ul class="accordion-list">
-                            <li>Semáforo Mensual de Riesgo Laboral</li>
-                            <li>Balance Operativo de Gestión</li>
-                            <li>Índice de Satisfacción (eNPS)</li>
-                            <li>Tasa de Ausentismo y Rotación</li>
-                        </ul>
-                    </div>
-
-                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%202%20Evolución" target="_blank" class="btn-pack">Contratar Pack 2</a>
+                    <a href="#contacto" class="btn-pack btn-pack-featured">Solicitar Pack</a>
                 </div>
 
-                <!-- PACK 3 -->
+                <!-- Pack 3 -->
                 <div class="interactive-card pack-card">
                     <div class="pack-header">
                         <span class="icon">⚡</span>
                         <h3>Pack 3: Estratégico</h3>
-                        <p class="pack-tagline">Máximo Rendimiento</p>
-                        <p class="pack-desc">Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.</p>
+                        <div class="pack-tagline">Máximo Rendimiento</div>
+                        <p class="pack-desc">Gestión integral externalizada de Recursos Humanos de punta a punta.</p>
                     </div>
                     <ul class="pack-features">
-                        <li>✔️ <strong>Todo lo incluido en Packs 1 y 2</strong></li>
-                        <li>✔️ Búsqueda ejecutiva/técnica (garantía 90 días)</li>
-                        <li>✔️ Programa intensivo de fidelización</li>
-                        <li>✔️ Evaluaciones de Desempeño 360°</li>
-                        <li>✔️ Auditoría de estructura orgánica</li>
+                        <li>✓ Gestión integral del área</li>
+                        <li>✓ Matriz de roles y capacitaciones</li>
+                        <li>✓ Reportes de clima y auditoría permanente</li>
                     </ul>
-
-                    <button class="accordion-trigger-btn"><span>📊 Mediciones e Indicadores</span> <span>▲</span></button>
-
-                    <div class="pack-overlay-panel">
-                        <div class="overlay-header">
-                            <h4>📊 Mediciones e Indicadores</h4>
-                            <button class="close-overlay-btn">✕ Cerrar</button>
-                        </div>
-                        <p class="accordion-intro">Estos indicadores permiten diagnosticar la situación real de tu PyME, identificar oportunidades de mejora continua, prevenir riesgos e innovar en la gestión de tu equipo.</p>
-                        
-                        <p class="accordion-subtitle"><strong>Entregables de Gestión Organizacional:</strong></p>
-                        <ul class="accordion-list">
-                            <li>Arquitectura de carpetas en la nube</li>
-                            <li>Legajos digitales estructurados</li>
-                            <li>Matriz RACI de roles y responsabilidades</li>
-                            <li>Minutas Aumentadas con plan de acción</li>
-                            <li>Planificación y seguimiento de OKRs</li>
-                            <li>Diagramas de procesos de RRHH (BPMN)</li>
-                        </ul>
-
-                        <p class="accordion-subtitle"><strong>Indicadores y Mediciones (KPIs):</strong></p>
-                        <ul class="accordion-list">
-                            <li>Semáforo Mensual de Riesgo Laboral</li>
-                            <li>Balance Operativo de Gestión</li>
-                            <li>Índice de Satisfacción (eNPS)</li>
-                            <li>Tasa de Ausentismo y Rotación</li>
-                            <li>Índice de Retención de Talento Clave</li>
-                            <li>ROI (Retorno de Inversión) de Capacitaciones</li>
-                        </ul>
-                    </div>
-
-                    <a href="https://wa.me/?text=Hola!%20Quiero%20más%20información%20sobre%20el%20Pack%203%20Estratégico" target="_blank" class="btn-pack">Contratar Pack 3</a>
+                    <a href="#contacto" class="btn-pack">Solicitar Pack</a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN SERVICIOS EXTRAS -->
-    <section id="extras" class="extras-section">
+    <!-- FOOTER -->
+    <footer id="contacto" class="footer">
         <div class="container">
-            <div class="section-title-left">
-                <span class="badge-sub">Módulos Complementarios</span>
-                <h2>Servicios Extras</h2>
-                <p>Potenciá la gestión de tu empresa sumando estos servicios adicionales a la contratación de cualquiera de nuestros Packs principales.</p>
-            </div>
-
-            <div class="extras-accordion-list">
-
-                <!-- EXTRA 1 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">🎉</span>
-                            <span>Organización de Eventos Empresariales</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Nos encargamos de que tu equipo festeje, sin que vos tengas que correr atrás de presupuesto, lugar y catering. Vos nos decís qué querés festejar, nosotros te entregamos el evento listo para disfrutar.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li>Organización integral de eventos empresariales: Día del Trabajador, fin de año, aniversarios, cumpleaños del mes, bienvenidas.</li>
-                                <li>Búsqueda de lugar, presupuesto, catering, decoración y animación.</li>
-                                <li>Gestión de invitaciones, confirmaciones y logística completa.</li>
-                                <li>Coordinación el día del evento para que todo salga perfecto.</li>
-                                <li>Propuesta temática según objetivo: integración, reconocimiento o festejo.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits">
-                            <div class="benefit-box win">
-                                <h6>¿Qué lográs con esto?</h6>
-                                <ul>
-                                    <li>Sentido de pertenencia y orgullo por la empresa.</li>
-                                    <li>Equipos más unidos y motivados.</li>
-                                    <li>Reconocimiento genuino que el colaborador valora.</li>
-                                    <li>Clima laboral positivo que se nota en el trabajo diario.</li>
-                                </ul>
-                            </div>
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Tiempo organizando todo vos.</li>
-                                    <li>Eventos improvisados a último momento.</li>
-                                    <li>Gastos de más por no tener proveedores directos.</li>
-                                    <li>Tener que estar en todo el día del evento.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">TuMarca<span>.</span></a>
+                    <p class="footer-desc">Soluciones estratégicas en gestión humana para potenciar el crecimiento de tu organización.</p>
                 </div>
-
-                <!-- EXTRA 2 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">👕</span>
-                            <span>Uniformes y Obsequios para Días Festivos</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Nos encargamos de que tu equipo esté identificado y que en cada fecha importante sienta que la empresa lo tiene presente. Tu marca bien puesta y tu equipo reconocido.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li><strong>Gestión de Uniformes:</strong> Relevamiento de talles por colaborador, búsqueda de proveedores, presupuesto, control de calidad, diseño con logo y coordinación de entrega/reposición.</li>
-                                <li><strong>Obsequios por Días Festivos:</strong> Propuesta y compra para fechas clave (Día del Trabajador, Día de la Madre/Padre, Día del Niño, Navidad, Fin de Año, cumpleaños), armado, envoltorio y entrega coordinada.</li>
-                                <li><strong>Opciones adaptables:</strong> Cajas navideñas, vouchers, indumentaria, kits corporativos según presupuesto.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits">
-                            <div class="benefit-box win">
-                                <h6>¿Qué lográs con esto?</h6>
-                                <ul>
-                                    <li>Equipo uniformado, ordenado e identificado con la marca.</li>
-                                    <li>Colaboradores que se sienten valorados y reconocidos.</li>
-                                    <li>Detalles que mejoran el clima y la lealtad a la empresa.</li>
-                                </ul>
-                            </div>
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Correr a último momento para comprar regalos.</li>
-                                    <li>Desorden de talles y entregas incompletas.</li>
-                                    <li>Proveedores caros o de mala calidad.</li>
-                                    <li>Olvidarte de fechas importantes.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <h4 class="footer-heading">Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#rubros">Sectores</a></li>
+                        <li><a href="#packs">Packs</a></li>
+                    </ul>
                 </div>
-
-                <!-- EXTRA 3 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">💻</span>
-                            <span>CRM RRHH (Gestión Digital Centralizada)</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Todo el legajo, la historia y la gestión de tu personal en un solo lugar, ordenado y al alcance de un clic. Chau Excel, chau papeles perdidos. Tu área de RRHH ordenada como una empresa grande, aunque seas PyME.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li>Carga y digitalización completa de legajos de colaboradores (datos personales, contratos, documentación, ART, exámenes médicos).</li>
-                                <li>Control de vencimientos: contratos, licencias, vacaciones, documentación, preocupacionales y capacitaciones.</li>
-                                <li>Seguimiento del ciclo de vida del colaborador: ingreso, inducción, evaluaciones, licencias, sanciones, crecimiento y egreso.</li>
-                                <li>Gestión de novedades mensuales para liquidación: altas, bajas, horas extras, ausencias.</li>
-                                <li>Historial centralizado de comunicaciones, capacitaciones y eventos por persona.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits">
-                            <div class="benefit-box win">
-                                <h6>¿Qué ves en tu panel?</h6>
-                                <ul>
-                                    <li>Quién está próximo a vencer la documentación.</li>
-                                    <li>Quién está de vacaciones, licencia o próximo a cumplir años.</li>
-                                    <li>Alertas automáticas para que no se te pase nada.</li>
-                                    <li>Reportes de rotación, ausentismo y dotación en tiempo real.</li>
-                                </ul>
-                            </div>
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Buscar papeles a último momento.</li>
-                                    <li>Multas y problemas por documentación vencida.</li>
-                                    <li>No saber dónde está cada cosa de cada colaborador.</li>
-                                    <li>Horas de trabajo administrativo todos los meses.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EXTRA 4 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">📄</span>
-                            <span>Liquidación de Sueldo</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Nos ocupamos de todo el proceso para que pagues sueldos correctamente, a tiempo y sin contingencias legales. Vos nos pasás las novedades, nosotros te devolvemos todo liquidado. Cero error, cero riesgo.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li>Liquidación mensual y quincenal de sueldos y jornales según convenio.</li>
-                                <li>Cálculo de horas extras, vacaciones, licencias, aguinaldo (SAC), indemnizaciones y horas nocturnas.</li>
-                                <li>Generación de recibos de sueldo digitales con validez legal.</li>
-                                <li>Cálculo y presentación de cargas sociales (F.931), Sindicato, ART e Impuestos.</li>
-                                <li>Altas y bajas en AFIP (Altas Tempranas), Certificaciones de Servicios y Libro de Sueldo Digital.</li>
-                                <li>Atención de consultas de colaboradores sobre su recibo.</li>
-                                <li>Liquidamos bajo todos los convenios: Comercio, UOCRA, Gastronómicos, Camioneros, Sanidad, Maestranza, etc.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits full-save">
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Errores de cálculo que terminan en reclamos.</li>
-                                    <li>Multas de AFIP y Ministerio de Trabajo.</li>
-                                    <li>Tiempo que le sacás a tu actividad principal.</li>
-                                    <li>Discusiones con colaboradores por mala liquidación.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EXTRA 5 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">⚖️</span>
-                            <span>Asesoría Legal Laboral</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Tus decisiones con respaldo legal. Un abogado laboralista a tu lado para que actúes con seguridad y no con miedo a un juicio. No pagues un juicio por no haber hecho una consulta a tiempo.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li>Asesoramiento preventivo ilimitado: contrataciones, sanciones, apercibimientos, desvinculaciones, cambios de condiciones.</li>
-                                <li>Revisión y confección de documentos clave: contratos, notificaciones, telegramas, acuerdos y sanciones disciplinarias.</li>
-                                <li>Análisis de riesgos ante conflictos, reclamos o inspecciones.</li>
-                                <li>Acompañamiento ante audiencias de conciliación (SECLO / Ministerio de Trabajo).</li>
-                                <li>Actualización constante sobre cambios en leyes laborales y convenios.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits">
-                            <div class="benefit-box win">
-                                <h6>¿Cuándo nos vas a consultar?</h6>
-                                <ul>
-                                    <li>Antes de despedir o sancionar.</li>
-                                    <li>Si te llega una intimación o carta documento.</li>
-                                    <li>Si tenés que hacer un cambio de horario, puesto o sucursal.</li>
-                                    <li>Si te avisan de una inspección.</li>
-                                </ul>
-                            </div>
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Juicios laborales por malos procedimientos.</li>
-                                    <li>Pagar indemnizaciones de más por no saber.</li>
-                                    <li>Firmar documentos que te perjudican.</li>
-                                    <li>Tomar decisiones a ciegas y con miedo.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EXTRA 6 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">🔍</span>
-                            <span>Auditoría Externa 360°</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Te mostramos la foto real de tu empresa. Detectamos lo que no estás viendo y te decimos exactamente qué corregir antes de que te cueste caro. Mejor enterarte ahora por nosotros que después por una demanda.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li>Auditoría integral 360° de tu área de RRHH y administración laboral.</li>
-                                <li>Revisión de legajos: contratos, altas de AFIP, exámenes preocupacionales, documentación obligatoria.</li>
-                                <li>Control de liquidación de sueldos, recibos, Libro de Sueldo Digital y F.931.</li>
-                                <li>Análisis de cumplimiento de Seguridad e Higiene, ART y capacitaciones obligatorias.</li>
-                                <li>Revisión de sanciones, desvinculaciones y procesos de contratación.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits">
-                            <div class="benefit-box win">
-                                <h6>¿Qué te entregamos?</h6>
-                                <ul>
-                                    <li>Informe detallado con semáforo de riesgo: Rojo / Amarillo / Verde.</li>
-                                    <li>Listado de incumplimientos y contingencias detectadas.</li>
-                                    <li>Plan de acción priorizado: qué corregir urgente y cómo hacerlo.</li>
-                                    <li>Valoración económica del riesgo que hoy tenés.</li>
-                                </ul>
-                            </div>
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Multas de AFIP, Ministerio de Trabajo y Sindicatos.</li>
-                                    <li>Juicios laborales por errores que no sabías que tenías.</li>
-                                    <li>Sorpresas en una inspección.</li>
-                                    <li>Seguir trabajando con puntos ciegos que te pueden perjudicar.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EXTRA 7 -->
-                <div class="interactive-card faq-item extra-item">
-                    <button class="faq-btn extra-btn">
-                        <span class="extra-title-box">
-                            <span class="extra-icon">🛡️</span>
-                            <span>Control de Higiene y Seguridad</span>
-                        </span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="faq-content extra-content">
-                        <p class="extra-intro">Cumplí con la ley, protegé a tu gente y evitá clausuras y multas. Nosotros controlamos a tu servicio de Higiene y Seguridad externo para que tu gente esté segura y vos cubierto legalmente.</p>
-                        
-                        <div class="extra-block">
-                            <h5>¿Qué incluye el servicio?</h5>
-                            <ul class="extra-list">
-                                <li>Control y seguimiento de tu servicio de Higiene y Seguridad externo.</li>
-                                <li>Verificación de cumplimiento de la Ley 19.587 y exigencias de tu ART.</li>
-                                <li>Control de documentación obligatoria: Programa de Seguridad, planos, capacitaciones, entrega de EPP, protocolos.</li>
-                                <li>Seguimiento de exámenes periódicos, accidentes y enfermedades profesionales.</li>
-                                <li>Coordinación de capacitaciones obligatorias: Uso de EPP, RCP, Manejo de fuego, etc.</li>
-                                <li>Preparación para inspecciones del Ministerio de Trabajo, ART y bomberos.</li>
-                            </ul>
-                        </div>
-
-                        <div class="extra-grid-benefits">
-                            <div class="benefit-box win">
-                                <h6>¿Qué te entregamos?</h6>
-                                <ul>
-                                    <li>Checklist mensual de cumplimiento.</li>
-                                    <li>Alertas de vencimientos de capacitaciones y documentación.</li>
-                                    <li>Informe de estado ante ART.</li>
-                                    <li>Legajo técnico de HyS ordenado y listo para mostrar en una inspección.</li>
-                                </ul>
-                            </div>
-                            <div class="benefit-box save">
-                                <h6>¿Qué te ahorrás?</h6>
-                                <ul>
-                                    <li>Multas por falta de documentación.</li>
-                                    <li>Juicios por accidentes por incumplimiento.</li>
-                                    <li>Clausura por no tener los papeles al día.</li>
-                                    <li>Pagarle a un servicio de HyS que no sabés si hace su trabajo.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PREGUNTAS FRECUENTES EXTENDIDAS -->
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Preguntas Frecuentes</h2>
-                <p>Resolvemos las dudas más habituales antes de comenzar a trabajar juntos.</p>
-            </div>
-            <div class="faq-list">
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿Cómo se implementa el servicio en mi PyME?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>Realizamos una primera reunión de relevamiento para diagnosticar la situación actual y configurar las herramientas digitales rápidamente sin interrumpir tu operación diaria.</p>
-                    </div>
-                </div>
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿Existe un tiempo mínimo de permanencia?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>No exigimos contratos a largo plazo. Trabajamos mediante un esquema de abono mensual renovable según los resultados brindados.</p>
-                    </div>
-                </div>
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿Cómo miden el retorno de inversión (ROI) de la gestión de RRHH?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>Medimos el impacto económico a través de la reducción del ausentismo, la disminución de juicios o contingencias laborales, la aceleración en los tiempos de contratación y la mejora en la productividad del equipo.</p>
-                    </div>
-                </div>
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿Qué sucede si un candidato seleccionado en una búsqueda no se adapta?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>Todos nuestros procesos de búsqueda incluyen garantía de reposición. Si el profesional no supera el período de prueba o desiste de su posición, iniciamos nuevamente el proceso sin costo adicional.</p>
-                    </div>
-                </div>
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿El servicio abarca la liquidación de sueldos o solo la gestión operativa?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>Nos enfocamos en la gestión de personal, control de novedades y desarrollo estratégico de RRHH. Coordinamos y entregamos las novedades listas a tu estudio contable para la liquidación final.</p>
-                    </div>
-                </div>
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿Puedo cambiar de Pack a medida que mi empresa crece?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>Totalmente. El modelo es 100% escalable. Podés iniciar con el Pack 1 Esencial y migrar al Pack 2 o 3 conforme cambien las necesidades de tu organización.</p>
-                    </div>
-                </div>
-                <div class="interactive-card faq-item">
-                    <button class="faq-btn"><span>¿Cómo se maneja la confidencialidad de los datos de la empresa?</span> <span class="arrow">▾</span></button>
-                    <div class="faq-content">
-                        <p>Firmamos un acuerdo de confidencialidad (NDA) antes de iniciar las operaciones. Toda la información y legajos digitales se almacenan en servidores seguros con permisos restringidos.</p>
-                    </div>
+                <div>
+                    <h4 class="footer-heading">Contacto</h4>
+                    <ul class="footer-contact">
+                        <li>Email: contacto@tumarca.com</li>
+                        <li>Tel: +54 9 11 0000-0000</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- FOOTER CORPORATIVO COMPLETO -->
-    <footer class="footer">
-        <div class="container footer-grid">
-            <!-- COLUMNA 1: LOGO Y SOBRE CHG -->
-            <div class="footer-col brand-col">
-                <a href="#" class="footer-logo">CHG <span>Capital Humano</span></a>
-                <p class="footer-desc">Consultora estratégica especializada en estructurar y potenciar el área de personas en PyMEs con metodologías ágiles de gestión organizativa.</p>
-            </div>
-
-            <!-- COLUMNA 2: NAVEGACIÓN RÁPIDA -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Navegación</h4>
-                <ul class="footer-links">
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#rubros">Sectores</a></li>
-                    <li><a href="#packs">Packs de Servicios</a></li>
-                    <li><a href="#extras">Servicios Extras</a></li>
-                    <li><a href="#faq">Preguntas Frecuentes</a></li>
-                </ul>
-            </div>
-
-            <!-- COLUMNA 3: INFORMACIÓN INSTITUCIONAL -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Candidatos & Talento</h4>
-                <ul class="footer-links">
-                    <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank">Cargar CV / Postularse</a></li>
-                    <li><a href="#">Búsquedas Activas</a></li>
-                    <li><a href="#">Sobre CHG Group</a></li>
-                    <li><a href="#">Código de Ética</a></li>
-                </ul>
-            </div>
-
-            <!-- COLUMNA 4: CONTACTO Y SOPORTE -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Contacto</h4>
-                <ul class="footer-contact">
-                    <li>📧 <span>contacto@chgcapitalhumano.com</span></li>
-                    <li>💬 <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20información" target="_blank">WhatsApp Directo</a></li>
-                    <li>📍 <span>Argentina / Asesoramiento Regional</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container footer-bottom-content">
-                <p>© 2026 CHG Capital Humano Group. Todos los derechos reservados.</p>
-                <div class="legal-links">
-                    <a href="#">Términos y Condiciones</a>
-                    <a href="#">Políticas de Privacidad</a>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 TuMarca. Todos los derechos reservados.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script>
-        // Lógica de apertura/cierre desplegable hacia arriba en las tarjetas de Packs
-        const triggerBtns = document.querySelectorAll(".accordion-trigger-btn");
-        const closeBtns = document.querySelectorAll(".close-overlay-btn");
-
-        triggerBtns.forEach(btn => {
-            btn.addEventListener("click", function() {
-                const card = this.closest('.pack-card');
-                const overlay = card.querySelector('.pack-overlay-panel');
-                overlay.classList.add('active');
-            });
-        });
-
-        closeBtns.forEach(btn => {
-            btn.addEventListener("click", function() {
-                const overlay = this.closest('.pack-overlay-panel');
-                overlay.classList.remove('active');
-            });
-        });
-
-        // FAQ y Servicios Extras Acordeones
-        const faqs = document.querySelectorAll(".faq-btn");
-        faqs.forEach(btn => {
-            btn.addEventListener("click", function() {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        });
-
-        // EFECTO DE CURSOR VANGUARDISTA
-        const glow = document.getElementById('cursorGlow');
+        // JS para seguir el cursor puntual verde
+        const cursor = document.querySelector('.cursor-glow');
         document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
-
-        const interactives = document.querySelectorAll('a, button, .interactive-card');
-        interactives.forEach(el => {
-            el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
-            el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
-        });
-
-        // ROTACIÓN AUTOMÁTICA DEL FONDO (SLIDER)
-        const slides = document.querySelectorAll('.hero-slider .slide');
-        let currentSlide = 0;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>

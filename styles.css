@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIABLES GLOBALES Y RESET (COLORES ORIGINALES)
+   1. VARIABLES Y RESET GENERAL
    ========================================================================== */
 :root {
     --bg-dark: #0d1527;
@@ -37,7 +37,7 @@ body {
 }
 
 /* ==========================================================================
-   2. CURSOR PUNTUAL VERDE (ESTILO ORIGINAL)
+   2. CURSOR PERSONALIZADO (PUNTUAL VERDE)
    ========================================================================== */
 .cursor-glow {
     width: 14px;
@@ -53,14 +53,14 @@ body {
 }
 
 /* ==========================================================================
-   3. ENCABEZADOS DE SECCIÓN (BLANCO PURO Y BADGE SUPERIOR ELEGANTE)
+   3. ENCABEZADOS DE SECCIÓN Y BADGES (ESTILO LIMPIO)
    ========================================================================== */
 .section-title {
     text-align: center;
     margin-bottom: 3.5rem;
 }
 
-/* Badge sutil arriba para enmarcar y quitar la sensación de vacío */
+/* Badge sutil que viste el encabezado y quita la sensación de vacío */
 .section-badge {
     display: inline-block;
     font-size: 0.75rem;
@@ -70,12 +70,12 @@ body {
     color: var(--accent-green);
     background: rgba(0, 230, 118, 0.08);
     border: 1px solid rgba(0, 230, 118, 0.25);
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 20px;
     margin-bottom: 12px;
 }
 
-/* Título blanco plano original */
+/* Título en Blanco Puro */
 .section-title h2 {
     font-size: 2.2rem;
     font-weight: 800;
@@ -84,7 +84,7 @@ body {
     line-height: 1.2;
 }
 
-/* Subtítulo suave */
+/* Subtítulo gris suave */
 .section-title p {
     color: var(--text-secondary);
     font-size: 0.95rem;
@@ -260,7 +260,7 @@ body {
 }
 
 /* ==========================================================================
-   7. RUBROS Y PACKS (TARJETAS ORIGINALES)
+   7. SECTORES Y PACKS
    ========================================================================== */
 .rubros-section, .packs-section {
     padding: 80px 0;

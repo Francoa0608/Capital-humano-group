@@ -222,18 +222,18 @@ body {
     z-index: 3;
     max-width: 750px;
 }
-
-.badge {
-    background: rgba(16, 185, 129, 0.2);
-    color: var(--emerald-green);
-    font-size: 0.85rem;
-    font-weight: 700;
-    padding: 6px 16px;
-    border-radius: 20px;
+/* Estilos para la cápsula/píldora superior del Hero */
+.hero-badge {
     display: inline-block;
-    margin-bottom: 20px;
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    backdrop-filter: blur(4px);
+    background-color: rgba(16, 185, 129, 0.15); /* Fondo verde traslúcido */
+    color: #10b981; /* Verde esmeralda brillante */
+    border: 1px solid rgba(16, 185, 129, 0.4); /* Borde sutil */
+    padding: 6px 16px;
+    border-radius: 50px; /* Forma de píldora redondeada */
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
 }
 
 .hero-content h1 {

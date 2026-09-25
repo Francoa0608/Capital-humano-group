@@ -1084,6 +1084,13 @@ h2.title-glow:hover {
     text-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
     animation: shineGlow 2s ease infinite;
 }
+/* Quita el remarcado verde del subtítulo de Packs de Servicios */
+.packs-subtitle, 
+p.section-subtitle {
+    color: #cbd5e1 !important; /* Gris claro de alta legibilidad en lugar de verde */
+    font-weight: 400;
+    opacity: 0.9;
+}
 
 @keyframes shineGlow {
     0% { background-position: 0% center; }

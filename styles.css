@@ -340,15 +340,17 @@ body {
     font-weight: 600;
     color: var(--white-soft);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     font-size: 1rem;
+    line-height: 1.5;
 }
 
 .check-icon {
     width: 28px;
     height: 28px;
     min-width: 28px;
+    margin-top: 2px;
     background: rgba(16, 185, 129, 0.12);
     border: 1px solid rgba(16, 185, 129, 0.3);
     border-radius: 50%;

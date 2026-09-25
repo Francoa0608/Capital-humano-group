@@ -76,13 +76,12 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     text-decoration: none;
 }
 
-/* Tamaño y protagonismo del logo */
 .brand-logo-img {
-    height: 44px;
+    height: 62px; /* Incrementado para darle presencia y armonía */
     width: auto;
     object-fit: contain;
     display: block;

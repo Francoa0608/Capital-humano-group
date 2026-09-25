@@ -86,7 +86,11 @@ body {
     width: auto;
     object-fit: contain;
     display: block;
+    /* Elimina visualmente el fondo blanco sobre la barra oscura */
+    mix-blend-mode: lighten; 
+    filter: contrast(1.1);
 }
+
 .brand-text {
     font-size: 1.35rem;
     font-weight: 900;

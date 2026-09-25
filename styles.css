@@ -72,32 +72,25 @@ body {
     align-items: center;
 }
 
-/* Contenedor principal alineado */
+/* Contenedor fluido con alineación perfecta */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     text-decoration: none;
 }
 
-/* Recorte para mostrar únicamente el isotipo (las 3 personas) y ocultar el 'CHG' oscuro inferior */
-.logo-crop-wrapper {
-    height: 44px;
-    width: 48px;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
+/* Muestra la imagen completa, manteniendo sus curvas originales */
 .brand-logo-img {
-    height: 66px;
+    height: 52px;
     width: auto;
     object-fit: contain;
-    margin-top: -2px;
+    display: block;
+    /* Suaviza la transición y hace brillar los degradados sobre fondo oscuro */
+    filter: brightness(1.1) contrast(1.05);
 }
 
-/* Tipografía alineada a la paleta del sitio */
+/* Tipografía en armonía con los colores de la página */
 .brand-text-group {
     display: flex;
     flex-direction: column;
@@ -106,7 +99,7 @@ body {
 }
 
 .brand-title {
-    color: #10b981; /* Verde esmeralda alineado a los botones e ítems del hero */
+    color: #10b981; /* Verde esmeralda alineado a la tipografía principal */
     font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: 0.8px;
@@ -114,7 +107,7 @@ body {
 }
 
 .brand-subtitle {
-    color: #3b82f6; /* Azul coordinado con los tonos fríos del isotipo */
+    color: #3b82f6; /* Azul coordinado con el isotipo */
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 3.5px;

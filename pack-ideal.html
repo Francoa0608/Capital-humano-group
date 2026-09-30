@@ -4,36 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descubrí tu Pack Ideal | Capital Humano Group</title>
-    
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
-    
-    <!-- MISMO ESTILO GLOBAL DE LA PAGINA PRINCIPAL -->
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b1329',
+                        cardBg: '#111827',
+                        cardHover: '#1f2937',
+                        emeraldGlow: '#10b981',
+                        cyanGlow: '#00e5ff',
+                        textMuted: '#9ca3af'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b1329;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, rgba(11, 19, 41, 1) 70%);
+            min-height: 100vh;
+        }
+
+        /* Title text glow effect */
+        .title-glow:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #10b981 50%, #00e5ff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+            animation: shineGlow 2s ease infinite;
+        }
+
+        @keyframes shineGlow {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* Card custom glow transition */
+        .interactive-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .interactive-card:hover {
+            border-color: rgba(16, 185, 129, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(16, 185, 129, 0.15);
+        }
+
+        .interactive-card.selected {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.12);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+        }
+
+        /* Custom inputs styling */
+        .custom-input {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1329;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+    </style>
 </head>
-<body>
-
-    <!-- NAVBAR HEADER -->
-    <header class="navbar" style="padding: 15px 0; background: var(--bg-dark, #0b1329); border-bottom: 1px solid rgba(255,255,255,0.08);">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
-            
-            <!-- LOGO PRINCIPAL OFICIAL -->
-            <a href="index.html" class="logo-container">
-                <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="brand-logo-img">
-                <div class="brand-text-group">
-                    <span class="brand-title">CAPITAL HUMANO</span>
-                    <span class="brand-subtitle">GROUP</span>
-                </div>
-            </a>
-
-            <!-- BOTÓN VOLVER -->
-            <a href="index.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: color 0.3s ease;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#94a3b8'">
-                ← Volver al sitio principal
-            </a>
-            
-        </div>
-    </header>
-
+<body class="flex flex-col justify-between min-h-screen px-4 py-6 md:px-8">
     <!-- HEADER & LOGO -->
     <header class="max-w-5xl mx-auto w-full flex items-center justify-between py-4 border-b border-gray-800/80 mb-8">
         <a href="index.html" class="flex items-center gap-3 group">

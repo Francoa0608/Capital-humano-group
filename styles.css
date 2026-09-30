@@ -1119,3 +1119,28 @@ p.section-subtitle {
     50% { background-position: 100% center; }
     100% { background-position: 0% center; }
 }
+/* Estilo unificado para el botón verde de navegación */
+a.btn-green, 
+button.btn-green {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+a.btn-green:hover, 
+button.btn-green:hover {
+    background-color: #059669 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}

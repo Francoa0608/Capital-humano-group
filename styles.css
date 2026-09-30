@@ -1144,3 +1144,37 @@ button.btn-green:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
 }
+
+/* PARA EL APARTADO DE PACK IDEAL */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand-logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.brand-title {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+}
+
+.brand-subtitle {
+    color: #10b981;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}

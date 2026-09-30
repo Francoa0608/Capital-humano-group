@@ -114,19 +114,17 @@
 
         <!-- BOTONES DE NAVEGACIÓN HEADER -->
         <div class="flex items-center gap-3 flex-wrap justify-center">
-            <!-- BOTÓN CATÁLOGO DE SERVICIOS -->
             <a href="catalogo.html" class="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-500/30 hover:border-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:-translate-y-0.5">
                 📖 Conocé el Catálogo de Servicios
             </a>
 
-            <!-- BOTÓN VOLVER -->
             <a href="index.html" class="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-gray-900/80 px-4 py-2 rounded-full border border-gray-800 hover:border-emerald-500/60 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:-translate-y-0.5">
                 ← Volver al sitio principal
             </a>
         </div>
     </header>
 
-    <!-- MAIN CONTAINER (MÁS ANCHO: max-w-6xl) -->
+    <!-- MAIN CONTAINER -->
     <main class="max-w-6xl mx-auto w-full bg-cardBg/90 backdrop-blur-md rounded-2xl border border-gray-800 p-6 md:p-10 shadow-2xl relative overflow-hidden mb-8">
         
         <!-- HEADER TEXT -->
@@ -170,7 +168,6 @@
                     <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
                         <span>2.</span> Rubro de la Empresa *
                     </h2>
-                    <!-- Padding extra p-2 agregado para evitar recortes en hover por overflow-y-auto -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 max-h-[420px] overflow-y-auto p-2 pr-3">
                         <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🏪</span>
@@ -354,7 +351,7 @@
             </div>
         </form>
 
-        <!-- SECCIÓN RESULTADO (OCULTA HASTA HACER CLICK EN EL BOTÓN) -->
+        <!-- SECCIÓN RESULTADO -->
         <div id="result-container" class="hidden space-y-6 pt-10 border-t border-gray-800 mt-10">
             <div class="text-center space-y-2">
                 <div class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emeraldGlow rounded-full text-xs font-bold uppercase tracking-wider mb-2">
@@ -391,16 +388,50 @@
                     </ul>
                 </div>
 
-                <!-- ACTION BUTTON -->
+                <!-- ACTION BUTTONS -->
                 <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <a id="whatsapp-btn" href="#" target="_blank" class="w-full sm:w-auto flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-4 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
+                    <!-- BOTÓN A WHATSAPP -->
+                    <a id="whatsapp-btn" href="#" target="_blank" class="w-full sm:w-1/2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-4 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
                         <span>📲 Solicitar Propuesta de <span id="btn-pack-label">Pack</span></span>
                     </a>
+
+                    <!-- BOTÓN IMPACTANTE DE INDICADORES -->
+                    <button type="button" onclick="openIndicatorsModal()" class="w-full sm:w-1/2 bg-gray-900 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/50 hover:border-cyanGlow font-extrabold py-4 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-center gap-2 text-base md:text-lg hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+                        <span>📊 Indicadores Incluidos para Solucionar tus Problemas</span>
+                    </button>
                 </div>
             </div>
         </div>
 
     </main>
+
+    <!-- MODAL DE INDICADORES E IMPACTO -->
+    <div id="indicators-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-cardBg border border-emeraldGlow max-w-3xl w-full rounded-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- BOTÓN CERRAR -->
+            <button onclick="closeIndicatorsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold p-2">✕</button>
+
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 bg-cyanGlow/10 border border-cyanGlow/30 text-cyanGlow rounded-full text-xs font-bold uppercase tracking-wider mb-2">Métricas de Alto Impacto</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white">Indicadores & Soluciones del Plan</h3>
+                <p class="text-gray-400 text-sm mt-1">Garantías concretas e indicadores que vas a medir e impactar en tu empresa desde el primer mes:</p>
+            </div>
+
+            <!-- CONTENIDO DINÁMICO DEL MODAL -->
+            <div id="modal-indicators-content" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <!-- Se poblará vía JavaScript según el pack recomendado -->
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-gray-800">
+                <button onclick="closeIndicatorsModal()" class="px-5 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm">
+                    Entendido, Volver
+                </button>
+                <button onclick="triggerWhatsAppFromModal()" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-darkBg font-extrabold text-sm flex items-center justify-center gap-2">
+                    📲 Solicitar este Pack Ahora
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto w-full text-center py-4 text-xs text-gray-500">
@@ -558,6 +589,59 @@
             const resContainer = document.getElementById('result-container');
             resContainer.classList.remove('hidden');
             resContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Handlers
+        function openIndicatorsModal() {
+            const packName = document.getElementById('res-pack-name').innerText;
+            const modalContent = document.getElementById('modal-indicators-content');
+            modalContent.innerHTML = '';
+
+            let indicators = [];
+
+            if (packName.includes('Pack 1')) {
+                indicators = [
+                    { title: '🛡️ Riesgo de Sanciones / Indemnizaciones', desc: 'Reducción a 0% mediante auditoría legal preventiva y legajos 100% digitalizados.' },
+                    { title: '⏱️ Tiempo Promedio de Contratación', desc: 'Cobertura de vacantes operativas en un 40% menos de tiempo habitual.' },
+                    { title: '📜 Legajos Digitales Completos', desc: '100% de la nómina con documentación en regla ante inspecciones de trabajo.' },
+                    { title: '🛡️ Garantía de Reposición Directa', desc: '3 meses de respaldo en cada ingreso clave cubierto por nuestro equipo.' }
+                ];
+            } else if (packName.includes('Pack 2')) {
+                indicators = [
+                    { title: '📉 Índice de Rotación Voluntaria', desc: 'Disminución del 30% al 45% en salidas prematuras de empleados.' },
+                    { title: '💬 Clima Laboral y Satisfacción', desc: 'Diagnóstico continuo y encuestas de pulso con resolución rápida de reclamos.' },
+                    { title: '🎓 Horas de Capacitación Ejecutiva', desc: 'Módulos mensuales prácticos enfocados en liderazgo, ventas y comunicación.' },
+                    { title: '⚡ Tiempo de Respuesta a Consultas', desc: 'Soporte inmediato por WhatsApp para dudas de liquidación, recibos y licencias.' }
+                ];
+            } else {
+                indicators = [
+                    { title: '📈 Productividad por Puesto (KPIs)', desc: 'Matriz RACI y evaluaciones 360° para optimizar el rendimiento individual.' },
+                    { title: '👑 Retención de Talento Clave', desc: 'Plan de fidelización y mapa de carrera para mandos medios y directivos.' },
+                    { title: '💼 Costo de Estructura Interna', desc: 'Ahorro de hasta un 60% frente a sostener un departamento propio de RRHH.' },
+                    { title: '🛡️ Cobertura Integral Legal & Orgánica', desc: 'Blindaje total en normativa laboral y auditoría continua de procesos.' }
+                ];
+            }
+
+            indicators.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-900/90 border border-gray-800 p-4 rounded-xl flex flex-col justify-between';
+                card.innerHTML = `
+                    <h4 class="text-sm font-bold text-emeraldGlow mb-1">${item.title}</h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">${item.desc}</p>
+                `;
+                modalContent.appendChild(card);
+            });
+
+            document.getElementById('indicators-modal').classList.remove('hidden');
+        }
+
+        function closeIndicatorsModal() {
+            document.getElementById('indicators-modal').classList.add('hidden');
+        }
+
+        function triggerWhatsAppFromModal() {
+            closeIndicatorsModal();
+            document.getElementById('whatsapp-btn').click();
         }
     </script>
 </body>

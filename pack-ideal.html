@@ -35,23 +35,6 @@
             min-height: 100vh;
         }
 
-        /* Title text glow effect */
-        .title-glow:hover {
-            background: linear-gradient(135deg, #ffffff 0%, #10b981 50%, #00e5ff 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
-            animation: shineGlow 2s ease infinite;
-        }
-
-        @keyframes shineGlow {
-            0% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-            100% { background-position: 0% center; }
-        }
-
-        /* Card custom glow transition */
         .interactive-card {
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -70,7 +53,6 @@
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
         }
 
-        /* Custom inputs styling */
         .custom-input {
             background: #111827;
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -84,7 +66,6 @@
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -102,7 +83,7 @@
 </head>
 <body class="flex flex-col justify-between min-h-screen px-4 py-6 md:px-8">
     
-    <!-- HEADER & LOGO -->
+    <!-- NAVBAR / HEADER -->
     <header class="max-w-6xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-gray-800/80 mb-8">
         <a href="index.html" class="flex items-center gap-3 decoration-none">
             <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="h-10 md:h-12 w-auto object-contain">
@@ -112,14 +93,12 @@
             </div>
         </a>
 
-        <!-- BOTONES DE NAVEGACIÓN HEADER -->
         <div class="flex items-center gap-3 flex-wrap justify-center">
-            <a href="catalogo.html" class="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-500/30 hover:border-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:-translate-y-0.5">
-                📖 Conocé el Catálogo de Servicios
+            <a href="index.html#packs" class="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-500/30 hover:border-emerald-500">
+                📦 Ver Todos los Packs
             </a>
-
-            <a href="index.html" class="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-gray-900/80 px-4 py-2 rounded-full border border-gray-800 hover:border-emerald-500/60 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:-translate-y-0.5">
-                ← Volver al sitio principal
+            <a href="index.html" class="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-gray-900/80 px-4 py-2 rounded-full border border-gray-800 hover:border-emerald-500/60">
+                ← Volver al Inicio
             </a>
         </div>
     </header>
@@ -127,22 +106,21 @@
     <!-- MAIN CONTAINER -->
     <main class="max-w-6xl mx-auto w-full bg-cardBg/90 backdrop-blur-md rounded-2xl border border-gray-800 p-6 md:p-10 shadow-2xl relative overflow-hidden mb-8">
         
-        <!-- HEADER TEXT -->
         <div class="mb-8 border-b border-gray-800 pb-6">
             <div class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emeraldGlow rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                Diagnóstico Directo
+                Diagnóstico Personalizado
             </div>
-            <h1 class="text-2xl md:text-4xl font-extrabold text-white title-glow block mb-2 cursor-default">
-                Diagnóstico & Recomendación de Pack
+            <h1 class="text-2xl md:text-4xl font-extrabold text-white block mb-2 cursor-default">
+                Descubrí tu Pack Ideal
             </h1>
-            <p class="text-gray-400 text-sm md:text-base">Completá los datos de tu empresa a continuación para obtener inmediatamente la solución exacta que mejor se adapta a tus necesidades.</p>
+            <p class="text-gray-400 text-sm md:text-base">Completá las características de tu empresa para que el sistema te recomiende la mejor solución organizativa.</p>
         </div>
 
-        <!-- FORMULARIO UNIFICADO -->
+        <!-- FORMULARIO -->
         <form id="calculator-form" onsubmit="calculateRecommendation(event)">
             <div class="space-y-10">
 
-                <!-- SECCIÓN 1: DATOS DE CONTACTO -->
+                <!-- SECCIÓN 1: DATOS DE LA EMPRESA -->
                 <div class="space-y-4">
                     <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
                         <span>1.</span> Datos de la Organización
@@ -175,11 +153,11 @@
                         </button>
                         <button type="button" onclick="selectIndustry('Gastronomía y Servicios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🍽️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Gastronomía y Servicios</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Gastronomía</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Industria y Metalúrgica', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🏭</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Industria y Metalúrgica</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Industria</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Farmacia y Salud', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">💊</span>
@@ -187,63 +165,23 @@
                         </button>
                         <button type="button" onclick="selectIndustry('Salud y Sanitarios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🏥</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Salud y Sanitarios</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Centros Médicos</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Logística y Transporte', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🚚</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Logística y Transporte</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Logística</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Tecnología y Software', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">💻</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Tecnología y Software</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Tecnología</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Servicios Profesionales', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">📊</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Servicios Profesionales</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Servicios</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Construcción y Obras', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🏗️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Construcción y Obras</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Educación y Colegios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🎓</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Educación y Colegios</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Retail y Calzado', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">👟</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Retail y Calzado</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Supermercados y Autoservicios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🛒</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Supermercados</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Seguridad Privada', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🛡️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Seguridad y Vigilancia</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Hotelería y Turismo', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏨</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Hotelería y Turismo</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Agro y Campo', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🌾</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Agro y Campo</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Estética y Estilo', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">✂️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Estética y Belleza</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Inmobiliaria y Real Estate', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏡</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Inmobiliarias</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Textil e Indumentaria', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">👕</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Textil y Moda</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Automotor y Talleres', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🚗</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Automotor y Talleres</span>
+                            <span class="text-xs md:text-sm font-semibold text-white">Construcción</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">📌</span>
@@ -287,10 +225,6 @@
                             </div>
                         </button>
                     </div>
-                    <div class="pt-2">
-                        <label class="block text-xs font-semibold uppercase text-gray-400 mb-2">O ingresá el número exacto si preferís:</label>
-                        <input type="number" id="custom-employee-count" placeholder="Ej: 12" oninput="clearEmployeeButtons(this.value)" class="w-full md:w-1/3 custom-input px-4 py-3 rounded-xl text-sm">
-                    </div>
                 </div>
 
                 <!-- SECCIÓN 4: OBJETIVO PRINCIPAL -->
@@ -299,43 +233,27 @@
                         <span>4.</span> Principal Desafío / Meta Prioritaria *
                     </h2>
                     <div class="space-y-3.5">
-                        <button type="button" onclick="selectObjective('Necesito contratar personal especializado sin margen de error', 'Pack 1: Esencial', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
-                            <span class="text-3xl">🎯</span>
+                        <button type="button" onclick="selectObjective('Ordenar el área de personal, cumplir normativas legales y construir una base sólida', 'Pack 1: Esencial', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
+                            <span class="text-3xl">🏛️</span>
                             <div>
-                                <div class="text-base font-bold text-white">Necesito contratar personal especializado</div>
-                                <div class="text-xs md:text-sm text-gray-400">Reclutamiento con garantía de 3 meses y perfilado rápido.</div>
+                                <div class="text-base font-bold text-white">Ordenar área, legajos y normativas legales</div>
+                                <div class="text-xs md:text-sm text-gray-400">Cimientos firmes, prevención de contingencias y selección con garantía.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Quiero mejorar el rendimiento, clima laboral y retención', 'Pack 2: Evolución', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
-                            <span class="text-3xl">⚡</span>
+                        <button type="button" onclick="selectObjective('Capacitar al equipo, mejorar el clima y tener soporte directo para líderes', 'Pack 2: Evolución', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
+                            <span class="text-3xl">🔥</span>
                             <div>
-                                <div class="text-base font-bold text-white">Quiero mejorar el rendimiento y clima de mi equipo</div>
-                                <div class="text-xs md:text-sm text-gray-400">Capacitaciones mensuales, encuestas de clima y atención directa.</div>
+                                <div class="text-base font-bold text-white">Acompañamiento en crecimiento, capacitaciones y soporte</div>
+                                <div class="text-xs md:text-sm text-gray-400">Evolución continua, talleres interactivos y reuniones mensuales con líderes.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Necesito cumplir normativas legales, ordenar legajos y contratos', 'Pack 1: Esencial', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
-                            <span class="text-3xl">⚖️</span>
-                            <div>
-                                <div class="text-base font-bold text-white">Necesito cumplir normativas y evitar contingencias legales</div>
-                                <div class="text-xs md:text-sm text-gray-400">Auditoría, legajos digitales y exámenes preocupacionales al día.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Quiero tercerizar toda la gestión integral de RRHH', 'Pack 3: Estratégico', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
+                        <button type="button" onclick="selectObjective('Transformación organizacional, evaluaciones de desempeño e impacto directo en rentabilidad', 'Pack 3: Estratégico', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
                             <span class="text-3xl">👑</span>
                             <div>
-                                <div class="text-base font-bold text-white">Quiero delegar por completo el departamento de RRHH</div>
-                                <div class="text-xs md:text-sm text-gray-400">Acompañamiento ejecutivo, evaluaciones 360° y matriz de roles.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Busco capacitaciones continuas y desarrollo para mis líderes', 'Pack 2: Evolución', this)" class="objective-btn w-full interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-center gap-4">
-                            <span class="text-3xl">🧠</span>
-                            <div>
-                                <div class="text-base font-bold text-white">Busco capacitación y desarrollo para líderes</div>
-                                <div class="text-xs md:text-sm text-gray-400">Talleres ejecutivos mensuales y coaching operativo con jefes de área.</div>
+                                <div class="text-base font-bold text-white">Máximo rendimiento, retención de talento y auditoría 360°</div>
+                                <div class="text-xs md:text-sm text-gray-400">Gestión estratégica integral, evaluaciones 360° y matriz RACI de roles.</div>
                             </div>
                         </button>
                     </div>
@@ -344,18 +262,18 @@
                 <!-- BOTÓN PRINCIPAL DE CÁLCULO -->
                 <div class="pt-6">
                     <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-5 px-8 rounded-xl text-center text-lg md:text-xl shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-[1.01]">
-                        ✨ Descubrí tu Pack Ideal
+                        ✨ Obtener Recomendación
                     </button>
                 </div>
 
             </div>
         </form>
 
-        <!-- SECCIÓN RESULTADO -->
+        <!-- SECCIÓN RESULTADO (TARJETA EXACTA DE INDEX.HTML) -->
         <div id="result-container" class="hidden space-y-6 pt-10 border-t border-gray-800 mt-10">
             <div class="text-center space-y-2">
                 <div class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emeraldGlow rounded-full text-xs font-bold uppercase tracking-wider mb-2">
-                    Diagnóstico Completado
+                    DIAGNÓSTICO COMPLETADO
                 </div>
                 <h2 class="text-2xl md:text-4xl font-extrabold text-white">
                     Resultado para <span id="res-company-name" class="text-emeraldGlow">Tu Empresa</span>
@@ -363,63 +281,70 @@
                 <p class="text-gray-400 text-sm md:text-base">En base al tamaño de tu equipo (<span id="res-employees" class="text-white font-semibold"></span>) y tu sector (<span id="res-industry" class="text-white font-semibold"></span>), este es el plan recomendado:</p>
             </div>
 
-            <!-- RECOMMENDED PACK CARD -->
-            <div id="recommended-card" class="bg-gradient-to-br from-gray-900 to-darkBg border-2 border-emeraldGlow p-6 md:p-10 rounded-2xl relative shadow-2xl">
+            <!-- TARJETA RECOMENDADA FIDELIDAD ABSOLUTA -->
+            <div class="bg-gray-900/90 border-2 border-emeraldGlow p-6 md:p-8 rounded-2xl relative shadow-2xl max-w-3xl mx-auto">
+                
                 <div class="absolute -top-3.5 right-6 bg-emeraldGlow text-darkBg text-xs font-extrabold uppercase px-4 py-1.5 rounded-full shadow-lg">
-                    Pack Ideal Recomendado
+                    PACK IDEAL RECOMENDADO
                 </div>
 
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-gray-800 pb-6">
+                <!-- CABECERA TARJETA -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-6 border-b border-gray-800 pb-5">
                     <div>
-                        <h3 id="res-pack-name" class="text-2xl md:text-4xl font-extrabold text-white">Pack 2: Evolución</h3>
-                        <p id="res-pack-tagline" class="text-emeraldGlow font-semibold text-base mt-1">Crecimiento y Estructura Organizativa</p>
+                        <h3 id="res-pack-name" class="text-2xl md:text-3xl font-extrabold text-white">Pack 2: Evolución</h3>
+                        <p id="res-pack-tagline" class="text-emeraldGlow font-semibold text-sm mt-0.5">Crecimiento y Estructura</p>
+                        <p id="res-pack-desc" class="text-gray-400 text-xs md:text-sm mt-1">Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.</p>
                     </div>
-                    <div class="text-left md:text-right">
-                        <span class="text-xs text-gray-400 block uppercase font-medium">Atención Personalizada</span>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xs text-gray-400 block uppercase font-medium">ATENCIÓN PERSONALIZADA</span>
                         <span class="text-xs md:text-sm text-cyanGlow font-bold">Respuesta Inmediata vía WhatsApp</span>
                     </div>
                 </div>
 
-                <!-- REASONING LIST -->
+                <!-- CARACTERÍSTICAS INCLUIDAS -->
                 <div class="space-y-3 mb-8">
-                    <p class="text-xs uppercase font-extrabold text-gray-300 tracking-wider">Beneficios clave para tu caso:</p>
-                    <ul id="res-benefits" class="space-y-2.5 text-sm md:text-base text-gray-300">
-                        <!-- Populated dynamically via JS -->
+                    <p class="text-xs uppercase font-extrabold text-gray-300 tracking-wider">BENEFICIOS CLAVE PARA TU CASO:</p>
+                    <ul id="res-features" class="space-y-2.5 text-sm md:text-base text-gray-300">
+                        <!-- Se insertan con el formato idéntico a index.html -->
                     </ul>
                 </div>
 
-                <!-- ACTION BUTTONS -->
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <!-- BOTÓN A WHATSAPP -->
-                    <a id="whatsapp-btn" href="#" target="_blank" class="w-full sm:w-1/2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-4 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
+                <!-- BOTONES EXACTOS Y PANELES -->
+                <div class="space-y-4">
+                    <!-- BOTÓN DE IMPACTO: INDICADORES EN FORMATO EXACTO INDEX -->
+                    <button type="button" onclick="openIndicatorsModal()" class="w-full bg-gray-800/90 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/40 hover:border-cyanGlow font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-between text-sm md:text-base">
+                        <span class="flex items-center gap-2">📊 Indicadores e Impacto Solución</span>
+                        <span>▲</span>
+                    </button>
+
+                    <!-- BOTÓN WHATSAPP SOLICITAR PROPUESTA -->
+                    <a id="whatsapp-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-4 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
                         <span>📲 Solicitar Propuesta de <span id="btn-pack-label">Pack</span></span>
                     </a>
-
-                    <!-- BOTÓN IMPACTANTE DE INDICADORES -->
-                    <button type="button" onclick="openIndicatorsModal()" class="w-full sm:w-1/2 bg-gray-900 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/50 hover:border-cyanGlow font-extrabold py-4 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-center gap-2 text-base md:text-lg hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
-                        <span>📊 Indicadores Incluidos para Solucionar tus Problemas</span>
-                    </button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <!-- MODAL DE INDICADORES E IMPACTO -->
+    <!-- MODAL DESPLEGABLE CON LOS ENTREGABLES E INDICADORES FIELES A INDEX.HTML -->
     <div id="indicators-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 hidden">
-        <div class="bg-cardBg border border-emeraldGlow max-w-3xl w-full rounded-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="bg-cardBg border border-emeraldGlow max-w-2xl w-full rounded-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
             <!-- BOTÓN CERRAR -->
-            <button onclick="closeIndicatorsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold p-2">✕</button>
+            <button onclick="closeIndicatorsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold p-2">✕ Cerrar</button>
 
-            <div class="mb-6">
-                <span class="inline-block px-3 py-1 bg-cyanGlow/10 border border-cyanGlow/30 text-cyanGlow rounded-full text-xs font-bold uppercase tracking-wider mb-2">Métricas de Alto Impacto</span>
-                <h3 class="text-2xl md:text-3xl font-extrabold text-white">Indicadores & Soluciones del Plan</h3>
-                <p class="text-gray-400 text-sm mt-1">Garantías concretas e indicadores que vas a medir e impactar en tu empresa desde el primer mes:</p>
+            <div class="mb-6 border-b border-gray-800 pb-4">
+                <h4 class="text-xl md:text-2xl font-extrabold text-white flex items-center gap-2">
+                    📊 Mediciones e Indicadores
+                </h4>
+                <p class="text-gray-400 text-xs md:text-sm mt-2 leading-relaxed">
+                    Estos indicadores permiten diagnosticar la situación real de tu PyME, identificar oportunidades de mejora continua, prevenir riesgos e innovar en la gestión de tu equipo.
+                </p>
             </div>
 
-            <!-- CONTENIDO DINÁMICO DEL MODAL -->
-            <div id="modal-indicators-content" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <!-- Se poblará vía JavaScript según el pack recomendado -->
+            <!-- CONTENIDO DE INDICADORES CARGADO DINÁMICAMENTE -->
+            <div id="modal-indicators-content" class="space-y-6 mb-8">
+                <!-- Carga exacta de Entregables y KPIs del pack -->
             </div>
 
             <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-gray-800">
@@ -435,12 +360,11 @@
 
     <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto w-full text-center py-4 text-xs text-gray-500">
-        © 2026 Capital Humano Group. Todos los derechos reservados.
+        © 2026 CHG Capital Humano Group. Todos los derechos reservados.
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC CON ARMONÍA COMPLETA DE DATOS -->
     <script>
-        // Form state data
         const formData = {
             companyName: '',
             contactName: '',
@@ -451,19 +375,84 @@
             recommendedPack: 'Pack 1: Esencial'
         };
 
-        // Selection Handlers
+        // BASE DE DATOS FIEL A INDEX.HTML
+        const packsDatabase = {
+            'Pack 1: Esencial': {
+                tagline: 'Cimientos Firmes',
+                desc: 'Ideal para ordenar el área de personal, cumplir normativas legales y construir una base sólida.',
+                features: [
+                    '<strong>Relevamiento de la empresa:</strong> Diagnóstico estratégico para detectar oportunidades clave.',
+                    '<strong>Cumplimiento normativo laboral:</strong> Auditoría e higiene legal para evitar contingencias.',
+                    '<strong>Reclutamiento & Selección:</strong> Incorporación de talento ideal con 3 meses de garantía.',
+                    '<strong>Exámenes preocupacionales:</strong> Gestión integral de turnos y aptitudes técnicas para legajo.',
+                    '<strong>Legajos y documentación digital:</strong> Arquitectura ordenada y segura en la nube.'
+                ],
+                entregables: [
+                    'Arquitectura de carpetas en la nube',
+                    'Legajos digitales estructurados'
+                ],
+                kpis: [
+                    'Semáforo Mensual de Riesgo Laboral',
+                    'Balance Operativo de Gestión'
+                ]
+            },
+            'Pack 2: Evolución': {
+                tagline: 'Crecimiento y Estructura',
+                desc: 'Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.',
+                features: [
+                    '<strong>Todo lo incluido en Pack Esencial</strong>',
+                    '<strong>Búsqueda con seguimiento:</strong> Acompañamiento inicial de desempeño.',
+                    '<strong>Capacitación mensual:</strong> 1 taller interactivo para tu equipo.',
+                    '<strong>Soporte directo:</strong> WhatsApp Libre y canal prioritario.',
+                    '<strong>Reunión estratégica:</strong> 1 visita o reunión mensual con líderes.'
+                ],
+                entregables: [
+                    'Arquitectura de carpetas en la nube',
+                    'Legajos digitales estructurados',
+                    'Matriz RACI de roles y responsabilidades',
+                    'Minutas Aumentadas con plan de acción'
+                ],
+                kpis: [
+                    'Semáforo Mensual de Riesgo Laboral',
+                    'Balance Operativo de Gestión',
+                    'Índice de Satisfacción (eNPS)',
+                    'Tasa de Ausentismo y Rotación'
+                ]
+            },
+            'Pack 3: Estratégico': {
+                tagline: 'Máximo Rendimiento',
+                desc: 'Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.',
+                features: [
+                    '<strong>Todo lo incluido en Packs 1 y 2</strong>',
+                    '<strong>Búsqueda ejecutiva/técnica:</strong> Garantía extendida de 90 días.',
+                    '<strong>Fidelización de talento:</strong> Programa intensivo de retención.',
+                    '<strong>Evaluaciones de Desempeño:</strong> Sistema 360° y medición de clima.',
+                    '<strong>Auditoría organizacional:</strong> Optimización de estructura orgánica.'
+                ],
+                entregables: [
+                    'Arquitectura de carpetas en la nube',
+                    'Legajos digitales estructurados',
+                    'Matriz RACI de roles y responsabilidades',
+                    'Minutas Aumentadas con plan de acción',
+                    'Planificación y seguimiento de OKRs',
+                    'Diagramas de procesos de RRHH (BPMN)'
+                ],
+                kpis: [
+                    'Semáforo Mensual de Riesgo Laboral',
+                    'Balance Operativo de Gestión',
+                    'Índice de Satisfacción (eNPS)',
+                    'Tasa de Ausentismo y Rotación',
+                    'Índice de Retención de Talento Clave',
+                    'ROI (Retorno de Inversión) de Capacitaciones'
+                ]
+            }
+        };
+
+        // SELECCIONES
         function selectEmployees(val, btn) {
             formData.employees = val;
-            document.getElementById('custom-employee-count').value = '';
             document.querySelectorAll('.employee-btn').forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
-        }
-
-        function clearEmployeeButtons(val) {
-            if (val) {
-                document.querySelectorAll('.employee-btn').forEach(b => b.classList.remove('selected'));
-                formData.employees = `${val} empleados`;
-            }
         }
 
         function selectIndustry(val, btn) {
@@ -479,19 +468,13 @@
             btn.classList.add('selected');
         }
 
-        // Recommendation Logic Engine
+        // CÁLCULO DE RECOMENDACIÓN
         function calculateRecommendation(event) {
             event.preventDefault();
 
-            // Validations
             const company = document.getElementById('company-name').value.trim();
             const name = document.getElementById('contact-name').value.trim();
             const phone = document.getElementById('contact-phone').value.trim();
-            const customEmployees = document.getElementById('custom-employee-count').value.trim();
-
-            if (customEmployees && !formData.employees) {
-                formData.employees = `${customEmployees} empleados`;
-            }
 
             if (!company || !name || !phone) {
                 alert("Por favor, completá los datos de contacto.");
@@ -502,7 +485,7 @@
                 return;
             }
             if (!formData.employees) {
-                alert("Por favor, seleccioná o ingresá la cantidad de personal.");
+                alert("Por favor, seleccioná la cantidad de personal.");
                 return;
             }
             if (!formData.objective) {
@@ -514,124 +497,86 @@
             formData.contactName = name;
             formData.contactPhone = phone;
 
-            let finalPack = formData.recommendedPack;
+            let finalPackKey = formData.recommendedPack;
 
-            // Auto upgrade pack if employee count is high
+            // Escalamiento si la empresa tiene un tamaño elevado
             if (formData.employees.includes("50") || formData.employees.includes("16 a 50")) {
-                if (finalPack === 'Pack 1: Esencial') finalPack = 'Pack 2: Evolución';
+                if (finalPackKey === 'Pack 1: Esencial') finalPackKey = 'Pack 2: Evolución';
             }
 
+            const packData = packsDatabase[finalPackKey];
+
+            // Rellenar visualización
             document.getElementById('res-company-name').innerText = formData.companyName;
             document.getElementById('res-employees').innerText = formData.employees;
             document.getElementById('res-industry').innerText = formData.industry;
-            document.getElementById('res-pack-name').innerText = finalPack;
-            document.getElementById('btn-pack-label').innerText = finalPack;
+            
+            document.getElementById('res-pack-name').innerText = finalPackKey;
+            document.getElementById('res-pack-tagline').innerText = packData.tagline;
+            document.getElementById('res-pack-desc').innerText = packData.desc;
+            document.getElementById('btn-pack-label').innerText = finalPackKey;
 
-            const benefitsList = document.getElementById('res-benefits');
-            benefitsList.innerHTML = '';
+            // Rellenar lista de características exactas
+            const featuresList = document.getElementById('res-features');
+            featuresList.innerHTML = '';
 
-            let tagline = '';
-            let benefits = [];
-
-            if (finalPack === 'Pack 1: Esencial') {
-                tagline = 'Cimientos Firmes & Cumplimiento Legal';
-                benefits = [
-                    'Relevamiento detallado de la situación actual de tu empresa.',
-                    'Auditoría normativa y encuadre legal para evitar contingencias.',
-                    'Reclutamiento de personal con 3 meses de garantía de contratación.',
-                    'Gestión punta a punta de exámenes preocupacionales.',
-                    'Estructuración de legajos digitales seguros en la nube.'
-                ];
-            } else if (finalPack === 'Pack 2: Evolución') {
-                tagline = 'Crecimiento, Estructura y Fidelización de Personal';
-                benefits = [
-                    'Todo lo incluido en Pack Esencial (Base legal y operativa).',
-                    'Capacitaciones e intervenciones mensuales para tu equipo.',
-                    'Canal libre directo por WhatsApp para consultas sobre recibos y licencias.',
-                    'Mediación profesional en la resolución confidencial de conflictos.',
-                    'Visita presencial y reuniones mensuales de diagnóstico con líderes.'
-                ];
-            } else {
-                tagline = 'Gestión Integral, Transformación y Máximo Rendimiento';
-                benefits = [
-                    'Delegación total del Departamento de Recursos Humanos.',
-                    'Búsqueda ejecutiva y técnica con garantía extendida de 90 días.',
-                    'Evaluaciones de desempeño 360° e indicadores claves (KPIs).',
-                    'Programa intensivo de fidelización y retención del talento clave.',
-                    'Auditoría continua de la estructura orgánica y matriz RACI.'
-                ];
-            }
-
-            document.getElementById('res-pack-tagline').innerText = tagline;
-
-            benefits.forEach(b => {
+            packData.features.forEach(featHtml => {
                 const li = document.createElement('li');
-                li.className = 'flex items-start gap-2.5 text-gray-200';
-                li.innerHTML = `<span class="text-emeraldGlow font-extrabold">✓</span> <span>${b}</span>`;
-                benefitsList.appendChild(li);
+                li.className = 'flex items-start gap-3 text-gray-200 text-sm md:text-base';
+                li.innerHTML = `<span class="text-emeraldGlow font-bold">✓</span> <div>${featHtml}</div>`;
+                featuresList.appendChild(li);
             });
 
-            // Create WhatsApp Link
+            // Enlace de WhatsApp
             const message = `Hola Capital Humano Group! 👋 Realicé el diagnóstico en la web para mi empresa:\n\n` +
                 `🏢 *Empresa:* ${formData.companyName}\n` +
                 `👤 *Contacto:* ${formData.contactName}\n` +
                 `🏬 *Rubro:* ${formData.industry}\n` +
                 `👥 *Personal:* ${formData.employees}\n` +
                 `🎯 *Objetivo:* ${formData.objective}\n\n` +
-                `✨ *Pack Recomendado:* ${finalPack}\n\n` +
+                `✨ *Pack Recomendado:* ${finalPackKey}\n\n` +
                 `Quisiera recibir una propuesta formal adaptada a nuestro caso. ¡Gracias!`;
 
             const encodedMsg = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/5491112345678?text=${encodedMsg}`;
-            document.getElementById('whatsapp-btn').href = whatsappUrl;
+            document.getElementById('whatsapp-btn').href = `https://wa.me/?text=${encodedMsg}`;
 
-            // Show Results & Scroll Smoothly
+            // Mostrar contenedor y Scroll
             const resContainer = document.getElementById('result-container');
             resContainer.classList.remove('hidden');
             resContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Modal Handlers
+        // DESPLEGABLE DE INDICADORES (FORMATO EXACTO INDEX.HTML)
         function openIndicatorsModal() {
-            const packName = document.getElementById('res-pack-name').innerText;
+            const currentPackKey = document.getElementById('res-pack-name').innerText;
+            const packData = packsDatabase[currentPackKey];
             const modalContent = document.getElementById('modal-indicators-content');
-            modalContent.innerHTML = '';
 
-            let indicators = [];
+            let htmlContent = `
+                <div>
+                    <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-2 tracking-wider">Entregables de Gestión Organizacional:</p>
+                    <ul class="space-y-1.5 pl-2">
+            `;
 
-            if (packName.includes('Pack 1')) {
-                indicators = [
-                    { title: '🛡️ Riesgo de Sanciones / Indemnizaciones', desc: 'Reducción a 0% mediante auditoría legal preventiva y legajos 100% digitalizados.' },
-                    { title: '⏱️ Tiempo Promedio de Contratación', desc: 'Cobertura de vacantes operativas en un 40% menos de tiempo habitual.' },
-                    { title: '📜 Legajos Digitales Completos', desc: '100% de la nómina con documentación en regla ante inspecciones de trabajo.' },
-                    { title: '🛡️ Garantía de Reposición Directa', desc: '3 meses de respaldo en cada ingreso clave cubierto por nuestro equipo.' }
-                ];
-            } else if (packName.includes('Pack 2')) {
-                indicators = [
-                    { title: '📉 Índice de Rotación Voluntaria', desc: 'Disminución del 30% al 45% en salidas prematuras de empleados.' },
-                    { title: '💬 Clima Laboral y Satisfacción', desc: 'Diagnóstico continuo y encuestas de pulso con resolución rápida de reclamos.' },
-                    { title: '🎓 Horas de Capacitación Ejecutiva', desc: 'Módulos mensuales prácticos enfocados en liderazgo, ventas y comunicación.' },
-                    { title: '⚡ Tiempo de Respuesta a Consultas', desc: 'Soporte inmediato por WhatsApp para dudas de liquidación, recibos y licencias.' }
-                ];
-            } else {
-                indicators = [
-                    { title: '📈 Productividad por Puesto (KPIs)', desc: 'Matriz RACI y evaluaciones 360° para optimizar el rendimiento individual.' },
-                    { title: '👑 Retención de Talento Clave', desc: 'Plan de fidelización y mapa de carrera para mandos medios y directivos.' },
-                    { title: '💼 Costo de Estructura Interna', desc: 'Ahorro de hasta un 60% frente a sostener un departamento propio de RRHH.' },
-                    { title: '🛡️ Cobertura Integral Legal & Orgánica', desc: 'Blindaje total en normativa laboral y auditoría continua de procesos.' }
-                ];
-            }
-
-            indicators.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-gray-900/90 border border-gray-800 p-4 rounded-xl flex flex-col justify-between';
-                card.innerHTML = `
-                    <h4 class="text-sm font-bold text-emeraldGlow mb-1">${item.title}</h4>
-                    <p class="text-xs text-gray-300 leading-relaxed">${item.desc}</p>
-                `;
-                modalContent.appendChild(card);
+            packData.entregables.forEach(item => {
+                htmlContent += `<li class="text-sm text-gray-300 flex items-center gap-2"><span class="text-emeraldGlow">•</span> ${item}</li>`;
             });
 
+            htmlContent += `
+                    </ul>
+                </div>
+                <div class="pt-3 border-t border-gray-800">
+                    <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-2 tracking-wider">Indicadores y Mediciones (KPIs):</p>
+                    <ul class="space-y-1.5 pl-2">
+            `;
+
+            packData.kpis.forEach(item => {
+                htmlContent += `<li class="text-sm text-gray-300 flex items-center gap-2"><span class="text-emeraldGlow">•</span> ${item}</li>`;
+            });
+
+            htmlContent += `</ul></div>`;
+
+            modalContent.innerHTML = htmlContent;
             document.getElementById('indicators-modal').classList.remove('hidden');
         }
 

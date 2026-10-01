@@ -456,6 +456,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+       // 1. ESTRUCTURA DE DATOS ORIGINAL
         const formData = {
             companyName: '',
             contactName: '',
@@ -466,6 +467,7 @@
             recommendedPack: 'Pack 1: Esencial'
         };
 
+        // 2. BASE DE DATOS COMPLETA (PACKS + INDICADORES)
         const packsDatabase = {
             'Pack 1: Esencial': {
                 tagline: 'Cimientos Firmes',
@@ -476,25 +478,6 @@
                     '<strong>Reclutamiento & Selección:</strong> Incorporación de talento ideal con 3 meses de garantía.',
                     '<strong>Exámenes preocupacionales:</strong> Gestión integral de turnos y aptitudes técnicas para legajo.',
                     '<strong>Legajos y documentación digital:</strong> Arquitectura ordenada y segura en la nube.'
-                ],
-                entregables: [
-                    'Arquitectura de carpetas en la nube',
-                    'Legajos digitales estructurados'
-                ],
-                kpis: [
-                    'Semáforo Mensual de Riesgo Laboral',
-                    'Balance Operativo de Gestión'
-                ]
-            },
-            'Pack 2: Evolución': {
-                tagline: 'Crecimiento y Estructura',
-                desc: 'Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.',
-                features: [
-                    '<strong>Todo lo incluido en Pack Esencial</strong>',
-                    '<strong>Búsqueda con seguimiento:</strong> Acompañamiento inicial de desempeño.',
-                    '<strong>Capacitación mensual:</strong> 1 taller interactivo para tu equipo.',
-                    '<strong>Soporte directo:</strong> WhatsApp Libre y canal prioritario.',
-                    '<strong>Reunión estratégica:</strong> 1 visita o reunión mensual con líderes.'
                 ],
                 entregables: [
                     'Arquitectura de carpetas en la nube',
@@ -509,6 +492,30 @@
                     'Tasa de Ausentismo y Rotación'
                 ]
             },
+            'Pack 2: Evolución': {
+                tagline: 'Crecimiento y Estructura',
+                desc: 'Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.',
+                features: [
+                    '<strong>Todo lo incluido en Pack Esencial</strong>',
+                    '<strong>Búsqueda con seguimiento:</strong> Acompañamiento inicial de desempeño.',
+                    '<strong>Capacitación mensual:</strong> 1 taller interactivo para tu equipo.',
+                    '<strong>Soporte directo:</strong> WhatsApp Libre y canal prioritario.',
+                    '<strong>Reunión estratégica:</strong> 1 visita o reunión mensual con líderes.'
+                ],
+                entregables: [
+                    'Todo lo de Pack 1 incluido',
+                    'Manual de Funciones y Puestos',
+                    'Evaluación de Desempeño Trimestral',
+                    'Protocolos de Onboarding y Offboarding'
+                ],
+                kpis: [
+                    'Semáforo Mensual de Riesgo Laboral',
+                    'Balance Operativo de Gestión',
+                    'Índice de Satisfacción (eNPS)',
+                    'Tasa de Ausentismo y Rotación',
+                    'Rendimiento por Competencias'
+                ]
+            },
             'Pack 3: Estratégico': {
                 tagline: 'Máximo Rendimiento',
                 desc: 'Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.',
@@ -520,159 +527,140 @@
                     '<strong>Auditoría organizacional:</strong> Optimización de estructura orgánica.'
                 ],
                 entregables: [
-                    'Arquitectura de carpetas en la nube',
-                    'Legajos digitales estructurados',
-                    'Matriz RACI de roles y responsabilidades',
-                    'Minutas Aumentadas con plan de acción',
-                    'Planificación y seguimiento de OKRs',
-                    'Diagramas de procesos de RRHH (BPMN)'
+                    'Todo lo de Pack 1 y 2 incluido',
+                    'Arquitectura Organizacional 360°',
+                    'Plan de Carrera y Sucesión',
+                    'Auditoría Laboral Integral'
                 ],
                 kpis: [
                     'Semáforo Mensual de Riesgo Laboral',
                     'Balance Operativo de Gestión',
                     'Índice de Satisfacción (eNPS)',
                     'Tasa de Ausentismo y Rotación',
-                    'Índice de Retención de Talento Clave',
-                    'ROI (Retorno de Inversión) de Capacitaciones'
+                    'Rendimiento por Competencias',
+                    'Retorno de Inversión en Talento (ROI)'
                 ]
             }
         };
 
-        function selectEmployees(val, btn) {
-            formData.employees = val;
-            document.querySelectorAll('.employee-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-        }
+        // 3. SELECCIÓN DE OPCIONES DE BOTONES Y TARJETAS
+        function selectOption(field, value, element) {
+            formData[field] = value;
 
-        function selectIndustry(val, btn) {
-            formData.industry = val;
-            document.querySelectorAll('.industry-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-        }
-
-        function selectObjective(val, suggestedPack, btn) {
-            formData.objective = val;
-            formData.recommendedPack = suggestedPack;
-            document.querySelectorAll('.objective-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-        }
-
-        function calculateRecommendation(event) {
-            event.preventDefault();
-
-            const company = document.getElementById('company-name').value.trim();
-            const name = document.getElementById('contact-name').value.trim();
-            const phone = document.getElementById('contact-phone').value.trim();
-
-            if (!company || !name || !phone) {
-                alert("Por favor, completá los datos de contacto.");
-                return;
-            }
-            if (!formData.industry) {
-                alert("Por favor, seleccioná el rubro de tu empresa.");
-                return;
-            }
-            if (!formData.employees) {
-                alert("Por favor, seleccioná la cantidad de personal.");
-                return;
-            }
-            if (!formData.objective) {
-                alert("Por favor, seleccioná tu principal desafío.");
-                return;
+            // Desmarcar hermanos dentro del mismo contenedor
+            const parent = element.parentElement;
+            if (parent) {
+                const siblings = parent.children;
+                for (let sibling of siblings) {
+                    sibling.classList.remove('selected', 'border-emeraldGlow', 'bg-emerald-500/10');
+                }
             }
 
-            formData.companyName = company;
-            formData.contactName = name;
-            formData.contactPhone = phone;
-
-            let finalPackKey = formData.recommendedPack;
-
-            if (formData.employees.includes("50") || formData.employees.includes("16 a 50")) {
-                if (finalPackKey === 'Pack 1: Esencial') finalPackKey = 'Pack 2: Evolución';
-            }
-
-            const packData = packsDatabase[finalPackKey];
-
-            document.getElementById('res-company-name').innerText = formData.companyName;
-            document.getElementById('res-employees').innerText = formData.employees;
-            document.getElementById('res-industry').innerText = formData.industry;
-            
-            document.getElementById('res-pack-name').innerText = finalPackKey;
-            document.getElementById('res-pack-tagline').innerText = packData.tagline;
-            document.getElementById('res-pack-desc').innerText = packData.desc;
-            document.getElementById('btn-pack-label').innerText = finalPackKey;
-
-            const featuresList = document.getElementById('res-features');
-            featuresList.innerHTML = '';
-
-            packData.features.forEach(featHtml => {
-                const li = document.createElement('li');
-                li.className = 'flex items-start gap-3 text-gray-200 text-sm md:text-base';
-                li.innerHTML = `<span class="text-emeraldGlow font-bold">✓</span> <div>${featHtml}</div>`;
-                featuresList.appendChild(li);
-            });
-
-            const message = `Hola Capital Humano Group! 👋 Realicé el diagnóstico en la web para mi empresa:\n\n` +
-                `🏢 *Empresa:* ${formData.companyName}\n` +
-                `👤 *Contacto:* ${formData.contactName}\n` +
-                `🏬 *Rubro:* ${formData.industry}\n` +
-                `👥 *Personal:* ${formData.employees}\n` +
-                `🎯 *Objetivo:* ${formData.objective}\n\n` +
-                `✨ *Pack Recomendado:* ${finalPackKey}\n\n` +
-                `Quisiera recibir una propuesta formal adaptada a nuestro caso. ¡Gracias!`;
-
-            const encodedMsg = encodeURIComponent(message);
-            const waUrl = `https://wa.me/?text=${encodedMsg}`;
-            document.getElementById('whatsapp-btn').href = waUrl;
-            document.getElementById('whatsapp-btn-back').href = waUrl;
-
-            // Asegura que empiece por la cara frontal
-            document.getElementById('card-flipper').classList.remove('flipped');
-
-            const resContainer = document.getElementById('result-container');
-            resContainer.classList.remove('hidden');
-            resContainer.scrollIntoView({ behavior: 'smooth' });
-        }
+            // Marcar elemento actual como seleccionado
+            element.classList.add('selected', 'border-emeraldGlow', 'bg-emerald-500/10');
         }
 
+        // 4. FUNCIÓN DE GIRO 3D (FLIP) SÚPER DINÁMICA
         function flipCard() {
             const flipper = document.getElementById('card-flipper');
+            if (!flipper) return;
+
             const isFlipped = flipper.classList.contains('flipped');
 
             if (!isFlipped) {
-                // Cargar contenido de indicadores para la cara trasera
-                const currentPackKey = document.getElementById('res-pack-name').innerText;
-                const packData = packsDatabase[currentPackKey];
+                const currentPackKey = formData.recommendedPack || "Pack 2: Evolución";
+                const packData = packsDatabase[currentPackKey] || packsDatabase["Pack 2: Evolución"];
                 const contentArea = document.getElementById('inline-indicators-content');
 
-                let htmlContent = `
-                    <div>
-                        <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-1.5 tracking-wider">Entregables de Gestión Organizacional:</p>
-                        <ul class="space-y-1 pl-2">
-                `;
+                if (contentArea && packData) {
+                    let htmlContent = `
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-1.5 tracking-wider">Entregables de Gestión Organizacional:</p>
+                            <ul class="space-y-1 pl-2">
+                    `;
 
-                packData.entregables.forEach(item => {
-                    htmlContent += `<li class="text-xs md:text-sm text-gray-300 flex items-center gap-2"><span class="text-emeraldGlow">•</span> ${item}</li>`;
-                });
+                    packData.entregables.forEach(item => {
+                        htmlContent += `<li class="text-xs md:text-sm text-gray-300 flex items-center gap-2"><span class="text-emeraldGlow">•</span> ${item}</li>`;
+                    });
 
-                htmlContent += `
-                        </ul>
-                    </div>
-                    <div class="pt-2 border-t border-gray-800">
-                        <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-1.5 tracking-wider">Indicadores y Mediciones (KPIs):</p>
-                        <ul class="space-y-1 pl-2">
-                `;
+                    htmlContent += `
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-gray-800">
+                            <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-1.5 tracking-wider">Indicadores y Mediciones (KPIs):</p>
+                            <ul class="space-y-1 pl-2">
+                    `;
 
-                packData.kpis.forEach(item => {
-                    htmlContent += `<li class="text-xs md:text-sm text-gray-300 flex items-center gap-2"><span class="text-emeraldGlow">•</span> ${item}</li>`;
-                });
+                    packData.kpis.forEach(item => {
+                        htmlContent += `<li class="text-xs md:text-sm text-gray-300 flex items-center gap-2"><span class="text-emeraldGlow">•</span> ${item}</li>`;
+                    });
 
-                htmlContent += `</ul></div>`;
+                    htmlContent += `</ul></div>`;
 
-                contentArea.innerHTML = htmlContent;
+                    contentArea.innerHTML = htmlContent;
+                }
             }
 
             flipper.classList.toggle('flipped');
+        }
+
+        // 5. CÁLCULO DE RECOMENDACIÓN Y MOSTRAR RESULTADO
+        function calculateRecommendation(event) {
+            if (event) event.preventDefault();
+
+            // Leer inputs de texto si existen
+            const companyInput = document.getElementById('company-name');
+            if (companyInput) formData.companyName = companyInput.value.trim();
+
+            // Lógica para determinar el Pack según la selección
+            if (formData.employees === '50+' || formData.objective === 'Transformación Organizacional') {
+                formData.recommendedPack = 'Pack 3: Estratégico';
+            } else if (formData.employees === '21-50' || formData.employees === '11-20') {
+                formData.recommendedPack = 'Pack 2: Evolución';
+            } else {
+                formData.recommendedPack = 'Pack 1: Esencial';
+            }
+
+            const packInfo = packsDatabase[formData.recommendedPack];
+
+            // Rellenar datos en la vista frontal de la tarjeta
+            const nameEl = document.getElementById('res-pack-name');
+            const tagEl = document.getElementById('res-pack-tagline');
+            const descEl = document.getElementById('res-pack-desc');
+            const featEl = document.getElementById('res-features');
+
+            if (nameEl) nameEl.innerText = formData.recommendedPack;
+            if (tagEl) tagEl.innerText = packInfo.tagline;
+            if (descEl) descEl.innerText = packInfo.desc;
+            
+            if (featEl) {
+                featEl.innerHTML = packInfo.features.map(f => `<li class="flex items-start gap-2">${f}</li>`).join('');
+            }
+
+            const btnLabel = document.getElementById('btn-pack-label');
+            if (btnLabel) btnLabel.innerText = formData.recommendedPack;
+
+            // Configurar enlace de WhatsApp
+            const nameToUse = formData.companyName || 'mi empresa';
+            const message = `Hola! Realicé el diagnóstico para ${nameToUse} y la recomendación fue el ${formData.recommendedPack}. Me gustaría solicitar una propuesta.`;
+            const encodedMsg = encodeURIComponent(message);
+            const waUrl = `https://wa.me/?text=${encodedMsg}`;
+
+            const btnFront = document.getElementById('whatsapp-btn');
+            const btnBack = document.getElementById('whatsapp-btn-back');
+            if (btnFront) btnFront.href = waUrl;
+            if (btnBack) btnBack.href = waUrl;
+
+            // Asegurar que empiece en la vista frontal
+            const flipper = document.getElementById('card-flipper');
+            if (flipper) flipper.classList.remove('flipped');
+
+            // Mostrar el contenedor de resultado
+            const resContainer = document.getElementById('result-container');
+            if (resContainer) {
+                resContainer.classList.remove('hidden');
+                resContainer.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     </script>
 </body>

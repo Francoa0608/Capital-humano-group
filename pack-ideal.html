@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
+    <!-- LIBRERÍA DE ÍCONOS VECTORIALES -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -53,7 +55,7 @@
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.3) !important;
         }
 
-        /* DISEÑO DE BOTONES DE RUBRO (CUADRADOS MODERNOS) */
+        /* DISEÑO DE BOTONES DE RUBRO (CUADRADOS MODERNOS CON ÍCONOS VECTORIALES) */
         .industry-card {
             aspect-ratio: 1.1 / 1;
             display: flex;
@@ -86,15 +88,27 @@
             opacity: 1;
         }
 
-        .industry-card .icon-wrapper {
-            font-size: 2.25rem;
-            margin-bottom: 0.75rem;
-            transition: transform 0.3s ease;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        /* ESTILO DEL CONTENEDOR DEL ÍCONO */
+        .icon-box {
+            width: 2.75rem;
+            height: 2.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            margin-bottom: 0.6rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        .industry-card:hover .icon-wrapper {
-            transform: scale(1.15) translateY(-2px);
+        .interactive-card:hover .icon-box,
+        .interactive-card.selected .icon-box {
+            background: #10b981;
+            color: #0b1329;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+            transform: scale(1.08);
         }
 
         .custom-input {
@@ -179,10 +193,10 @@
 
         <div class="flex items-center gap-3 flex-wrap justify-center">
             <a href="index.html#packs" class="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-500/30 hover:border-emerald-500">
-                📦 Ver Todos los Packs
+                <i data-lucide="package" class="w-4 h-4"></i> Ver Todos los Packs
             </a>
             <a href="index.html" class="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-gray-900/80 px-4 py-2 rounded-full border border-gray-800 hover:border-emerald-500/60">
-                ← Volver al Inicio
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al Inicio
             </a>
         </div>
     </header>
@@ -233,83 +247,83 @@
                     
                     <div id="industry-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-h-[460px] overflow-y-auto p-2 pr-3">
                         <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🏪</span>
+                            <div class="icon-box"><i data-lucide="store" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Comercio y Kioscos</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Gastronomía y Servicios', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🍽️</span>
+                            <div class="icon-box"><i data-lucide="utensils" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Gastronomía y Servicios</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Industria y Metalúrgica', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🏭</span>
+                            <div class="icon-box"><i data-lucide="factory" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Industria y Metalúrgica</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Farmacia y Salud', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">💊</span>
+                            <div class="icon-box"><i data-lucide="pill" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Farmacia y Salud</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Salud y Sanitarios', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🏥</span>
+                            <div class="icon-box"><i data-lucide="activity" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Salud y Sanitarios</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Logística y Transporte', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🚚</span>
+                            <div class="icon-box"><i data-lucide="truck" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Logística y Transporte</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Tecnología y Software', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">💻</span>
+                            <div class="icon-box"><i data-lucide="laptop" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Tecnología y Software</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Servicios Profesionales', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">📊</span>
+                            <div class="icon-box"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Servicios Profesionales</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Construcción y Obras', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🏗️</span>
+                            <div class="icon-box"><i data-lucide="hard-hat" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Construcción y Obras</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Educación y Colegios', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🎓</span>
+                            <div class="icon-box"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Educación y Colegios</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Retail y Calzado', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">👟</span>
+                            <div class="icon-box"><i data-lucide="shopping-bag" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Retail y Calzado</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Supermercados', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🛒</span>
+                            <div class="icon-box"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Supermercados</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Seguridad y Vigilancia', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🛡️</span>
+                            <div class="icon-box"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Seguridad y Vigilancia</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Hotelería y Turismo', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🏨</span>
+                            <div class="icon-box"><i data-lucide="hotel" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Hotelería y Turismo</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Agro y Campo', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🌾</span>
+                            <div class="icon-box"><i data-lucide="sprout" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Agro y Campo</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Estética y Belleza', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">✂️</span>
+                            <div class="icon-box"><i data-lucide="scissors" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Estética y Belleza</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Inmobiliarias', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🏡</span>
+                            <div class="icon-box"><i data-lucide="building" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Inmobiliarias</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Textil y Moda', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">👕</span>
+                            <div class="icon-box"><i data-lucide="shirt" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Textil y Moda</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Automotor y Talleres', this)" class="industry-btn interactive-card industry-card">
-                            <span class="icon-wrapper">🚗</span>
+                            <div class="icon-box"><i data-lucide="wrench" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-white leading-snug">Automotor y Talleres</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card industry-card border-dashed border-emeraldGlow/50">
-                            <span class="icon-wrapper">📌</span>
+                            <div class="icon-box"><i data-lucide="plus" class="w-5 h-5"></i></div>
                             <span class="text-xs md:text-sm font-bold text-emeraldGlow leading-snug">Otro Rubro</span>
                         </button>
                     </div>
@@ -328,28 +342,28 @@
                     </h2>
                     <div id="employees-container" class="grid grid-cols-2 md:grid-cols-4 gap-5">
                         <button type="button" onclick="selectEmployees('1 a 5 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <span class="text-4xl">👥</span>
+                            <div class="icon-box"><i data-lucide="user" class="w-6 h-6"></i></div>
                             <div>
                                 <span class="font-extrabold text-white text-lg md:text-xl block">1 a 5</span>
                                 <span class="text-xs text-gray-400">Microempresa</span>
                             </div>
                         </button>
                         <button type="button" onclick="selectEmployees('6 a 15 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <span class="text-4xl">🏢</span>
+                            <div class="icon-box"><i data-lucide="users" class="w-6 h-6"></i></div>
                             <div>
                                 <span class="font-extrabold text-white text-lg md:text-xl block">6 a 15</span>
                                 <span class="text-xs text-gray-400">Pequeña Empresa</span>
                             </div>
                         </button>
                         <button type="button" onclick="selectEmployees('16 a 50 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <span class="text-4xl">🏭</span>
+                            <div class="icon-box"><i data-lucide="building-2" class="w-6 h-6"></i></div>
                             <div>
                                 <span class="font-extrabold text-white text-lg md:text-xl block">16 a 50</span>
                                 <span class="text-xs text-gray-400">Mediana Empresa</span>
                             </div>
                         </button>
                         <button type="button" onclick="selectEmployees('Más de 50 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <span class="text-4xl">🚀</span>
+                            <div class="icon-box"><i data-lucide="rocket" class="w-6 h-6"></i></div>
                             <div>
                                 <span class="font-extrabold text-white text-lg md:text-xl block">50+</span>
                                 <span class="text-xs text-gray-400">Gran Estructura</span>
@@ -365,7 +379,7 @@
                     </h2>
                     <div id="objective-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <button type="button" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <span class="text-3xl">🏛️</span>
+                            <div class="icon-box shrink-0"><i data-lucide="scale" class="w-6 h-6"></i></div>
                             <div>
                                 <div class="text-base font-bold text-white">Orden Básico & Legal</div>
                                 <div class="text-xs text-gray-400 mt-1">Regularizar legajos, normativas vigentes y selección inicial con garantía.</div>
@@ -373,7 +387,7 @@
                         </button>
 
                         <button type="button" onclick="selectObjective('Reclutar talento calificado', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <span class="text-3xl">🎯</span>
+                            <div class="icon-box shrink-0"><i data-lucide="target" class="w-6 h-6"></i></div>
                             <div>
                                 <div class="text-base font-bold text-white">Incorporación de Talento</div>
                                 <div class="text-xs text-gray-400 mt-1">Búsquedas efectivas, exámenes preocupacionales y selección profesionalizada.</div>
@@ -381,7 +395,7 @@
                         </button>
 
                         <button type="button" onclick="selectObjective('Capacitar mandos medios', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <span class="text-3xl">🔥</span>
+                            <div class="icon-box shrink-0"><i data-lucide="flame" class="w-6 h-6"></i></div>
                             <div>
                                 <div class="text-base font-bold text-white">Capacitación & Clima</div>
                                 <div class="text-xs text-gray-400 mt-1">Talleres mensuales, soporte directo por WhatsApp y reuniones estratégicas con líderes.</div>
@@ -389,7 +403,7 @@
                         </button>
 
                         <button type="button" onclick="selectObjective('Estructurar la gestión con indicadores', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <span class="text-3xl">📈</span>
+                            <div class="icon-box shrink-0"><i data-lucide="line-chart" class="w-6 h-6"></i></div>
                             <div>
                                 <div class="text-base font-bold text-white">Acompañamiento en Crecimiento</div>
                                 <div class="text-xs text-gray-400 mt-1">Indicadores eNPS, control de ausentismo/rotación y matrices de responsabilidades.</div>
@@ -397,7 +411,7 @@
                         </button>
 
                         <button type="button" onclick="selectObjective('Transformación completa y 360', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <span class="text-3xl">👑</span>
+                            <div class="icon-box shrink-0"><i data-lucide="crown" class="w-6 h-6"></i></div>
                             <div>
                                 <div class="text-base font-bold text-white">Transformación & Desempeño</div>
                                 <div class="text-xs text-gray-400 mt-1">Evaluaciones de desempeño 360°, retención de personal clave y auditoría organizacional.</div>
@@ -405,7 +419,7 @@
                         </button>
 
                         <button type="button" onclick="selectObjective('Optimización de procesos y ROI', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <span class="text-3xl">🚀</span>
+                            <div class="icon-box shrink-0"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
                             <div>
                                 <div class="text-base font-bold text-white">Máximo Rendimiento & ROI</div>
                                 <div class="text-xs text-gray-400 mt-1">Planificación estratégica, diagramación BPMN de procesos e impacto en rentabilidad.</div>
@@ -416,8 +430,9 @@
 
                 <!-- BOTÓN PRINCIPAL DE CÁLCULO -->
                 <div class="pt-6">
-                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-5 px-8 rounded-xl text-center text-lg md:text-xl shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-[1.01]">
-                        ✨ Ver Lo Que Tu Empresa Necesita
+                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-5 px-8 rounded-xl text-center text-lg md:text-xl shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-[1.01] flex items-center justify-center gap-2">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        <span>Ver Lo Que Tu Empresa Necesita</span>
                     </button>
                 </div>
 
@@ -469,11 +484,12 @@
                         <!-- CONTROLES ABAJO FRONTAL -->
                         <div class="space-y-3 pt-6 border-t border-gray-800/80 mt-6">
                             <button type="button" onclick="flipCard()" class="w-full bg-gray-800/90 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/40 hover:border-cyanGlow font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-between text-sm md:text-base">
-                                <span class="flex items-center gap-2">📊 Mediciones e Indicadores Incluidos</span>
+                                <span class="flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-5 h-5"></i> Mediciones e Indicadores Incluidos</span>
                                 <span>▲</span>
                             </button>
                             <a id="whatsapp-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-3.5 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
-                                <span>📲 Solicitar Propuesta de <span id="btn-pack-label">Pack</span></span>
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                                <span>Solicitar Propuesta de <span id="btn-pack-label">Pack</span></span>
                             </a>
                         </div>
                     </div>
@@ -488,7 +504,7 @@
                         <div class="space-y-4">
                             <div class="flex items-center justify-between border-b border-gray-800 pb-3">
                                 <h4 class="text-lg md:text-xl font-bold text-white flex items-center gap-2">
-                                    📊 Mediciones e Indicadores
+                                    <i data-lucide="bar-chart-2" class="w-5 h-5 text-cyanGlow"></i> Mediciones e Indicadores
                                 </h4>
                                 <button type="button" onclick="flipCard()" class="text-xs font-bold text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg transition-all flex items-center gap-1">
                                     ✕ Volver a Beneficios
@@ -505,11 +521,12 @@
                         <!-- CONTROLES ABAJO TRASERO -->
                         <div class="space-y-3 pt-6 border-t border-gray-800/80 mt-6">
                             <button type="button" onclick="flipCard()" class="w-full bg-gray-800/90 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/40 hover:border-cyanGlow font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-between text-sm md:text-base">
-                                <span class="flex items-center gap-2">⬅️ Volver a Ver Beneficios</span>
+                                <span class="flex items-center gap-2"><i data-lucide="arrow-left" class="w-5 h-5"></i> Volver a Ver Beneficios</span>
                                 <span>▼</span>
                             </button>
                             <a id="whatsapp-btn-back" href="#" target="_blank" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-3.5 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
-                                <span>📲 Solicitar este Pack Ahora</span>
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                                <span>Solicitar este Pack Ahora</span>
                             </a>
                         </div>
                     </div>
@@ -755,6 +772,13 @@
                 resContainer.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        // INICIALIZACIÓN DE ÍCONOS VECTORIALES
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>

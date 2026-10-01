@@ -187,87 +187,94 @@
                     <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
                         <span>2.</span> Rubro de la Empresa *
                     </h2>
-                    <div id="industry-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 max-h-[420px] overflow-y-auto p-2 pr-3">
-                        <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏪</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Comercio y Kioscos</span>
+                    <!-- BUSCAR Y REEMPLAZAR DESDE <div id="industry-container" ...> HASTA EL ÚLTIMO BOTÓN DE OTRO RUBRO -->
+                    <div id="industry-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-h-[500px] overflow-y-auto p-2 pr-3">
+                        <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🏪</span>
+                            <span class="text-sm md:text-base font-bold text-white">Comercio y Kioscos</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Gastronomía y Servicios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🍽️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Gastronomía y Servicios</span>
+                        <button type="button" onclick="selectIndustry('Gastronomía y Servicios', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🍽️</span>
+                            <span class="text-sm md:text-base font-bold text-white">Gastronomía y Servicios</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Industria y Metalúrgica', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏭</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Industria y Metalúrgica</span>
+                        <button type="button" onclick="selectIndustry('Industria y Metalúrgica', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🏭</span>
+                            <span class="text-sm md:text-base font-bold text-white">Industria y Metalúrgica</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Farmacia y Salud', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">💊</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Farmacia y Salud</span>
+                        <button type="button" onclick="selectIndustry('Farmacia y Salud', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">💊</span>
+                            <span class="text-sm md:text-base font-bold text-white">Farmacia y Salud</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Salud y Sanitarios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏥</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Salud y Sanitarios</span>
+                        <button type="button" onclick="selectIndustry('Salud y Sanitarios', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🏥</span>
+                            <span class="text-sm md:text-base font-bold text-white">Salud y Sanitarios</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Logística y Transporte', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🚚</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Logística y Transporte</span>
+                        <button type="button" onclick="selectIndustry('Logística y Transporte', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🚚</span>
+                            <span class="text-sm md:text-base font-bold text-white">Logística y Transporte</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Tecnología y Software', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">💻</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Tecnología y Software</span>
+                        <button type="button" onclick="selectIndustry('Tecnología y Software', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">💻</span>
+                            <span class="text-sm md:text-base font-bold text-white">Tecnología y Software</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Servicios Profesionales', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">📊</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Servicios Profesionales</span>
+                        <button type="button" onclick="selectIndustry('Servicios Profesionales', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">📊</span>
+                            <span class="text-sm md:text-base font-bold text-white">Servicios Profesionales</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Construcción y Obras', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏗️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Construcción y Obras</span>
+                        <button type="button" onclick="selectIndustry('Construcción y Obras', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🏗️</span>
+                            <span class="text-sm md:text-base font-bold text-white">Construcción y Obras</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Educación y Colegios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🎓</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Educación y Colegios</span>
+                        <button type="button" onclick="selectIndustry('Educación y Colegios', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🎓</span>
+                            <span class="text-sm md:text-base font-bold text-white">Educación y Colegios</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Retail y Calzado', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">👟</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Retail y Calzado</span>
+                        <button type="button" onclick="selectIndustry('Retail y Calzado', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">👟</span>
+                            <span class="text-sm md:text-base font-bold text-white">Retail y Calzado</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Supermercados y Autoservicios', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🛒</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Supermercados</span>
+                        <button type="button" onclick="selectIndustry('Supermercados y Autoservicios', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🛒</span>
+                            <span class="text-sm md:text-base font-bold text-white">Supermercados</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Seguridad Privada', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🛡️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Seguridad y Vigilancia</span>
+                        <button type="button" onclick="selectIndustry('Seguridad Privada', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🛡️</span>
+                            <span class="text-sm md:text-base font-bold text-white">Seguridad y Vigilancia</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Hotelería y Turismo', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏨</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Hotelería y Turismo</span>
+                        <button type="button" onclick="selectIndustry('Hotelería y Turismo', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🏨</span>
+                            <span class="text-sm md:text-base font-bold text-white">Hotelería y Turismo</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Agro y Campo', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🌾</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Agro y Campo</span>
+                        <button type="button" onclick="selectIndustry('Agro y Campo', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🌾</span>
+                            <span class="text-sm md:text-base font-bold text-white">Agro y Campo</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Estética y Estilo', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">✂️</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Estética y Belleza</span>
+                        <button type="button" onclick="selectIndustry('Estética y Estilo', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">✂️</span>
+                            <span class="text-sm md:text-base font-bold text-white">Estética y Belleza</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Inmobiliaria y Real Estate', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🏡</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Inmobiliarias</span>
+                        <button type="button" onclick="selectIndustry('Inmobiliaria y Real Estate', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🏡</span>
+                            <span class="text-sm md:text-base font-bold text-white">Inmobiliarias</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Textil e Indumentaria', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">👕</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Textil y Moda</span>
+                        <button type="button" onclick="selectIndustry('Textil e Indumentaria', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">👕</span>
+                            <span class="text-sm md:text-base font-bold text-white">Textil y Moda</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Automotor y Talleres', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">🚗</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Automotor y Talleres</span>
+                        <button type="button" onclick="selectIndustry('Automotor y Talleres', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">🚗</span>
+                            <span class="text-sm md:text-base font-bold text-white">Automotor y Talleres</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
-                            <span class="text-3xl">📌</span>
-                            <span class="text-xs md:text-sm font-semibold text-white">Otro Rubro</span>
+                        <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card bg-gray-900/80 p-5 rounded-2xl text-left flex items-center gap-4 border border-gray-800">
+                            <span class="text-4xl shrink-0">📌</span>
+                            <span class="text-sm md:text-base font-bold text-white">Otro Rubro</span>
                         </button>
+                    </div>
+                    
+                    <!-- NUEVO CAMPO QUE SE DESPLEGARÁ AL ELEGIR "OTRO RUBRO" -->
+                    <div id="other-industry-container" class="hidden mt-4 pt-2">
+                        <label class="block text-xs font-semibold uppercase text-emeraldGlow mb-2">Escribí tu Rubro / Actividad *</label>
+                        <input type="text" id="other-industry-input" placeholder="Ej: Importaciones, E-commerce, Gimnasio, etc." class="w-full custom-input px-4 py-3.5 rounded-xl text-sm" oninput="updateOtherIndustry(this.value)">
                     </div>
                 </div>
 
@@ -566,10 +573,34 @@
         };
 
         // FUNCIONES DE SELECCIÓN PARA LOS BOTONES
-        function selectIndustry(val, el) {
-            formData.industry = val;
-            highlightSelection('industry-container', el);
-        }
+       
+            function selectIndustry(val, el) {
+                const otherContainer = document.getElementById('other-industry-container');
+                const otherInput = document.getElementById('other-industry-input');
+            
+                if (val === 'Otro Rubro') {
+                    if (otherContainer) otherContainer.classList.remove('hidden');
+                    if (otherInput) {
+                        otherInput.required = true;
+                        formData.industry = otherInput.value.trim() || 'Otro Rubro';
+                    }
+                } else {
+                    if (otherContainer) otherContainer.classList.add('hidden');
+                    if (otherInput) {
+                        otherInput.required = false;
+                        otherInput.value = '';
+                    }
+                    formData.industry = val;
+                }
+            
+                highlightSelection('industry-container', el);
+            }
+            
+            // AGREGAR ESTA NUEVA FUNCIÓN JUSTO DEBAJO
+            function updateOtherIndustry(val) {
+                formData.industry = val.trim() ? `Otro Rubro (${val.trim()})` : 'Otro Rubro';
+            }
+         }
 
         function selectEmployees(val, el) {
             formData.employees = val;

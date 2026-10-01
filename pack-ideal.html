@@ -48,9 +48,9 @@
         }
 
         .interactive-card.selected {
-            border-color: #10b981;
-            background-color: rgba(16, 185, 129, 0.15);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+            border-color: #10b981 !important;
+            background-color: rgba(16, 185, 129, 0.15) !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25) !important;
         }
 
         .custom-input {
@@ -66,7 +66,7 @@
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
         }
 
-        /* EFFECTO FLIP 3D MODERNO Y SUAVE */
+        /* EFECTO FLIP 3D */
         .card-perspective {
             perspective: 1200px;
         }
@@ -169,12 +169,12 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 2: RUBRO / INDUSTRIA (AMPLIADO) -->
+                <!-- SECCIÓN 2: RUBRO / INDUSTRIA -->
                 <div class="space-y-4 pt-6 border-t border-gray-800/80">
                     <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
                         <span>2.</span> Rubro de la Empresa *
                     </h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 max-h-[420px] overflow-y-auto p-2 pr-3">
+                    <div id="industry-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 max-h-[420px] overflow-y-auto p-2 pr-3">
                         <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card bg-gray-900/80 p-4 rounded-xl text-left flex items-center gap-3">
                             <span class="text-3xl">🏪</span>
                             <span class="text-xs md:text-sm font-semibold text-white">Comercio y Kioscos</span>
@@ -263,7 +263,7 @@
                     <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
                         <span>3.</span> Cantidad de Personal en Nómina *
                     </h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+                    <div id="employees-container" class="grid grid-cols-2 md:grid-cols-4 gap-5">
                         <button type="button" onclick="selectEmployees('1 a 5 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
                             <span class="text-4xl">👥</span>
                             <div>
@@ -295,13 +295,13 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 4: OBJETIVOS / SOLUCIONES (AMPLIADO) -->
+                <!-- SECCIÓN 4: OBJETIVOS / SOLUCIONES -->
                 <div class="space-y-4 pt-6 border-t border-gray-800/80">
                     <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
                         <span>4.</span> Principal Desafío o Meta Prioritaria *
                     </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button type="button" onclick="selectObjective('Ordenar legajos, contratos y prevenir riesgos legales', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
+                    <div id="objective-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button type="button" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
                             <span class="text-3xl">🏛️</span>
                             <div>
                                 <div class="text-base font-bold text-white">Orden Básico & Legal</div>
@@ -309,7 +309,7 @@
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Reclutar talento calificado y acelerar procesos de búsqueda', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
+                        <button type="button" onclick="selectObjective('Reclutar talento calificado', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
                             <span class="text-3xl">🎯</span>
                             <div>
                                 <div class="text-base font-bold text-white">Incorporación de Talento</div>
@@ -317,7 +317,7 @@
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Capacitar mandos medios, equipos y mejorar clima laboral', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
+                        <button type="button" onclick="selectObjective('Capacitar mandos medios', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
                             <span class="text-3xl">🔥</span>
                             <div>
                                 <div class="text-base font-bold text-white">Capacitación & Clima</div>
@@ -325,15 +325,15 @@
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Estructurar la gestión con indicadores, KPIs y reuniones periódicas', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
+                        <button type="button" onclick="selectObjective('Estructurar la gestión con indicadores', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
                             <span class="text-3xl">📈</span>
                             <div>
                                 <div class="text-base font-bold text-white">Acompañamiento en Crecimiento</div>
-                                <div class="text-xs text-gray-400 mt-1">Indicadores eNPS, control de ausentismo/rotación y matricez de responsabilidades.</div>
+                                <div class="text-xs text-gray-400 mt-1">Indicadores eNPS, control de ausentismo/rotación y matrices de responsabilidades.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Transformación completa, evaluaciones 360 y retención de talento', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
+                        <button type="button" onclick="selectObjective('Transformación completa y 360', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
                             <span class="text-3xl">👑</span>
                             <div>
                                 <div class="text-base font-bold text-white">Transformación & Desempeño</div>
@@ -341,7 +341,7 @@
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Optimización de procesos internos, OKRs y medición de ROI', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
+                        <button type="button" onclick="selectObjective('Optimización de procesos y ROI', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
                             <span class="text-3xl">🚀</span>
                             <div>
                                 <div class="text-base font-bold text-white">Máximo Rendimiento & ROI</div>
@@ -361,7 +361,7 @@
             </div>
         </form>
 
-        <!-- SECCIÓN RESULTADO (TITULO ACTUALIZADO) -->
+        <!-- SECCIÓN RESULTADO -->
         <div id="result-container" class="hidden space-y-6 pt-10 border-t border-gray-800 mt-10">
             <div class="text-center space-y-2">
                 <div class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emeraldGlow rounded-full text-xs font-bold uppercase tracking-wider mb-2">
@@ -373,9 +373,9 @@
                 <p class="text-gray-400 text-sm md:text-base">En base al tamaño de tu equipo (<span id="res-employees" class="text-white font-semibold"></span>) y tu sector (<span id="res-industry" class="text-white font-semibold"></span>), esta es la propuesta ideal:</p>
             </div>
 
-            <!-- TARJETA RECOMENDADA CON GIRO 3D (ELEGANTED Y MODERNA) -->
+            <!-- TARJETA RECOMENDADA CON GIRO 3D FIJO Y MANTENIDO -->
             <div class="card-perspective max-w-3xl mx-auto w-full">
-                <div id="card-flipper" class="card-flipper bg-gray-900/90 border-2 border-emeraldGlow rounded-2xl shadow-2xl relative min-h-[540px] flex flex-col justify-between p-6 md:p-8">
+                <div id="card-flipper" class="card-flipper bg-gray-900/90 border-2 border-emeraldGlow rounded-2xl shadow-2xl relative min-h-[520px] flex flex-col justify-between p-6 md:p-8">
                     
                     <div class="absolute -top-3.5 right-6 bg-emeraldGlow text-darkBg text-xs font-extrabold uppercase px-4 py-1.5 rounded-full shadow-lg z-20">
                         PACK IDEAL RECOMENDADO
@@ -447,6 +447,7 @@
 
                 </div>
             </div>
+        </div>
     </main>
 
     <!-- FOOTER -->
@@ -454,9 +455,9 @@
         © 2026 CHG Capital Humano Group. Todos los derechos reservados.
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC INTEGRADA -->
     <script>
-       // 1. ESTRUCTURA DE DATOS ORIGINAL
+        // ESTADO GLOBAL DEL FORMULARIO
         const formData = {
             companyName: '',
             contactName: '',
@@ -467,7 +468,7 @@
             recommendedPack: 'Pack 1: Esencial'
         };
 
-        // 2. BASE DE DATOS COMPLETA (PACKS + INDICADORES)
+        // BASE DE DATOS DE PACKS E INDICADORES
         const packsDatabase = {
             'Pack 1: Esencial': {
                 tagline: 'Cimientos Firmes',
@@ -543,24 +544,32 @@
             }
         };
 
-        // 3. SELECCIÓN DE OPCIONES DE BOTONES Y TARJETAS
-        function selectOption(field, value, element) {
-            formData[field] = value;
-
-            // Desmarcar hermanos dentro del mismo contenedor
-            const parent = element.parentElement;
-            if (parent) {
-                const siblings = parent.children;
-                for (let sibling of siblings) {
-                    sibling.classList.remove('selected', 'border-emeraldGlow', 'bg-emerald-500/10');
-                }
-            }
-
-            // Marcar elemento actual como seleccionado
-            element.classList.add('selected', 'border-emeraldGlow', 'bg-emerald-500/10');
+        // FUNCIONES DE SELECCIÓN PARA LOS BOTONES
+        function selectIndustry(val, el) {
+            formData.industry = val;
+            highlightSelection('industry-container', el);
         }
 
-        // 4. FUNCIÓN DE GIRO 3D (FLIP) SÚPER DINÁMICA
+        function selectEmployees(val, el) {
+            formData.employees = val;
+            highlightSelection('employees-container', el);
+        }
+
+        function selectObjective(val, defaultPack, el) {
+            formData.objective = val;
+            formData.recommendedPack = defaultPack;
+            highlightSelection('objective-container', el);
+        }
+
+        function highlightSelection(containerId, activeEl) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const buttons = container.querySelectorAll('.interactive-card');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            activeEl.classList.add('selected');
+        }
+
+        // GIRO 3D (FLIP CARD)
         function flipCard() {
             const flipper = document.getElementById('card-flipper');
             if (!flipper) return;
@@ -604,18 +613,18 @@
             flipper.classList.toggle('flipped');
         }
 
-        // 5. CÁLCULO DE RECOMENDACIÓN Y MOSTRAR RESULTADO
-        function calculateRecommendation(event) {
-            if (event) event.preventDefault();
+        // CÁLCULO Y MOSTRAR RESULTADO
+        function calculateRecommendation(e) {
+            if (e) e.preventDefault();
 
-            // Leer inputs de texto si existen
-            const companyInput = document.getElementById('company-name');
-            if (companyInput) formData.companyName = companyInput.value.trim();
+            formData.companyName = document.getElementById('company-name').value.trim();
+            formData.contactName = document.getElementById('contact-name').value.trim();
+            formData.contactPhone = document.getElementById('contact-phone').value.trim();
 
-            // Lógica para determinar el Pack según la selección
-            if (formData.employees === '50+' || formData.objective === 'Transformación Organizacional') {
+            // Lógica para determinar pack por tamaño
+            if (formData.employees === 'Más de 50 empleados' || formData.objective.includes('360') || formData.objective.includes('ROI')) {
                 formData.recommendedPack = 'Pack 3: Estratégico';
-            } else if (formData.employees === '21-50' || formData.employees === '11-20') {
+            } else if (formData.employees === '16 a 50 empleados' || formData.objective.includes('Capacitar') || formData.objective.includes('indicadores')) {
                 formData.recommendedPack = 'Pack 2: Evolución';
             } else {
                 formData.recommendedPack = 'Pack 1: Esencial';
@@ -623,39 +632,33 @@
 
             const packInfo = packsDatabase[formData.recommendedPack];
 
-            // Rellenar datos en la vista frontal de la tarjeta
-            const nameEl = document.getElementById('res-pack-name');
-            const tagEl = document.getElementById('res-pack-tagline');
-            const descEl = document.getElementById('res-pack-desc');
-            const featEl = document.getElementById('res-features');
+            // Rellenar datos en la interfaz
+            document.getElementById('res-company-name').innerText = formData.companyName || 'tu empresa';
+            document.getElementById('res-employees').innerText = formData.employees || 'No especificado';
+            document.getElementById('res-industry').innerText = formData.industry || 'No especificado';
 
-            if (nameEl) nameEl.innerText = formData.recommendedPack;
-            if (tagEl) tagEl.innerText = packInfo.tagline;
-            if (descEl) descEl.innerText = packInfo.desc;
-            
+            document.getElementById('res-pack-name').innerText = formData.recommendedPack;
+            document.getElementById('res-pack-tagline').innerText = packInfo.tagline;
+            document.getElementById('res-pack-desc').innerText = packInfo.desc;
+            document.getElementById('btn-pack-label').innerText = formData.recommendedPack;
+
+            const featEl = document.getElementById('res-features');
             if (featEl) {
                 featEl.innerHTML = packInfo.features.map(f => `<li class="flex items-start gap-2">${f}</li>`).join('');
             }
 
-            const btnLabel = document.getElementById('btn-pack-label');
-            if (btnLabel) btnLabel.innerText = formData.recommendedPack;
+            // WhatsApp link
+            const message = `Hola! Realicé el diagnóstico para ${formData.companyName || 'mi empresa'} (${formData.employees}, Rubro: ${formData.industry}) y el pack recomendado fue el ${formData.recommendedPack}. Me gustaría recibir más información.`;
+            const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
-            // Configurar enlace de WhatsApp
-            const nameToUse = formData.companyName || 'mi empresa';
-            const message = `Hola! Realicé el diagnóstico para ${nameToUse} y la recomendación fue el ${formData.recommendedPack}. Me gustaría solicitar una propuesta.`;
-            const encodedMsg = encodeURIComponent(message);
-            const waUrl = `https://wa.me/?text=${encodedMsg}`;
+            document.getElementById('whatsapp-btn').href = waUrl;
+            document.getElementById('whatsapp-btn-back').href = waUrl;
 
-            const btnFront = document.getElementById('whatsapp-btn');
-            const btnBack = document.getElementById('whatsapp-btn-back');
-            if (btnFront) btnFront.href = waUrl;
-            if (btnBack) btnBack.href = waUrl;
-
-            // Asegurar que empiece en la vista frontal
+            // Resetear tarjeta al frente
             const flipper = document.getElementById('card-flipper');
             if (flipper) flipper.classList.remove('flipped');
 
-            // Mostrar el contenedor de resultado
+            // Desplegar resultado y hacer scroll
             const resContainer = document.getElementById('result-container');
             if (resContainer) {
                 resContainer.classList.remove('hidden');

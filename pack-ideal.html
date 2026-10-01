@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descubrí tu Pack Ideal | Capital Humano Group</title>
+    <title>Diagnóstico Organizacional | Capital Humano Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
@@ -14,12 +14,13 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#0b1329',
-                        cardBg: '#111827',
-                        cardHover: '#1f2937',
-                        emeraldGlow: '#10b981',
-                        cyanGlow: '#00e5ff',
-                        textMuted: '#9ca3af'
+                        navyDeep: '#0f172a',
+                        navyCard: 'rgba(15, 23, 42, 0.85)',
+                        corporateBlue: '#1e293b',
+                        emeraldAccent: '#059669',
+                        emeraldHover: '#047857',
+                        textPrimary: '#f8fafc',
+                        textMuted: '#94a3b8'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -29,33 +30,37 @@
         }
     </script>
     <style>
+        /* FONDO CORPORATIVO CON FOTOGRAFÍA DE RECURSOS HUMANOS Y OVERLAY OSCURO */
         body {
-            background-color: #0b1329;
-            color: #ffffff;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.96) 100%), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
+            color: #f8fafc;
             font-family: 'Inter', sans-serif;
-            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, rgba(11, 19, 41, 1) 70%);
             min-height: 100vh;
         }
 
         .interactive-card {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
             border: 1px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
         }
 
         .interactive-card:hover {
-            border-color: rgba(16, 185, 129, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
+            border-color: rgba(5, 150, 105, 0.6);
+            background: rgba(30, 41, 59, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
         }
 
         .interactive-card.selected {
-            border-color: #10b981 !important;
-            background-color: rgba(16, 185, 129, 0.15) !important;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3) !important;
+            border-color: #059669 !important;
+            background-color: rgba(5, 150, 105, 0.15) !important;
+            box-shadow: 0 0 15px rgba(5, 150, 105, 0.2) !important;
         }
 
-        /* DISEÑO DE BOTONES DE RUBRO (CUADRADOS MODERNOS CON ÍCONOS VECTORIALES) */
+        /* DISEÑO EJECUTIVO PARA TARJETAS DE RUBRO */
         .industry-card {
             aspect-ratio: 1.1 / 1;
             display: flex;
@@ -65,66 +70,44 @@
             text-align: center;
             padding: 1.25rem 0.75rem;
             position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            background: rgba(17, 24, 39, 0.85);
-            backdrop-filter: blur(8px);
+            border-radius: 0.75rem;
         }
 
-        .industry-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #10b981, transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .industry-card:hover::before,
-        .industry-card.selected::before {
-            opacity: 1;
-        }
-
-        /* ESTILO DEL CONTENEDOR DEL ÍCONO */
         .icon-box {
-            width: 2.75rem;
-            height: 2.75rem;
+            width: 2.5rem;
+            height: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0.75rem;
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #34d399;
             margin-bottom: 0.6rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .interactive-card:hover .icon-box,
         .interactive-card.selected .icon-box {
-            background: #10b981;
-            color: #0b1329;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
-            transform: scale(1.08);
+            background: #059669;
+            color: #ffffff;
+            border-color: #059669;
         }
 
         .custom-input {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .custom-input:focus {
             outline: none;
-            border-color: #10b981;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            border-color: #059669;
+            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25);
         }
 
-        /* EFECTO FLIP 3D */
+        /* EFECTO FLIP 3D SOBRIO */
         .card-perspective {
             perspective: 1200px;
         }
@@ -168,50 +151,50 @@
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0b1329;
+            background: #0f172a;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1f2937;
+            background: #334155;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
+            background: #059669;
         }
     </style>
 </head>
 <body class="flex flex-col justify-between min-h-screen px-4 py-6 md:px-8">
     
     <!-- NAVBAR / HEADER -->
-    <header class="max-w-6xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-gray-800/80 mb-8">
+    <header class="max-w-6xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-slate-700/60 mb-8">
         <a href="index.html" class="flex items-center gap-3 decoration-none">
             <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="h-10 md:h-12 w-auto object-contain">
             <div class="flex flex-col justify-center leading-none">
                 <span class="text-white font-extrabold text-base md:text-lg tracking-wider">CAPITAL HUMANO</span>
-                <span class="text-emerald-500 font-bold text-xs tracking-widest mt-0.5">GROUP</span>
+                <span class="text-emerald-400 font-semibold text-xs tracking-widest mt-0.5">GROUP</span>
             </div>
         </a>
 
         <div class="flex items-center gap-3 flex-wrap justify-center">
-            <a href="index.html#packs" class="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-500/30 hover:border-emerald-500">
-                <i data-lucide="package" class="w-4 h-4"></i> Ver Todos los Packs
+            <a href="index.html#packs" class="text-xs md:text-sm font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center gap-1.5 bg-slate-800/80 hover:bg-slate-700/80 px-4 py-2 rounded-lg border border-slate-600/50">
+                <i data-lucide="package" class="w-4 h-4 text-emerald-400"></i> Ver Soluciones
             </a>
-            <a href="index.html" class="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-gray-900/80 px-4 py-2 rounded-full border border-gray-800 hover:border-emerald-500/60">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al Inicio
+            <a href="index.html" class="text-xs md:text-sm font-medium text-slate-300 hover:text-white transition-all duration-200 flex items-center gap-1.5 bg-slate-900/60 px-4 py-2 rounded-lg border border-slate-800 hover:border-slate-700">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver
             </a>
         </div>
     </header>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-6xl mx-auto w-full bg-cardBg/90 backdrop-blur-md rounded-2xl border border-gray-800 p-6 md:p-10 shadow-2xl relative overflow-hidden mb-8">
+    <main class="max-w-6xl mx-auto w-full bg-slate-900/85 backdrop-blur-md rounded-xl border border-slate-700/50 p-6 md:p-10 shadow-2xl relative overflow-hidden mb-8">
         
-        <div class="mb-8 border-b border-gray-800 pb-6">
-            <div class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emeraldGlow rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                Diagnóstico Personalizado
+        <div class="mb-8 border-b border-slate-800 pb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-950/60 border border-emerald-600/40 text-emerald-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
+                <i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i> Diagnóstico Organizacional
             </div>
-            <h1 class="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-emerald-400 block mb-2 cursor-default">
-                Lo que tu empresa necesita
+            <h1 class="text-2xl md:text-4xl font-extrabold text-white block mb-2 cursor-default tracking-tight">
+                Evaluación de Necesidades de Capital Humano
             </h1>
-            <p class="text-gray-400 text-sm md:text-base">Completá los datos y seleccioná las necesidades de tu organización para recomendarte el plan óptimo.</p>
+            <p class="text-slate-300 text-sm md:text-base">Complete los datos de su estructura para determinar la propuesta estratégica óptima para su empresa.</p>
         </div>
 
         <!-- FORMULARIO -->
@@ -220,219 +203,222 @@
 
                 <!-- SECCIÓN 1: DATOS DE LA EMPRESA -->
                 <div class="space-y-4">
-                    <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
-                        <span>1.</span> Datos de la Organización
+                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">1</span> 
+                        Datos de la Organización
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Nombre de la Empresa *</label>
-                            <input type="text" id="company-name" required placeholder="Ej: Distribuidora Sur S.A." class="w-full custom-input px-4 py-3.5 rounded-xl text-sm">
+                            <label class="block text-xs font-semibold uppercase text-slate-300 mb-2">Nombre de la Empresa *</label>
+                            <input type="text" id="company-name" required placeholder="Ej: Distribuidora Sur S.A." class="w-full custom-input px-4 py-3 rounded-lg text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Tu Nombre y Apellido *</label>
-                            <input type="text" id="contact-name" required placeholder="Ej: Martín Gómez" class="w-full custom-input px-4 py-3.5 rounded-xl text-sm">
+                            <label class="block text-xs font-semibold uppercase text-slate-300 mb-2">Nombre y Apellido del Contacto *</label>
+                            <input type="text" id="contact-name" required placeholder="Ej: Martín Gómez" class="w-full custom-input px-4 py-3 rounded-lg text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Teléfono / WhatsApp *</label>
-                            <input type="tel" id="contact-phone" required placeholder="Ej: +54 9 11 1234 5678" class="w-full custom-input px-4 py-3.5 rounded-xl text-sm">
+                            <label class="block text-xs font-semibold uppercase text-slate-300 mb-2">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="contact-phone" required placeholder="Ej: +54 9 11 1234 5678" class="w-full custom-input px-4 py-3 rounded-lg text-sm">
                         </div>
                     </div>
                 </div>
 
                 <!-- SECCIÓN 2: RUBRO / INDUSTRIA -->
-                <div class="space-y-4 pt-6 border-t border-gray-800/80">
-                    <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
-                        <span>2.</span> Rubro de la Empresa *
+                <div class="space-y-4 pt-6 border-t border-slate-800">
+                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">2</span>
+                        Sector o Rubro de la Empresa *
                     </h2>
                     
-                    <div id="industry-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-h-[460px] overflow-y-auto p-2 pr-3">
+                    <div id="industry-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[420px] overflow-y-auto p-1 pr-2">
                         <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="store" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Comercio y Kioscos</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Comercio</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Gastronomía y Servicios', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="utensils" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Gastronomía y Servicios</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Gastronomía</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Industria y Metalúrgica', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="factory" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Industria y Metalúrgica</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Industria</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Farmacia y Salud', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="pill" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Farmacia y Salud</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Farmacia</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Salud y Sanitarios', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="activity" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Salud y Sanitarios</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Salud</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Logística y Transporte', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="truck" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Logística y Transporte</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Logística</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Tecnología y Software', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="laptop" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Tecnología y Software</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Tecnología</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Servicios Profesionales', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Servicios Profesionales</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Servicios Corp.</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Construcción y Obras', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="hard-hat" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Construcción y Obras</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Construcción</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Educación y Colegios', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Educación y Colegios</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Educación</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Retail y Calzado', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="shopping-bag" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Retail y Calzado</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Retail</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Supermercados', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Supermercados</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Supermercados</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Seguridad y Vigilancia', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Seguridad y Vigilancia</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Seguridad</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Hotelería y Turismo', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="hotel" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Hotelería y Turismo</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Hotelería</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Agro y Campo', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="sprout" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Agro y Campo</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Agro</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Estética y Belleza', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="scissors" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Estética y Belleza</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Estética</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Inmobiliarias', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="building" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Inmobiliarias</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Inmobiliaria</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Textil y Moda', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="shirt" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Textil y Moda</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Textil</span>
                         </button>
                         <button type="button" onclick="selectIndustry('Automotor y Talleres', this)" class="industry-btn interactive-card industry-card">
                             <div class="icon-box"><i data-lucide="wrench" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-white leading-snug">Automotor y Talleres</span>
+                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Automotor</span>
                         </button>
-                        <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card industry-card border-dashed border-emeraldGlow/50">
+                        <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card industry-card border-dashed border-slate-600">
                             <div class="icon-box"><i data-lucide="plus" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-bold text-emeraldGlow leading-snug">Otro Rubro</span>
+                            <span class="text-xs md:text-sm font-semibold text-emerald-400 leading-snug">Otro Rubro</span>
                         </button>
                     </div>
                     
-                    <!-- CAMPO DESPLEGABLE PARA "OTRO RUBRO" -->
                     <div id="other-industry-container" class="hidden mt-4 pt-2">
-                        <label class="block text-xs font-semibold uppercase text-emeraldGlow mb-2">Escribí tu Rubro / Actividad *</label>
-                        <input type="text" id="other-industry-input" placeholder="Ej: Importaciones, E-commerce, Gimnasio, etc." class="w-full custom-input px-4 py-3.5 rounded-xl text-sm" oninput="updateOtherIndustry(this.value)">
+                        <label class="block text-xs font-semibold uppercase text-emerald-400 mb-2">Especifique su Actividad Principal *</label>
+                        <input type="text" id="other-industry-input" placeholder="Ej: Importaciones, E-commerce, Servicios Financieros" class="w-full custom-input px-4 py-3 rounded-lg text-sm" oninput="updateOtherIndustry(this.value)">
                     </div>
                 </div>
 
                 <!-- SECCIÓN 3: CANTIDAD DE EMPLEADOS -->
-                <div class="space-y-4 pt-6 border-t border-gray-800/80">
-                    <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
-                        <span>3.</span> Cantidad de Personal en Nómina *
+                <div class="space-y-4 pt-6 border-t border-slate-800">
+                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">3</span>
+                        Nómina Activa de Personal *
                     </h2>
-                    <div id="employees-container" class="grid grid-cols-2 md:grid-cols-4 gap-5">
-                        <button type="button" onclick="selectEmployees('1 a 5 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <div class="icon-box"><i data-lucide="user" class="w-6 h-6"></i></div>
+                    <div id="employees-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button type="button" onclick="selectEmployees('1 a 5 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
+                            <div class="icon-box"><i data-lucide="user" class="w-5 h-5"></i></div>
                             <div>
-                                <span class="font-extrabold text-white text-lg md:text-xl block">1 a 5</span>
-                                <span class="text-xs text-gray-400">Microempresa</span>
+                                <span class="font-bold text-white text-base md:text-lg block">1 a 5</span>
+                                <span class="text-xs text-slate-400">Microempresa</span>
                             </div>
                         </button>
-                        <button type="button" onclick="selectEmployees('6 a 15 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <div class="icon-box"><i data-lucide="users" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectEmployees('6 a 15 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
+                            <div class="icon-box"><i data-lucide="users" class="w-5 h-5"></i></div>
                             <div>
-                                <span class="font-extrabold text-white text-lg md:text-xl block">6 a 15</span>
-                                <span class="text-xs text-gray-400">Pequeña Empresa</span>
+                                <span class="font-bold text-white text-base md:text-lg block">6 a 15</span>
+                                <span class="text-xs text-slate-400">Pequeña Empresa</span>
                             </div>
                         </button>
-                        <button type="button" onclick="selectEmployees('16 a 50 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <div class="icon-box"><i data-lucide="building-2" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectEmployees('16 a 50 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
+                            <div class="icon-box"><i data-lucide="building-2" class="w-5 h-5"></i></div>
                             <div>
-                                <span class="font-extrabold text-white text-lg md:text-xl block">16 a 50</span>
-                                <span class="text-xs text-gray-400">Mediana Empresa</span>
+                                <span class="font-bold text-white text-base md:text-lg block">16 a 50</span>
+                                <span class="text-xs text-slate-400">Mediana Empresa</span>
                             </div>
                         </button>
-                        <button type="button" onclick="selectEmployees('Más de 50 empleados', this)" class="employee-btn interactive-card bg-gray-900/80 p-6 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
-                            <div class="icon-box"><i data-lucide="rocket" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectEmployees('Más de 50 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
+                            <div class="icon-box"><i data-lucide="building" class="w-5 h-5"></i></div>
                             <div>
-                                <span class="font-extrabold text-white text-lg md:text-xl block">50+</span>
-                                <span class="text-xs text-gray-400">Gran Estructura</span>
+                                <span class="font-bold text-white text-base md:text-lg block">50+</span>
+                                <span class="text-xs text-slate-400">Corporativo</span>
                             </div>
                         </button>
                     </div>
                 </div>
 
-                <!-- SECCIÓN 4: OBJETIVOS / SOLUCIONES -->
-                <div class="space-y-4 pt-6 border-t border-gray-800/80">
-                    <h2 class="text-lg md:text-xl font-bold text-emeraldGlow flex items-center gap-2">
-                        <span>4.</span> Principal Desafío o Meta Prioritaria *
+                <!-- SECCIÓN 4: OBJETIVOS / SOLUCIONES DE RRHH -->
+                <div class="space-y-4 pt-6 border-t border-slate-800">
+                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">4</span>
+                        Desafío Prioritario de Gestión *
                     </h2>
                     <div id="objective-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button type="button" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="scale" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
+                            <div class="icon-box shrink-0"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
                             <div>
-                                <div class="text-base font-bold text-white">Orden Básico & Legal</div>
-                                <div class="text-xs text-gray-400 mt-1">Regularizar legajos, normativas vigentes y selección inicial con garantía.</div>
+                                <div class="text-sm font-bold text-white">Auditoría & Cumplimiento Legal</div>
+                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Saneamiento de legajos, regulación normativa y mitigación de contingencias laborales.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Reclutar talento calificado', 'Pack 1: Esencial', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="target" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectObjective('Reclutar talento calificado', 'Pack 1: Esencial', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
+                            <div class="icon-box shrink-0"><i data-lucide="user-check" class="w-5 h-5"></i></div>
                             <div>
-                                <div class="text-base font-bold text-white">Incorporación de Talento</div>
-                                <div class="text-xs text-gray-400 mt-1">Búsquedas efectivas, exámenes preocupacionales y selección profesionalizada.</div>
+                                <div class="text-base font-bold text-white">Atracción de Talento Clave</div>
+                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Selección profesionalizada, exámenes preocupacionales y perfilado por competencias.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Capacitar mandos medios', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="flame" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectObjective('Capacitar mandos medios', 'Pack 2: Evolución', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
+                            <div class="icon-box shrink-0"><i data-lucide="award" class="w-5 h-5"></i></div>
                             <div>
-                                <div class="text-base font-bold text-white">Capacitación & Clima</div>
-                                <div class="text-xs text-gray-400 mt-1">Talleres mensuales, soporte directo por WhatsApp y reuniones estratégicas con líderes.</div>
+                                <div class="text-base font-bold text-white">Liderazgo & Desarrollo Interno</div>
+                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Formación ejecutiva para mandos medios, alineación de mandos y clima laboral.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Estructurar la gestión con indicadores', 'Pack 2: Evolución', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="line-chart" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectObjective('Estructurar la gestión con indicadores', 'Pack 2: Evolución', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
+                            <div class="icon-box shrink-0"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
                             <div>
-                                <div class="text-base font-bold text-white">Acompañamiento en Crecimiento</div>
-                                <div class="text-xs text-gray-400 mt-1">Indicadores eNPS, control de ausentismo/rotación y matrices de responsabilidades.</div>
+                                <div class="text-base font-bold text-white">Indicadores de Gestión (KPIs)</div>
+                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Monitoreo de rotación, ausentismo, nivel de eNPS y definición de roles RACI.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Transformación completa y 360', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="crown" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectObjective('Transformación completa y 360', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
+                            <div class="icon-box shrink-0"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
                             <div>
-                                <div class="text-base font-bold text-white">Transformación & Desempeño</div>
-                                <div class="text-xs text-gray-400 mt-1">Evaluaciones de desempeño 360°, retención de personal clave y auditoría organizacional.</div>
+                                <div class="text-base font-bold text-white">Gestión Integral 360°</div>
+                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Evaluaciones de desempeño multidireccionales y planes de retención estratégica.</div>
                             </div>
                         </button>
 
-                        <button type="button" onclick="selectObjective('Optimización de procesos y ROI', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card bg-gray-900/80 p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+                        <button type="button" onclick="selectObjective('Optimización de procesos y ROI', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
+                            <div class="icon-box shrink-0"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
                             <div>
-                                <div class="text-base font-bold text-white">Máximo Rendimiento & ROI</div>
-                                <div class="text-xs text-gray-400 mt-1">Planificación estratégica, diagramación BPMN de procesos e impacto en rentabilidad.</div>
+                                <div class="text-base font-bold text-white">Optimización Estratégica & ROI</div>
+                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Diagramación de procesos BPMN, estructuración salarial e impacto directo en rentabilidad.</div>
                             </div>
                         </button>
                     </div>
                 </div>
 
                 <!-- BOTÓN PRINCIPAL DE CÁLCULO -->
-                <div class="pt-6">
-                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-5 px-8 rounded-xl text-center text-lg md:text-xl shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-[1.01] flex items-center justify-center gap-2">
-                        <i data-lucide="sparkles" class="w-6 h-6"></i>
-                        <span>Ver Lo Que Tu Empresa Necesita</span>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-emeraldAccent hover:bg-emeraldHover text-white font-bold py-4 px-8 rounded-lg text-center text-base md:text-lg shadow-lg transition-all duration-200 flex items-center justify-center gap-2 tracking-wide">
+                        <i data-lucide="file-search" class="w-5 h-5"></i>
+                        <span>Generar Diagnóstico Recomendado</span>
                     </button>
                 </div>
 
@@ -440,93 +426,89 @@
         </form>
 
         <!-- SECCIÓN RESULTADO -->
-        <div id="result-container" class="hidden space-y-6 pt-10 border-t border-gray-800 mt-10">
+        <div id="result-container" class="hidden space-y-6 pt-10 border-t border-slate-800 mt-10">
             <div class="text-center space-y-2">
-                <div class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emeraldGlow rounded-full text-xs font-bold uppercase tracking-wider mb-2">
-                    DIAGNÓSTICO COMPLETADO
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/80 border border-emerald-600/50 text-emerald-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Diagnóstico Finalizado
                 </div>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-white">
-                    Lo que <span id="res-company-name" class="text-emeraldGlow">tu empresa</span> necesita
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white">
+                    Propuesta Recomendada para <span id="res-company-name" class="text-emerald-400">Su Organización</span>
                 </h2>
-                <p class="text-gray-400 text-sm md:text-base">En base al tamaño de tu equipo (<span id="res-employees" class="text-white font-semibold"></span>) y tu sector (<span id="res-industry" class="text-white font-semibold"></span>), esta es la propuesta ideal:</p>
+                <p class="text-slate-300 text-sm md:text-base">Basado en una estructura de <span id="res-employees" class="text-white font-semibold"></span> del sector <span id="res-industry" class="text-white font-semibold"></span>:</p>
             </div>
 
-            <!-- TARJETA RECOMENDADA CON GIRO 3D FLUIDO -->
+            <!-- TARJETA RECOMENDADA EJECUTIVA -->
             <div class="card-perspective max-w-3xl mx-auto w-full">
                 <div id="card-flipper" class="card-flipper">
                     
                     <!-- LADO FRONTAL (BENEFICIOS) -->
-                    <div class="card-face card-front bg-gray-900/90 border-2 border-emeraldGlow rounded-2xl shadow-2xl p-6 md:p-8 flex flex-col justify-between">
+                    <div class="card-face card-front bg-slate-900/95 border border-emerald-600/60 rounded-xl shadow-2xl p-6 md:p-8 flex flex-col justify-between">
                         
-                        <div class="absolute -top-3.5 right-6 bg-emeraldGlow text-darkBg text-xs font-extrabold uppercase px-4 py-1.5 rounded-full shadow-lg z-20">
-                            PACK IDEAL RECOMENDADO
+                        <div class="absolute -top-3.5 right-6 bg-emerald-600 text-white text-xs font-bold uppercase px-3 py-1 rounded shadow-md z-20 tracking-wider">
+                            Plan Sugerido
                         </div>
 
                         <div class="space-y-6">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 border-b border-gray-800 pb-4">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 border-b border-slate-800 pb-4">
                                 <div>
                                     <h3 id="res-pack-name" class="text-2xl md:text-3xl font-extrabold text-white">Pack 2: Evolución</h3>
-                                    <p id="res-pack-tagline" class="text-emeraldGlow font-semibold text-sm mt-0.5">Crecimiento y Estructura</p>
-                                    <p id="res-pack-desc" class="text-gray-400 text-xs md:text-sm mt-1">Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.</p>
-                                </div>
-                                <div class="text-left md:text-right shrink-0">
-                                    <span class="text-xs text-gray-400 block uppercase font-medium">ATENCIÓN PERSONALIZADA</span>
-                                    <span class="text-xs md:text-sm text-cyanGlow font-bold">Respuesta Inmediata vía WhatsApp</span>
+                                    <p id="res-pack-tagline" class="text-emerald-400 font-semibold text-sm mt-0.5">Crecimiento y Estructura</p>
+                                    <p id="res-pack-desc" class="text-slate-400 text-xs md:text-sm mt-1">Estructura operativa de Recursos Humanos diseñada para organizaciones en fase de consolidación.</p>
                                 </div>
                             </div>
 
                             <div class="space-y-3">
-                                <p class="text-xs uppercase font-extrabold text-gray-300 tracking-wider">BENEFICIOS CLAVE PARA TU CASO:</p>
-                                <ul id="res-features" class="space-y-3 text-sm md:text-base text-gray-300"></ul>
+                                <p class="text-xs uppercase font-extrabold text-slate-300 tracking-wider">Componentes del Servicio:</p>
+                                <ul id="res-features" class="space-y-2.5 text-sm text-slate-300"></ul>
                             </div>
                         </div>
 
                         <!-- CONTROLES ABAJO FRONTAL -->
-                        <div class="space-y-3 pt-6 border-t border-gray-800/80 mt-6">
-                            <button type="button" onclick="flipCard()" class="w-full bg-gray-800/90 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/40 hover:border-cyanGlow font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-between text-sm md:text-base">
-                                <span class="flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-5 h-5"></i> Mediciones e Indicadores Incluidos</span>
+                        <div class="space-y-3 pt-6 border-t border-slate-800 mt-6">
+                            <button type="button" onclick="flipCard()" class="w-full bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold py-3 px-6 rounded-lg text-center transition-all flex items-center justify-between text-xs md:text-sm">
+                                <span class="flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i> Ver Entregables e Indicadores Clave (KPIs)</span>
                                 <span>▲</span>
                             </button>
-                            <a id="whatsapp-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-3.5 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
-                                <i data-lucide="message-square" class="w-5 h-5"></i>
-                                <span>Solicitar Propuesta de <span id="btn-pack-label">Pack</span></span>
+                            <a id="whatsapp-btn" href="#" target="_blank" class="w-full bg-emeraldAccent hover:bg-emeraldHover text-white font-bold py-3.5 px-6 rounded-lg text-center shadow-md transition-all flex items-center justify-center gap-2 text-sm md:text-base">
+                                <i data-lucide="message-square" class="w-4 h-4"></i>
+                                <span>Solicitar Propuesta Formal de <span id="btn-pack-label">Pack</span></span>
                             </a>
                         </div>
                     </div>
 
                     <!-- LADO TRASERO (INDICADORES) -->
-                    <div class="card-face card-back bg-gray-900/90 border-2 border-emeraldGlow rounded-2xl shadow-2xl p-6 md:p-8 flex flex-col justify-between">
+                    <div class="card-face card-back bg-slate-900/95 border border-emerald-600/60 rounded-xl shadow-2xl p-6 md:p-8 flex flex-col justify-between">
                         
-                        <div class="absolute -top-3.5 right-6 bg-cyanGlow text-darkBg text-xs font-extrabold uppercase px-4 py-1.5 rounded-full shadow-lg z-20">
-                            INDICADORES Y KPIs
+                        <div class="absolute -top-3.5 right-6 bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold uppercase px-3 py-1 rounded shadow-md z-20">
+                            Métricas & Reportes
                         </div>
 
                         <div class="space-y-4">
-                            <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-                                <h4 class="text-lg md:text-xl font-bold text-white flex items-center gap-2">
-                                    <i data-lucide="bar-chart-2" class="w-5 h-5 text-cyanGlow"></i> Mediciones e Indicadores
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                                <h4 class="text-base md:text-lg font-bold text-white flex items-center gap-2">
+                                    <i data-lucide="bar-chart-2" class="w-5 h-5 text-emerald-400"></i> Indicadores y Entregables de Gestión
                                 </h4>
-                                <button type="button" onclick="flipCard()" class="text-xs font-bold text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg transition-all flex items-center gap-1">
-                                    ✕ Volver a Beneficios
+                                <button type="button" onclick="flipCard()" class="text-xs font-semibold text-slate-400 hover:text-white bg-slate-800 px-2.5 py-1 rounded transition-all">
+                                    ✕ Volver
                                 </button>
                             </div>
 
-                            <p class="text-gray-400 text-xs md:text-sm italic leading-relaxed">
-                                Estos indicadores permiten diagnosticar la situación real de tu PyME, identificar oportunidades de mejora continua, prevenir riesgos e innovar en la gestión de tu equipo.
+                            <p class="text-slate-400 text-xs italic leading-relaxed">
+                                Herramientas de medición continua para garantizar el retorno de inversión en Capital Humano y la toma de decisiones basada en datos.
                             </p>
 
                             <div id="inline-indicators-content" class="space-y-4"></div>
                         </div>
 
                         <!-- CONTROLES ABAJO TRASERO -->
-                        <div class="space-y-3 pt-6 border-t border-gray-800/80 mt-6">
-                            <button type="button" onclick="flipCard()" class="w-full bg-gray-800/90 hover:bg-gray-800 text-cyanGlow border border-cyanGlow/40 hover:border-cyanGlow font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition-all flex items-center justify-between text-sm md:text-base">
-                                <span class="flex items-center gap-2"><i data-lucide="arrow-left" class="w-5 h-5"></i> Volver a Ver Beneficios</span>
+                        <div class="space-y-3 pt-6 border-t border-slate-800 mt-6">
+                            <button type="button" onclick="flipCard()" class="w-full bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold py-3 px-6 rounded-lg text-center transition-all flex items-center justify-between text-xs md:text-sm">
+                                <span class="flex items-center gap-2"><i data-lucide="arrow-left" class="w-4 h-4 text-emerald-400"></i> Volver a Componentes del Plan</span>
                                 <span>▼</span>
                             </button>
-                            <a id="whatsapp-btn-back" href="#" target="_blank" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-darkBg font-extrabold py-3.5 px-6 rounded-xl text-center shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 text-base md:text-lg">
-                                <i data-lucide="message-square" class="w-5 h-5"></i>
-                                <span>Solicitar este Pack Ahora</span>
+                            <a id="whatsapp-btn-back" href="#" target="_blank" class="w-full bg-emeraldAccent hover:bg-emeraldHover text-white font-bold py-3.5 px-6 rounded-lg text-center shadow-md transition-all flex items-center justify-center gap-2 text-sm md:text-base">
+                                <i data-lucide="message-square" class="w-4 h-4"></i>
+                                <span>Coordinar Entrevista Estratégica</span>
                             </a>
                         </div>
                     </div>
@@ -537,13 +519,12 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="max-w-6xl mx-auto w-full text-center py-4 text-xs text-gray-500">
+    <footer class="max-w-6xl mx-auto w-full text-center py-4 text-xs text-slate-400">
         © 2026 CHG Capital Humano Group. Todos los derechos reservados.
     </footer>
 
-    <!-- JAVASCRIPT LOGIC INTEGRADA Y CORREGIDA -->
+    <!-- JAVASCRIPT LOGIC INTEGRADA -->
     <script>
-        // ESTADO GLOBAL DEL FORMULARIO
         const formData = {
             companyName: '',
             contactName: '',
@@ -554,83 +535,81 @@
             recommendedPack: 'Pack 1: Esencial'
         };
 
-        // BASE DE DATOS DE PACKS E INDICADORES
         const packsDatabase = {
             'Pack 1: Esencial': {
-                tagline: 'Cimientos Firmes',
-                desc: 'Ideal para ordenar el área de personal, cumplir normativas legales y construir una base sólida.',
+                tagline: 'Base Operativa y Normativa',
+                desc: 'Asegura el cumplimiento legal, el orden administrativo y las primeras incorporaciones clave.',
                 features: [
-                    '<strong>Relevamiento de la empresa:</strong> Diagnóstico estratégico para detectar oportunidades clave.',
-                    '<strong>Cumplimiento normativo laboral:</strong> Auditoría e higiene legal para evitar contingencias.',
-                    '<strong>Reclutamiento & Selección:</strong> Incorporación de talento ideal con 3 meses de garantía.',
-                    '<strong>Exámenes preocupacionales:</strong> Gestión integral de turnos y aptitudes técnicas para legajo.',
-                    '<strong>Legajos y documentación digital:</strong> Arquitectura ordenada y segura en la nube.'
+                    '<strong>Diagnóstico Organizacional:</strong> Relevamiento inicial de procesos y estructura.',
+                    '<strong>Auditoría Laboral Preventiva:</strong> Verificación de normativas y mitigación de riesgos.',
+                    '<strong>Reclutamiento Estratégico:</strong> Selección con garantía de adaptación de 90 días.',
+                    '<strong>Gestión de Salud Occupacional:</strong> Coordinación de exámenes preocupacionales.',
+                    '<strong>Estructuración Digital de Legajos:</strong> Centralización segura de documentación.'
                 ],
                 entregables: [
-                    'Arquitectura de carpetas en la nube',
-                    'Legajos digitales estructurados',
-                    'Matriz RACI de roles y responsabilidades',
-                    'Minutas Aumentadas con plan de acción'
+                    'Arquitectura de carpetas digitales',
+                    'Legajos digitalizados y auditados',
+                    'Matriz de Responsabilidades (RACI)',
+                    'Informes de gestión ejecutiva'
                 ],
                 kpis: [
-                    'Semáforo Mensual de Riesgo Laboral',
-                    'Balance Operativo de Gestión',
+                    'Semáforo de Riesgo Laboral',
+                    'Balance Operativo de Búsquedas',
                     'Índice de Satisfacción (eNPS)',
                     'Tasa de Ausentismo y Rotación'
                 ]
             },
             'Pack 2: Evolución': {
-                tagline: 'Crecimiento y Estructura',
-                desc: 'Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.',
+                tagline: 'Estructura y Desarrollo',
+                desc: 'Soporte continuo para empresas que buscan profesionalizar el liderazgo y medir resultados.',
                 features: [
                     '<strong>Todo lo incluido en Pack Esencial</strong>',
-                    '<strong>Búsqueda con seguimiento:</strong> Acompañamiento inicial de desempeño.',
-                    '<strong>Capacitación mensual:</strong> 1 taller interactivo para tu equipo.',
-                    '<strong>Soporte directo:</strong> WhatsApp Libre y canal prioritario.',
-                    '<strong>Reunión estratégica:</strong> 1 visita o reunión mensual con líderes.'
+                    '<strong>Seguimiento de Integración:</strong> Evaluación de desempeño durante el periodo inicial.',
+                    '<strong>Plan de Capacitación:</strong> Talleres enfocados en mandos medios y gestión.',
+                    '<strong>Atención y Asesoría Prioritaria:</strong> Canal directo para consultas de gestión.',
+                    '<strong>Reunión Estratégica Mensual:</strong> Análisis de clima y avance con la dirección.'
                 ],
                 entregables: [
                     'Todo lo de Pack 1 incluido',
-                    'Manual de Funciones y Puestos',
+                    'Manual de Funciones y Descriptivos de Puesto',
                     'Evaluación de Desempeño Trimestral',
                     'Protocolos de Onboarding y Offboarding'
                 ],
                 kpis: [
-                    'Semáforo Mensual de Riesgo Laboral',
-                    'Balance Operativo de Gestión',
+                    'Semáforo de Riesgo Laboral',
+                    'Balance Operativo de Búsquedas',
                     'Índice de Satisfacción (eNPS)',
                     'Tasa de Ausentismo y Rotación',
-                    'Rendimiento por Competencias'
+                    'Matriz de Competencias y Desempeño'
                 ]
             },
             'Pack 3: Estratégico': {
-                tagline: 'Máximo Rendimiento',
-                desc: 'Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.',
+                tagline: 'Transformación y Alto Rendimiento',
+                desc: 'Integración completa para optimizar la cultura, retener el talento y maximizar el ROI.',
                 features: [
                     '<strong>Todo lo incluido en Packs 1 y 2</strong>',
-                    '<strong>Búsqueda ejecutiva/técnica:</strong> Garantía extendida de 90 días.',
-                    '<strong>Fidelización de talento:</strong> Programa intensivo de retención.',
-                    '<strong>Evaluaciones de Desempeño:</strong> Sistema 360° y medición de clima.',
-                    '<strong>Auditoría organizacional:</strong> Optimización de estructura orgánica.'
+                    '<strong>Búsquedas Ejecutivas de Alta Dirección:</strong> Garantía extendida.',
+                    '<strong>Estrategias de Retención de Talento:</strong> Programas de fidelización de personal clave.',
+                    '<strong>Sistema de Evaluación 360°:</strong> Medición integral del rendimiento organizativo.',
+                    '<strong>Rediseño Organizacional:</strong> Optimización de estructuras y procesos.'
                 ],
                 entregables: [
                     'Todo lo de Pack 1 y 2 incluido',
                     'Arquitectura Organizacional 360°',
                     'Plan de Carrera y Sucesión',
-                    'Auditoría Laboral Integral'
+                    'Auditoría y Rediseño de Procesos (BPMN)'
                 ],
                 kpis: [
-                    'Semáforo Mensual de Riesgo Laboral',
-                    'Balance Operativo de Gestión',
+                    'Semáforo de Riesgo Laboral',
+                    'Balance Operativo de Búsquedas',
                     'Índice de Satisfacción (eNPS)',
                     'Tasa de Ausentismo y Rotación',
-                    'Rendimiento por Competencias',
-                    'Retorno de Inversión en Talento (ROI)'
+                    'Matriz de Competencias y Desempeño',
+                    'Retorno de Inversión en Capital Humano (ROI)'
                 ]
             }
         };
 
-        // FUNCIONES DE SELECCIÓN DE RUBRO
         function selectIndustry(val, el) {
             const otherContainer = document.getElementById('other-industry-container');
             const otherInput = document.getElementById('other-industry-input');
@@ -676,7 +655,6 @@
             activeEl.classList.add('selected');
         }
 
-        // GIRO 3D (FLIP CARD)
         function flipCard() {
             const flipper = document.getElementById('card-flipper');
             if (!flipper) return;
@@ -691,24 +669,24 @@
                 if (contentArea && packData) {
                     let htmlContent = `
                         <div>
-                            <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-2 tracking-wider">Entregables de Gestión Organizacional:</p>
+                            <p class="text-xs uppercase font-bold text-emerald-400 mb-2 tracking-wider">Entregables Formales:</p>
                             <ul class="space-y-1.5">
                     `;
 
                     packData.entregables.forEach(item => {
-                        htmlContent += `<li class="text-xs md:text-sm text-gray-300 flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-emeraldGlow shrink-0 inline-block shadow-[0_0_8px_#10b981]"></span> <span>${item}</span></li>`;
+                        htmlContent += `<li class="text-xs md:text-sm text-slate-300 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span> <span>${item}</span></li>`;
                     });
 
                     htmlContent += `
                             </ul>
                         </div>
-                        <div class="pt-3 border-t border-gray-800">
-                            <p class="text-xs uppercase font-extrabold text-emeraldGlow mb-2 tracking-wider">Indicadores y Mediciones (KPIs):</p>
+                        <div class="pt-3 border-t border-slate-800">
+                            <p class="text-xs uppercase font-bold text-emerald-400 mb-2 tracking-wider">KPIs e Indicadores de Rendimiento:</p>
                             <ul class="space-y-1.5">
                     `;
 
                     packData.kpis.forEach(item => {
-                        htmlContent += `<li class="text-xs md:text-sm text-gray-300 flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-emeraldGlow shrink-0 inline-block shadow-[0_0_8px_#10b981]"></span> <span>${item}</span></li>`;
+                        htmlContent += `<li class="text-xs md:text-sm text-slate-300 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span> <span>${item}</span></li>`;
                     });
 
                     htmlContent += `</ul></div>`;
@@ -720,7 +698,6 @@
             flipper.classList.toggle('flipped');
         }
 
-        // CÁLCULO Y MOSTRAR RESULTADO
         function calculateRecommendation(e) {
             if (e) e.preventDefault();
 
@@ -738,9 +715,9 @@
 
             const packInfo = packsDatabase[formData.recommendedPack];
 
-            document.getElementById('res-company-name').innerText = formData.companyName || 'tu empresa';
-            document.getElementById('res-employees').innerText = formData.employees || 'No especificado';
-            document.getElementById('res-industry').innerText = formData.industry || 'No especificado';
+            document.getElementById('res-company-name').innerText = formData.companyName || 'su empresa';
+            document.getElementById('res-employees').innerText = formData.employees || 'Estructura no indicada';
+            document.getElementById('res-industry').innerText = formData.industry || 'Rubro no indicado';
 
             document.getElementById('res-pack-name').innerText = formData.recommendedPack;
             document.getElementById('res-pack-tagline').innerText = packInfo.tagline;
@@ -750,14 +727,14 @@
             const featEl = document.getElementById('res-features');
             if (featEl) {
                 featEl.innerHTML = packInfo.features.map(f => `
-                    <li class="flex items-start gap-3 bg-gray-800/40 p-2.5 rounded-xl border border-gray-800 hover:border-emerald-500/30 transition-all">
-                        <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emeraldGlow flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 border border-emerald-500/40">✓</span>
-                        <span class="leading-relaxed text-sm md:text-base">${f}</span>
+                    <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded border border-slate-800">
+                        <span class="text-emerald-400 font-bold text-xs shrink-0 mt-0.5">✓</span>
+                        <span class="leading-relaxed text-xs md:text-sm">${f}</span>
                     </li>
                 `).join('');
             }
 
-            const message = `Hola! Realicé el diagnóstico para ${formData.companyName || 'mi empresa'} (${formData.employees}, Rubro: ${formData.industry}) y el pack recomendado fue el ${formData.recommendedPack}. Me gustaría recibir más información.`;
+            const message = `Estimados, he completado la evaluación para ${formData.companyName || 'mi empresa'} (${formData.employees}, Sector: ${formData.industry}). La propuesta recomendada fue ${formData.recommendedPack}. Solicito el envío de la propuesta detallada.`;
             const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
             document.getElementById('whatsapp-btn').href = waUrl;
@@ -773,7 +750,6 @@
             }
         }
 
-        // INICIALIZACIÓN DE ÍCONOS VECTORIALES
         document.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) {
                 lucide.createIcons();

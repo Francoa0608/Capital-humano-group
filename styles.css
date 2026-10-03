@@ -1178,3 +1178,145 @@ button.btn-green:hover {
     font-weight: 700;
     letter-spacing: 2px;
 }
+/* ==========================================
+           DISEÑO VANGUARDISTA DE COMPARATIVA
+           ========================================== */
+        .vanguard-comparison {
+            padding: 100px 0;
+            background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.05) 0%, rgba(15, 23, 42, 1) 70%);
+            position: relative;
+        }
+
+        .vanguard-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .vanguard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .vanguard-card-wide {
+            grid-column: span 2;
+        }
+
+        .vanguard-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vanguard-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(52, 211, 153, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(52, 211, 153, 0.1);
+        }
+
+        .vanguard-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 15px;
+        }
+
+        .vanguard-icon-box {
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .vanguard-card-header h4 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .vanguard-split-body {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .vanguard-divider {
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.3) 0%, rgba(52, 211, 153, 0.3) 100%);
+        }
+
+        .vanguard-side {
+            padding: 10px;
+        }
+
+        .side-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .text-danger {
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.12);
+        }
+
+        .text-success {
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.12);
+        }
+
+        .vanguard-side p {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* RESPONSIVE EN MÓVILES */
+        @media (max-width: 900px) {
+            .vanguard-grid {
+                grid-template-columns: 1fr;
+            }
+            .vanguard-card-wide {
+                grid-column: span 1;
+            }
+            .vanguard-split-body {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .vanguard-divider {
+                width: 100%;
+                height: 1px;
+            }
+        }

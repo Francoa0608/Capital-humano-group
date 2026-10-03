@@ -1179,7 +1179,7 @@ button.btn-green:hover {
     letter-spacing: 2px;
 }
 /* ==========================================
-   ESTILO CARRUSEL 3D / COVERFLOW (EXACTO A LA IMAGEN)
+   ESTILO CARRUSEL 3D CON FLIP Y TÍTULO MASIVO
    ========================================== */
 .chg-carousel-section {
     padding: 120px 0;
@@ -1190,39 +1190,37 @@ button.btn-green:hover {
 }
 
 .chg-carousel-container {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 32px;
 }
 
-/* CABECERA CON TÍTULO MASIVO */
+/* CABECERA CON TÍTULO ENORME Y EN MAYÚSCULAS */
 .chg-carousel-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 }
 
 .chg-badge-top {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     color: #34d399;
     text-transform: uppercase;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
+/* TÍTULO MÁS DEL DOBLE DE TAMAÑO Y MAYÚSCULAS */
 .chg-hero-title {
-    font-size: 3.6rem;
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -2px;
+    font-size: 6.2rem;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    text-transform: uppercase;
     margin: 0;
-}
-
-.chg-hero-title span {
-    color: #ffffff;
 }
 
 .chg-hero-title .highlight {
@@ -1230,25 +1228,25 @@ button.btn-green:hover {
 }
 
 .header-right {
-    max-width: 380px;
+    max-width: 420px;
     text-align: right;
 }
 
 .header-right p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #94a3b8;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .btn-toggle-global {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #34d399;
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -1256,95 +1254,135 @@ button.btn-green:hover {
 .btn-toggle-global:hover {
     background: rgba(52, 211, 153, 0.15);
     border-color: #34d399;
+    transform: translateY(-2px);
 }
 
 /* ESCENARIO / STACK 3D */
 .chg-cards-stack {
     position: relative;
-    height: 440px;
+    height: 480px;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
+    perspective: 1200px;
     margin-bottom: 40px;
 }
 
-/* ESTRUCTURA BASE TARJETA 3D */
+/* ESTRUCTURA BASE DE TARJETA */
 .card-3d {
     position: absolute;
-    width: 480px;
-    background: rgba(18, 26, 43, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 36px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(20px);
+    width: 490px;
+    height: 430px;
+    perspective: 1000px;
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
     user-select: none;
 }
 
-/* POSICIONAMIENTO EN PROFUNDIDAD 3D */
+/* CONTENEDOR FLIPPER PARA GIRO 3D */
+.card-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+/* CLASE INVERTIDA DE GIRO 180 DEG */
+.card-3d.flipped .card-flipper {
+    transform: rotateY(180deg);
+}
+
+/* CARAS FRONTAL Y TRASERA */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 26, 43, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* POSICIONES DEL CARRUSEL EN PROFUNDIDAD */
 .card-3d.active {
     transform: translate3d(0, 0, 0) scale(1);
     z-index: 10;
     opacity: 1;
-    border-color: rgba(52, 211, 153, 0.4);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(52, 211, 153, 0.1);
+}
+
+.card-3d.active .card-front {
+    border-color: rgba(52, 211, 153, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(52, 211, 153, 0.15);
 }
 
 .card-3d.next {
-    transform: translate3d(240px, 0, -100px) scale(0.85);
+    transform: translate3d(260px, 0, -100px) scale(0.85);
     z-index: 5;
-    opacity: 0.4;
+    opacity: 0.35;
     filter: blur(1px);
 }
 
 .card-3d.prev {
-    transform: translate3d(-240px, 0, -100px) scale(0.85);
+    transform: translate3d(-260px, 0, -100px) scale(0.85);
     z-index: 5;
-    opacity: 0.4;
+    opacity: 0.35;
     filter: blur(1px);
 }
 
 .card-3d.far-next {
-    transform: translate3d(420px, 0, -200px) scale(0.7);
+    transform: translate3d(450px, 0, -200px) scale(0.7);
     z-index: 1;
     opacity: 0.15;
     filter: blur(3px);
 }
 
 .card-3d.far-prev {
-    transform: translate3d(-420px, 0, -200px) scale(0.7);
+    transform: translate3d(-450px, 0, -200px) scale(0.7);
     z-index: 1;
     opacity: 0.15;
     filter: blur(3px);
 }
 
-/* ELEMENTOS DE LA TARJETA */
+/* ELEMENTOS DENTRO DE LA TARJETA */
 .card-top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
 }
 
 .card-icon {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
-    background: rgba(52, 211, 153, 0.1);
+    background: rgba(52, 211, 153, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.card-icon.sin {
+    background: rgba(239, 68, 68, 0.12);
+}
+
 .mode-badge {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 1px;
-    padding: 4px 10px;
-    border-radius: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
 }
 
 .mode-badge.con {
@@ -1360,29 +1398,25 @@ button.btn-green:hover {
 }
 
 .card-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin: 0 0 16px 0;
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin: 12px 0 8px 0;
     color: #ffffff;
 }
 
-.card-body p {
+.card-text {
     font-size: 0.98rem;
     color: #cbd5e1;
     line-height: 1.6;
-    margin: 0 0 28px 0;
-    min-height: 72px;
-}
-
-.card-body p.hidden {
-    display: none;
+    margin: 0;
 }
 
 /* TAGS PILLS EN EL PIE DE TARJETA */
 .card-tags {
     display: flex;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-top: auto;
+    margin-bottom: 12px;
 }
 
 .tag-pill {
@@ -1396,6 +1430,11 @@ button.btn-green:hover {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+.tag-pill.sin {
+    background: rgba(239, 68, 68, 0.08);
+    color: #fca5a5;
 }
 
 .tag-pill.active-dot span {
@@ -1412,15 +1451,18 @@ button.btn-green:hover {
 }
 
 .card-link {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #34d399;
     cursor: pointer;
     transition: color 0.2s;
 }
 
+.card-link.sin {
+    color: #f87171;
+}
+
 .card-link:hover {
-    color: #6ee7b7;
     text-decoration: underline;
 }
 
@@ -1434,11 +1476,11 @@ button.btn-green:hover {
 }
 
 .arrow-btn {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: #ffffff;
     font-size: 1.2rem;
     cursor: pointer;
@@ -1453,7 +1495,7 @@ button.btn-green:hover {
 }
 
 .card-counter {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #ffffff;
     letter-spacing: 2px;
@@ -1463,17 +1505,27 @@ button.btn-green:hover {
     color: #64748b;
 }
 
-@media (max-width: 900px) {
+/* ADAPTACIÓN MOBILE / TABLET */
+@media (max-width: 1024px) {
+    .chg-hero-title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
     .chg-carousel-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 24px;
+    }
+    .chg-hero-title {
+        font-size: 3rem;
     }
     .header-right {
         text-align: left;
     }
     .card-3d {
         width: 320px;
-        padding: 24px;
+        height: 420px;
     }
 }

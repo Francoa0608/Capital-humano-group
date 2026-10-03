@@ -9,6 +9,157 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png?v=2">
     <link rel="shortcut icon" type="image/png" href="CHG_logo_fondo_transparente_final.png?v=2">
+    <style>
+        /* ESTILOS ADICIONALES PARA SERVICIOS EXTRAS Y FAQ */
+        .extra-btn {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            padding: 10px 0;
+        }
+
+        .extra-title-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .extra-icon {
+            font-size: 1.4rem;
+        }
+
+        .faq-btn .arrow {
+            transition: transform 0.3s ease;
+            color: var(--emerald-green);
+        }
+
+        .faq-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .extra-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .extra-intro {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            color: var(--white-soft);
+            line-height: 1.6;
+        }
+
+        .extra-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glow);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .extra-block h5 {
+            color: var(--emerald-green);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .extra-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .extra-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--white-soft);
+        }
+
+        .extra-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--emerald-green);
+            font-weight: bold;
+        }
+
+        .extra-grid-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .extra-grid-benefits.full-save {
+            grid-template-columns: 1fr;
+        }
+
+        .benefit-box {
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .benefit-box.win {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .benefit-box.save {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .benefit-box h6 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .benefit-box.win h6 { color: #34D399; }
+        .benefit-box.save h6 { color: #60A5FA; }
+
+        .benefit-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-box ul li {
+            font-size: 0.88rem;
+            color: var(--white-soft);
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .benefit-box.win ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34D399;
+        }
+
+        .benefit-box.save ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #60A5FA;
+        }
+
+        @media (max-width: 768px) {
+            .extra-grid-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -18,7 +169,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-container">
-        <a href="#" class="logo-container">
+        <a href="index.html" class="logo-container">
             <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="brand-logo-img">
             <div class="brand-text-group">
                 <span class="brand-title">CAPITAL HUMANO</span>
@@ -32,7 +183,7 @@
                 <li><a href="#extras">Servicios Extras</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank" class="btn-nav-outline">¡Postulate acá!</a></li>
-                <li><a href="pack-ideal.html" class="btn-primary btn-green">Descubrí tu pack ideal</a></li>
+                <li><a href="pack-ideal.html" class="btn-nav">Descubrí tu pack ideal</a></li>
             </ul>
         </div>
     </nav>
@@ -621,161 +772,59 @@
         </div>
     </section>
 
-    <!-- SECCIÓN BENEFICIOS: CON CHG VS SIN CHG -->
-<section class="max-w-6xl mx-auto w-full px-4 py-12">
-    <!-- ENCABEZADO DE SECCIÓN -->
-    <div class="text-center mb-10">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-950/60 border border-emerald-600/40 text-emerald-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
-            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i> Cuadro Comparativo
-        </div>
-        <h2 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-            Beneficios de Trabajar con Nosotros
-        </h2>
-        <p class="text-slate-300 text-sm md:text-base mt-2 max-w-2xl mx-auto">
-            Descubra el impacto real en la estabilidad, cultura y rendimiento económico de su empresa al contar con una gestión profesional de Capital Humano.
-        </p>
-    </div>
-
-    <!-- PANELES COMPARATIVOS (GRID DE 2 COLUMNAS) -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        
-        <!-- PANEL 1: CON CHG (POSITIVO Y DESTACADO) -->
-        <div class="bg-slate-900/90 backdrop-blur-md rounded-xl border-2 border-emerald-600/60 p-6 md:p-8 shadow-2xl relative flex flex-col justify-between">
-            
-            <div class="absolute -top-3.5 left-6 bg-emerald-600 text-white text-xs font-extrabold uppercase px-3 py-1 rounded shadow-md tracking-wider flex items-center gap-1.5">
-                <i data-lucide="check-circle-2" class="w-4 h-4"></i> CON CHG
+    <!-- PREGUNTAS FRECUENTES EXTENDIDAS -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos las dudas más habituales antes de comenzar a trabajar juntos.</p>
             </div>
-
-            <div class="space-y-6 pt-2">
-                <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">
-                    Gestión Profesional e Integral
-                </h3>
-
-                <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/40">
-                            <i data-lucide="check" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-white text-sm md:text-base block">Relevamiento Estratégico:</strong>
-                            <p class="text-slate-300 text-xs md:text-sm leading-relaxed mt-0.5">Análisis integral y conversación profunda sobre el funcionamiento de su empresa para identificar necesidades concretas y alcanzar el máximo rendimiento.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/40">
-                            <i data-lucide="check" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-white text-sm md:text-base block">Selección y Perfilado Ideal:</strong>
-                            <p class="text-slate-300 text-xs md:text-sm leading-relaxed mt-0.5">Relevamiento preciso de perfiles requeridos, verificación exhaustiva de referencias e historial laboral de cada candidato.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/40">
-                            <i data-lucide="check" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-white text-sm md:text-base block">Seguimiento y Adecuación:</strong>
-                            <p class="text-slate-300 text-xs md:text-sm leading-relaxed mt-0.5">Control directo de incorporación para asegurar una rápida y efectiva adaptación del colaborador al puesto y a la cultura de la empresa.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/40">
-                            <i data-lucide="check" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-white text-sm md:text-base block">Soporte Directo y Escucha Activa:</strong>
-                            <p class="text-slate-300 text-xs md:text-sm leading-relaxed mt-0.5">Comunicación constante con dueños y colaboradores. Una canalización formal para conectar, disipar rumores y reducir el ausentismo por estrés o desmotivación.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/40">
-                            <i data-lucide="check" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-white text-sm md:text-base block">Manual de Procedimientos:</strong>
-                            <p class="text-slate-300 text-xs md:text-sm leading-relaxed mt-0.5">Estandarización formal mediante un documento oficial que detalla el paso a paso de las tareas, unificando criterios en la operación diaria.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="pt-6 mt-6 border-t border-slate-800">
-                <a href="#calculator-form" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-lg text-center shadow-md transition-all flex items-center justify-center gap-2 text-sm">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                    <span>Optimizar Mi Organización Ahora</span>
-                </a>
+            <div class="faq-list">
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿Cómo se implementa el servicio en mi PyME?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">Realizamos una primera reunión de relevamiento para diagnosticar la situación actual y configurar las herramientas digitales rápidamente sin interrumpir tu operación diaria.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿Existe un tiempo mínimo de permanencia?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">No exigimos contratos a largo plazo. Trabajamos mediante un esquema de abono mensual renovable según los resultados brindados.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿Cómo miden el retorno de inversión (ROI) de la gestión de RRHH?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">Medimos el impacto económico a través de la reducción del ausentismo, la disminución de juicios o contingencias laborales, la aceleración en los tiempos de contratación y la mejora en la productividad del equipo.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿Qué sucede si un candidato seleccionado en una búsqueda no se adapta?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">Todos nuestros procesos de búsqueda incluyen garantía de reposición. Si el profesional no supera el período de prueba o desiste de su posición, iniciamos nuevamente el proceso sin costo adicional.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿El servicio abarca la liquidación de sueldos o solo la gestión operativa?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">Nos enfocamos en la gestión de personal, control de novedades y desarrollo estratégico de RRHH. Coordinamos y entregamos las novedades listas a tu estudio contable para la liquidación final.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿Puedo cambiar de Pack a medida que mi empresa crece?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">Totalmente. El modelo es 100% escalable. Podés iniciar con el Pack 1 Esencial y migrar al Pack 2 o 3 conforme cambien las necesidades de tu organización.</p>
+                    </div>
+                </div>
+                <div class="interactive-card faq-item">
+                    <button class="faq-btn extra-btn"><span>¿Cómo se maneja la confidencialidad de los datos de la empresa?</span> <span class="arrow">▾</span></button>
+                    <div class="faq-content extra-content">
+                        <p style="padding-top: 15px;">Firmamos un acuerdo de confidencialidad (NDA) antes de iniciar las operaciones. Toda la información y legajos digitales se almacenan en servidores seguros con permisos restringidos.</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- PANEL 2: SIN CHG (ADVERTENCIA Y RIESGOS) -->
-        <div class="bg-slate-900/60 backdrop-blur-md rounded-xl border border-rose-900/40 p-6 md:p-8 shadow-xl relative flex flex-col justify-between">
-            
-            <div class="absolute -top-3.5 left-6 bg-rose-950 border border-rose-700/60 text-rose-400 text-xs font-bold uppercase px-3 py-1 rounded shadow-md tracking-wider flex items-center gap-1.5">
-                <i data-lucide="x-circle" class="w-4 h-4"></i> SIN CHG
-            </div>
-
-            <div class="space-y-6 pt-2">
-                <h3 class="text-xl font-bold text-slate-300 border-b border-slate-800 pb-3">
-                    Riesgos e Improvisación Operativa
-                </h3>
-
-                <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 border border-rose-500/30">
-                            <i data-lucide="x" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-slate-200 text-sm md:text-base block">Falta de Diagnóstico Real:</strong>
-                            <p class="text-slate-400 text-xs md:text-sm leading-relaxed mt-0.5">Incorporación de perfiles no óptimos que generan una fuga constante de capital humano y recursos económicos.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 border border-rose-500/30">
-                            <i data-lucide="x" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-slate-200 text-sm md:text-base block">Rotación Continua y Renuncias:</strong>
-                            <p class="text-slate-400 text-xs md:text-sm leading-relaxed mt-0.5">Colaboradores que no encajan con las responsabilidades, derivando en renuncias frecuentes y pérdida permanente de conocimiento.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 border border-rose-500/30">
-                            <i data-lucide="x" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-slate-200 text-sm md:text-base block">Rumores y Conflicto Clima Laboral:</strong>
-                            <p class="text-slate-400 text-xs md:text-sm leading-relaxed mt-0.5">Sin un canal neutral de escucha, surgen pasillos informales (rumores en WhatsApp), escalando inquietudes individuales a conflictos colectivos y ausentismo por estrés.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 border border-rose-500/30">
-                            <i data-lucide="x" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <strong class="text-slate-200 text-sm md:text-base block">Ausencia de Manuales y Procesos:</strong>
-                            <p class="text-slate-400 text-xs md:text-sm leading-relaxed mt-0.5">El trabajo queda librado a la improvisación. Esto se traduce en altos costos operativos, pérdida de clientes y alta dependencia del tiempo del dueño.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="pt-6 mt-6 border-t border-slate-800/80">
-                <p class="text-xs text-slate-400 text-center italic">
-                    Evite los costos ocultos de la improvisación en la gestión de personas.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</section>
+    </section>
 
     <!-- FOOTER CORPORATIVO COMPLETO -->
     <footer class="footer">
@@ -868,25 +917,29 @@
 
         // EFECTO DE CURSOR VANGUARDISTA
         const glow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
+        if (glow) {
+            document.addEventListener('mousemove', (e) => {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
 
-        const interactives = document.querySelectorAll('a, button, .interactive-card');
-        interactives.forEach(el => {
-            el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
-            el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
-        });
+            const interactives = document.querySelectorAll('a, button, .interactive-card');
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
+                el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
+            });
+        }
 
         // ROTACIÓN AUTOMÁTICA DEL FONDO (SLIDER)
         const slides = document.querySelectorAll('.hero-slider .slide');
         let currentSlide = 0;
 
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            if (slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
         }
 
         setInterval(nextSlide, 5000);

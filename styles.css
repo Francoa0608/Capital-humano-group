@@ -1190,29 +1190,51 @@ button.btn-green:hover {
 }
 
 .chg-carousel-container {
-    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 20px;
 }
 
-/* CABECERA CON TÍTULO ENORME Y EN MAYÚSCULAS */
+/* Cabecera superior completa */
 .chg-carousel-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 70px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.chg-badge-top {
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    color: #34d399;
+.chg-hero-title {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -2px;
     text-transform: uppercase;
-    display: block;
-    margin-bottom: 16px;
+    margin-top: 15px;
 }
 
+.header-right {
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 20px;
+}
+
+/* Contenedor de las tarjetas centrado por debajo del título */
+.chg-cards-stack {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* TÍTULO MÁS DEL DOBLE DE TAMAÑO Y MAYÚSCULAS */
 .chg-hero-title {
     font-size: 6.2rem; /* Tamaño duplicado */

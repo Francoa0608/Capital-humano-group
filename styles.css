@@ -1187,7 +1187,7 @@ button.btn-green:hover {
     font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* ANCHO MÁXIMO AMPLIADO AL CASI DOBLE */
+/* ANCHO MÁXIMO AMPLIADO */
 .editorial-container-xl {
     max-width: 1440px;
     margin: 0 auto;
@@ -1214,7 +1214,7 @@ button.btn-green:hover {
 }
 
 .editorial-main-title {
-    font-size: 4.8rem; /* Tipografía monumental */
+    font-size: 4.8rem;
     font-weight: 800;
     color: #ffffff;
     line-height: 1.04;
@@ -1253,12 +1253,12 @@ button.btn-green:hover {
 }
 
 .matrix-card-xl {
-    padding: 65px 48px; /* Doble de espacio interno */
+    padding: 65px 48px;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: background 0.4s ease, transform 0.4s ease;
+    transition: background 0.4s ease;
 }
 
 .matrix-card-xl:last-child {
@@ -1269,12 +1269,12 @@ button.btn-green:hover {
     background: rgba(30, 41, 59, 0.45);
 }
 
-/* ANCLANES / NODOS SUPERIORES AGRANDADOS */
+/* NODOS SUPERIORES AGRANDADOS */
 .matrix-node-xl {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 45px;
 }
 
 .node-ring.red {
@@ -1307,15 +1307,15 @@ button.btn-green:hover {
 .matrix-content-xl {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
 }
 
 .matrix-state h4 {
-    font-size: 1.5rem; /* Títulos de tarjeta más grandes */
+    font-size: 1.45rem;
     font-weight: 700;
     color: #ffffff;
-    margin: 0 0 14px 0;
-    line-height: 1.25;
+    margin: 12px 0 12px 0;
+    line-height: 1.28;
 }
 
 .matrix-state.vulnerable h4 {
@@ -1323,10 +1323,14 @@ button.btn-green:hover {
 }
 
 .matrix-state p {
-    font-size: 1.05rem; /* Párrafos leíbles y amplios */
+    font-size: 1.02rem;
     color: #94a3b8;
     line-height: 1.65;
     margin: 0;
+}
+
+.matrix-state p.sub-paragraph {
+    margin-top: 12px;
 }
 
 .matrix-divider-xl {
@@ -1335,6 +1339,7 @@ button.btn-green:hover {
     margin: 10px 0;
 }
 
+/* BADGES / PILLS STATUS */
 .status-pill-xl {
     display: inline-block;
     font-size: 0.72rem;
@@ -1342,10 +1347,18 @@ button.btn-green:hover {
     letter-spacing: 1.2px;
     padding: 5px 12px;
     border-radius: 6px;
+}
+
+.status-pill-xl.sin-chg {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-pill-xl.con-chg {
     background: rgba(52, 211, 153, 0.12);
     color: #34d399;
     border: 1px solid rgba(52, 211, 153, 0.3);
-    margin-bottom: 16px;
 }
 
 .matrix-state.optimal p {

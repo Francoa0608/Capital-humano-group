@@ -582,129 +582,157 @@
         </div>
     </section>
 
-  <!-- SECCIÓN BENEFICIOS CHG - GRILLA 5 PUNTOS -->
-<section id="beneficios-chg" class="chg-benefits-section">
-    <div class="chg-container">
+  <!-- SECCIÓN CARRUSEL 3D / COVERFLOW DE SERVICIOS CHG -->
+<section id="servicios-chg" class="chg-carousel-section">
+    <div class="chg-carousel-container">
         
-        <!-- CABECERA DE IMPACTO EDITORIAL -->
-        <div class="chg-header">
-            <div class="chg-header-left">
-                <span class="chg-badge">BENEFICIOS DE TRABAJAR CON NOSOTROS</span>
-                <h2 class="chg-main-title">
-                    Cuando la empresa crece, <br>
-                    <span>la gestión tiene que evolucionar.</span>
+        <!-- CABECERA DE IMPACTO -->
+        <div class="chg-carousel-header">
+            <div class="header-left">
+                <span class="chg-badge-top">BENEFICIOS DE TRABAJAR CON NOSOTROS</span>
+                <h2 class="chg-hero-title">
+                    mover <br>
+                    <span>tu empresa</span> hacia <br>
+                    <span class="highlight">adelante.</span>
                 </h2>
             </div>
-            <div class="chg-header-right">
-                <p>Muchas organizaciones no tienen un único problema: tienen señales conectadas. Nuestra mirada integral permite encontrar la causa raíz, ordenar prioridades y actuar con claridad.</p>
-                <div class="chg-subtitle">¿Reconocés alguna de estas situaciones en tu empresa?</div>
+            <div class="header-right">
+                <p>Intervenimos donde el negocio lo necesita, con especialistas, metodología y foco en resultados reales que se puedan medir.</p>
+                <button class="btn-toggle-global" onclick="toggleAllCardsState()">Alternar Vista: CON / SIN CHG</button>
             </div>
         </div>
 
-        <!-- GRILLA MATRIZ DE 5 TARJETAS INDEPENDIENTES -->
-        <div class="chg-grid-matrix">
+        <!-- STACK DE TARJETAS CARRUSEL 3D -->
+        <div class="chg-cards-stack" id="cardsStack">
             
             <!-- TARJETA 1 -->
-            <div class="chg-card">
-                <div class="chg-node">
-                    <span class="chg-dot"></span>
-                    <span class="chg-num">01</span>
+            <div class="card-3d active" data-index="0" onclick="setActiveCard(0)">
+                <div class="card-top-bar">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+                    </div>
+                    <span class="mode-badge con">CON CHG</span>
                 </div>
-                <h3 class="chg-card-title">Relevamiento de tu empresa</h3>
-                
-                <div class="chg-comparison">
-                    <div class="chg-block con">
-                        <span class="tag green">CON CHG</span>
-                        <p>Análisis integral y conversación profunda sobre el funcionamiento e identificar diferentes necesidades para juntos alcanzar el máximo rendimiento.</p>
-                    </div>
-                    <div class="chg-block sin">
-                        <span class="tag red">SIN CHG</span>
-                        <p>Sin relevamiento exhaustivo de tu empresa. Tenemos perfiles que no son óptimos ni necesarios para el crecimiento generando una disminución y pérdida del flujo del capital humano y económico de tu empresa.</p>
-                    </div>
+                <h3 class="card-title">Relevamiento de tu empresa</h3>
+                <div class="card-body">
+                    <p class="desc-con">Análisis integral y conversación profunda sobre el funcionamiento e identificar diferentes necesidades para juntos alcanzar el máximo rendimiento.</p>
+                    <p class="desc-sin hidden">Sin relevamiento exhaustivo. Perfiles no óptimos ni necesarios para el crecimiento, generando una pérdida constante del flujo de capital humano y económico.</p>
+                </div>
+                <div class="card-tags">
+                    <span class="tag-pill">DIAGNÓSTICO</span>
+                    <span class="tag-pill">RENDIMIENTO</span>
+                    <span class="tag-pill active-dot"><span></span>INTEGRAL</span>
+                </div>
+                <div class="card-footer">
+                    <span class="card-link" onclick="toggleCardMode(event, this)">Ver versión SIN CHG &rarr;</span>
                 </div>
             </div>
 
             <!-- TARJETA 2 -->
-            <div class="chg-card">
-                <div class="chg-node">
-                    <span class="chg-dot"></span>
-                    <span class="chg-num">02</span>
+            <div class="card-3d next" data-index="1" onclick="setActiveCard(1)">
+                <div class="card-top-bar">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <span class="mode-badge con">CON CHG</span>
                 </div>
-                <h3 class="chg-card-title">Selección de personal</h3>
-                
-                <div class="chg-comparison">
-                    <div class="chg-block con">
-                        <span class="tag green">CON CHG</span>
-                        <p>Relevamiento de perfiles ideales para el puesto requerido, con referencias verificadas y chequeo del historial laboral.</p>
-                    </div>
-                    <div class="chg-block sin">
-                        <span class="tag red">SIN CHG</span>
-                        <p>Colaboradores que no se adaptan al puesto requerido, en consecuencia tenemos rotación infinita de colaboradores.</p>
-                    </div>
+                <h3 class="card-title">Selección de personal</h3>
+                <div class="card-body">
+                    <p class="desc-con">Relevamiento de perfiles ideales para el puesto requerido, con referencias verificadas y chequeo profundo del historial laboral.</p>
+                    <p class="desc-sin hidden">Colaboradores que no se adaptan al puesto requerido, derivando en una rotación infinita de personal en la empresa.</p>
+                </div>
+                <div class="card-tags">
+                    <span class="tag-pill">TALENTO</span>
+                    <span class="tag-pill">PERFILES</span>
+                    <span class="tag-pill active-dot"><span></span>GARANTÍA</span>
+                </div>
+                <div class="card-footer">
+                    <span class="card-link" onclick="toggleCardMode(event, this)">Ver versión SIN CHG &rarr;</span>
                 </div>
             </div>
 
             <!-- TARJETA 3 -->
-            <div class="chg-card">
-                <div class="chg-node">
-                    <span class="chg-dot"></span>
-                    <span class="chg-num">03</span>
+            <div class="card-3d far-next" data-index="2" onclick="setActiveCard(2)">
+                <div class="card-top-bar">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <span class="mode-badge con">CON CHG</span>
                 </div>
-                <h3 class="chg-card-title">Control de seguimiento</h3>
-                
-                <div class="chg-comparison">
-                    <div class="chg-block con">
-                        <span class="tag green">CON CHG</span>
-                        <p>Acompañamiento continuo del colaborador logrando una rápida y correcta adecuación al puesto y a la empresa.</p>
-                    </div>
-                    <div class="chg-block sin">
-                        <span class="tag red">SIN CHG</span>
-                        <p>No adaptación al puesto, colaborador que renuncia y constante pérdida de capital humano.</p>
-                    </div>
+                <h3 class="card-title">Control de seguimiento</h3>
+                <div class="card-body">
+                    <p class="desc-con">Control y seguimiento continuo del colaborador logrando una rápida y efectiva adecuación al puesto y a la cultura de la empresa.</p>
+                    <p class="desc-sin hidden">No adaptación al puesto, colaborador que renuncia a los pocos meses y constante pérdida irreversible de capital humano.</p>
+                </div>
+                <div class="card-tags">
+                    <span class="tag-pill">ADAPTACIÓN</span>
+                    <span class="tag-pill">CULTURA</span>
+                    <span class="tag-pill active-dot"><span></span>RETENCIÓN</span>
+                </div>
+                <div class="card-footer">
+                    <span class="card-link" onclick="toggleCardMode(event, this)">Ver versión SIN CHG &rarr;</span>
                 </div>
             </div>
 
             <!-- TARJETA 4 -->
-            <div class="chg-card">
-                <div class="chg-node">
-                    <span class="chg-dot"></span>
-                    <span class="chg-num">04</span>
+            <div class="card-3d far-prev" data-index="3" onclick="setActiveCard(3)">
+                <div class="card-top-bar">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <span class="mode-badge con">CON CHG</span>
                 </div>
-                <h3 class="chg-card-title">Soporte directo y escucha activa</h3>
-                
-                <div class="chg-comparison">
-                    <div class="chg-block con">
-                        <span class="tag green">CON CHG</span>
-                        <p>Comunicación constante con dueños y colaboradores. La escucha activa como herramienta de liderazgo para conectar, disipar rumores y reducir ausentismo por estrés o desmotivación.</p>
-                    </div>
-                    <div class="chg-block sin">
-                        <span class="tag red">SIN CHG</span>
-                        <p>Ausencia de un canal neutral y profesional. Al no contar con un espacio confidencial se opta por el rumor (WhatsApp, pasillos), escalando a conflictos colectivos, mal clima laboral y ausentismo por estrés.</p>
-                    </div>
+                <h3 class="card-title">Soporte directo y escucha activa</h3>
+                <div class="card-body">
+                    <p class="desc-con">Comunicación constante con dueños y colaboradores. La escucha activa como herramienta de liderazgo para conectar, disipar rumores y reducir ausentismo.</p>
+                    <p class="desc-sin hidden">Sin canal neutral, el colaborador opta por el silencio y el rumor (WhatsApp/pasillos), provocando conflictos colectivos y ausentismo por estrés.</p>
+                </div>
+                <div class="card-tags">
+                    <span class="tag-pill">COMUNICACIÓN</span>
+                    <span class="tag-pill">CLIMA</span>
+                    <span class="tag-pill active-dot"><span></span>SOPORTE</span>
+                </div>
+                <div class="card-footer">
+                    <span class="card-link" onclick="toggleCardMode(event, this)">Ver versión SIN CHG &rarr;</span>
                 </div>
             </div>
 
             <!-- TARJETA 5 -->
-            <div class="chg-card">
-                <div class="chg-node">
-                    <span class="chg-dot"></span>
-                    <span class="chg-num">05</span>
+            <div class="card-3d prev" data-index="4" onclick="setActiveCard(4)">
+                <div class="card-top-bar">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <span class="mode-badge con">CON CHG</span>
                 </div>
-                <h3 class="chg-card-title">Elaboración del Manual de procedimientos</h3>
-                
-                <div class="chg-comparison">
-                    <div class="chg-block con">
-                        <span class="tag green">CON CHG</span>
-                        <p>Estandarización mediante un documento oficial que detalla de forma ordenada y sistemática cómo seguir las tareas y un orden unificando criterios en la labor diaria.</p>
-                    </div>
-                    <div class="chg-block sin">
-                        <span class="tag red">SIN CHG</span>
-                        <p>Sin manual, la organización carece de estructura. El trabajo queda librado a la improvisación diaria, lo que se traduce en costos operativos, pérdida de clientes y alta dependencia del tiempo del titular.</p>
-                    </div>
+                <h3 class="card-title">Manual de procedimientos</h3>
+                <div class="card-body">
+                    <p class="desc-con">Estandarización mediante un documento oficial que detalla de forma ordenada y sistemática cómo seguir las tareas, unificando criterios diarios.</p>
+                    <p class="desc-sin hidden">Sin manual, el trabajo queda a la improvisación. Genera sobrecostos operativos, pérdida de clientes y alta dependencia del tiempo del titular.</p>
+                </div>
+                <div class="card-tags">
+                    <span class="tag-pill">PROCESOS</span>
+                    <span class="tag-pill">ORDEN</span>
+                    <span class="tag-pill active-dot"><span></span>AUTONOMÍA</span>
+                </div>
+                <div class="card-footer">
+                    <span class="card-link" onclick="toggleCardMode(event, this)">Ver versión SIN CHG &rarr;</span>
                 </div>
             </div>
 
         </div>
+
+        <!-- CONTROLES Y PAGINACIÓN DEL PIE -->
+        <div class="carousel-controls">
+            <div class="nav-arrows">
+                <button class="arrow-btn" onclick="prevCard()">&larr;</button>
+                <button class="arrow-btn" onclick="nextCard()">&rarr;</button>
+            </div>
+            <div class="card-counter">
+                <span id="currentCardNum">01</span> / <span class="total-num">05</span>
+            </div>
+        </div>
+
     </div>
 </section>
     <!-- SECCIÓN SERVICIOS EXTRAS -->

@@ -591,16 +591,11 @@
             <div class="header-left">
                 <span class="chg-badge-top">BENEFICIOS DE TRABAJAR CON NOSOTROS</span>
                 <h2 class="chg-hero-title">
-                    mover <br>
-                    <span>tu empresa</span> hacia <br>
-                    <span class="highlight">adelante.</span>
+                    MOVER <br>
+                    TU EMPRESA <br>
+                    HACIA <span class="highlight">ADELANTE.</span>
                 </h2>
             </div>
-            <div class="header-right">
-                <p>Intervenimos donde el negocio lo necesita, con especialistas, metodología y foco en resultados reales que se puedan medir.</p>
-                <button class="btn-toggle-global" onclick="toggleAllCardsState()">Alternar Vista: CON / SIN CHG</button>
-            </div>
-        </div>
 
         <!-- STACK DE TARJETAS CARRUSEL 3D CON FLIP FRONT/BACK -->
         <div class="chg-cards-stack" id="cardsStack">
@@ -1274,72 +1269,115 @@
 
         setInterval(nextSlide, 5000);
     </script>
-    <!-- Código JavaScript integrado -->
+<!-- Código JavaScript integrado (Carrusel 3D + Autoplay 5s) -->
     <script>
       let currentCardIndex = 0;
-        const totalCards = 5;
-        
-        function updateCarousel() {
-            const cards = document.querySelectorAll('.card-3d');
-            
-            cards.forEach((card, idx) => {
-                // Mantener el estado de giro al cambiar de posición
-                const isFlipped = card.classList.contains('flipped');
-                card.className = 'card-3d' + (isFlipped ? ' flipped' : '');
-                
-                let diff = (idx - currentCardIndex + totalCards) % totalCards;
-                
-                if (diff === 0) {
-                    card.classList.add('active');
-                } else if (diff === 1) {
-                    card.classList.add('next');
-                } else if (diff === 2) {
-                    card.classList.add('far-next');
-                } else if (diff === totalCards - 1) {
-                    card.classList.add('prev');
-                } else if (diff === totalCards - 2) {
-                    card.classList.add('far-prev');
-                }
-            });
-        
-            // Contador con formato 01, 02...
-            document.getElementById('currentCardNum').textContent = `0${currentCardIndex + 1}`;
-        }
-        
-        function nextCard() {
-            currentCardIndex = (currentCardIndex + 1) % totalCards;
-            updateCarousel();
-        }
-        
-        function prevCard() {
-            currentCardIndex = (currentCardIndex - 1 + totalCards) % totalCards;
-            updateCarousel();
-        }
-        
-        function setActiveCard(index) {
-            currentCardIndex = index;
-            updateCarousel();
-        }
-        
-        // Giro 3D individual de la tarjeta
-        function toggleCardMode(event, element) {
-            event.stopPropagation();
-            const card = element.closest('.card-3d');
-            card.classList.toggle('flipped');
-        }
-        
-        // Giro 3D de todas las tarjetas globalmente
-        let isGlobalSin = false;
-        function toggleAllCardsState() {
-            isGlobalSin = !isGlobalSin;
-            document.querySelectorAll('.card-3d').forEach(card => {
-                if (isGlobalSin) {
-                    card.classList.add('flipped');
-                } else {
-                    card.classList.remove('flipped');
-                }
-            });
-        }
+      const totalCards = 5;
+      const AUTO_PLAY_INTERVAL = 5000; // 5 segundos
+      let autoPlayTimer = null;
+
+      function updateCarousel() {
+          const cards = document.querySelectorAll('.card-3d');
+          
+          cards.forEach((card, idx) => {
+              // Preservar la rotación FLIP si la tarjeta ya estaba girada
+              const isFlipped = card.classList.contains('flipped');
+              card.className = 'card-3d' + (isFlipped ? ' flipped' : '');
+              
+              let diff = (idx - currentCardIndex + totalCards) % totalCards;
+              
+              if (diff === 0) {
+                  card.classList.add('active');
+              } else if (diff === 1) {
+                  card.classList.add('next');
+              } else if (diff === 2) {
+                  card.classList.add('far-next');
+              } else if (diff === totalCards - 1) {
+                  card.classList.add('prev');
+              } else if (diff === totalCards - 2) {
+                  card.classList.add('far-prev');
+              }
+          });
+
+          // Contador con formato 01, 02...
+          const counterEl = document.getElementById('currentCardNum');
+          if (counterEl) {
+              counterEl.textContent = `0${currentCardIndex + 1}`;
+          }
+      }
+
+      function nextCard() {
+          currentCardIndex = (currentCardIndex + 1) % totalCards;
+          updateCarousel();
+      }
+
+      function prevCard() {
+          currentCardIndex = (currentCardIndex - 1 + totalCards) % totalCards;
+          updateCarousel();
+      }
+
+      function setActiveCard(index) {
+          currentCardIndex = index;
+          updateCarousel();
+          resetAutoPlay();
+      }
+
+      // Giro 3D individual de la tarjeta
+      function toggleCardMode(event, element) {
+          event.stopPropagation();
+          const card = element.closest('.card-3d');
+          if (card) {
+              card.classList.toggle('flipped');
+          }
+          resetAutoPlay();
+      }
+
+      // Giro 3D de todas las tarjetas globalmente
+      let isGlobalSin = false;
+      function toggleAllCardsState() {
+          isGlobalSin = !isGlobalSin;
+          document.querySelectorAll('.card-3d').forEach(card => {
+              if (isGlobalSin) {
+                  card.classList.add('flipped');
+              } else {
+                  card.classList.remove('flipped');
+              }
+          });
+          resetAutoPlay();
+      }
+
+      // --- AUTOPLAY (Paso automático) ---
+      function startAutoPlay() {
+          stopAutoPlay();
+          autoPlayTimer = setInterval(() => {
+              nextCard();
+          }, AUTO_PLAY_INTERVAL);
+      }
+
+      function stopAutoPlay() {
+          if (autoPlayTimer) {
+              clearInterval(autoPlayTimer);
+              autoPlayTimer = null;
+          }
+      }
+
+      function resetAutoPlay() {
+          stopAutoPlay();
+          startAutoPlay();
+      }
+
+      // Iniciar el carrusel y temporizador al cargar la página
+      document.addEventListener('DOMContentLoaded', () => {
+          updateCarousel();
+          startAutoPlay();
+
+          // Pausar reproducción si el usuario pone el mouse sobre el carrusel
+          const carouselContainer = document.querySelector('.chg-carousel-container');
+          if (carouselContainer) {
+              carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+              carouselContainer.addEventListener('mouseleave', startAutoPlay);
+          }
+      });
     </script>
 </body>
 </html>

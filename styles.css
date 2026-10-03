@@ -1179,188 +1179,301 @@ button.btn-green:hover {
     letter-spacing: 2px;
 }
 /* ==========================================
-   SECCIÓN BENEFICIOS CHG - LIMPICIA Y ESPACIO
+   ESTILO CARRUSEL 3D / COVERFLOW (EXACTO A LA IMAGEN)
    ========================================== */
-.chg-benefits-section {
+.chg-carousel-section {
     padding: 120px 0;
-    background-color: transparent;
+    background-color: #0b0f19;
+    color: #ffffff;
     font-family: system-ui, -apple-system, sans-serif;
+    overflow: hidden;
 }
 
-.chg-container {
-    max-width: 1380px;
+.chg-carousel-container {
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 32px;
 }
 
-/* ENCABEZADO */
-.chg-header {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 60px;
+/* CABECERA CON TÍTULO MASIVO */
+.chg-carousel-header {
+    display: flex;
+    justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 }
 
-.chg-badge {
-    font-size: 0.8rem;
+.chg-badge-top {
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 2px;
     color: #34d399;
     text-transform: uppercase;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
 }
 
-.chg-main-title {
-    font-size: 3.8rem;
+.chg-hero-title {
+    font-size: 3.6rem;
     font-weight: 800;
-    color: #ffffff;
-    line-height: 1.08;
+    line-height: 1.05;
     letter-spacing: -2px;
     margin: 0;
 }
 
-.chg-main-title span {
+.chg-hero-title span {
+    color: #ffffff;
+}
+
+.chg-hero-title .highlight {
     color: #34d399;
 }
 
-.chg-header-right p {
-    font-size: 1.1rem;
+.header-right {
+    max-width: 380px;
+    text-align: right;
+}
+
+.header-right p {
+    font-size: 0.95rem;
     color: #94a3b8;
-    line-height: 1.65;
-    margin: 0 0 20px 0;
-}
-
-.chg-subtitle {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #34d399;
-}
-
-/* GRILLA FLEXIBLE DE 3 Y 2 COLUMNAS (AL ESTILO BENTO / EJEMPLO) */
-.chg-grid-matrix {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-/* TARJETA INDIVIDUAL */
-.chg-card {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 36px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    backdrop-filter: blur(12px);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.chg-card:hover {
-    border-color: rgba(52, 211, 153, 0.4);
-    transform: translateY(-3px);
-}
-
-/* NODOS ARRIBA DE CADA CARD */
-.chg-node {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.chg-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #34d399;
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
-}
-
-.chg-num {
+.btn-toggle-global {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #34d399;
+    padding: 10px 18px;
+    border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 800;
-    color: #64748b;
-    letter-spacing: 1px;
-}
-
-.chg-card-title {
-    font-size: 1.35rem;
     font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 28px 0;
-    line-height: 1.25;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* BLOQUES COMPARATIVOS CON Y SIN CHG */
-.chg-comparison {
+.btn-toggle-global:hover {
+    background: rgba(52, 211, 153, 0.15);
+    border-color: #34d399;
+}
+
+/* ESCENARIO / STACK 3D */
+.chg-cards-stack {
+    position: relative;
+    height: 440px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    margin-bottom: 40px;
 }
 
-.chg-block {
+/* ESTRUCTURA BASE TARJETA 3D */
+.card-3d {
+    position: absolute;
+    width: 480px;
+    background: rgba(18, 26, 43, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* POSICIONAMIENTO EN PROFUNDIDAD 3D */
+.card-3d.active {
+    transform: translate3d(0, 0, 0) scale(1);
+    z-index: 10;
+    opacity: 1;
+    border-color: rgba(52, 211, 153, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(52, 211, 153, 0.1);
+}
+
+.card-3d.next {
+    transform: translate3d(240px, 0, -100px) scale(0.85);
+    z-index: 5;
+    opacity: 0.4;
+    filter: blur(1px);
+}
+
+.card-3d.prev {
+    transform: translate3d(-240px, 0, -100px) scale(0.85);
+    z-index: 5;
+    opacity: 0.4;
+    filter: blur(1px);
+}
+
+.card-3d.far-next {
+    transform: translate3d(420px, 0, -200px) scale(0.7);
+    z-index: 1;
+    opacity: 0.15;
+    filter: blur(3px);
+}
+
+.card-3d.far-prev {
+    transform: translate3d(-420px, 0, -200px) scale(0.7);
+    z-index: 1;
+    opacity: 0.15;
+    filter: blur(3px);
+}
+
+/* ELEMENTOS DE LA TARJETA */
+.card-top-bar {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
 }
 
-.tag {
-    align-self: flex-start;
-    font-size: 0.68rem;
+.card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(52, 211, 153, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-badge {
+    font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 1px;
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
 }
 
-.tag.green {
-    background: rgba(52, 211, 153, 0.12);
+.mode-badge.con {
+    background: rgba(52, 211, 153, 0.15);
     color: #34d399;
     border: 1px solid rgba(52, 211, 153, 0.3);
 }
 
-.tag.red {
-    background: rgba(239, 68, 68, 0.12);
+.mode-badge.sin {
+    background: rgba(239, 68, 68, 0.15);
     color: #f87171;
     border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.chg-block p {
-    font-size: 0.93rem;
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: #ffffff;
+}
+
+.card-body p {
+    font-size: 0.98rem;
+    color: #cbd5e1;
     line-height: 1.6;
-    margin: 0;
+    margin: 0 0 28px 0;
+    min-height: 72px;
 }
 
-.chg-block.con p {
-    color: #e2e8f0;
+.card-body p.hidden {
+    display: none;
 }
 
-.chg-block.sin p {
+/* TAGS PILLS EN EL PIE DE TARJETA */
+.card-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tag-pill {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
     color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-    .chg-grid-matrix {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .chg-main-title {
-        font-size: 3rem;
-    }
+.tag-pill.active-dot span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399;
 }
 
-@media (max-width: 768px) {
-    .chg-header {
-        grid-template-columns: 1fr;
-        gap: 24px;
+.card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 16px;
+    text-align: right;
+}
+
+.card-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #34d399;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.card-link:hover {
+    color: #6ee7b7;
+    text-decoration: underline;
+}
+
+/* CONTROLES NAVEGACIÓN EN PIE */
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.arrow-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.arrow-btn:hover {
+    background: rgba(52, 211, 153, 0.2);
+    border-color: #34d399;
+    color: #34d399;
+}
+
+.card-counter {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.card-counter .total-num {
+    color: #64748b;
+}
+
+@media (max-width: 900px) {
+    .chg-carousel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
     }
-    .chg-grid-matrix {
-        grid-template-columns: 1fr;
+    .header-right {
+        text-align: left;
     }
-    .chg-main-title {
-        font-size: 2.3rem;
+    .card-3d {
+        width: 320px;
+        padding: 24px;
     }
 }

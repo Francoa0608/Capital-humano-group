@@ -1179,210 +1179,188 @@ button.btn-green:hover {
     letter-spacing: 2px;
 }
 /* ==========================================
-   SECCIÓN EDITORIAL DE ESCALA MONUMENTAL (XXL)
+   SECCIÓN BENEFICIOS CHG - LIMPICIA Y ESPACIO
    ========================================== */
-.vanguard-editorial-section.hero-scale {
-    padding: 160px 0;
+.chg-benefits-section {
+    padding: 120px 0;
     background-color: transparent;
     font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* ANCHO MÁXIMO AMPLIADO */
-.editorial-container-xl {
-    max-width: 1440px;
+.chg-container {
+    max-width: 1380px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 32px;
 }
 
-/* CABECERA GIGANTE */
-.editorial-header-grid {
+/* ENCABEZADO */
+.chg-header {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
     align-items: flex-end;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
 }
 
-.vanguard-badge-editorial {
-    font-size: 0.85rem;
+.chg-badge {
+    font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 2px;
     color: #34d399;
     text-transform: uppercase;
     display: block;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
-.editorial-main-title {
-    font-size: 4.8rem;
+.chg-main-title {
+    font-size: 3.8rem;
     font-weight: 800;
     color: #ffffff;
-    line-height: 1.04;
-    letter-spacing: -2.5px;
+    line-height: 1.08;
+    letter-spacing: -2px;
     margin: 0;
 }
 
-.editorial-main-title span {
+.chg-main-title span {
     color: #34d399;
 }
 
-.lead-paragraph {
-    font-size: 1.25rem;
+.chg-header-right p {
+    font-size: 1.1rem;
     color: #94a3b8;
-    line-height: 1.7;
-    margin: 0 0 32px 0;
+    line-height: 1.65;
+    margin: 0 0 20px 0;
 }
 
-.editorial-tagline {
-    font-size: 1.05rem;
+.chg-subtitle {
+    font-size: 1rem;
     font-weight: 700;
     color: #34d399;
-    letter-spacing: 0.3px;
 }
 
-/* MATRIZ GIGANTE UNIFICADA */
-.editorial-matrix-xl {
+/* GRILLA FLEXIBLE DE 3 Y 2 COLUMNAS (AL ESTILO BENTO / EJEMPLO) */
+.chg-grid-matrix {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background: rgba(15, 23, 42, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 32px;
-    overflow: hidden;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+    gap: 24px;
 }
 
-.matrix-card-xl {
-    padding: 65px 48px;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+/* TARJETA INDIVIDUAL */
+.chg-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 36px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: background 0.4s ease;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.matrix-card-xl:last-child {
-    border-right: none;
+.chg-card:hover {
+    border-color: rgba(52, 211, 153, 0.4);
+    transform: translateY(-3px);
 }
 
-.matrix-card-xl:hover {
-    background: rgba(30, 41, 59, 0.45);
-}
-
-/* NODOS SUPERIORES AGRANDADOS */
-.matrix-node-xl {
+/* NODOS ARRIBA DE CADA CARD */
+.chg-node {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 45px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.node-ring.red {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 1px solid rgba(239, 68, 68, 0.4);
-    background: rgba(239, 68, 68, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.node-dot-xl {
+.chg-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #ef4444;
-    box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
+    background: #34d399;
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
 }
 
-.node-label-xl {
-    font-size: 0.85rem;
+.chg-num {
+    font-size: 0.8rem;
     font-weight: 800;
-    letter-spacing: 1.5px;
     color: #64748b;
+    letter-spacing: 1px;
 }
 
-/* CONTENIDOS Y TÍTULOS DENTRO DE LA TARJETA */
-.matrix-content-xl {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-
-.matrix-state h4 {
-    font-size: 1.45rem;
+.chg-card-title {
+    font-size: 1.35rem;
     font-weight: 700;
     color: #ffffff;
-    margin: 12px 0 12px 0;
-    line-height: 1.28;
+    margin: 0 0 28px 0;
+    line-height: 1.25;
 }
 
-.matrix-state.vulnerable h4 {
-    color: #fca5a5;
+/* BLOQUES COMPARATIVOS CON Y SIN CHG */
+.chg-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.matrix-state p {
-    font-size: 1.02rem;
-    color: #94a3b8;
-    line-height: 1.65;
-    margin: 0;
+.chg-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.matrix-state p.sub-paragraph {
-    margin-top: 12px;
-}
-
-.matrix-divider-xl {
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
-    margin: 10px 0;
-}
-
-/* BADGES / PILLS STATUS */
-.status-pill-xl {
-    display: inline-block;
-    font-size: 0.72rem;
+.tag {
+    align-self: flex-start;
+    font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 1.2px;
-    padding: 5px 12px;
-    border-radius: 6px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 4px;
 }
 
-.status-pill-xl.sin-chg {
-    background: rgba(239, 68, 68, 0.12);
-    color: #f87171;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.status-pill-xl.con-chg {
+.tag.green {
     background: rgba(52, 211, 153, 0.12);
     color: #34d399;
     border: 1px solid rgba(52, 211, 153, 0.3);
 }
 
-.matrix-state.optimal p {
-    color: #cbd5e1;
+.tag.red {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-/* ADAPTATIVO A PANTALLAS PEQUEÑAS */
-@media (max-width: 1200px) {
-    .editorial-main-title {
-        font-size: 3.2rem;
+.chg-block p {
+    font-size: 0.93rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.chg-block.con p {
+    color: #e2e8f0;
+}
+
+.chg-block.sin p {
+    color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .chg-grid-matrix {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .editorial-header-grid {
+    .chg-main-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .chg-header {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
     }
-    .editorial-matrix-xl {
+    .chg-grid-matrix {
         grid-template-columns: 1fr;
     }
-    .matrix-card-xl {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 45px 30px;
-    }
-    .matrix-card-xl:last-child {
-        border-bottom: none;
+    .chg-main-title {
+        font-size: 2.3rem;
     }
 }

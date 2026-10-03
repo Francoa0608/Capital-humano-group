@@ -1215,7 +1215,7 @@ button.btn-green:hover {
 
 /* TÍTULO MÁS DEL DOBLE DE TAMAÑO Y MAYÚSCULAS */
 .chg-hero-title {
-    font-size: 6.2rem;
+    font-size: 6.2rem; /* Tamaño duplicado */
     font-weight: 900;
     line-height: 0.95;
     letter-spacing: -3px;

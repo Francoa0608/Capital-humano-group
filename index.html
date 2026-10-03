@@ -1182,5 +1182,100 @@
 
         setInterval(nextSlide, 5000);
     </script>
+    <!-- Código JavaScript integrado -->
+    <script>
+      let currentCardIndex = 0;
+      const totalCards = 5;
+
+      function updateCarousel() {
+          const cards = document.querySelectorAll('.card-3d');
+          
+          cards.forEach((card, idx) => {
+              card.className = 'card-3d'; // Reset clases
+              
+              let diff = (idx - currentCardIndex + totalCards) % totalCards;
+              
+              if (diff === 0) {
+                  card.classList.add('active');
+              } else if (diff === 1) {
+                  card.classList.add('next');
+              } else if (diff === 2) {
+                  card.classList.add('far-next');
+              } else if (diff === totalCards - 1) {
+                  card.classList.add('prev');
+              } else if (diff === totalCards - 2) {
+                  card.classList.add('far-prev');
+              }
+          });
+
+          // Actualizar contador numérico
+          document.getElementById('currentCardNum').textContent = `0${currentCardIndex + 1}`;
+      }
+
+      function nextCard() {
+          currentCardIndex = (currentCardIndex + 1) % totalCards;
+          updateCarousel();
+      }
+
+      function prevCard() {
+          currentCardIndex = (currentCardIndex - 1 + totalCards) % totalCards;
+          updateCarousel();
+      }
+
+      function setActiveCard(index) {
+          currentCardIndex = index;
+          updateCarousel();
+      }
+
+      // Alternar entre modo CON / SIN CHG en una tarjeta individual
+      function toggleCardMode(event, element) {
+          event.stopPropagation();
+          const card = element.closest('.card-3d');
+          const descCon = card.querySelector('.desc-con');
+          const descSin = card.querySelector('.desc-sin');
+          const badge = card.querySelector('.mode-badge');
+
+          if (descCon.classList.contains('hidden')) {
+              descCon.classList.remove('hidden');
+              descSin.classList.add('hidden');
+              badge.textContent = 'CON CHG';
+              badge.className = 'mode-badge con';
+              element.innerHTML = 'Ver versión SIN CHG &rarr;';
+          } else {
+              descCon.classList.add('hidden');
+              descSin.classList.remove('hidden');
+              badge.textContent = 'SIN CHG';
+              badge.className = 'mode-badge sin';
+              element.innerHTML = 'Ver versión CON CHG &rarr;';
+          }
+      }
+
+      // Alternar entre visión CON/SIN globalmente
+      let isGlobalSin = false;
+      function toggleAllCardsState() {
+          isGlobalSin = !isGlobalSin;
+          document.querySelectorAll('.card-3d').forEach(card => {
+              const descCon = card.querySelector('.desc-con');
+              const descSin = card.querySelector('.desc-sin');
+              const badge = card.querySelector('.mode-badge');
+              const link = card.querySelector('.card-link');
+
+              if (isGlobalSin) {
+                  descCon.classList.add('hidden');
+                  descSin.classList.remove('hidden');
+                  badge.textContent = 'SIN CHG';
+                  badge.className = 'mode-badge sin';
+                  link.innerHTML = 'Ver versión CON CHG &rarr;';
+              } else {
+                  descCon.classList.remove('hidden');
+                  descSin.classList.add('hidden');
+                  badge.textContent = 'CON CHG';
+                  badge.className = 'mode-badge con';
+                  link.innerHTML = 'Ver versión SIN CHG &rarr;';
+              }
+          });
+      }
+    </script>
 </body>
 </html>
+

@@ -1179,7 +1179,7 @@ button.btn-green:hover {
     letter-spacing: 2px;
 }
 /* ==========================================
-   ESTILOS GENERALES Y SQL TERMINAL
+   ESTILOS GENERALES Y DATA SCHEMA (OPCIÓN 2)
    ========================================== */
 .vanguard-comparison {
     padding: 90px 0;
@@ -1248,85 +1248,80 @@ button.btn-green:hover {
     margin: 0;
 }
 
-/* ESTILOS SQL TERMINAL INTERNO */
-.sql-terminal-body {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 20px;
-    background: #060913;
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
-}
-
-.sql-side p {
-    font-size: 0.88rem;
-    color: #cbd5e1;
-    line-height: 1.55;
-    margin: 0;
-    font-family: system-ui, -apple-system, sans-serif; /* Mantiene la legibilidad del texto */
-}
-
-.sql-code-header {
+/* ESTILOS ESQUEMA RELACIONAL (SCHEMA BODY) */
+.schema-body {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 15px;
+}
+
+.schema-col {
+    flex: 1;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.schema-col.sin-chg {
+    border-left: 3px solid rgba(239, 68, 68, 0.6);
+}
+
+.schema-col.con-chg {
+    border-left: 3px solid rgba(16, 185, 129, 0.6);
+}
+
+.schema-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
     margin-bottom: 12px;
 }
 
-.sql-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.sql-dot.red { background: #ef4444; box-shadow: 0 0 6px rgba(239, 68, 68, 0.6); }
-.sql-dot.green { background: #10b981; box-shadow: 0 0 6px rgba(16, 185, 129, 0.6); }
-
-.sql-prompt {
-    font-size: 0.72rem;
-    color: #64748b;
-    font-weight: 700;
-}
-
-.badge-sql {
-    font-size: 0.7rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.badge-sql.danger {
-    background: rgba(239, 68, 68, 0.15);
+.schema-pill.danger {
+    background: rgba(239, 68, 68, 0.12);
     color: #f87171;
     border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.badge-sql.success {
-    background: rgba(16, 185, 129, 0.15);
+.schema-pill.success {
+    background: rgba(52, 211, 153, 0.12);
     color: #34d399;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    border: 1px solid rgba(52, 211, 153, 0.3);
 }
 
-.sql-divider {
-    width: 1px;
-    background: rgba(255, 255, 255, 0.08);
-    height: 100%;
+.schema-node {
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.schema-col p {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+    margin: 0;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .vanguard-grid { grid-template-columns: 1fr; }
     .vanguard-card-wide { grid-column: span 1; }
-    .sql-terminal-body {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .schema-body {
+        flex-direction: column;
+        gap: 12px;
     }
-    .sql-divider {
+    .schema-node {
+        transform: rotate(90deg);
+        margin: 4px 0;
+    }
+    .schema-col {
         width: 100%;
-        height: 1px;
     }
 }

@@ -1375,29 +1375,29 @@
       });
     </script>
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const items = document.querySelectorAll('.text-rotator .rotator-item');
-    if (items.length === 0) return;
-    
-    let currentIndex = 0;
-
-    setInterval(() => {
-        const currentItem = items[currentIndex];
+        document.addEventListener("DOMContentLoaded", function() {
+            const items = document.querySelectorAll('.text-rotator .rotator-item');
+            if (items.length === 0) return;
+            
+            let currentIndex = 0;
         
-        // Animación de salida hacia arriba y difuminado
-        currentItem.classList.remove('active');
-        currentItem.classList.add('exit');
-
-        // Avanzar al siguiente elemento
-        currentIndex = (currentIndex + 1) % items.length;
-        const nextItem = items[currentIndex];
-
-        // Limpiar clase de salida previa y activar el nuevo texto
-        nextItem.classList.remove('exit');
-        nextItem.classList.add('active');
-    }, 6000); // Cambia cada 6 segundos (puedes ajustarlo entre 5000 y 10000 ms)
-});
-</script>
+            setInterval(() => {
+                const currentItem = items[currentIndex];
+                
+                // Animación de salida hacia arriba y difuminado
+                currentItem.classList.remove('active');
+                currentItem.classList.add('exit');
+        
+                // Avanzar al siguiente elemento
+                currentIndex = (currentIndex + 1) % items.length;
+                const nextItem = items[currentIndex];
+        
+                // Limpiar clase de salida previa y activar el nuevo texto
+                nextItem.classList.remove('exit');
+                nextItem.classList.add('active');
+            }, 6000); // Cambia cada 6 segundos (puedes ajustarlo entre 5000 y 10000 ms)
+        });
+    </script>
 </body>
 </html>
 

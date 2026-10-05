@@ -1632,37 +1632,39 @@ button.btn-green:hover {
         width: 320px;
         height: 420px;
     }
-    /* --- TEXTO ROTATIVO AUTOMÁTICO --- */
+   /* --- FIX TEXTO ROTATIVO --- */
 .text-rotator {
     position: relative;
-    display: inline-block;
-    min-height: 2.5em; /* Previene saltos de layout durante la transición */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px; /* Altura fija para que no salte el contenido */
+    overflow: hidden;
     width: 100%;
-    text-align: center;
 }
 
 .rotator-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    pointer-events: none;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(30px);
+    width: 100%;
     margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
 }
 
 /* Estado Visible */
 .rotator-item.active {
     opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateY(0);
 }
 
-/* Salida hacia arriba con desvanecimiento */
+/* Transición de salida hacia arriba */
 .rotator-item.exit {
     opacity: 0;
-    transform: translateY(-20px);
-}
+    visibility: hidden;
+    transform: translate(-50%, -50%) translateY(-30px);
 }

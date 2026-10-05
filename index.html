@@ -622,42 +622,41 @@
 
     </div>
 </section>
-   <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
+  <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
 <style>
   .rubros-section .text-rotator {
-      position: relative !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      min-height: 100px !important;
-      overflow: hidden !important;
-      width: 100% !important;
+      position: relative;
+      display: block;
+      min-height: 90px;
+      width: 100%;
+      text-align: center;
   }
 
   .rubros-section h2.rotator-item {
-      position: absolute !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) translateY(30px) !important;
-      width: 100% !important;
-      margin: 0 !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+      color: #FFFFFF !important;
   }
 
-  /* Estado Visible */
+  /* La primera frase siempre será visible por defecto */
   .rubros-section h2.rotator-item.active {
       opacity: 1 !important;
       visibility: visible !important;
-      transform: translate(-50%, -50%) translateY(0) !important;
+      transform: translateY(0) !important;
   }
 
   /* Transición de salida */
   .rubros-section h2.rotator-item.exit {
       opacity: 0 !important;
       visibility: hidden !important;
-      transform: translate(-50%, -50%) translateY(-30px) !important;
+      transform: translateY(-20px) !important;
   }
 </style>
 
@@ -1412,29 +1411,34 @@
       });
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const items = document.querySelectorAll('.text-rotator .rotator-item');
-            if (items.length <= 1) return;
-            
-            let currentIndex = 0;
+        (function() {
+            function initRotator() {
+                const items = document.querySelectorAll('.text-rotator .rotator-item');
+                if (!items || items.length < 2) return;
         
-            setInterval(() => {
-                const currentItem = items[currentIndex];
-                
-                // Animación de salida hacia arriba
-                currentItem.classList.remove('active');
-                currentItem.classList.add('exit');
+                let currentIndex = 0;
         
-                // Siguiente frase
-                currentIndex = (currentIndex + 1) % items.length;
-                const nextItem = items[currentIndex];
+                setInterval(function() {
+                    // Quitar activo a la frase actual
+                    items[currentIndex].classList.remove('active');
+                    items[currentIndex].classList.add('exit');
         
-                // Entrada desde abajo
-                nextItem.classList.remove('exit');
-                nextItem.classList.add('active');
-            }, 5000); // Cambia cada 5 segundos
-        });
-    </script>
+                    // Siguiente índice
+                    currentIndex = (currentIndex + 1) % items.length;
+        
+                    // Mostrar la nueva frase
+                    items[currentIndex].classList.remove('exit');
+                    items[currentIndex].classList.add('active');
+                }, 5000); // Rotación cada 5 segundos
+            }
+        
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initRotator);
+            } else {
+                initRotator();
+            }
+        })();
+        </script>
 </body>
 </html>
 

@@ -320,11 +320,37 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.interactive-card:hover {
+/* Asegura que la tarjeta mantenga la transparencia en hover */
+.interactive-card:hover,
+.extra-item:hover {
     transform: translateY(-8px);
-    background: var(--card-blue-hover);
-    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.18);
+    /* Mantén un fondo semitransparente para que NO tape la imagen */
+    background: rgba(28, 45, 66, 0.45) !important;
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.25);
     border-color: var(--emerald-green);
+}
+
+/* Brillo aumentado para la imagen de fondo de la tarjeta */
+.extra-bg-img,
+.card-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    /* Ajuste de brillo: aumentamos brightness de 0.3/0.4 a 0.65 para que sea bien visible */
+    filter: brightness(0.65) contrast(1.1);
+    transition: filter 0.3s ease, transform 0.4s ease;
+}
+
+/* Efecto hover suave en la imagen sin ocultarse */
+.interactive-card:hover .extra-bg-img,
+.interactive-card:hover .card-bg-img,
+.extra-item:hover .extra-bg-img {
+    filter: brightness(0.8) contrast(1.15); /* Aumenta aún más el brillo al hacer hover */
+    transform: scale(1.03);
 }
 
 /* --- SECCIÓN SOBRE NOSOTROS --- */
@@ -817,7 +843,7 @@ body {
 
 /* Asignación de imágenes referenciales de alta calidad (Unsplash) por servicio */
 .extra-item-1 { background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80'); }
-.extra-item-2 { background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80'); }
+.extra-item-2 { background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop'); }
 .extra-item-3 { background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80'); }
 .extra-item-4 { background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80'); }
 .extra-item-5 { background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80'); }

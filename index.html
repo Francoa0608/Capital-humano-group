@@ -622,14 +622,18 @@
 
     </div>
 </section>
-    <!-- SECTOR ADAPTABILIDAD -->
-    <section id="rubros" class="rubros-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Soluciones a la medida de tu sector</h2>
+    <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
+<section id="rubros" class="rubros-section">
+    <div class="container">
+        <div class="section-title">
+            <div class="text-rotator">
+                <h2 class="rotator-item active">Soluciones integrales de capital humano para impulsar tu negocio</h2>
+                <h2 class="rotator-item">Estrategias integrales de talento para tu crecimiento</h2>
+                <h2 class="rotator-item">Optimización y gestión eficiente de tu capital humano</h2>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- PACKS / PRECIOS -->
     <section id="packs" class="packs-section">
@@ -1370,6 +1374,30 @@
           }
       });
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll('.text-rotator .rotator-item');
+    if (items.length === 0) return;
+    
+    let currentIndex = 0;
+
+    setInterval(() => {
+        const currentItem = items[currentIndex];
+        
+        // Animación de salida hacia arriba y difuminado
+        currentItem.classList.remove('active');
+        currentItem.classList.add('exit');
+
+        // Avanzar al siguiente elemento
+        currentIndex = (currentIndex + 1) % items.length;
+        const nextItem = items[currentIndex];
+
+        // Limpiar clase de salida previa y activar el nuevo texto
+        nextItem.classList.remove('exit');
+        nextItem.classList.add('active');
+    }, 6000); // Cambia cada 6 segundos (puedes ajustarlo entre 5000 y 10000 ms)
+});
+</script>
 </body>
 </html>
 

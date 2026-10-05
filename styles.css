@@ -1629,43 +1629,43 @@ button.btn-green:hover {
         text-align: left;
     }
     .card-3d {
-        width: 320px;
-        height: 420px;
-    }
-    }
-   /* --- FIX TEXTO ROTATIVO --- */
-.text-rotator {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80px; /* Altura fija para que no salte el contenido */
-    overflow: hidden;
-    width: 100%;
+    width: 320px;
+    height: 420px;
 }
 
-.rotator-item {
+/* --- FIX TEXTO ROTATIVO --- */
+.text-rotator {
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 80px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+}
+
+h2.rotator-item {
     position: absolute !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) translateY(30px);
-    width: 100%;
-    margin: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) translateY(30px) !important;
+    width: 100% !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s !important;
 }
 
 /* Estado Visible */
-.rotator-item.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) translateY(0);
+h2.rotator-item.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%, -50%) translateY(0) !important;
 }
 
 /* Transición de salida hacia arriba */
-.rotator-item.exit {
-    opacity: 0;
-    visibility: hidden;
-    transform: translate(-50%, -50%) translateY(-30px);
+h2.rotator-item.exit {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translate(-50%, -50%) translateY(-30px) !important;
 }

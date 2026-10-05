@@ -622,7 +622,45 @@
 
     </div>
 </section>
-    <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
+   <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
+<style>
+  .rubros-section .text-rotator {
+      position: relative !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      min-height: 100px !important;
+      overflow: hidden !important;
+      width: 100% !important;
+  }
+
+  .rubros-section h2.rotator-item {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) translateY(30px) !important;
+      width: 100% !important;
+      margin: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s !important;
+  }
+
+  /* Estado Visible */
+  .rubros-section h2.rotator-item.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translate(-50%, -50%) translateY(0) !important;
+  }
+
+  /* Transición de salida */
+  .rubros-section h2.rotator-item.exit {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transform: translate(-50%, -50%) translateY(-30px) !important;
+  }
+</style>
+
 <section id="rubros" class="rubros-section">
     <div class="container">
         <div class="section-title">
@@ -634,7 +672,6 @@
         </div>
     </div>
 </section>
-
     <!-- PACKS / PRECIOS -->
     <section id="packs" class="packs-section">
         <div class="container">
@@ -1388,7 +1425,7 @@
                 currentItem.classList.remove('active');
                 currentItem.classList.add('exit');
         
-                // Avanzar a la siguiente frase
+                // Siguiente frase
                 currentIndex = (currentIndex + 1) % items.length;
                 const nextItem = items[currentIndex];
         

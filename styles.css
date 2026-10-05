@@ -1632,4 +1632,37 @@ button.btn-green:hover {
         width: 320px;
         height: 420px;
     }
+    /* --- TEXTO ROTATIVO AUTOMÁTICO --- */
+.text-rotator {
+    position: relative;
+    display: inline-block;
+    min-height: 2.5em; /* Previene saltos de layout durante la transición */
+    width: 100%;
+    text-align: center;
+}
+
+.rotator-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+    margin: 0;
+}
+
+/* Estado Visible */
+.rotator-item.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Salida hacia arriba con desvanecimiento */
+.rotator-item.exit {
+    opacity: 0;
+    transform: translateY(-20px);
+}
 }

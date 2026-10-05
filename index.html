@@ -624,39 +624,47 @@
 </section>
   <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
 <style>
+  /* Contenedor del texto rotativo */
   .rubros-section .text-rotator {
       position: relative;
-      display: block;
-      min-height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      text-align: center;
+      max-width: 1100px; /* Evita que el texto se rompa verticalmente */
+      margin: 0 auto;
+      min-height: 120px; /* Ocupa el espacio necesario para no solaparse */
+      overflow: hidden;
   }
 
+  /* Estilo de cada frase */
   .rubros-section h2.rotator-item {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(30px);
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      white-space: normal; /* Permite un salto de línea natural solo si es necesario */
       opacity: 0;
       visibility: hidden;
-      transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
       color: #FFFFFF !important;
   }
 
-  /* La primera frase siempre será visible por defecto */
+  /* Estado visible (activa) */
   .rubros-section h2.rotator-item.active {
       opacity: 1 !important;
       visibility: visible !important;
-      transform: translateY(0) !important;
+      transform: translate(-50%, -50%) translateY(0) !important;
   }
 
-  /* Transición de salida */
+  /* Estado de salida hacia arriba */
   .rubros-section h2.rotator-item.exit {
       opacity: 0 !important;
       visibility: hidden !important;
-      transform: translateY(-20px) !important;
+      transform: translate(-50%, -50%) translateY(-30px) !important;
   }
 </style>
 

@@ -622,60 +622,87 @@
 
     </div>
 </section>
-  <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO -->
+  <!-- SECTOR ADAPTABILIDAD / TEXTO ROTATIVO AUTOMÁTICO (CSS PURA) -->
 <style>
-  /* Contenedor del texto rotativo */
-  .rubros-section .text-rotator {
+  .rubros-section {
+      padding: 60px 20px;
+      text-align: center;
+  }
+
+  .text-rotator-container {
       position: relative;
+      height: 70px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      max-width: 1100px; /* Evita que el texto se rompa verticalmente */
-      margin: 0 auto;
-      min-height: 120px; /* Ocupa el espacio necesario para no solaparse */
       overflow: hidden;
+      max-width: 1000px;
+      margin: 0 auto;
   }
 
-  /* Estilo de cada frase */
-  .rubros-section h2.rotator-item {
+  .rotator-text {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) translateY(30px);
       width: 100%;
       margin: 0;
-      text-align: center;
-      white-space: normal; /* Permite un salto de línea natural solo si es necesario */
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
       color: #FFFFFF !important;
+      font-size: 2rem;
+      font-weight: 700;
+      opacity: 0;
+      animation: rotateText 15s infinite;
   }
 
-  /* Estado visible (activa) */
-  .rubros-section h2.rotator-item.active {
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: translate(-50%, -50%) translateY(0) !important;
+  /* Tiempos del bucle continuo de 15 segundos (5s cada frase) */
+  .rotator-text:nth-child(1) {
+      animation-delay: 0s;
+  }
+  .rotator-text:nth-child(2) {
+      animation-delay: 5s;
+  }
+  .rotator-text:nth-child(3) {
+      animation-delay: 10s;
   }
 
-  /* Estado de salida hacia arriba */
-  .rubros-section h2.rotator-item.exit {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      transform: translate(-50%, -50%) translateY(-30px) !important;
+  /* Keyframe para entrada desde abajo, pausa visible y salida hacia arriba con desvanecido */
+  @keyframes rotateText {
+      0% {
+          opacity: 0;
+          transform: translateY(30px);
+      }
+      5% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      28% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      33% {
+          opacity: 0;
+          transform: translateY(-30px);
+      }
+      100% {
+          opacity: 0;
+          transform: translateY(-30px);
+      }
+  }
+
+  /* Ajuste para pantallas móviles */
+  @media (max-width: 768px) {
+      .text-rotator-container {
+          height: 100px;
+      }
+      .rotator-text {
+          font-size: 1.4rem;
+      }
   }
 </style>
 
 <section id="rubros" class="rubros-section">
     <div class="container">
-        <div class="section-title">
-            <div class="text-rotator">
-                <h2 class="rotator-item active">Soluciones integrales de capital humano para impulsar tu negocio</h2>
-                <h2 class="rotator-item">Estrategias integrales de talento para tu crecimiento</h2>
-                <h2 class="rotator-item">Optimización y gestión eficiente de tu capital humano</h2>
-            </div>
+        <div class="text-rotator-container">
+            <h2 class="rotator-text">Soluciones integrales de capital humano para impulsar tu negocio</h2>
+            <h2 class="rotator-text">Estrategias integrales de talento para tu crecimiento</h2>
+            <h2 class="rotator-text">Optimización y gestión eficiente de tu capital humano</h2>
         </div>
     </div>
 </section>
@@ -1418,35 +1445,7 @@
           }
       });
     </script>
-    <script>
-        (function() {
-            function initRotator() {
-                const items = document.querySelectorAll('.text-rotator .rotator-item');
-                if (!items || items.length < 2) return;
-        
-                let currentIndex = 0;
-        
-                setInterval(function() {
-                    // Quitar activo a la frase actual
-                    items[currentIndex].classList.remove('active');
-                    items[currentIndex].classList.add('exit');
-        
-                    // Siguiente índice
-                    currentIndex = (currentIndex + 1) % items.length;
-        
-                    // Mostrar la nueva frase
-                    items[currentIndex].classList.remove('exit');
-                    items[currentIndex].classList.add('active');
-                }, 5000); // Rotación cada 5 segundos
-            }
-        
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initRotator);
-            } else {
-                initRotator();
-            }
-        })();
-        </script>
+    
 </body>
 </html>
 

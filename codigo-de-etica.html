@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CURSOR PERSONALIZADO (SOLO PUNTITO CHICO ESMERALDA) --- */
+        /* --- CURSOR PERSONALIZADO ESMERALDA --- */
         body {
             cursor: default;
         }
@@ -99,7 +99,7 @@
             transform: translateY(-1px);
         }
 
-        /* --- ESTILOS DE PÁGINA Y TÍTULO INCANDESCENTE --- */
+        /* --- PÁGINA Y TÍTULO INCANDESCENTE --- */
         .page-header {
             padding: 150px 0 60px 0;
             background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
@@ -160,30 +160,29 @@
             margin: 0 auto;
         }
 
-        /* --- ANIMACIÓN DESLIZANTE DESDE LA IZQUIERDA --- */
+        /* --- ANIMACIÓN ULTRA FLUIDA VANGUARDISTA Y CONTINUA --- */
         .ethics-card, .ethics-highlight-box {
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 30px;
             
-            /* Estado inicial fuera de pantalla */
+            /* Estado Fuera de Pantalla (Limpio y Nítido) */
             opacity: 0;
-            transform: translateX(-80px);
-            filter: blur(5px);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.8s ease-out,
-                        filter 0.8s ease-out,
+            transform: translateX(-60px);
+            
+            /* Transición Lenta y Orgánica de 1.1s */
+            transition: transform 1.1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                        opacity 1.1s ease-out,
                         border-color 0.3s ease,
                         box-shadow 0.3s ease;
             will-change: transform, opacity;
         }
 
-        /* Estado activado por JS al hacer scroll */
+        /* Estado Visible */
         .ethics-card.animate-in, .ethics-highlight-box.animate-in {
             opacity: 1;
             transform: translateX(0);
-            filter: blur(0);
         }
 
         .ethics-card:hover {
@@ -301,10 +300,10 @@
 </head>
 <body>
 
-    <!-- ELEMENTO DEL CURSOR ESMERALDA MINIMALISTA -->
+    <!-- CURSOR ESMERALDA -->
     <div class="custom-cursor-dot" id="cursorDot"></div>
 
-    <!-- CABECERA SIMPLIFICADA (SOLO VOLVER AL INICIO) -->
+    <!-- CABECERA -->
     <header class="custom-header">
         <div class="header-container-custom">
             <a href="index.html" class="logo-custom">
@@ -392,7 +391,7 @@
                     <div class="ethics-card-body">
                         <ul class="ethics-list">
                             <li><strong>Diagnósticos Honestos:</strong> En servicios de auditoría laboral, clima organizacional o consultoría estratégica, nos comprometemos a entregar informes realistas, basados en datos objetivos, sin falsear resultados para complacer a la dirección del cliente o encubrir malas prácticas internas[cite: 11].</li>
-                            <li><strong>Prevención de Riesgos:</strong> Alertamos proactivamente a nuestros clientes si detectamos desvíos normativos en su gestión (como irregularidades en aportes de la seguridad social, falta de cobertura de ART o incumplimiento de normas de Higiene y Seguridad)[cite: 11].</li>
+                            <li><strong>Prevención de Riesgos:</strong> Alertamos proactively a nuestros clientes si detectamos desvíos normativos en su gestión (como irregularidades en aportes de la seguridad social, falta de cobertura de ART o incumplimiento de normas de Higiene y Seguridad)[cite: 11].</li>
                         </ul>
                     </div>
                 </article>
@@ -448,7 +447,7 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA (FOOTER) -->
+    <!-- FOOTER -->
     <footer style="background: rgba(15, 23, 42, 0.98); border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 0; text-align: center;">
         <div class="container">
             <a href="index.html" class="logo-custom" style="justify-content: center; margin-bottom: 15px;">
@@ -468,19 +467,20 @@
             dot.style.top = `${e.clientY}px`;
         });
 
-        // 2. Animación de deslizamiento de las tarjetas al hacer scroll
+        // 2. Animación Continua Bidireccional (Aparece y Desaparece al Scroll)
         const cards = document.querySelectorAll('.ethics-card, .ethics-highlight-box');
         
         const observerOptions = {
             root: null,
-            threshold: 0.15
+            threshold: 0.12 // Se activa al mostrar un 12% del elemento
         };
 
-        const cardObserver = new IntersectionObserver((entries, observer) => {
+        const cardObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
-                    observer.unobserve(entry.target); // Se queda fijo una vez animado
+                } else {
+                    entry.target.classList.remove('animate-in'); // Desaparece al salir del viewport
                 }
             });
         }, observerOptions);

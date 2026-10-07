@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código de Ética y Conducta Profesional - Capital Humano Group</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos específicos para páginas institucionales / legales */
+        .page-header {
+            padding: 140px 0 60px 0;
+            background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #94A3B8;
+            max-width: 650px;
+            margin: 0 auto 25px auto;
+        }
+
+        .badge-ethics {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10B981;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            padding: 60px 0 100px 0;
+        }
+
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ethics-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ethics-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .ethics-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .ethics-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #10B981;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .ethics-card-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .ethics-card-body p {
+            color: #94A3B8;
+            line-height: 1.7;
+            font-size: 0.98rem;
+            margin-bottom: 15px;
+        }
+
+        .ethics-card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .ethics-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .ethics-list li {
+            position: relative;
+            padding-left: 28px;
+            color: #CBD5E1;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .ethics-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .ethics-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #10B981;
+            font-size: 0.85rem;
+        }
+
+        .ethics-highlight-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .ethics-highlight-box h3 {
+            color: #FFFFFF;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .ethics-email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #10B981;
+            color: #0F172A;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .ethics-email-btn:hover {
+            background: #34D399;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .back-nav {
+            margin-bottom: 25px;
+        }
+
+        .back-link {
+            color: #94A3B8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #10B981;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA / NAVEGACIÓN -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-users-gear logo-icon"></i>
+                <span class="logo-text">CAPITAL HUMANO <span>GROUP</span></span>
+            </a>
+            <nav class="nav">
+                <a href="index.html#nosotros">Nosotros</a>
+                <a href="index.html#sectores">Sectores</a>
+                <a href="index.html#packs">Packs</a>
+                <a href="index.html#extras">Servicios Extras</a>
+                <a href="index.html#por-que-chg">¿Por qué CHG?</a>
+            </nav>
+            <div class="header-actions">
+                <a href="index.html#contacto" class="btn btn-outline">¡Postulate acá!</a>
+                <a href="index.html#packs" class="btn btn-primary">Descubrí tu pack ideal</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HÉROE DE PÁGINA -->
+    <section class="page-header">
+        <div class="container">
+            <div class="back-nav">
+                <a href="index.html" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+                </a>
+            </div>
+            <div class="badge-ethics">
+                <i class="fa-solid fa-shield-halved"></i> Marco Institucional
+            </div>
+            <h1 class="page-title">Código de Ética y Conducta Profesional</h1>
+            <p class="page-subtitle">Nuestros principios de transparencia, legalidad y respeto que rigen todas las operaciones de Capital Humano Group[cite: 11].</p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="content-section">
+        <div class="container">
+            <div class="ethics-grid">
+
+                <!-- 1. Propósito y Alcance -->
+                <article class="ethics-card">
+                    <div class="ethics-card-header">
+                        <div class="ethics-icon">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h2>1. Propósito y Alcance</h2>
+                    </div>
+                    <div class="ethics-card-body">
+                        <p>En <strong>Capital Humano Group</strong> brindamos soluciones integrales en Recursos Humanos bajo estrictos estándares de transparencia, legalidad y respeto[cite: 11]. Este código rige para todos nuestros directivos, consultores, personal administrativo y profesionales tercerizados, y define cómo nos relacionamos con nuestros clientes, sus trabajadores y los candidatos[cite: 11].</p>
+                    </div>
+                </article>
+
+                <!-- 2. Legalidad y Cumplimiento Normativo -->
+                <article class="ethics-card">
+                    <div class="ethics-card-header">
+                        <div class="ethics-icon">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h2>2. Legalidad y Cumplimiento Normativo (Compliance Laboral)</h2>
+                    </div>
+                    <div class="ethics-card-body">
+                        <p>Como expertos en servicios de Recursos Humanos, nuestro asesoramiento y gestión deben ajustarse estrictamente al marco legal argentino[cite: 11]:</p>
+                        <ul class="ethics-list">
+                            <li><strong>Normativa Base:</strong> Respetamos y hacemos cumplir la Ley de Contrato de Trabajo (LCT N° 20.744), las Leyes de Empleo y las normativas de la Agencia de Recaudación y Control Aduanero (ARCA) y el Ministerio de Capital Humano (o autoridad laboral nacional vigente)[cite: 11].</li>
+                            <li><strong>Encuadramiento Convencional:</strong> Nos comprometemos a asesorar a nuestros clientes con objetividad respecto al correcto encuadramiento de los trabajadores en los Convenios Colectivos de Trabajo (CCT) correspondientes, rechazando cualquier práctica que precarice el empleo o fomente el trabajo informal ("en negro")[cite: 11].</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 3. Confidencialidad y Secreto Profesional -->
+                <article class="ethics-card">
+                    <div class="ethics-card-header">
+                        <div class="ethics-icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h2>3. Confidencialidad y Secreto Profesional</h2>
+                    </div>
+                    <div class="ethics-card-body">
+                        <p>Manejamos activos de información extremadamente críticos bajo la Ley N° 25.326 de Protección de Datos Personales[cite: 11]:</p>
+                        <ul class="ethics-list">
+                            <li><strong>Liquidación y Datos Hard:</strong> Toda la información relacionada con grillas salariales, datos bancarios, embargos judiciales, deducciones de ganancias, afiliaciones sindicales e historias clínicas y legajos de los empleados de nuestros clientes será tratada bajo el más estricto secreto profesional[cite: 11].</li>
+                            <li><strong>Seguridad Informática:</strong> Implementamos accesos restringidos y perfiles de seguridad para que sólo el personal autorizado tenga acceso a los sistemas de gestión de nómina y legajos digitales[cite: 11].</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 4. Transparencia en Auditorías y Consultoría -->
+                <article class="ethics-card">
+                    <div class="ethics-card-header">
+                        <div class="ethics-icon">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h2>4. Transparencia en Auditorías y Consultoría</h2>
+                    </div>
+                    <div class="ethics-card-body">
+                        <ul class="ethics-list">
+                            <li><strong>Diagnósticos Honestos:</strong> En servicios de auditoría laboral, clima organizacional o consultoría estratégica, nos comprometemos a entregar informes realistas, basados en datos objetivos, sin falsear resultados para complacer a la dirección del cliente o encubrir malas prácticas internas[cite: 11].</li>
+                            <li><strong>Prevención de Riesgos:</strong> Alertamos proactivamente a nuestros clientes si detectamos desvíos normativos en su gestión (como irregularidades en aportes de la seguridad social, falta de cobertura de ART o incumplimiento de normas de Higiene y Seguridad)[cite: 11].</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 5. Relación con Candidatos y Trabajadores -->
+                <article class="ethics-card">
+                    <div class="ethics-card-header">
+                        <div class="ethics-icon">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <h2>5. Relación con Candidatos y Trabajadores</h2>
+                    </div>
+                    <div class="ethics-card-body">
+                        <ul class="ethics-list">
+                            <li><strong>Igualdad de Oportunidades (Ley N° 23.592):</strong> Garantizamos procesos de selección, evaluación y planes de carrera libres de discriminación por género, edad, orientación sexual, religión, ideología o condición socioeconómica[cite: 11].</li>
+                            <li><strong>Gratuidad:</strong> Bajo ninguna circunstancia se cobrará dinero o se retendrá porcentaje salarial alguno a candidatos o empleados por su postulación, contratación o participación en capacitaciones dictadas por la consultora[cite: 11].</li>
+                            <li><strong>Trato Digno:</strong> Velamos por la salud mental y emocional en los espacios de trabajo, rechazando activamente cualquier forma de acoso laboral (mobbing), violencia de género o persecución sindical en los proyectos que administramos[cite: 11].</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 6. Conflicto de Intereses y Lealtad Comercial -->
+                <article class="ethics-card">
+                    <div class="ethics-card-header">
+                        <div class="ethics-icon">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <h2>6. Conflicto de Intereses y Lealtad Comercial</h2>
+                    </div>
+                    <div class="ethics-card-body">
+                        <ul class="ethics-list">
+                            <li><strong>Independencia de Criterio:</strong> Los consultores deben reportar de inmediato si la empresa de un familiar o allegado solicita nuestros servicios, o si un candidato en un proceso selectivo tiene un vínculo directo con ellos[cite: 11].</li>
+                            <li><strong>Cláusula Off-Limits:</strong> No realizaremos búsquedas de personal ni ofreceremos activamente cambiar de empleo a los colaboradores actuales de las empresas que sean clientes activos de nuestra consultora[cite: 11].</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 7. Canal de Reportes y Comité de Ética -->
+                <div class="ethics-highlight-box">
+                    <div class="ethics-icon" style="margin: 0 auto 15px auto;">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3>7. Canal de Reportes y Comité de Ética</h3>
+                    <p style="color: #94A3B8; max-width: 650px; margin: 0 auto 15px auto; line-height: 1.6;">
+                        Habilitamos nuestro canal oficial para recibir denuncias sobre violaciones a este código[cite: 11]. Garantizamos la confidencialidad de la investigación, el debido proceso y la absoluta prohibición de represalias contra cualquier colaborador o tercero que denuncie prácticas carentes de buena fe[cite: 11].
+                    </p>
+                    <a href="mailto:capitalhumanogroup@gmail.com" class="ethics-email-btn">
+                        <i class="fa-solid fa-envelope"></i> capitalhumanogroup@gmail.com
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-users-gear logo-icon"></i>
+                    <span class="logo-text">CAPITAL HUMANO <span>GROUP</span></span>
+                </a>
+                <p class="footer-desc">Soluciones estratégicas e integrales en Recursos Humanos para potenciar el crecimiento sostenible de tu organización.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#sectores">Sectores</a></li>
+                    <li><a href="index.html#packs">Packs</a></li>
+                    <li><a href="index.html#extras">Servicios Extras</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legales</h4>
+                <ul>
+                    <li><a href="codigo-de-etica.html" style="color: #10B981;">Código de Ética</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Capital Humano Group. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

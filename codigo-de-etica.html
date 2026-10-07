@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CURSOR PERSONALIZADO (PUNTITO VERDE ESMERALDA) --- */
+        /* --- CURSOR PERSONALIZADO (SOLO PUNTITO CHICO ESMERALDA) --- */
         body {
             cursor: default;
         }
@@ -24,29 +24,15 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             background-color: #10B981;
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 12px #10B981, 0 0 20px rgba(16, 185, 129, 0.6);
-            transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
-        }
-
-        .custom-cursor-follower {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99998;
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s ease-out, border-color 0.2s ease;
+            box-shadow: 0 0 10px #10B981, 0 0 16px rgba(16, 185, 129, 0.8);
+            transition: transform 0.08s ease-out;
         }
 
         /* --- HEADER MINIMALISTA (SOLO VOLVER AL INICIO) --- */
@@ -121,7 +107,6 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* EFECTO INCANDESCENTE EN EL TÍTULO AL PASAR EL CURSOR */
         .page-title {
             font-size: 2.8rem;
             font-weight: 800;
@@ -130,7 +115,6 @@
             line-height: 1.2;
             display: inline-block;
             transition: all 0.4s ease;
-            position: relative;
         }
 
         .page-title:hover {
@@ -165,6 +149,7 @@
 
         .content-section {
             padding: 60px 0 100px 0;
+            overflow: hidden;
         }
 
         .ethics-grid {
@@ -175,12 +160,30 @@
             margin: 0 auto;
         }
 
-        .ethics-card {
+        /* --- ANIMACIÓN DESLIZANTE DESDE LA IZQUIERDA --- */
+        .ethics-card, .ethics-highlight-box {
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 30px;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Estado inicial fuera de pantalla */
+            opacity: 0;
+            transform: translateX(-80px);
+            filter: blur(5px);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.8s ease-out,
+                        filter 0.8s ease-out,
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+            will-change: transform, opacity;
+        }
+
+        /* Estado activado por JS al hacer scroll */
+        .ethics-card.animate-in, .ethics-highlight-box.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+            filter: blur(0);
         }
 
         .ethics-card:hover {
@@ -298,9 +301,8 @@
 </head>
 <body>
 
-    <!-- ELEMENTOS DEL CURSOR VERDE ESMERALDA -->
+    <!-- ELEMENTO DEL CURSOR ESMERALDA MINIMALISTA -->
     <div class="custom-cursor-dot" id="cursorDot"></div>
-    <div class="custom-cursor-follower" id="cursorFollower"></div>
 
     <!-- CABECERA SIMPLIFICADA (SOLO VOLVER AL INICIO) -->
     <header class="custom-header">
@@ -457,20 +459,34 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA EL MOVIMIENTO DEL CURSOR -->
+    <!-- SCRIPTS -->
     <script>
+        // 1. Movimiento del punto cursor
         const dot = document.getElementById('cursorDot');
-        const follower = document.getElementById('cursorFollower');
-
         document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+        });
 
-            dot.style.left = `${x}px`;
-            dot.style.top = `${y}px`;
+        // 2. Animación de deslizamiento de las tarjetas al hacer scroll
+        const cards = document.querySelectorAll('.ethics-card, .ethics-highlight-box');
+        
+        const observerOptions = {
+            root: null,
+            threshold: 0.15
+        };
 
-            follower.style.left = `${x}px`;
-            follower.style.top = `${y}px`;
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target); // Se queda fijo una vez animado
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
         });
     </script>
 </body>

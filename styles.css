@@ -6,24 +6,27 @@
 }
 
 :root {
-    /* FONDO AZUL OSCURO NOCHE (Elegante y mate) */
+    /* FONDO DE PANTALLA CYBER-DARK INSTITUCIONAL (Foto 2) */
     --bg-france-blue: #080D1A;    
     --bg-section-blue: #0D1527;   
-    --card-blue: #131F37;        
-    --card-blue-hover: #1A2B4C;  
+    --card-blue: #111C33;        
+    --card-blue-hover: #182848;  
 
-    /* AZULES PRINCIPALES PARA BOTONES E INTERACCIÓN */
-    --emerald-green: #2563EB;    /* Azul Cobalto de alto impacto para botones */
-    --hover-green: #1D4ED8;      /* Azul Cobalto más profundo en Hover */
-    --accent-teal: #3B82F6;       /* Azul Real/Zafiro para resaltados */
+    /* ACCIONES Y BOTONES PRINCIPALES (Azul Eléctrico / Azul Real) */
+    --blue-primary: #2563EB;     
+    --blue-hover: #1D4ED8;       
+    --blue-light: #3B82F6;       
 
-    /* DETALLES EN VERDE ESMERALDA (Solo para acentos mínimos) */
-    --detail-green: #10B981;
+    /* CIAN NEÓN (Acentos secundarios y gráficos) */
+    --cyan-neon: #00E5FF;        
+
+    /* VERDE EXCLUSIVO PARA ESTADOS Y TILDES (Mínimo impacto) */
+    --detail-green: #10B981;     
 
     --white: #FFFFFF;            
-    --white-soft: #CBD5E1;       
+    --white-soft: #E2E8F0;       
     --text-muted: #94A3B8;       
-    --border-glow: rgba(59, 130, 246, 0.15); /* Resplandor azul sutil en bordes */
+    --border-glow: rgba(0, 229, 255, 0.12);
 }
 body, a, button, input {
     cursor: none !important;
@@ -1655,34 +1658,49 @@ button.btn-green:hover {
     width: 320px;
     height: 420px;
 }
-    /* PALETA DE AZULES PREDOMINANTES CON DETALLES EN VERDE */
+/* ==========================================================================
+   AJUSTE DE BRANDING FIDELIDAD FOTO 2 (DASHBOARD REAL)
+   ========================================================================== */
 
-/* Título destacado del Hero y Carrusel */
+/* 1. TÍTULOS Y TEXTO RESALTADO EN HERO Y CARRUSEL */
 .hero-content h1 span,
 .chg-hero-title .highlight {
-    color: #3B82F6 !important; /* Azul Zafiro */
+    color: #3B82F6 !important;
     background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
 
-/* Marca en Navbar */
-.brand-title {
-    color: #FFFFFF !important;
-}
-.brand-subtitle {
-    color: #3B82F6 !important;
+/* 2. CÁPSULA / BADGE SUPERIOR HERO (Sin verde) */
+.hero-badge {
+    background: rgba(37, 99, 235, 0.12) !important;
+    color: #60A5FA !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
 }
 
-/* Botones principales en Azul Cobalto */
+/* 3. BOTÓN "¡POSTULATE ACÁ!" EN NAVBAR (Sin verde) */
+.btn-nav-outline {
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    background: rgba(0, 229, 255, 0.08) !important;
+    color: #00E5FF !important;
+}
+
+.btn-nav-outline:hover {
+    background: rgba(0, 229, 255, 0.2) !important;
+    border-color: #00E5FF !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3) !important;
+}
+
+/* 4. BOTÓN "DESCUBRÍ TU PACK IDEAL" Y "VER PACKS DE SERVICIOS" */
 .btn-primary, 
 .btn-nav, 
 a.btn-green, 
 button.btn-green {
     background-color: #2563EB !important;
     color: #FFFFFF !important;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
     border: none !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35) !important;
 }
 
 .btn-primary:hover, 
@@ -1693,14 +1711,15 @@ button.btn-green:hover {
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5) !important;
 }
 
-/* Cápsula / Badge superior */
-.hero-badge {
-    background-color: rgba(59, 130, 246, 0.12) !important;
-    color: #60A5FA !important;
-    border-color: rgba(59, 130, 246, 0.3) !important;
+/* 5. LOGO DE LA NAVBAR (Texto "GROUP" en Cian Neón exacto) */
+.brand-title {
+    color: #FFFFFF !important;
+}
+.brand-subtitle {
+    color: #00E5FF !important;
 }
 
-/* DETALLES EN VERDE ESMERALDA (Puntitos, checks y acentos mínimos) */
+/* 6. VERDE ESMERALDA SOLO PARA ELEMENTOS DE CONFIRMACIÓN Y DOTS */
 .check-icon,
 .tag-pill.active-dot span,
 .custom-cursor-dot,
@@ -1713,8 +1732,7 @@ button.btn-green:hover {
     border-top-color: #10B981 !important;
 }
 
-/* Overlay sutil para el fondo del Hero */
+/* 7. FONDO OSCURO HERO MATE */
 .hero-overlay {
-    background: linear-gradient(90deg, rgba(8, 13, 26, 0.95) 0%, rgba(8, 13, 26, 0.85) 100%) !important;
+    background: linear-gradient(90deg, rgba(8, 13, 26, 0.94) 0%, rgba(8, 13, 26, 0.82) 100%) !important;
 }
-

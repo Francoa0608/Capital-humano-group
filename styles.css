@@ -1655,4 +1655,66 @@ button.btn-green:hover {
     width: 320px;
     height: 420px;
 }
+    /* PALETA DE AZULES PREDOMINANTES CON DETALLES EN VERDE */
+
+/* Título destacado del Hero y Carrusel */
+.hero-content h1 span,
+.chg-hero-title .highlight {
+    color: #3B82F6 !important; /* Azul Zafiro */
+    background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Marca en Navbar */
+.brand-title {
+    color: #FFFFFF !important;
+}
+.brand-subtitle {
+    color: #3B82F6 !important;
+}
+
+/* Botones principales en Azul Cobalto */
+.btn-primary, 
+.btn-nav, 
+a.btn-green, 
+button.btn-green {
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
+    border: none !important;
+}
+
+.btn-primary:hover, 
+.btn-nav:hover, 
+a.btn-green:hover, 
+button.btn-green:hover {
+    background-color: #1D4ED8 !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5) !important;
+}
+
+/* Cápsula / Badge superior */
+.hero-badge {
+    background-color: rgba(59, 130, 246, 0.12) !important;
+    color: #60A5FA !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* DETALLES EN VERDE ESMERALDA (Puntitos, checks y acentos mínimos) */
+.check-icon,
+.tag-pill.active-dot span,
+.custom-cursor-dot,
+.dot-item.active {
+    color: #10B981 !important;
+    background-color: #10B981 !important;
+}
+
+.benefit-box.win {
+    border-top-color: #10B981 !important;
+}
+
+/* Overlay sutil para el fondo del Hero */
+.hero-overlay {
+    background: linear-gradient(90deg, rgba(8, 13, 26, 0.95) 0%, rgba(8, 13, 26, 0.85) 100%) !important;
+}
 

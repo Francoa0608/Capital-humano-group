@@ -1657,20 +1657,17 @@ button.btn-green:hover {
     height: 420px;
 }
 /* ==========================================================================
-   ACLARADO DE FONDOS + GRADIENTE DE MARCA + LIMPIEZA TOTAL DE VERDES
+   CORRECCIÓN DEFINITIVA DE FONDOS Y ELIMINACIÓN TOTAL DE VERDES
    ========================================================================== */
 
-/* FONDOS GENERALES MÁS CLAROS */
+/* UNIFICACIÓN DE FONDOS (Mismo tono azul marino sin cortes) */
 body, 
 .rubros-section, 
 .packs-section, 
 .extras-section,
-.chg-carousel-section {
-    background-color: #0F172A !important;
-}
-
+.chg-carousel-section,
 .about-section {
-    background-color: #1E293B !important;
+    background-color: #0F172A !important;
 }
 
 .navbar {
@@ -1678,21 +1675,61 @@ body,
     border-bottom: 1px solid rgba(59, 130, 246, 0.25) !important;
 }
 
-.hero-overlay {
-    background: linear-gradient(90deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.82) 100%) !important;
-}
-
-/* TEXTOS RESALTADOS Y TEXTO ROTATIVO EN AZUL */
-.hero-content h1 span,
-.chg-hero-title .highlight,
-.rotator-text span.highlight {
-    color: #3B82F6 !important;
-    background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%) !important;
+/* MARCA "CAPITAL HUMANO" Y TEXTOS CON GRADIENTE AZUL */
+.brand-title {
+    background: linear-gradient(135deg, #FFFFFF 20%, #3B82F6 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
 
-/* BOTÓN "¡POSTULATE ACÁ!" (SIN VERDE) */
+.brand-subtitle {
+    color: #60A5FA !important;
+}
+
+/* ELIMINACIÓN DE VERDE EN PUNTOS Y INDICADORES */
+.dot-item,
+.rotator-dots .dot-item {
+    background: rgba(59, 130, 246, 0.3) !important;
+    box-shadow: none !important;
+}
+
+.dot-item.active,
+.rotator-dots .dot-item:nth-child(1),
+.rotator-dots .dot-item:nth-child(2),
+.rotator-dots .dot-item:nth-child(3) {
+    background: #3B82F6 !important;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8) !important;
+}
+
+/* ELIMINACIÓN DE VERDE EN CÁPSULAS Y BADGES ("Módulos Complementarios") */
+.badge-sub,
+.hero-badge {
+    background: rgba(59, 130, 246, 0.12) !important;
+    color: #60A5FA !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+/* TARJETA DESTACADA PACK 2 (Borde y brillo en azul, sin verde) */
+.pack-card.featured {
+    border: 2px solid #3B82F6 !important;
+    background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.08) 100%) !important;
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* ELIMINACIÓN DE VERDE EN BOTONES "MEDICIONES E INDICADORES" */
+.accordion-trigger-btn {
+    background: rgba(59, 130, 246, 0.12) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    color: #60A5FA !important;
+}
+
+.accordion-trigger-btn:hover {
+    background: rgba(59, 130, 246, 0.25) !important;
+    border-color: #3B82F6 !important;
+    color: #FFFFFF !important;
+}
+
+/* BOTÓN "POSTULATE ACÁ" EN AZUL */
 .btn-nav-outline {
     border: 1px solid rgba(59, 130, 246, 0.5) !important;
     background: rgba(59, 130, 246, 0.1) !important;
@@ -1705,25 +1742,13 @@ body,
     color: #FFFFFF !important;
 }
 
-/* BOTONES "MEDICIONES E INDICADORES" EN PACKS (SIN VERDE) */
-.accordion-trigger-btn {
-    background: rgba(59, 130, 246, 0.1) !important;
-    border: 1px solid rgba(59, 130, 246, 0.3) !important;
-    color: #60A5FA !important;
-}
-
-.accordion-trigger-btn:hover {
-    background: rgba(59, 130, 246, 0.25) !important;
-    border-color: #3B82F6 !important;
-    color: #FFFFFF !important;
-}
-
-/* BOTONES PRINCIPALES DE ACCIÓN */
+/* BOTONES PRINCIPALES DE CONTRATACIÓN (AZUL SÓLIDO) */
 .btn-primary, 
 .btn-nav, 
 a.btn-green, 
 button.btn-green,
-.btn-pack {
+.btn-pack,
+.featured .btn-pack {
     background-color: #2563EB !important;
     color: #FFFFFF !important;
     border: none !important;
@@ -1734,17 +1759,24 @@ button.btn-green,
 .btn-nav:hover, 
 a.btn-green:hover, 
 button.btn-green:hover,
-.btn-pack:hover {
+.btn-pack:hover,
+.featured .btn-pack:hover {
     background-color: #1D4ED8 !important;
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5) !important;
 }
 
-/* VERDE RESERVADO ÚNICAMENTE PARA LAS TARJETAS POSITIVAS "CON CHG" DEL CARRUSEL Y TILDES */
-.mode-badge.con,
-.card-icon {
-    color: #10B981 !important;
-}
-
-.check-icon {
-    color: #3B82F6 !important; /* Tildes en azul de marca */
+/* CURSOR EN AZUL DODGER */
+.cursor-glow,
+#cursorGlow {
+    position: fixed !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #3B82F6 !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 99999 !important;
+    display: block !important;
+    opacity: 1 !important;
+    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.5) !important;
 }

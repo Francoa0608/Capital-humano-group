@@ -6,20 +6,20 @@
 }
 
 :root {
-    /* 1. FONDOS MÁS CLAROS Y LUMINOSOS (Azul Marino Corporativo) */
+    /* FONDOS CLAROS Y UNIFICADOS EN AZUL MARINO DE INTELIGENCIA */
     --bg-france-blue: #0F172A;    
-    --bg-section-blue: #1E293B;   
+    --bg-section-blue: #0F172A;   
     --card-blue: #1E293B;        
     --card-blue-hover: #334155;  
 
-    /* 2. DODGERBLUE PARA LÍNEAS, RESALTADOS Y MARCA */
+    /* DODGERBLUE PARA ACCIONES, RESALTADOS Y MARCA */
+    --emerald-green: #3B82F6 !important; /* Invalida el verde globalmente */
     --dodger-blue: #3B82F6;       
-    --emerald-green: #3B82F6; /* Redirigido para neutralizar verdes globales */
+    --hover-green: #2563EB;      
     --border-glow: rgba(59, 130, 246, 0.25);
 
-    /* 3. MIDNIGHTBLUE PROFUNDO PARA BOTONES */
+    /* MIDNIGHTBLUE PROFUNDO PARA BOTONES */
     --midnight-blue: #1E293B;     
-    --hover-green: #334155;      
 
     --white: #FFFFFF;            
     --white-soft: #E2E8F0;       

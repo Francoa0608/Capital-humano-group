@@ -6,21 +6,24 @@
 }
 
 :root {
-    /* FONDO AZUL OSCURO SOBRIO Y ELEGANTE */
-    --bg-france-blue: #0B1120;    
-    --bg-section-blue: #0F172A;   
-    --card-blue: #1E293B;        
-    --card-blue-hover: #334155;  
+    /* FONDO AZUL OSCURO NOCHE (Elegante y mate) */
+    --bg-france-blue: #080D1A;    
+    --bg-section-blue: #0D1527;   
+    --card-blue: #131F37;        
+    --card-blue-hover: #1A2B4C;  
 
-    /* ACENTOS ESMERALDA PROFESIONALES (SIN CELESTE CHILLÓN) */
-    --emerald-green: #10B981;    
-    --hover-green: #059669;      
-    --accent-teal: #34D399;   
+    /* AZULES PRINCIPALES PARA BOTONES E INTERACCIÓN */
+    --emerald-green: #2563EB;    /* Azul Cobalto de alto impacto para botones */
+    --hover-green: #1D4ED8;      /* Azul Cobalto más profundo en Hover */
+    --accent-teal: #3B82F6;       /* Azul Real/Zafiro para resaltados */
+
+    /* DETALLES EN VERDE ESMERALDA (Solo para acentos mínimos) */
+    --detail-green: #10B981;
 
     --white: #FFFFFF;            
     --white-soft: #CBD5E1;       
     --text-muted: #94A3B8;       
-    --border-glow: rgba(255, 255, 255, 0.08); 
+    --border-glow: rgba(59, 130, 246, 0.15); /* Resplandor azul sutil en bordes */
 }
 body, a, button, input {
     cursor: none !important;

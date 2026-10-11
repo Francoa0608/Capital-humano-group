@@ -6,23 +6,23 @@
 }
 
 :root {
-    /* 1. MediumBlue (Fondo general y secciones) */
-    --bg-france-blue: #0000CD;    
-    --bg-section-blue: #0000B3;   
-    --card-blue: #000099;        
-    --card-blue-hover: #000080;  
+    /* 1. FONDO PRINCIPAL SOBRIO (Igual al fondo del footer que te gustó) */
+    --bg-france-blue: #08121E;    
+    --bg-section-blue: #0E1B2E;   
+    --card-blue: #13233C;        
+    --card-blue-hover: #1A2E4E;  
 
-    /* 2. DodgerBlue (Líneas, detalles y texto "CAPITAL HUMANO") */
-    --dodger-blue: #1E90FF;       
-    --emerald-green: #1E90FF; /* Forzamos para pisar referencias antiguas */
-    --border-glow: rgba(30, 144, 255, 0.4);
+    /* 2. DETALLES Y MARCA "CAPITAL HUMANO" (DodgerBlue suave) */
+    --dodger-blue: #3B82F6;       
+    --emerald-green: #3B82F6; 
+    --border-glow: rgba(59, 130, 246, 0.18);
 
-    /* 3. MidnightBlue (Botones, cápsulas y "GROUP") */
-    --midnight-blue: #191970;     
-    --hover-green: #10105A;      
+    /* 3. BOTONES, CURSOR Y SUBTÍTULO "GROUP" (MidnightBlue profesional) */
+    --midnight-blue: #182845;     
+    --hover-green: #20355A;      
 
     --white: #FFFFFF;            
-    --white-soft: #E2E8F0;       
+    --white-soft: #CBD5E1;       
     --text-muted: #94A3B8;       
 }
 body, a, button, input {
@@ -106,9 +106,7 @@ body {
 }
 
 .brand-title {
-    background: linear-gradient(135deg, #1E90FF 0%, #191970 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #FFFFFF !important; /* Texto principal en blanco puro */
     font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: 0.8px;
@@ -116,7 +114,7 @@ body {
 }
 
 .brand-subtitle {
-    color: #191970;
+    color: #3B82F6 !important; /* DodgerBlue para "Capital Humano" y "Group" */
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 3.5px;
@@ -1656,82 +1654,89 @@ button.btn-green:hover {
     height: 420px;
 }
 /* ==========================================================================
-   REEMPLAZO TOTAL DE PALETA DE COLORES (FORZADO CON ABSOLUTA PRIORIDAD)
+   CORRECCIÓN CROMÁTICA B2B: FONDOS OSCURO SOSEGADO + BOTONES MIDNIGHTBLUE
    ========================================================================== */
 
-/* 1. MEDIUMBLUE PARA FONDOS, HEADER Y OVERLAY DE IMÁGENES */
-body {
-    background-color: #0000CD !important;
+/* FONDOS Y OVERLAYS BASADOS EN EL FOOTER */
+body, 
+.rubros-section, 
+.packs-section, 
+.extras-section,
+.chg-carousel-section {
+    background-color: #08121E !important;
 }
 
 .navbar {
-    background: rgba(0, 0, 205, 0.95) !important;
-    border-bottom: 1px solid #1E90FF !important;
+    background: rgba(8, 18, 30, 0.95) !important;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
 }
 
 .hero-overlay {
-    background: linear-gradient(90deg, rgba(0, 0, 205, 0.9) 0%, rgba(0, 0, 179, 0.8) 100%) !important;
+    background: linear-gradient(90deg, rgba(8, 18, 30, 0.94) 0%, rgba(14, 27, 46, 0.85) 100%) !important;
 }
 
-/* 2. DODGERBLUE PARA "CAPITAL HUMANO", RESALTADOS Y CÁPSULA */
+/* MARCA Y RESALTADOS (DODGERBLUE SUAVE) */
 .hero-content h1 span,
-.chg-hero-title .highlight {
-    color: #1E90FF !important;
+.chg-hero-title .highlight,
+.rotator-text span.highlight {
+    color: #3B82F6 !important;
     background: none !important;
-    -webkit-text-fill-color: #1E90FF !important;
+    -webkit-text-fill-color: #3B82F6 !important;
 }
 
 .hero-badge {
-    background-color: rgba(30, 144, 255, 0.15) !important;
-    color: #1E90FF !important;
-    border: 1px solid #1E90FF !important;
+    background-color: rgba(59, 130, 246, 0.12) !important;
+    color: #60A5FA !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
 }
 
-/* 3. MIDNIGHTBLUE PARA BOTONES "DESCUBRÍ TU PACK IDEAL" Y "VER PACKS" */
+/* BOTONES PRINCIPALES (MIDNIGHTBLUE CON BORDE DODGERBLUE) */
 .btn-primary, 
 .btn-nav, 
 a.btn-green, 
 button.btn-green,
 .btn-pack {
-    background-color: #191970 !important;
+    background-color: #182845 !important;
     color: #FFFFFF !important;
-    border: 1px solid #1E90FF !important;
-    box-shadow: 0 4px 15px rgba(25, 25, 112, 0.6) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    box-shadow: 0 4px 14px rgba(8, 18, 30, 0.5) !important;
+    transition: all 0.3s ease !important;
 }
 
 .btn-primary:hover, 
 .btn-nav:hover, 
 a.btn-green:hover, 
-button.btn-green:hover {
-    background-color: #10105A !important;
-    border-color: #1E90FF !important;
-    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.4) !important;
+button.btn-green:hover,
+.btn-pack:hover {
+    background-color: #20355A !important;
+    border-color: #3B82F6 !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3) !important;
+    transform: translateY(-2px) !important;
 }
 
-/* BOTÓN SECUNDARIO "POSTULATE ACÁ" CON MIDNIGHTBLUE Y BORDE DODGERBLUE */
 .btn-nav-outline {
-    border: 1px solid #1E90FF !important;
-    background: #191970 !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    background: rgba(24, 40, 69, 0.5) !important;
     color: #FFFFFF !important;
 }
 
 .btn-nav-outline:hover {
-    background: #10105A !important;
-    border-color: #1E90FF !important;
+    background: rgba(32, 53, 90, 0.8) !important;
+    border-color: #3B82F6 !important;
 }
 
-/* RESTABLECIMIENTO TOTAL DEL CURSOR DENTRO DE LA PALETA */
+/* CURSOR PERSONALIZADO (RESTABLECIDO Y VISIBLE EN DODGERBLUE SUAVE) */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
-    width: 12px !important;
-    height: 12px !important;
-    background-color: #1E90FF !important; /* DodgerBlue para que resalte en el fondo */
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #3B82F6 !important;
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
     z-index: 99999 !important;
     display: block !important;
     opacity: 1 !important;
-    box-shadow: 0 0 10px #1E90FF, 0 0 20px #1E90FF !important;
+    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.5) !important;
 }

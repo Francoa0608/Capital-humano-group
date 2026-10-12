@@ -272,24 +272,23 @@ body {
 }
 
 /* BOTONES PRINCIPALES DEL HERO */
-.btn-primary {
-    background: #2563EB !important;
+/* Opción 1: Gradiente Eléctrico */
+.btn-primary, 
+.btn-nav {
+    background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #00D2FF 100%) !important;
+    background-size: 200% auto !important;
     color: #FFFFFF !important;
-    padding: 14px 28px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
     border: none !important;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35) !important; /* Sombra base azul */
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4), 0 0 20px rgba(0, 210, 255, 0.2) !important;
+    transition: all 0.4s ease !important;
 }
 
-.btn-primary:hover {
-    background: #1D4ED8 !important;
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.55) !important; /* Resplandor azul en hover */
+.btn-primary:hover, 
+.btn-nav:hover {
+    background-position: right center !important; /* Desplaza el brillo neón al hover */
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5), 0 0 30px rgba(37, 99, 235, 0.4) !important;
 }
-
 .btn-secondary {
     background: rgba(255, 255, 255, 0.1);
     color: #FFFFFF;

@@ -12,13 +12,12 @@
     --card-blue: #1E293B;        
     --card-blue-hover: #334155;  
 
-    /* DODGERBLUE PARA ACCIONES, RESALTADOS Y MARCA */
-    --emerald-green: #3B82F6 !important; /* Invalida el verde globalmente */
+    /* DODGERBLUE Y VERDE ESMERALDA INSTITUCIONAL */
+    --emerald-green: #10B981; /* Verde esmeralda real */
     --dodger-blue: #3B82F6;       
     --hover-green: #2563EB;      
     --border-glow: rgba(59, 130, 246, 0.25);
 
-    /* MIDNIGHTBLUE PROFUNDO PARA BOTONES */
     --midnight-blue: #1E293B;     
 
     --white: #FFFFFF;            
@@ -1659,7 +1658,7 @@ button.btn-green:hover {
     height: 420px;
 }
 /* ==========================================================================
-   UNIFICACIÓN EN PALETA AZUL / DODGERBLUE Y LIMPIEZA ABSOLUTA DE VERDES
+   UNIFICACIÓN EN PALETA AZUL / DODGERBLUE Y DETALLES VERDE ESMERALDA
    ========================================================================== */
 
 /* 1. FONDOS UNIFICADOS EN AZUL SLATE CORPORATIVO */
@@ -1684,8 +1683,9 @@ body,
     -webkit-text-fill-color: transparent !important;
 }
 
+/* SUBTÍTULO GROUP EN VERDE ESMERALDA */
 .brand-subtitle {
-    color: #60A5FA !important;
+    color: #10B981 !important;
 }
 
 .hero-content h1 span,
@@ -1696,7 +1696,7 @@ body,
     -webkit-text-fill-color: transparent !important;
 }
 
-/* 3. BOTÓN HERO Y BOTONES DE CONTRATACIÓN (GRADIENTE DINÁMICO EN MOVIMIENTO) */
+/* 3. BOTONES CON GRADIENTE AZUL DINÁMICO */
 .btn-primary, 
 a.btn-green, 
 button.btn-green,
@@ -1720,7 +1720,7 @@ button.btn-green:hover,
     box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6), 0 0 30px rgba(37, 99, 235, 0.5) !important;
 }
 
-/* 4. TARJETA DESTACADA "PACK 2" Y BADGES EN AZUL */
+/* 4. TARJETA DESTACADA Y ELEMENTOS SECUNDARIOS */
 .pack-card.featured {
     border: 2px solid #3B82F6 !important;
     background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.08) 100%) !important;
@@ -1739,7 +1739,6 @@ button.btn-green:hover,
     color: #60A5FA !important;
 }
 
-/* 5. ELIMINACIÓN DE VERDE EN "MEDICIONES E INDICADORES" Y "POSTULATE ACÁ" */
 .accordion-trigger-btn,
 .btn-nav-outline,
 .badge-sub,
@@ -1757,7 +1756,6 @@ button.btn-green:hover,
     box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3) !important;
 }
 
-/* 6. CORRECCIÓN EN TARJETAS DEL CARRUSEL Y HOVER DE SERVICIOS EXTRAS */
 .interactive-card:hover,
 .extra-item:hover {
     border-color: #3B82F6 !important;
@@ -1769,13 +1767,13 @@ button.btn-green:hover,
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(59, 130, 246, 0.3) !important;
 }
 
-/* CURSOR VANGUARDISTA VERDE ESMERALDA DUAL */
+/* 5. CURSOR VANGUARDISTA VERDE ESMERALDA DUAL */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
     width: 8px !important;
     height: 8px !important;
-    background-color: #10B981 !important; /* Verde esmeralda nítido */
+    background-color: #10B981 !important;
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
@@ -1786,8 +1784,8 @@ button.btn-green:hover,
     transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease !important;
 }
 
-/* Anillo exterior que persigue al cursor (Efecto trailing vanguardista) */
-.cursor-ring {
+.cursor-ring,
+#cursorRing {
     position: fixed !important;
     width: 32px !important;
     height: 32px !important;
@@ -1796,18 +1794,19 @@ button.btn-green:hover,
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
     z-index: 99998 !important;
+    display: block !important;
     transition: transform 0.08s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease !important;
 }
 
-/* Estado Expandido al interactuar con botones o enlaces */
-.cursor-hover-active {
+/* ESTADO EXPANDIDO EN HOVER */
+.cursor-glow.cursor-hover-active {
     width: 14px !important;
     height: 14px !important;
     background-color: #34D399 !important;
     box-shadow: 0 0 15px #34D399, 0 0 30px rgba(52, 211, 153, 0.8) !important;
 }
 
-.cursor-ring-active {
+.cursor-ring.cursor-ring-active {
     width: 48px !important;
     height: 48px !important;
     border-color: rgba(52, 211, 153, 0.8) !important;

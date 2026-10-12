@@ -142,15 +142,15 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--emerald-green);
+    color: #3B82F6;
     transform: scale(1.12);
 }
 
 /* BOTÓN SECUNDARIO: POSTULATE ACÁ */
 .btn-nav-outline {
-    border: 1px solid rgba(16, 185, 129, 0.6);
-    background: rgba(16, 185, 129, 0.1) !important;
-    color: var(--emerald-green) !important;
+    border: 1px solid rgba(59, 130, 246, 0.5) !important;
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: #60A5FA !important;
     padding: 9px 18px;
     border-radius: 30px;
     backdrop-filter: blur(6px);
@@ -158,20 +158,20 @@ body {
 }
 
 .btn-nav-outline:hover {
-    background: rgba(16, 185, 129, 0.25) !important;
-    border-color: var(--emerald-green) !important;
-    color: var(--white) !important;
+    background: rgba(59, 130, 246, 0.25) !important;
+    border-color: #3B82F6 !important;
+    color: #FFFFFF !important;
     transform: translateY(-2px) scale(1.05) !important;
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25) !important;
 }
 
 /* BOTÓN PRINCIPAL: AVERIGUA TU PACK IDEAL */
 .btn-nav {
-    background: var(--emerald-green);
+    background: #2563EB !important;
     color: var(--white) !important;
     padding: 10px 20px;
     border-radius: 30px;
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
@@ -232,14 +232,14 @@ body {
     z-index: 3;
     max-width: 750px;
 }
-/* Estilos para la cápsula/píldora superior del Hero */
+/* PÍLDORA SUPERIOR DEL HERO */
 .hero-badge {
     display: inline-block;
-    background-color: rgba(16, 185, 129, 0.15); /* Fondo verde traslúcido */
-    color: #3B82F6; /* Verde esmeralda brillante */
-    border: 1px solid rgba(16, 185, 129, 0.4); /* Borde sutil */
+    background-color: rgba(59, 130, 246, 0.12) !important;
+    color: #60A5FA !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
     padding: 6px 16px;
-    border-radius: 50px; /* Forma de píldora redondeada */
+    border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.5px;

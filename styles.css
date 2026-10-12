@@ -117,7 +117,7 @@ body {
 }
 
 .brand-subtitle {
-    color: #60A5FA !important; /* DodgerBlue suave para GROUP */
+    color: #10B981 !important; /* DodgerBlue suave para GROUP */
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 3.5px;
@@ -1769,18 +1769,47 @@ button.btn-green:hover,
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(59, 130, 246, 0.3) !important;
 }
 
-/* 7. CURSOR VISIBLE EN DODGERBLUE CON RESPLANDOR AZUL */
+/* CURSOR VANGUARDISTA VERDE ESMERALDA DUAL */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
-    width: 10px !important;
-    height: 10px !important;
-    background-color: #3B82F6 !important;
+    width: 8px !important;
+    height: 8px !important;
+    background-color: #10B981 !important; /* Verde esmeralda nítido */
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
     z-index: 99999 !important;
     display: block !important;
     opacity: 1 !important;
-    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.6) !important;
+    box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6) !important;
+    transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease !important;
+}
+
+/* Anillo exterior que persigue al cursor (Efecto trailing vanguardista) */
+.cursor-ring {
+    position: fixed !important;
+    width: 32px !important;
+    height: 32px !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.5) !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 99998 !important;
+    transition: transform 0.08s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Estado Expandido al interactuar con botones o enlaces */
+.cursor-hover-active {
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #34D399 !important;
+    box-shadow: 0 0 15px #34D399, 0 0 30px rgba(52, 211, 153, 0.8) !important;
+}
+
+.cursor-ring-active {
+    width: 48px !important;
+    height: 48px !important;
+    border-color: rgba(52, 211, 153, 0.8) !important;
+    background: rgba(16, 185, 129, 0.08) !important;
 }

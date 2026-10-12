@@ -271,26 +271,28 @@ body {
     gap: 15px;
 }
 
+/* BOTONES PRINCIPALES DEL HERO */
 .btn-primary {
-    background: var(--emerald-green);
-    color: var(--white);
+    background: #2563EB !important;
+    color: #FFFFFF !important;
     padding: 14px 28px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35) !important; /* Sombra base azul */
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background: var(--hover-green);
+    background: #1D4ED8 !important;
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.55) !important; /* Resplandor azul en hover */
 }
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    color: #FFFFFF;
     border: 1.5px solid rgba(255, 255, 255, 0.2);
     padding: 14px 28px;
     border-radius: 10px;
@@ -301,10 +303,10 @@ body {
 }
 
 .btn-secondary:hover {
-    border-color: var(--emerald-green);
-    color: var(--emerald-green);
+    border-color: #3B82F6 !important;
+    color: #3B82F6 !important;
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3) !important;
 }
 
 /* SECCIONES GENERALES */

@@ -165,20 +165,22 @@ body {
     box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25) !important;
 }
 
-/* BOTÓN PRINCIPAL: AVERIGUA TU PACK IDEAL */
+/* BOTÓN PRINCIPAL NAVBAR: DESCUBRÍ TU PACK IDEAL */
 .btn-nav {
-    background: #2563EB !important;
-    color: var(--white) !important;
-    padding: 10px 20px;
+    background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #00D2FF 100%) !important;
+    background-size: 200% auto !important;
+    color: #FFFFFF !important;
+    padding: 10px 22px;
     border-radius: 30px;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4), 0 0 15px rgba(0, 210, 255, 0.25) !important;
+    transition: all 0.4s ease !important;
 }
 
 .btn-nav:hover {
-    transform: scale(1.06) translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-    background: var(--hover-green);
+    background-position: right center !important;
+    transform: scale(1.05) translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6), 0 0 25px rgba(37, 99, 235, 0.5) !important;
 }
 
 /* HERO SECTION CON FONDO DINÁMICO */
@@ -1657,10 +1659,10 @@ button.btn-green:hover {
     height: 420px;
 }
 /* ==========================================================================
-   CORRECCIÓN DEFINITIVA DE FONDOS Y ELIMINACIÓN TOTAL DE VERDES
+   UNIFICACIÓN EN PALETA AZUL / DODGERBLUE Y LIMPIEZA ABSOLUTA DE VERDES
    ========================================================================== */
 
-/* UNIFICACIÓN DE FONDOS (Mismo tono azul marino sin cortes) */
+/* 1. FONDOS UNIFICADOS EN AZUL SLATE CORPORATIVO */
 body, 
 .rubros-section, 
 .packs-section, 
@@ -1675,7 +1677,7 @@ body,
     border-bottom: 1px solid rgba(59, 130, 246, 0.25) !important;
 }
 
-/* MARCA "CAPITAL HUMANO" Y TEXTOS CON GRADIENTE AZUL */
+/* 2. GRADIENTES DE MARCA Y TÍTULOS */
 .brand-title {
     background: linear-gradient(135deg, #FFFFFF 20%, #3B82F6 100%) !important;
     -webkit-background-clip: text !important;
@@ -1686,86 +1688,88 @@ body,
     color: #60A5FA !important;
 }
 
-/* ELIMINACIÓN DE VERDE EN PUNTOS Y INDICADORES */
-.dot-item,
-.rotator-dots .dot-item {
-    background: rgba(59, 130, 246, 0.3) !important;
-    box-shadow: none !important;
+.hero-content h1 span,
+.chg-hero-title .highlight {
+    color: #3B82F6 !important;
+    background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
 
-.dot-item.active,
-.rotator-dots .dot-item:nth-child(1),
-.rotator-dots .dot-item:nth-child(2),
-.rotator-dots .dot-item:nth-child(3) {
-    background: #3B82F6 !important;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8) !important;
-}
-
-/* ELIMINACIÓN DE VERDE EN CÁPSULAS Y BADGES ("Módulos Complementarios") */
-.badge-sub,
-.hero-badge {
-    background: rgba(59, 130, 246, 0.12) !important;
-    color: #60A5FA !important;
-    border: 1px solid rgba(59, 130, 246, 0.3) !important;
-}
-
-/* TARJETA DESTACADA PACK 2 (Borde y brillo en azul, sin verde) */
-.pack-card.featured {
-    border: 2px solid #3B82F6 !important;
-    background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.08) 100%) !important;
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.2) !important;
-}
-
-/* ELIMINACIÓN DE VERDE EN BOTONES "MEDICIONES E INDICADORES" */
-.accordion-trigger-btn {
-    background: rgba(59, 130, 246, 0.12) !important;
-    border: 1px solid rgba(59, 130, 246, 0.3) !important;
-    color: #60A5FA !important;
-}
-
-.accordion-trigger-btn:hover {
-    background: rgba(59, 130, 246, 0.25) !important;
-    border-color: #3B82F6 !important;
-    color: #FFFFFF !important;
-}
-
-/* BOTÓN "POSTULATE ACÁ" EN AZUL */
-.btn-nav-outline {
-    border: 1px solid rgba(59, 130, 246, 0.5) !important;
-    background: rgba(59, 130, 246, 0.1) !important;
-    color: #60A5FA !important;
-}
-
-.btn-nav-outline:hover {
-    background: rgba(59, 130, 246, 0.25) !important;
-    border-color: #3B82F6 !important;
-    color: #FFFFFF !important;
-}
-
-/* BOTONES PRINCIPALES DE CONTRATACIÓN (AZUL SÓLIDO) */
+/* 3. BOTÓN HERO Y BOTONES DE CONTRATACIÓN (GRADIENTE DINÁMICO EN MOVIMIENTO) */
 .btn-primary, 
-.btn-nav, 
 a.btn-green, 
 button.btn-green,
 .btn-pack,
 .featured .btn-pack {
-    background-color: #2563EB !important;
+    background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #00D2FF 100%) !important;
+    background-size: 200% auto !important;
     color: #FFFFFF !important;
     border: none !important;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35) !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4), 0 0 15px rgba(0, 210, 255, 0.25) !important;
+    transition: all 0.4s ease !important;
 }
 
 .btn-primary:hover, 
-.btn-nav:hover, 
 a.btn-green:hover, 
 button.btn-green:hover,
 .btn-pack:hover,
 .featured .btn-pack:hover {
-    background-color: #1D4ED8 !important;
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5) !important;
+    background-position: right center !important;
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6), 0 0 30px rgba(37, 99, 235, 0.5) !important;
 }
 
-/* CURSOR EN AZUL DODGER */
+/* 4. TARJETA DESTACADA "PACK 2" Y BADGES EN AZUL */
+.pack-card.featured {
+    border: 2px solid #3B82F6 !important;
+    background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.08) 100%) !important;
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.25) !important;
+}
+
+.badge-card {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
+}
+
+.pack-tagline,
+.check-icon,
+.accordion-subtitle {
+    color: #60A5FA !important;
+}
+
+/* 5. ELIMINACIÓN DE VERDE EN "MEDICIONES E INDICADORES" Y "POSTULATE ACÁ" */
+.accordion-trigger-btn,
+.btn-nav-outline,
+.badge-sub,
+.hero-badge {
+    background: rgba(59, 130, 246, 0.12) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    color: #60A5FA !important;
+}
+
+.accordion-trigger-btn:hover,
+.btn-nav-outline:hover {
+    background: rgba(59, 130, 246, 0.25) !important;
+    border-color: #3B82F6 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* 6. CORRECCIÓN EN TARJETAS DEL CARRUSEL Y HOVER DE SERVICIOS EXTRAS */
+.interactive-card:hover,
+.extra-item:hover {
+    border-color: #3B82F6 !important;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.35) !important;
+}
+
+.card-3d.active .card-front {
+    border-color: #3B82F6 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* 7. CURSOR VISIBLE EN DODGERBLUE CON RESPLANDOR AZUL */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
@@ -1778,5 +1782,5 @@ button.btn-green:hover,
     z-index: 99999 !important;
     display: block !important;
     opacity: 1 !important;
-    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.6) !important;
 }

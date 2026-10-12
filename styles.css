@@ -236,7 +236,7 @@ body {
 .hero-badge {
     display: inline-block;
     background-color: rgba(16, 185, 129, 0.15); /* Fondo verde traslúcido */
-    color: #1E293B; /* Verde esmeralda brillante */
+    color: #3B82F6; /* Verde esmeralda brillante */
     border: 1px solid rgba(16, 185, 129, 0.4); /* Borde sutil */
     padding: 6px 16px;
     border-radius: 50px; /* Forma de píldora redondeada */

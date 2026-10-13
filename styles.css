@@ -1765,18 +1765,53 @@ button.btn-green:hover,
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5) !important;
 }
 
-/* CURSOR EN AZUL DODGER */
+/* ==========================================================================
+   CURSOR VERDE ESMERALDA VANGUARDISTA CON ANILLO DE SEGUIMIENTO (TRAILING)
+   ========================================================================== */
+
+/* Punto verde central */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
-    width: 10px !important;
-    height: 10px !important;
-    background-color: #3B82F6 !important;
+    width: 8px !important;
+    height: 8px !important;
+    background-color: #10B981 !important; /* Verde esmeralda */
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
     z-index: 99999 !important;
     display: block !important;
     opacity: 1 !important;
-    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6) !important;
+    transition: width 0.25s ease, height 0.25s ease !important;
+}
+
+/* Anillo exterior que persigue al punto */
+.cursor-ring,
+#cursorRing {
+    position: fixed !important;
+    width: 32px !important;
+    height: 32px !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.5) !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 99998 !important;
+    display: block !important;
+    transition: transform 0.08s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Expansión interactiva al pasar por botones o enlaces */
+.cursor-glow.cursor-hover-active {
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #34D399 !important;
+    box-shadow: 0 0 15px #34D399, 0 0 30px rgba(52, 211, 153, 0.8) !important;
+}
+
+.cursor-ring.cursor-ring-active {
+    width: 48px !important;
+    height: 48px !important;
+    border-color: rgba(52, 211, 153, 0.8) !important;
+    background: rgba(16, 185, 129, 0.08) !important;
 }

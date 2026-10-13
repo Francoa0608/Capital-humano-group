@@ -1398,21 +1398,6 @@
             });
         });
 
-        // EFECTO DE CURSOR VANGUARDISTA
-        const glow = document.getElementById('cursorGlow');
-        if (glow) {
-            document.addEventListener('mousemove', (e) => {
-                glow.style.left = e.clientX + 'px';
-                glow.style.top = e.clientY + 'px';
-            });
-
-            const interactives = document.querySelectorAll('a, button, .interactive-card');
-            interactives.forEach(el => {
-                el.addEventListener('mouseenter', () => glow.classList.add('glow-expand'));
-                el.addEventListener('mouseleave', () => glow.classList.remove('glow-expand'));
-            });
-        }
-
         // ROTACIÓN AUTOMÁTICA DEL FONDO (SLIDER)
         const slides = document.querySelectorAll('.hero-slider .slide');
         let currentSlide = 0;
@@ -1553,25 +1538,25 @@
           mouseX = e.clientX;
           mouseY = e.clientY;
           
-          // Punto central sigue al mouse instantáneamente
-          cursorDot.style.left = `${mouseX}px`;
-          cursorDot.style.top = `${mouseY}px`;
+          // El punto interno sigue directamente al mouse
+          cursorDot.style.left = mouseX + 'px';
+          cursorDot.style.top = mouseY + 'px';
         });
 
-        // El segundo círculo sigue al punto con inercia suave
+        // Animación de persecución suave con inercia para el anillo exterior
         function animateCursorRing() {
-          ringX += (mouseX - ringX) * 0.18;
-          ringY += (mouseY - ringY) * 0.18;
+          ringX += (mouseX - ringX) * 0.15;
+          ringY += (mouseY - ringY) * 0.15;
           
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
+          cursorRing.style.left = ringX + 'px';
+          cursorRing.style.top = ringY + 'px';
           
           requestAnimationFrame(animateCursorRing);
         }
         animateCursorRing();
 
-        // Expansión del punto y anillo en elementos interactivos
-        const interactiveElements = document.querySelectorAll('a, button, .interactive-card, .btn-nav, .btn-primary, .btn-nav-outline, .card-3d');
+        // Escucha elementos interactivos para expandir el cursor
+        const interactiveElements = document.querySelectorAll('a, button, .interactive-card, .btn-nav, .btn-primary, .btn-nav-outline, .card-3d, .accordion-trigger-btn');
         interactiveElements.forEach(el => {
           el.addEventListener('mouseenter', () => {
             cursorDot.classList.add('cursor-hover-active');

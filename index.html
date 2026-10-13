@@ -1519,57 +1519,58 @@
           }
       });
     </script>
-  <!-- CURSOR VERDE AUTÓNOMO (REEMPLAZAR SOLO ESTE SCRIPT AL FINAL) -->
+  <!-- CURSOR VERDE AUTÓNOMO AUTOGENERADO -->
     <script>
       (function() {
-        // Ejecutar inmediatamente sin esperar a otros scripts
         if (window.innerWidth <= 768) return;
 
-        // Force-create elementos directamente en la raíz de la página
+        // Inyección directa en el body
         var dot = document.createElement('div');
         var ring = document.createElement('div');
 
         dot.id = 'cursorGlow';
         ring.id = 'cursorRing';
 
-        document.documentElement.appendChild(dot);
-        document.documentElement.appendChild(ring);
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
 
         var mX = -100, mY = -100;
         var rX = -100, rY = -100;
 
-        // Captura directa de eventos del mouse a nivel documento global
-        document.addEventListener('mousemove', function(e) {
+        // Captura directa del movimiento del ratón
+        window.addEventListener('mousemove', function(e) {
           mX = e.clientX;
           mY = e.clientY;
           dot.style.left = mX + 'px';
           dot.style.top = mY + 'px';
-        }, { capture: true, passive: true });
+        }, { passive: true });
 
-        // Bucle de renderizado independiente
-        function loop() {
-          rX += (mX - rX) * 0.2;
-          rY += (mY - rY) * 0.2;
+        // Animación fluida con requestAnimationFrame
+        function renderCursor() {
+          rX += (mX - rX) * 0.18;
+          rY += (mY - rY) * 0.18;
+
           ring.style.left = rX + 'px';
           ring.style.top = rY + 'px';
-          requestAnimationFrame(loop);
-        }
-        requestAnimationFrame(loop);
 
-        // Hover en elementos interactivos
+          requestAnimationFrame(renderCursor);
+        }
+        requestAnimationFrame(renderCursor);
+
+        // Expansión interactiva en hover
         document.addEventListener('mouseover', function(e) {
-          if (e.target && e.target.closest && e.target.closest('a, button, .interactive-card, .card-3d, input, select')) {
+          if (e.target.closest('a, button, .interactive-card, .card-3d, input, select, .btn-pack')) {
             dot.classList.add('cursor-active');
             ring.classList.add('cursor-active');
           }
-        }, { passive: true });
+        });
 
         document.addEventListener('mouseout', function(e) {
-          if (e.target && e.target.closest && e.target.closest('a, button, .interactive-card, .card-3d, input, select')) {
+          if (e.target.closest('a, button, .interactive-card, .card-3d, input, select, .btn-pack')) {
             dot.classList.remove('cursor-active');
             ring.classList.remove('cursor-active');
           }
-        }, { passive: true });
+        });
       })();
     </script>
 </body>

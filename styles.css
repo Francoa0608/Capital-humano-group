@@ -1658,7 +1658,7 @@ button.btn-green:hover {
     height: 420px;
 }
 /* ==========================================================================
-   UNIFICACIÓN EN PALETA AZUL / DODGERBLUE Y DETALLES VERDE ESMERALDA
+   UNIFICACIÓN EN PALETA AZUL / DODGERBLUE Y LIMPIEZA ABSOLUTA DE VERDES
    ========================================================================== */
 
 /* 1. FONDOS UNIFICADOS EN AZUL SLATE CORPORATIVO */
@@ -1683,9 +1683,8 @@ body,
     -webkit-text-fill-color: transparent !important;
 }
 
-/* SUBTÍTULO GROUP EN VERDE ESMERALDA */
 .brand-subtitle {
-    color: #10B981 !important;
+    color: #60A5FA !important;
 }
 
 .hero-content h1 span,
@@ -1696,7 +1695,7 @@ body,
     -webkit-text-fill-color: transparent !important;
 }
 
-/* 3. BOTONES CON GRADIENTE AZUL DINÁMICO */
+/* 3. BOTÓN HERO Y BOTONES DE CONTRATACIÓN (GRADIENTE DINÁMICO EN MOVIMIENTO) */
 .btn-primary, 
 a.btn-green, 
 button.btn-green,
@@ -1720,7 +1719,7 @@ button.btn-green:hover,
     box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6), 0 0 30px rgba(37, 99, 235, 0.5) !important;
 }
 
-/* 4. TARJETA DESTACADA Y ELEMENTOS SECUNDARIOS */
+/* 4. TARJETA DESTACADA "PACK 2" Y BADGES EN AZUL */
 .pack-card.featured {
     border: 2px solid #3B82F6 !important;
     background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.08) 100%) !important;
@@ -1739,6 +1738,7 @@ button.btn-green:hover,
     color: #60A5FA !important;
 }
 
+/* 5. ELIMINACIÓN DE VERDE EN "MEDICIONES E INDICADORES" Y "POSTULATE ACÁ" */
 .accordion-trigger-btn,
 .btn-nav-outline,
 .badge-sub,
@@ -1756,6 +1756,7 @@ button.btn-green:hover,
     box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3) !important;
 }
 
+/* 6. CORRECCIÓN EN TARJETAS DEL CARRUSEL Y HOVER DE SERVICIOS EXTRAS */
 .interactive-card:hover,
 .extra-item:hover {
     border-color: #3B82F6 !important;
@@ -1767,48 +1768,18 @@ button.btn-green:hover,
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(59, 130, 246, 0.3) !important;
 }
 
-/* 5. CURSOR VANGUARDISTA VERDE ESMERALDA DUAL */
+/* 7. CURSOR VISIBLE EN DODGERBLUE CON RESPLANDOR AZUL */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
-    width: 8px !important;
-    height: 8px !important;
-    background-color: #10B981 !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #3B82F6 !important;
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
     z-index: 99999 !important;
     display: block !important;
     opacity: 1 !important;
-    box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6) !important;
-    transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease !important;
-}
-
-.cursor-ring,
-#cursorRing {
-    position: fixed !important;
-    width: 32px !important;
-    height: 32px !important;
-    border: 1.5px solid rgba(16, 185, 129, 0.5) !important;
-    border-radius: 50% !important;
-    pointer-events: none !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 99998 !important;
-    display: block !important;
-    transition: transform 0.08s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease !important;
-}
-
-/* ESTADO EXPANDIDO EN HOVER */
-.cursor-glow.cursor-hover-active {
-    width: 14px !important;
-    height: 14px !important;
-    background-color: #34D399 !important;
-    box-shadow: 0 0 15px #34D399, 0 0 30px rgba(52, 211, 153, 0.8) !important;
-}
-
-.cursor-ring.cursor-ring-active {
-    width: 48px !important;
-    height: 48px !important;
-    border-color: rgba(52, 211, 153, 0.8) !important;
-    background: rgba(16, 185, 129, 0.08) !important;
+    box-shadow: 0 0 8px #3B82F6, 0 0 16px rgba(59, 130, 246, 0.6) !important;
 }

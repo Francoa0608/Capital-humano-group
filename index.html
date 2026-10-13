@@ -1522,7 +1522,9 @@
   <!-- SCRIPT DE CURSOR AUTÓNOMO -->
     <script>
       (function() {
-        // Crear elementos dinámicamente si no están en el DOM
+        if (window.innerWidth <= 768) return;
+
+        // Inyección dinámica para asegurar que los elementos existan en el DOM
         let dot = document.getElementById('cursorGlow');
         let ring = document.getElementById('cursorRing');
 
@@ -1541,7 +1543,7 @@
         let mouseX = -100, mouseY = -100;
         let ringX = -100, ringY = -100;
 
-        // Captura directa de posición del ratón
+        // Seguir posición del mouse
         window.addEventListener('mousemove', (e) => {
           mouseX = e.clientX;
           mouseY = e.clientY;
@@ -1550,7 +1552,7 @@
           dot.style.top = mouseY + 'px';
         }, { passive: true });
 
-        // Animación suave de persecución mediante renderizado
+        // Animación de persecución suave para el anillo
         function render() {
           ringX += (mouseX - ringX) * 0.18;
           ringY += (mouseY - ringY) * 0.18;
@@ -1562,7 +1564,7 @@
         }
         requestAnimationFrame(render);
 
-        // Delegación de eventos para elementos interactivos presentes y futuros
+        // Detectar hover en elementos interactivos
         document.addEventListener('mouseover', (e) => {
           if (e.target.closest('a, button, .interactive-card, .card-3d, input, select')) {
             dot.classList.add('cursor-active');

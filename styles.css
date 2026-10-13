@@ -1773,6 +1773,8 @@ button.btn-green:hover,
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 8px !important;
     height: 8px !important;
     background-color: #10B981 !important; /* Verde esmeralda */
@@ -1783,22 +1785,24 @@ button.btn-green:hover,
     display: block !important;
     opacity: 1 !important;
     box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6) !important;
-    transition: width 0.25s ease, height 0.25s ease !important;
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease !important;
 }
 
 /* Anillo exterior que persigue al punto */
 .cursor-ring,
 #cursorRing {
     position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 32px !important;
     height: 32px !important;
-    border: 1.5px solid rgba(16, 185, 129, 0.5) !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.6) !important;
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
     z-index: 99998 !important;
     display: block !important;
-    transition: transform 0.08s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease !important;
+    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
 }
 
 /* Expansión interactiva al pasar por botones o enlaces */

@@ -1519,52 +1519,54 @@
           }
       });
     </script>
-   <!-- ELEMENTOS DEL CURSOR DUAL -->
+  <!-- ELEMENTOS DEL CURSOR DUAL -->
     <div class="cursor-glow" id="cursorGlow"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
     <script>
-      const cursorDot = document.getElementById('cursorGlow');
-      const cursorRing = document.getElementById('cursorRing');
+      document.addEventListener('DOMContentLoaded', () => {
+        const cursorDot = document.getElementById('cursorGlow');
+        const cursorRing = document.getElementById('cursorRing');
 
-      let mouseX = 0, mouseY = 0;
-      let ringX = 0, ringY = 0;
+        let mouseX = -100, mouseY = -100;
+        let ringX = -100, ringY = -100;
 
-      if (cursorDot && cursorRing) {
-        window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-          
-          // El punto interno sigue directamente al mouse
-          cursorDot.style.left = mouseX + 'px';
-          cursorDot.style.top = mouseY + 'px';
-        });
+        if (cursorDot && cursorRing) {
+          window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Posicionamiento directo del punto verde
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+          });
 
-        // Animación de persecución suave con inercia para el anillo exterior
-        function animateCursorRing() {
-          ringX += (mouseX - ringX) * 0.15;
-          ringY += (mouseY - ringY) * 0.15;
-          
-          cursorRing.style.left = ringX + 'px';
-          cursorRing.style.top = ringY + 'px';
-          
-          requestAnimationFrame(animateCursorRing);
+          // Animación fluida del anillo de persecución
+          function animateCursorRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            
+            requestAnimationFrame(animateCursorRing);
+          }
+          animateCursorRing();
+
+          // Activación de halo expandido en elementos clickeables
+          const interactiveElements = document.querySelectorAll('a, button, .interactive-card, .btn-nav, .btn-primary, .btn-nav-outline, .card-3d, .accordion-trigger-btn');
+          interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+              cursorDot.classList.add('cursor-hover-active');
+              cursorRing.classList.add('cursor-ring-active');
+            });
+            el.addEventListener('mouseleave', () => {
+              cursorDot.classList.remove('cursor-hover-active');
+              cursorRing.classList.remove('cursor-ring-active');
+            });
+          });
         }
-        animateCursorRing();
-
-        // Escucha elementos interactivos para expandir el cursor
-        const interactiveElements = document.querySelectorAll('a, button, .interactive-card, .btn-nav, .btn-primary, .btn-nav-outline, .card-3d, .accordion-trigger-btn');
-        interactiveElements.forEach(el => {
-          el.addEventListener('mouseenter', () => {
-            cursorDot.classList.add('cursor-hover-active');
-            cursorRing.classList.add('cursor-ring-active');
-          });
-          el.addEventListener('mouseleave', () => {
-            cursorDot.classList.remove('cursor-hover-active');
-            cursorRing.classList.remove('cursor-ring-active');
-          });
-        });
-      }
+      });
     </script>
 </body>
 </html>

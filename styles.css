@@ -94,7 +94,7 @@ body {
 }
 
 .brand-subtitle {
-    color: #10B981 !important; 
+    color: #60A5FA !important; /* DodgerBlue suave para GROUP */
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 3.5px;
@@ -1766,11 +1766,10 @@ button.btn-green:hover,
     color: #60A5FA !important;
 }
 .chg-hero-title .highlight {
-    background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
+    background: none !important;
+    -webkit-text-fill-color: #10B981 !important;
+    color: #10B981 !important;
+    text-shadow: 0 0 32px rgba(16, 185, 129, 0.35);
 }
 .rotator-text span.highlight {
     background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%) !important;
@@ -1792,15 +1791,6 @@ button.btn-green:hover,
 .benefit-box.win { border-top-color: #3B82F6 !important; }
 .benefit-box.win h6 { color: #60A5FA !important; }
 .brand-subtitle { color: #60A5FA !important; }
-.section-title:hover,
-h2.title-glow:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #3B82F6 50%, #60A5FA 100%) !important;
-    background-size: 200% auto !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.35) !important;
-}
 
 /* ==========================================================================
    CURSOR PERSONALIZADO (punto + anillo)
@@ -1860,4 +1850,95 @@ html.has-custom-cursor *::after {
 
 @media (hover: none), (pointer: coarse) {
     #cursorGlow, #cursorRing { display: none !important; }
+}
+
+/* ==========================================================================
+   VERDE DE MARCA (combina con el verde del logo)
+   ========================================================================== */
+:root {
+    --chg-green: #10B981;
+    --chg-green-soft: #34D399;
+}
+
+/* 1. "GROUP" en verde esmeralda */
+.brand-subtitle {
+    color: var(--chg-green) !important;
+}
+
+/* 2. Hover verde SOLO en los 4 links de texto del menú (no en los botones) */
+.nav-links li > a:not(.btn-nav):not(.btn-nav-outline):hover {
+    color: var(--chg-green) !important;
+    text-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+}
+
+/* ==========================================================================
+   4. TÍTULOS CON EFECTO INTERACTIVO (letras que reaccionan al cursor)
+   - "Transformamos la gestión de tu empresa."
+   - "Packs de Servicios Mensuales"
+   - "Servicios Extras"
+   ========================================================================== */
+
+/* Anula el efecto viejo de gradiente estático sobre .section-title */
+.section-title:hover,
+h2.title-glow:hover {
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+    text-shadow: none;
+    animation: none;
+}
+
+.fx-heading {
+    position: relative;
+    isolation: isolate;
+    width: fit-content;
+}
+.packs-section .section-title h2.fx-heading { margin: 0 auto; }
+
+.fx-word { display: inline-block; white-space: nowrap; }
+.fx-word:not(:last-of-type) { margin-right: 0.27em; }
+
+.fx-ch {
+    display: inline-block;
+    will-change: transform;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                color 0.45s ease,
+                text-shadow 0.45s ease;
+}
+.fx-heading:hover .fx-ch { transition-duration: 0.16s; }
+
+/* Foco de luz que sigue al cursor detrás del texto */
+.fx-heading::before {
+    content: "";
+    position: absolute;
+    inset: -26px -40px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(16, 185, 129, 0.20), rgba(59, 130, 246, 0.08) 55%, transparent 75%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.fx-heading:hover::before { opacity: 1; }
+
+/* Línea que se dibuja de izquierda a derecha */
+.fx-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--chg-green), #3B82F6);
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.55);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fx-heading:hover::after { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+    .fx-ch, .fx-heading::after, .fx-heading::before { transition: none; }
 }

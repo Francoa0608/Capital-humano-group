@@ -1746,10 +1746,9 @@ button.btn-green:hover,
 }
 
 /* ==========================================================================
-   SOLO CURSOR VERDE ESMERALDA CON ANILLO DE SEGUIMIENTO (TRAILING)
+   CURSOR VERDE ESMERALDA VANGUARDISTA CON ANILLO DE SEGUIMIENTO (TRAILING)
    ========================================================================== */
 
-/* Punto verde central */
 .cursor-glow,
 #cursorGlow {
     position: fixed !important;
@@ -1757,7 +1756,7 @@ button.btn-green:hover,
     left: 0 !important;
     width: 8px !important;
     height: 8px !important;
-    background-color: #10B981 !important; /* Verde Esmeralda Puro */
+    background-color: #10B981 !important; /* Verde Esmeralda */
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
@@ -1768,7 +1767,6 @@ button.btn-green:hover,
     transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease !important;
 }
 
-/* Anillo exterior que persigue al punto */
 .cursor-ring,
 #cursorRing {
     position: fixed !important;
@@ -1785,7 +1783,6 @@ button.btn-green:hover,
     transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
 }
 
-/* Expansión interactiva en Hover */
 .cursor-glow.cursor-hover-active {
     width: 14px !important;
     height: 14px !important;

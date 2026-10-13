@@ -351,7 +351,7 @@
             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Consultoría estratégica de Recursos Humanos y Gestión" class="about-img">
         </div>
         <div class="about-content">
-            <h2 class="section-title" style="text-align: left; margin: 0 0 18px 0;">Transformamos la gestión de tu empresa.</h2>
+            <h2 class="section-title fx-heading" style="text-align: left; margin: 0 0 18px 0;">Transformamos la gestión de tu empresa.</h2>
             <p class="about-highlight">
                 ¡Tu pack ideal está a solo un clic de distancia! Simplifica tu vida y encuentra exactamente lo que necesitas con nuestras soluciones prácticas y personalizadas.
             </p>
@@ -757,7 +757,7 @@
     <section id="packs" class="packs-section">
         <div class="container">
             <div class="section-title">
-                <h2>Packs de Servicios Mensuales</h2>
+                <h2 class="fx-heading">Packs de Servicios Mensuales</h2>
                 <p>Elegí la opción que mejor se adapte a tu organización</p>
             </div>
 
@@ -949,7 +949,7 @@
         <div class="container">
             <div class="section-title-left">
                 <span class="badge-sub">Módulos Complementarios</span>
-                <h2>Servicios Extras</h2>
+                <h2 class="fx-heading">Servicios Extras</h2>
                 <p>Potenciá la gestión de tu empresa sumando estos servicios adicionales a la contratación de cualquiera de nuestros Packs principales.</p>
             </div>
 
@@ -1587,6 +1587,83 @@
         // Ocultar al salir de la ventana, mostrar al volver
         document.addEventListener('mouseleave', function() {
           dot.classList.remove('cursor-visible'); ring.classList.remove('cursor-visible'); shown = false;
+        });
+      })();
+    </script>
+
+    <!-- EFECTO DE LETRAS REACTIVAS EN TÍTULOS (.fx-heading) -->
+    <script>
+      (function() {
+        var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!fine || reduce) return;
+
+        var RADIUS = 140;          // alcance del efecto en px
+        var LIFT = 10;             // cuánto suben las letras
+        var GREEN = [16, 185, 129];
+
+        document.querySelectorAll('.fx-heading').forEach(function(h) {
+          var text = h.textContent.trim().replace(/\s+/g, ' ');
+          h.setAttribute('aria-label', text);
+          h.textContent = '';
+
+          var letters = [];
+          text.split(' ').forEach(function(word, i, arr) {
+            var w = document.createElement('span');
+            w.className = 'fx-word';
+            w.setAttribute('aria-hidden', 'true');
+            Array.from(word).forEach(function(ch) {
+              var s = document.createElement('span');
+              s.className = 'fx-ch';
+              s.textContent = ch;
+              w.appendChild(s);
+              letters.push({ el: s, cx: 0, cy: 0 });
+            });
+            h.appendChild(w);
+            if (i < arr.length - 1) h.appendChild(document.createElement('wbr'));
+          });
+
+          function measure() {
+            letters.forEach(function(l) {
+              l.cx = l.el.offsetLeft + l.el.offsetWidth / 2;
+              l.cy = l.el.offsetTop + l.el.offsetHeight / 2;
+            });
+          }
+
+          var mx = 0, my = 0, ticking = false;
+
+          function paint() {
+            ticking = false;
+            h.style.setProperty('--mx', mx + 'px');
+            h.style.setProperty('--my', my + 'px');
+            letters.forEach(function(l) {
+              var d = Math.hypot(l.cx - mx, l.cy - my);
+              var p = Math.max(0, 1 - d / RADIUS);
+              p = p * p * (3 - 2 * p);                       // suavizado
+              var r = Math.round(255 + (GREEN[0] - 255) * p);
+              var g = Math.round(255 + (GREEN[1] - 255) * p);
+              var b = Math.round(255 + (GREEN[2] - 255) * p);
+              l.el.style.transform = 'translateY(' + (-p * LIFT).toFixed(2) + 'px) scale(' + (1 + p * 0.2).toFixed(3) + ')';
+              l.el.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+              l.el.style.textShadow = '0 0 ' + (p * 20).toFixed(1) + 'px rgba(16,185,129,' + (p * 0.8).toFixed(2) + ')';
+            });
+          }
+
+          h.addEventListener('mouseenter', measure);
+          h.addEventListener('mousemove', function(e) {
+            var rect = h.getBoundingClientRect();
+            mx = e.clientX - rect.left;
+            my = e.clientY - rect.top;
+            if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+          });
+          h.addEventListener('mouseleave', function() {
+            letters.forEach(function(l) {
+              l.el.style.transform = '';
+              l.el.style.color = '';
+              l.el.style.textShadow = '';
+            });
+          });
+          window.addEventListener('resize', measure);
         });
       })();
     </script>

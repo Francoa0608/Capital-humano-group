@@ -36,26 +36,6 @@ body {
     overflow-x: hidden;
 }
 
-/* PUNTO CURSOR PERSONALIZADO */
-.cursor-glow {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: var(--emerald-green);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: transform 0.15s ease-out, opacity 0.2s ease, background-color 0.2s ease;
-    box-shadow: 0 0 6px var(--emerald-green);
-}
-
-.cursor-glow.glow-expand {
-    transform: translate(-50%, -50%) scale(1.6);
-    opacity: 0.25; 
-    background-color: #34D399;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -1766,7 +1746,7 @@ button.btn-green:hover,
 }
 
 /* ==========================================================================
-   CURSOR VERDE ESMERALDA VANGUARDISTA CON ANILLO DE SEGUIMIENTO (TRAILING)
+   SOLO CURSOR VERDE ESMERALDA CON ANILLO DE SEGUIMIENTO (TRAILING)
    ========================================================================== */
 
 /* Punto verde central */
@@ -1777,11 +1757,11 @@ button.btn-green:hover,
     left: 0 !important;
     width: 8px !important;
     height: 8px !important;
-    background-color: #10B981 !important; /* Verde esmeralda */
+    background-color: #10B981 !important; /* Verde Esmeralda Puro */
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
-    z-index: 99999 !important;
+    z-index: 999999 !important;
     display: block !important;
     opacity: 1 !important;
     box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6) !important;
@@ -1800,12 +1780,12 @@ button.btn-green:hover,
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
-    z-index: 99998 !important;
+    z-index: 999998 !important;
     display: block !important;
     transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
 }
 
-/* Expansión interactiva al pasar por botones o enlaces */
+/* Expansión interactiva en Hover */
 .cursor-glow.cursor-hover-active {
     width: 14px !important;
     height: 14px !important;

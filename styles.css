@@ -1745,33 +1745,33 @@ button.btn-green:hover,
 }
 
 /* ==========================================================================
-   FORZAR VISIBILIDAD DEL CURSOR VERDE ESMERALDA EN DESKTOP
+   CONFIGURACIÓN DEFINITIVA Y VISIBLE DEL CURSOR VERDE ESMERALDA
    ========================================================================== */
 @media (min-width: 769px) {
-    /* Ocultar el mouse blanco del sistema */
+    /* Ocultar el cursor nativo del sistema */
     html, body, a, button, input, select, textarea {
         cursor: none !important;
     }
 
-    /* Punto central verde esmeralda */
+    /* Punto Verde Esmeralda Central */
     #cursorGlow {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 10px !important;
         height: 10px !important;
-        background-color: #10B981 !important; /* Verde Esmeralda Puro */
+        background-color: #10B981 !important; /* Verde Esmeralda */
         border-radius: 50% !important;
         pointer-events: none !important;
         transform: translate(-50%, -50%) !important;
-        z-index: 9999999 !important; /* Por encima de todo */
+        z-index: 9999999 !important;
         display: block !important;
         opacity: 1 !important;
         box-shadow: 0 0 12px #10B981, 0 0 24px rgba(16, 185, 129, 0.7) !important;
         transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease !important;
     }
 
-    /* Anillo verde de seguimiento */
+    /* Anillo Verde de Seguimiento */
     #cursorRing {
         position: fixed !important;
         top: 0 !important;
@@ -1788,7 +1788,7 @@ button.btn-green:hover,
         transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
     }
 
-    /* Efecto al pasar sobre botones/tarjetas */
+    /* Agrandamiento al pasar sobre elementos interactivos */
     #cursorGlow.cursor-active {
         width: 16px !important;
         height: 16px !important;

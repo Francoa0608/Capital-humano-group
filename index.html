@@ -393,6 +393,7 @@
                     HACIA <span class="highlight">ADELANTE.</span>
                 </h2>
             </div>
+        </div><!-- /chg-carousel-header -->
 
         <!-- STACK DE TARJETAS CARRUSEL 3D CON FLIP FRONT/BACK -->
         <div class="chg-cards-stack" id="cardsStack">
@@ -1520,12 +1521,12 @@
           }
       });
     </script>
-  <!-- SCRIPT DE CURSOR VERDE AUTÓNOMO -->
+  <!-- SCRIPT DE CURSOR PERSONALIZADO (azul) -->
     <script>
       (function() {
-        if (window.innerWidth <= 768) return;
+        // Solo en dispositivos con mouse real
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-        // Buscar o crear los elementos si no existen
         var dot = document.getElementById('cursorGlow');
         var ring = document.getElementById('cursorRing');
 
@@ -1534,50 +1535,58 @@
           dot.id = 'cursorGlow';
           document.body.appendChild(dot);
         }
-
         if (!ring) {
           ring = document.createElement('div');
           ring.id = 'cursorRing';
           document.body.appendChild(ring);
         }
 
-        var mouseX = -100, mouseY = -100;
-        var ringX = -100, ringY = -100;
+        // Recién ahora se oculta el cursor del sistema
+        document.documentElement.classList.add('has-custom-cursor');
 
-        // Seguir las coordenadas del puntero en tiempo real
+        var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        var ringX = mouseX, ringY = mouseY;
+        var shown = false;
+        var INTERACTIVE = 'a, button, input, select, textarea, label, .interactive-card, .card-3d, .btn-pack, .card-link, .faq-btn';
+
         window.addEventListener('mousemove', function(e) {
           mouseX = e.clientX;
           mouseY = e.clientY;
-          
           dot.style.left = mouseX + 'px';
           dot.style.top = mouseY + 'px';
+          if (!shown) {
+            shown = true;
+            ringX = mouseX; ringY = mouseY;
+            dot.classList.add('cursor-visible');
+            ring.classList.add('cursor-visible');
+          }
         }, { passive: true });
 
-        // Animación suave de persecución para el anillo exterior
         function renderCursor() {
           ringX += (mouseX - ringX) * 0.18;
           ringY += (mouseY - ringY) * 0.18;
-
           ring.style.left = ringX + 'px';
           ring.style.top = ringY + 'px';
-
           requestAnimationFrame(renderCursor);
         }
         requestAnimationFrame(renderCursor);
 
-        // Detectar hover sobre enlaces y botones
         document.addEventListener('mouseover', function(e) {
-          if (e.target.closest('a, button, .interactive-card, .card-3d, input, select, .btn-pack')) {
+          if (e.target.closest && e.target.closest(INTERACTIVE)) {
             dot.classList.add('cursor-active');
             ring.classList.add('cursor-active');
           }
         });
-
         document.addEventListener('mouseout', function(e) {
-          if (e.target.closest('a, button, .interactive-card, .card-3d, input, select, .btn-pack')) {
+          if (e.target.closest && e.target.closest(INTERACTIVE)) {
             dot.classList.remove('cursor-active');
             ring.classList.remove('cursor-active');
           }
+        });
+
+        // Ocultar al salir de la ventana, mostrar al volver
+        document.addEventListener('mouseleave', function() {
+          dot.classList.remove('cursor-visible'); ring.classList.remove('cursor-visible'); shown = false;
         });
       })();
     </script>

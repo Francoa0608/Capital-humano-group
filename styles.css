@@ -1745,86 +1745,33 @@ button.btn-green:hover,
 }
 
 /* ==========================================================================
-   CORRECCIÓN DEFINITIVA Y AISLADA DEL CURSOR VERDE ESMERALDA
+   FORZAR VISIBILIDAD DEL CURSOR VERDE ESMERALDA EN DESKTOP
    ========================================================================== */
 @media (min-width: 769px) {
-    /* Oculta el puntero nativo solo en computadoras */
+    /* Ocultar el mouse blanco del sistema */
     html, body, a, button, input, select, textarea {
         cursor: none !important;
     }
 
-    /* Punto Verde Esmeralda Central */
-    #cursorGlow {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 8px !important;
-        height: 8px !important;
-        background-color: #10B981 !important; /* Verde Esmeralda Puro */
-        border-radius: 50% !important;
-        pointer-events: none !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 999999 !important;
-        display: block !important;
-        opacity: 1 !important;
-        box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6) !important;
-        transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease !important;
-    }
-
-    /* Anillo exterior envolvente */
-    #cursorRing {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 32px !important;
-        height: 32px !important;
-        border: 1.5px solid rgba(16, 185, 129, 0.6) !important;
-        border-radius: 50% !important;
-        pointer-events: none !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 999998 !important;
-        display: block !important;
-        opacity: 1 !important;
-        transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
-    }
-
-    /* Agrandamiento en Hover */
-    #cursorGlow.cursor-active {
-        width: 14px !important;
-        height: 14px !important;
-        background-color: #34D399 !important;
-        box-shadow: 0 0 15px #34D399, 0 0 30px rgba(52, 211, 153, 0.8) !important;
-    }
-
-    #cursorRing.cursor-active {
-        width: 48px !important;
-        height: 48px !important;
-        border-color: rgba(52, 211, 153, 0.8) !important;
-        background: rgba(16, 185, 129, 0.08) !important;
-    }
-}
-/* FORZAR ESTILOS DEL CURSOR VERDE ESMERALDA */
-@media (min-width: 769px) {
-    html, body, a, button, input, select, textarea {
-        cursor: none !important;
-    }
-
+    /* Punto central verde esmeralda */
     #cursorGlow {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 10px !important;
         height: 10px !important;
-        background-color: #10B981 !important; /* Verde Esmeralda */
+        background-color: #10B981 !important; /* Verde Esmeralda Puro */
         border-radius: 50% !important;
         pointer-events: none !important;
         transform: translate(-50%, -50%) !important;
-        z-index: 9999999 !important; /* Por encima de cualquier menú o tarjeta */
+        z-index: 9999999 !important; /* Por encima de todo */
         display: block !important;
         opacity: 1 !important;
         box-shadow: 0 0 12px #10B981, 0 0 24px rgba(16, 185, 129, 0.7) !important;
+        transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease !important;
     }
 
+    /* Anillo verde de seguimiento */
     #cursorRing {
         position: fixed !important;
         top: 0 !important;
@@ -1838,12 +1785,15 @@ button.btn-green:hover,
         z-index: 9999998 !important;
         display: block !important;
         opacity: 1 !important;
+        transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
     }
 
+    /* Efecto al pasar sobre botones/tarjetas */
     #cursorGlow.cursor-active {
         width: 16px !important;
         height: 16px !important;
         background-color: #34D399 !important;
+        box-shadow: 0 0 18px #34D399, 0 0 32px rgba(52, 211, 153, 0.9) !important;
     }
 
     #cursorRing.cursor-active {

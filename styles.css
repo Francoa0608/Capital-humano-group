@@ -1894,7 +1894,8 @@ h2.title-glow:hover {
     isolation: isolate;
     width: fit-content;
 }
-.packs-section .section-title h2.fx-heading { margin: 0 auto; }
+.packs-section .section-title h2.fx-heading { margin: 0 auto 18px; }
+.section-title-left h2.fx-heading { margin-bottom: 20px; }
 
 .fx-word { display: inline-block; white-space: nowrap; }
 .fx-word:not(:last-of-type) { margin-right: 0.27em; }
@@ -1906,21 +1907,10 @@ h2.title-glow:hover {
                 color 0.45s ease,
                 text-shadow 0.45s ease;
 }
-.fx-heading:hover .fx-ch { transition-duration: 0.16s; }
+.fx-heading:hover .fx-ch,
+.fx-text:hover .fx-ch { transition-duration: 0.16s; }
+.fx-text { position: relative; }
 
-/* Foco de luz que sigue al cursor detrás del texto */
-.fx-heading::before {
-    content: "";
-    position: absolute;
-    inset: -26px -40px;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%),
-                rgba(16, 185, 129, 0.20), rgba(59, 130, 246, 0.08) 55%, transparent 75%);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-}
-.fx-heading:hover::before { opacity: 1; }
 
 /* Línea que se dibuja de izquierda a derecha */
 .fx-heading::after {
@@ -1940,5 +1930,97 @@ h2.title-glow:hover {
 .fx-heading:hover::after { transform: scaleX(1); }
 
 @media (prefers-reduced-motion: reduce) {
-    .fx-ch, .fx-heading::after, .fx-heading::before { transition: none; }
+    .fx-ch, .fx-heading::after { transition: none; }
+}
+
+/* ==========================================================================
+   BOTONES CTA: "Descubrí tu pack ideal" y "Ver Packs de Servicios"
+   Verde de marca, brillo que recorre el botón, aro pulsante y flecha animada
+   ========================================================================== */
+.btn-primary,
+.nav-links a.btn-nav {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    background: linear-gradient(135deg, #10B981 0%, #34D399 100%) !important;
+    color: #04261C !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1px;
+    border: none !important;
+    text-shadow: none !important;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    outline: 2px solid rgba(16, 185, 129, 0);
+    outline-offset: 0;
+    animation: ctaRing 2.6s ease-out infinite;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, filter 0.3s ease !important;
+}
+
+/* Brillo que cruza el botón cada pocos segundos */
+.btn-primary::before,
+.nav-links a.btn-nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 55%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+    transform: skewX(-20deg);
+    animation: ctaShine 3.4s ease-in-out infinite;
+}
+
+/* Flecha que invita a hacer clic */
+.btn-primary::after,
+.nav-links a.btn-nav::after {
+    content: "\2192";
+    display: inline-block;
+    font-weight: 800;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-primary:hover,
+.nav-links a.btn-nav:hover {
+    background: linear-gradient(135deg, #34D399 0%, #10B981 100%) !important;
+    color: #04261C !important;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 16px 38px rgba(16, 185, 129, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    filter: saturate(1.1);
+    animation-play-state: paused;
+    outline-color: rgba(16, 185, 129, 0);
+}
+.btn-primary:hover::after,
+.nav-links a.btn-nav:hover::after { transform: translateX(6px); }
+
+.btn-primary:active,
+.nav-links a.btn-nav:active {
+    transform: translateY(-1px) scale(0.98) !important;
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4) !important;
+}
+
+@keyframes ctaShine {
+    0%, 55%  { left: -80%; }
+    100%     { left: 140%; }
+}
+@keyframes ctaRing {
+    0%   { outline-color: rgba(16, 185, 129, 0.55); outline-offset: 0; }
+    70%, 100% { outline-color: rgba(16, 185, 129, 0); outline-offset: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary, .nav-links a.btn-nav { animation: none; }
+    .btn-primary::before, .nav-links a.btn-nav::before { animation: none; display: none; }
+}
+
+/* El menú nunca parte el texto en dos líneas */
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1180px) {
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 0.85rem; }
+    .nav-links a.btn-nav, .nav-links a.btn-nav-outline { padding-left: 14px; padding-right: 14px; }
 }

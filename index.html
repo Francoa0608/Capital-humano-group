@@ -351,7 +351,7 @@
             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Consultoría estratégica de Recursos Humanos y Gestión" class="about-img">
         </div>
         <div class="about-content">
-            <h2 class="section-title fx-heading" style="text-align: left; margin: 0 0 18px 0;">Transformamos la gestión de tu empresa.</h2>
+            <h2 class="section-title fx-heading" data-fx="reveal" style="text-align: left; margin: 0 0 18px 0;">Transformamos la gestión de tu empresa.</h2>
             <p class="about-highlight">
                 ¡Tu pack ideal está a solo un clic de distancia! Simplifica tu vida y encuentra exactamente lo que necesitas con nuestras soluciones prácticas y personalizadas.
             </p>
@@ -757,8 +757,8 @@
     <section id="packs" class="packs-section">
         <div class="container">
             <div class="section-title">
-                <h2 class="fx-heading">Packs de Servicios Mensuales</h2>
-                <p class="fx-text" data-fx-radius="110" data-fx-lift="5">Elegí la opción que mejor se adapte a tu organización</p>
+                <h2 class="fx-heading" data-fx="reveal">Packs de Servicios Mensuales</h2>
+                <p class="fx-text" data-fx="reveal" data-fx-radius="100" data-fx-lift="5">Elegí la opción que mejor se adapte a tu organización</p>
             </div>
 
             <div class="packs-grid">
@@ -949,8 +949,8 @@
         <div class="container">
             <div class="section-title-left">
                 <span class="badge-sub">Módulos Complementarios</span>
-                <h2 class="fx-heading">Servicios Extras</h2>
-                <p class="fx-text" data-fx-radius="110" data-fx-lift="5">Potenciá la gestión de tu empresa sumando estos servicios adicionales a la contratación de cualquiera de nuestros Packs principales.</p>
+                <h2 class="fx-heading" data-fx="reveal">Servicios Extras</h2>
+                <p class="fx-text" data-fx="reveal" data-fx-radius="100" data-fx-lift="5">Potenciá la gestión de tu empresa sumando estos servicios adicionales a la contratación de cualquiera de nuestros Packs principales.</p>
             </div>
 
             <div class="extras-accordion-list">
@@ -1598,11 +1598,33 @@
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!fine || reduce) return;
 
-        var GREEN = [16, 185, 129];
+        var GREEN = [31, 166, 122];
 
         document.querySelectorAll('.fx-heading, .fx-text').forEach(function(h) {
-          var RADIUS = parseFloat(h.dataset.fxRadius) || 140;   // alcance en px
+          var RADIUS = parseFloat(h.dataset.fxRadius) || 150;   // alcance en px
           var LIFT = parseFloat(h.dataset.fxLift) || 10;        // cuánto suben las letras
+          var MODE = h.dataset.fx || 'reveal';                  // 'reveal' (foco de luz) o 'wave' (letras que saltan)
+
+          if (MODE === 'reveal') {
+            h.style.setProperty('--fx-rmax', RADIUS + 'px');
+            var pending = false, px = 0, py = 0;
+            function setPos() {
+              pending = false;
+              h.style.setProperty('--mx', px + 'px');
+              h.style.setProperty('--my', py + 'px');
+            }
+            h.addEventListener('mouseenter', function(e) {
+              var r = h.getBoundingClientRect();
+              h.style.setProperty('--ox', (e.clientX - r.left) + 'px');
+              px = e.clientX - r.left; py = e.clientY - r.top; setPos();
+            });
+            h.addEventListener('mousemove', function(e) {
+              var r = h.getBoundingClientRect();
+              px = e.clientX - r.left; py = e.clientY - r.top;
+              if (!pending) { pending = true; requestAnimationFrame(setPos); }
+            });
+            return;
+          }
 
           // Color base del texto (blanco en títulos, gris en subtítulos)
           var m = getComputedStyle(h).color.match(/[\d.]+/g) || [255, 255, 255];
@@ -1648,7 +1670,7 @@
               var b = Math.round(BASE[2] + (GREEN[2] - BASE[2]) * p);
               l.el.style.transform = 'translateY(' + (-p * LIFT).toFixed(2) + 'px) scale(' + (1 + p * LIFT * 0.02).toFixed(3) + ')';
               l.el.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
-              l.el.style.textShadow = '0 0 ' + (p * LIFT * 2).toFixed(1) + 'px rgba(16,185,129,' + (p * 0.8).toFixed(2) + ')';
+              l.el.style.textShadow = '0 0 ' + (p * LIFT * 2).toFixed(1) + 'px rgba(31,166,122,' + (p * 0.8).toFixed(2) + ')';
             });
           }
 

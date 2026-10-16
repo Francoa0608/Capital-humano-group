@@ -4,527 +4,717 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diagnóstico Organizacional | Capital Humano Group</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
-    <!-- LIBRERÍA DE ÍCONOS VECTORIALES -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navyDeep: '#0f172a',
-                        navyCard: 'rgba(15, 23, 42, 0.85)',
-                        corporateBlue: '#1e293b',
-                        emeraldAccent: '#059669',
-                        emeraldHover: '#047857',
-                        textPrimary: '#f8fafc',
-                        textMuted: '#94a3b8'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Íconos vectoriales -->
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+
     <style>
-        /* FONDO CORPORATIVO CON FOTOGRAFÍA DE RECURSOS HUMANOS Y OVERLAY OSCURO */
-        body {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.96) 100%), 
-                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
-            color: #f8fafc;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
+        .hidden { display: none !important; }
+
+        /* ===== Menú: en celular queda solo el botón de volver ===== */
+        .nav-links li.nav-back { display: none; }
+        @media (max-width: 768px) {
+            .nav-links { display: flex !important; }
+            .nav-links li { display: none; }
+            .nav-links li.nav-back { display: list-item; }
         }
 
-        .interactive-card {
-            transition: all 0.2s ease-in-out;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* ===== HERO DE LA PÁGINA ===== */
+        .pi-hero {
+            padding: 80px 0 52px;
+            text-align: center;
+            background: radial-gradient(ellipse at top center, rgba(59, 130, 246, 0.16) 0%, transparent 65%);
+            border-bottom: 1px solid var(--border-glow);
+        }
+        .pi-hero .hero-badge { display: inline-flex; align-items: center; gap: 8px; }
+        .pi-hero .hero-badge svg { width: 15px; height: 15px; }
+        .pi-hero h1 {
+            font-size: clamp(2rem, 4.4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin: 0 auto 18px;
+            max-width: 880px;
+        }
+        .pi-lead {
+            --fx-base: #CBD5E1;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* ===== PANEL DEL FORMULARIO ===== */
+        .pi-section { padding: 60px 0 100px; }
+        .pi-panel {
+            background: rgba(30, 41, 59, 0.55);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 44px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(10px);
+        }
+        .pi-step { margin-top: 38px; padding-top: 38px; border-top: 1px solid var(--border-glow); }
+        .pi-step:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+        .pi-step-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.02rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 22px;
+        }
+        .pi-step-num {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: rgba(59, 130, 246, 0.15);
+            color: #60A5FA;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        /* Campos de texto */
+        .pi-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .pi-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white-soft);
+            margin-bottom: 8px;
+        }
+        .pi-input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .pi-input::placeholder { color: #64748B; }
+        .pi-input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        .pi-other { margin-top: 20px; }
+        .pi-other .pi-label { color: #60A5FA; }
+
+        /* Tarjetas de opción (rubro / nómina / desafío) */
+        .pi-options { display: grid; gap: 14px; }
+        .pi-options.industries { grid-template-columns: repeat(5, 1fr); }
+        .pi-options.employees  { grid-template-columns: repeat(4, 1fr); }
+        .pi-options.objectives { grid-template-columns: repeat(2, 1fr); }
+
+        .pi-option {
+            position: relative;
+            font-family: inherit;
+            color: var(--white);
+            background: var(--card-blue);
+            border: 1px solid var(--border-glow);
+            border-radius: 14px;
             cursor: pointer;
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease,
+                        background 0.25s ease, box-shadow 0.3s ease;
+        }
+        .pi-option:hover {
+            transform: translateY(-4px);
+            border-color: #3B82F6;
+            background: #243349;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.25);
+        }
+        .pi-option:focus-visible { outline: 2px solid #60A5FA; outline-offset: 2px; }
+        .pi-option.selected {
+            border-color: #3B82F6;
+            background: rgba(59, 130, 246, 0.14);
+            box-shadow: 0 0 22px rgba(59, 130, 246, 0.28);
+        }
+        .pi-option.selected::after {
+            content: "\2713";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1FA67A;
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 800;
         }
 
-        .interactive-card:hover {
-            border-color: rgba(5, 150, 105, 0.6);
-            background: rgba(30, 41, 59, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        .pi-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.12);
+            color: #60A5FA;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
         }
+        .pi-icon svg { width: 22px; height: 22px; }
+        .pi-option:hover .pi-icon,
+        .pi-option.selected .pi-icon { background: #3B82F6; color: #FFFFFF; border-color: #3B82F6; }
 
-        .interactive-card.selected {
-            border-color: #059669 !important;
-            background-color: rgba(5, 150, 105, 0.15) !important;
-            box-shadow: 0 0 15px rgba(5, 150, 105, 0.2) !important;
-        }
-
-        /* DISEÑO EJECUTIVO PARA TARJETAS DE RUBRO */
-        .industry-card {
-            aspect-ratio: 1.1 / 1;
+        .pi-industry {
+            aspect-ratio: 1.25 / 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            padding: 16px 10px;
             text-align: center;
-            padding: 1.25rem 0.75rem;
-            position: relative;
-            border-radius: 0.75rem;
         }
+        .pi-opt-label { font-size: 0.9rem; font-weight: 700; color: var(--white-soft); line-height: 1.25; }
+        .pi-option.dashed { border-style: dashed; border-color: rgba(148, 163, 184, 0.5); }
+        .pi-option.dashed .pi-opt-label { color: #60A5FA; }
 
-        .icon-box {
-            width: 2.5rem;
-            height: 2.5rem;
+        .pi-employee {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: #34d399;
-            margin-bottom: 0.6rem;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 12px;
+            padding: 24px 14px;
+            text-align: center;
         }
+        .pi-emp-num { display: block; font-size: 1.35rem; font-weight: 800; color: #FFFFFF; }
+        .pi-emp-sub { font-size: 0.8rem; color: var(--text-muted); }
 
-        .interactive-card:hover .icon-box,
-        .interactive-card.selected .icon-box {
-            background: #059669;
-            color: #ffffff;
-            border-color: #059669;
+        .pi-objective {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 22px 46px 22px 22px;
+            text-align: left;
         }
+        .pi-obj-title { font-size: 1rem; font-weight: 700; color: #FFFFFF; }
+        .pi-obj-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
 
-        .custom-input {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            transition: all 0.2s ease;
+        /* Botón principal del formulario (usa el estilo .btn-primary del sitio) */
+        .pi-submit {
+            width: 100%;
+            margin-top: 42px;
+            padding: 18px 28px;
+            font-size: 1.05rem;
+            font-family: inherit;
+            border-radius: 12px;
+            cursor: pointer;
         }
+        .pi-submit svg, .pi-cta svg { width: 20px; height: 20px; flex-shrink: 0; }
+        .pi-submit:hover { transform: translateY(-3px) scale(1.01) !important; }
 
-        .custom-input:focus {
-            outline: none;
-            border-color: #059669;
-            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25);
+        /* ===== RESULTADO ===== */
+        .pi-result { margin-top: 60px; padding-top: 48px; border-top: 1px solid var(--border-glow); }
+        .pi-result-head { text-align: center; margin-bottom: 40px; }
+        .pi-result-head .hero-badge { display: inline-flex; align-items: center; gap: 8px; }
+        .pi-result-head .hero-badge svg { width: 15px; height: 15px; }
+        .pi-result-head h2 {
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 10px;
         }
+        .pi-result-head h2 span { color: #60A5FA; }
+        .pi-result-head p { color: var(--white-soft); font-size: 1rem; }
+        .pi-result-head p strong { color: #FFFFFF; }
 
-        /* EFECTO FLIP 3D SOBRIO */
-        .card-perspective {
-            perspective: 1200px;
-        }
-
-        .card-flipper {
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transform-style: preserve-3d;
+        /* Giro 3D de la tarjeta recomendada */
+        .pi-perspective { perspective: 1200px; max-width: 760px; margin: 0 auto; }
+        .pi-flipper {
             position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
         }
-
-        .card-flipper.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-face {
+        .pi-flipper.flipped { transform: rotateY(180deg); }
+        .pi-face {
+            width: 100%;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 28px;
+            background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.1) 100%), #0F172A;
+            border: 2px solid #3B82F6;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 30px 60px rgba(0, 0, 0, 0.45);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+        }
+        .pi-front { position: relative; }
+        .pi-back { position: absolute; inset: 0; transform: rotateY(180deg); }
+        .pi-flipper.flipped .pi-front { position: absolute; inset: 0; }
+        .pi-flipper.flipped .pi-back { position: relative; }
+
+        .pi-ribbon {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            z-index: 5;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: #3B82F6;
+            color: #FFFFFF;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        .pi-ribbon.muted { background: #334155; box-shadow: none; }
+
+        .pi-pack-head { padding-bottom: 20px; margin-bottom: 22px; border-bottom: 1px solid var(--border-glow); }
+        .pi-pack-head h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em; }
+        .pi-tagline { color: #60A5FA; font-weight: 700; font-size: 0.95rem; margin-top: 2px; }
+        .pi-pack-desc { color: var(--text-muted); font-size: 0.92rem; margin-top: 6px; }
+        .pi-mini-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--white-soft);
+            margin-bottom: 12px;
+        }
+        .pi-mini-title.blue { color: #60A5FA; }
+
+        .pi-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .pi-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--white-soft);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .pi-feature strong { color: #FFFFFF; }
+        .pi-check { flex-shrink: 0; color: #60A5FA; font-weight: 800; margin-top: 1px; }
+
+        .pi-dots { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+        .pi-dots li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--white-soft); }
+        .pi-dots li::before {
+            content: "";
+            flex-shrink: 0;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #3B82F6;
+        }
+        .pi-back-intro { color: var(--text-muted); font-size: 0.85rem; font-style: italic; line-height: 1.6; margin: 14px 0 18px; }
+        .pi-back-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border-glow); }
+        .pi-back-head h4 { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 800; color: #FFFFFF; }
+        .pi-back-head h4 svg { width: 20px; height: 20px; color: #60A5FA; }
+        .pi-close {
+            font-family: inherit;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--white-soft);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .pi-close:hover { background: rgba(59, 130, 246, 0.2); border-color: #3B82F6; }
+
+        .pi-actions { display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid var(--border-glow); }
+        .pi-wide {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
             width: 100%;
+            padding: 14px 22px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: left;
         }
+        .pi-wide > span:first-child { display: flex; align-items: center; gap: 10px; }
+        .pi-wide svg { width: 18px; height: 18px; color: #60A5FA; }
+        .pi-cta { width: 100%; padding: 16px 24px; font-size: 1rem; border-radius: 12px; text-align: center; text-decoration: none; }
+        .pi-cta:hover { transform: translateY(-3px) scale(1.01) !important; }
 
-        .card-front {
-            position: relative;
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .pi-panel { padding: 26px 20px; }
+            .pi-fields { grid-template-columns: 1fr; }
+            .pi-options.employees { grid-template-columns: repeat(2, 1fr); }
+            .pi-options.objectives { grid-template-columns: 1fr; }
+            .pi-face { padding: 26px 20px; }
         }
-
-        .card-back {
-            position: absolute;
-            inset: 0;
-            transform: rotateY(180deg);
+        @media (max-width: 900px) {
+            .pi-options.industries { grid-template-columns: repeat(4, 1fr); }
         }
-
-        .card-flipper.flipped .card-front {
-            position: absolute;
-            inset: 0;
-        }
-
-        .card-flipper.flipped .card-back {
-            position: relative;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #059669;
+        @media (max-width: 560px) {
+            .pi-options.industries { grid-template-columns: repeat(2, 1fr); }
+            .pi-industry { aspect-ratio: auto; min-height: 112px; }
         }
     </style>
 </head>
-<body class="flex flex-col justify-between min-h-screen px-4 py-6 md:px-8">
-    
-    <!-- NAVBAR / HEADER -->
-    <header class="max-w-6xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-slate-700/60 mb-8">
-        <a href="index.html" class="flex items-center gap-3 decoration-none">
-            <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="h-10 md:h-12 w-auto object-contain">
-            <div class="flex flex-col justify-center leading-none">
-                <span class="text-white font-extrabold text-base md:text-lg tracking-wider">CAPITAL HUMANO</span>
-                <span class="text-emerald-400 font-semibold text-xs tracking-widest mt-0.5">GROUP</span>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+        <a href="index.html" class="logo-container">
+            <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="brand-logo-img">
+            <div class="brand-text-group">
+                <span class="brand-title">CAPITAL HUMANO</span>
+                <span class="brand-subtitle">GROUP</span>
             </div>
         </a>
-
-        <div class="flex items-center gap-3 flex-wrap justify-center">
-            <a href="index.html#packs" class="text-xs md:text-sm font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center gap-1.5 bg-slate-800/80 hover:bg-slate-700/80 px-4 py-2 rounded-lg border border-slate-600/50">
-                <i data-lucide="package" class="w-4 h-4 text-emerald-400"></i> Ver Soluciones
-            </a>
-            <a href="index.html" class="text-xs md:text-sm font-medium text-slate-300 hover:text-white transition-all duration-200 flex items-center gap-1.5 bg-slate-900/60 px-4 py-2 rounded-lg border border-slate-800 hover:border-slate-700">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver
-            </a>
+            <ul class="nav-links">
+                <li class="nav-back"><a href="index.html">← Volver al inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#packs">Packs</a></li>
+                <li><a href="index.html#extras">Servicios Extras</a></li>
+                <li><a href="index.html#servicios-chg">¿Por qué CHG?</a></li>
+                <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank" class="btn-nav-outline">¡Postulate acá!</a></li>
+                <li><a href="#diagnostico" class="btn-nav">Descubrí tu pack ideal</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-6xl mx-auto w-full bg-slate-900/85 backdrop-blur-md rounded-xl border border-slate-700/50 p-6 md:p-10 shadow-2xl relative overflow-hidden mb-8">
-        
-        <div class="mb-8 border-b border-slate-800 pb-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-950/60 border border-emerald-600/40 text-emerald-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
-                <i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i> Diagnóstico Organizacional
-            </div>
-            <h1 class="text-2xl md:text-4xl font-extrabold text-white block mb-2 cursor-default tracking-tight">
-                Evaluación de Necesidades de Capital Humano
-            </h1>
-            <p class="text-slate-300 text-sm md:text-base">Complete los datos de su estructura para determinar la propuesta estratégica óptima para su empresa.</p>
+    <!-- HERO -->
+    <section class="pi-hero">
+        <div class="container">
+            <span class="hero-badge"><i data-lucide="clipboard-check"></i> Diagnóstico Organizacional</span>
+            <h1 class="fx-heading" data-fx="reveal">Evaluación de Necesidades de Capital Humano</h1>
+            <p class="fx-text pi-lead" data-fx="reveal" data-fx-radius="110" data-fx-lift="5">Completá los datos de tu estructura para determinar la propuesta estratégica óptima para tu empresa.</p>
         </div>
+    </section>
 
-        <!-- FORMULARIO -->
-        <form id="calculator-form" onsubmit="calculateRecommendation(event)">
-            <div class="space-y-10">
+    <!-- FORMULARIO -->
+    <main class="pi-section" id="diagnostico">
+        <div class="container">
+            <div class="pi-panel">
 
-                <!-- SECCIÓN 1: DATOS DE LA EMPRESA -->
-                <div class="space-y-4">
-                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">1</span> 
-                        Datos de la Organización
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <div>
-                            <label class="block text-xs font-semibold uppercase text-slate-300 mb-2">Nombre de la Empresa *</label>
-                            <input type="text" id="company-name" required placeholder="Ej: Distribuidora Sur S.A." class="w-full custom-input px-4 py-3 rounded-lg text-sm">
+                <form id="calculator-form" onsubmit="calculateRecommendation(event)">
+
+                    <!-- 1. DATOS -->
+                    <div class="pi-step">
+                        <h2 class="pi-step-title"><span class="pi-step-num">1</span> Datos de la Organización</h2>
+                        <div class="pi-fields">
+                            <div>
+                                <label class="pi-label" for="company-name">Nombre de la Empresa *</label>
+                                <input type="text" id="company-name" required placeholder="Ej: Distribuidora Sur S.A." class="pi-input">
+                            </div>
+                            <div>
+                                <label class="pi-label" for="contact-name">Nombre y Apellido del Contacto *</label>
+                                <input type="text" id="contact-name" required placeholder="Ej: Martín Gómez" class="pi-input">
+                            </div>
+                            <div>
+                                <label class="pi-label" for="contact-phone">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="contact-phone" required placeholder="Ej: +54 9 11 1234 5678" class="pi-input">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold uppercase text-slate-300 mb-2">Nombre y Apellido del Contacto *</label>
-                            <input type="text" id="contact-name" required placeholder="Ej: Martín Gómez" class="w-full custom-input px-4 py-3 rounded-lg text-sm">
+                    </div>
+
+                    <!-- 2. RUBRO -->
+                    <div class="pi-step">
+                        <h2 class="pi-step-title"><span class="pi-step-num">2</span> Sector o Rubro de la Empresa *</h2>
+                        <div id="industry-container" class="pi-options industries">
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Comercio y Kioscos', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="store"></i></span>
+                                <span class="pi-opt-label">Comercio</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Gastronomía y Servicios', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="utensils"></i></span>
+                                <span class="pi-opt-label">Gastronomía</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Industria y Metalúrgica', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="factory"></i></span>
+                                <span class="pi-opt-label">Industria</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Farmacia y Salud', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="pill"></i></span>
+                                <span class="pi-opt-label">Farmacia</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Salud y Sanitarios', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="activity"></i></span>
+                                <span class="pi-opt-label">Salud</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Logística y Transporte', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="truck"></i></span>
+                                <span class="pi-opt-label">Logística</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Tecnología y Software', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="laptop"></i></span>
+                                <span class="pi-opt-label">Tecnología</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Servicios Profesionales', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="briefcase"></i></span>
+                                <span class="pi-opt-label">Servicios Corp.</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Construcción y Obras', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="hard-hat"></i></span>
+                                <span class="pi-opt-label">Construcción</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Educación y Colegios', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="graduation-cap"></i></span>
+                                <span class="pi-opt-label">Educación</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Retail y Calzado', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="shopping-bag"></i></span>
+                                <span class="pi-opt-label">Retail</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Supermercados', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="shopping-cart"></i></span>
+                                <span class="pi-opt-label">Supermercados</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Seguridad y Vigilancia', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="shield-check"></i></span>
+                                <span class="pi-opt-label">Seguridad</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Hotelería y Turismo', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="hotel"></i></span>
+                                <span class="pi-opt-label">Hotelería</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Agro y Campo', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="sprout"></i></span>
+                                <span class="pi-opt-label">Agro</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Estética y Belleza', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="scissors"></i></span>
+                                <span class="pi-opt-label">Estética</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Inmobiliarias', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="building"></i></span>
+                                <span class="pi-opt-label">Inmobiliaria</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Textil y Moda', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="shirt"></i></span>
+                                <span class="pi-opt-label">Textil</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Automotor y Talleres', this)" class="pi-option pi-industry">
+                                <span class="pi-icon"><i data-lucide="wrench"></i></span>
+                                <span class="pi-opt-label">Automotor</span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectIndustry('Otro Rubro', this)" class="pi-option pi-industry dashed">
+                                <span class="pi-icon"><i data-lucide="plus"></i></span>
+                                <span class="pi-opt-label">Otro Rubro</span>
+                            </button>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold uppercase text-slate-300 mb-2">Teléfono / WhatsApp *</label>
-                            <input type="tel" id="contact-phone" required placeholder="Ej: +54 9 11 1234 5678" class="w-full custom-input px-4 py-3 rounded-lg text-sm">
+                        <div id="other-industry-container" class="pi-other hidden">
+                            <label class="pi-label" for="other-industry-input">Especificá tu Actividad Principal *</label>
+                            <input type="text" id="other-industry-input" placeholder="Ej: Importaciones, E-commerce, Servicios Financieros" class="pi-input" oninput="updateOtherIndustry(this.value)">
                         </div>
                     </div>
-                </div>
 
-                <!-- SECCIÓN 2: RUBRO / INDUSTRIA -->
-                <div class="space-y-4 pt-6 border-t border-slate-800">
-                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">2</span>
-                        Sector o Rubro de la Empresa *
-                    </h2>
-                    
-                    <div id="industry-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[420px] overflow-y-auto p-1 pr-2">
-                        <button type="button" onclick="selectIndustry('Comercio y Kioscos', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="store" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Comercio</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Gastronomía y Servicios', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="utensils" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Gastronomía</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Industria y Metalúrgica', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="factory" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Industria</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Farmacia y Salud', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="pill" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Farmacia</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Salud y Sanitarios', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="activity" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Salud</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Logística y Transporte', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="truck" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Logística</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Tecnología y Software', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="laptop" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Tecnología</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Servicios Profesionales', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Servicios Corp.</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Construcción y Obras', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="hard-hat" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Construcción</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Educación y Colegios', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Educación</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Retail y Calzado', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="shopping-bag" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Retail</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Supermercados', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Supermercados</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Seguridad y Vigilancia', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Seguridad</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Hotelería y Turismo', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="hotel" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Hotelería</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Agro y Campo', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="sprout" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Agro</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Estética y Belleza', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="scissors" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Estética</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Inmobiliarias', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="building" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Inmobiliaria</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Textil y Moda', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="shirt" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Textil</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Automotor y Talleres', this)" class="industry-btn interactive-card industry-card">
-                            <div class="icon-box"><i data-lucide="wrench" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-slate-200 leading-snug">Automotor</span>
-                        </button>
-                        <button type="button" onclick="selectIndustry('Otro Rubro', this)" class="industry-btn interactive-card industry-card border-dashed border-slate-600">
-                            <div class="icon-box"><i data-lucide="plus" class="w-5 h-5"></i></div>
-                            <span class="text-xs md:text-sm font-semibold text-emerald-400 leading-snug">Otro Rubro</span>
-                        </button>
+                    <!-- 3. NÓMINA -->
+                    <div class="pi-step">
+                        <h2 class="pi-step-title"><span class="pi-step-num">3</span> Nómina Activa de Personal *</h2>
+                        <div id="employees-container" class="pi-options employees">
+                            <button type="button" aria-pressed="false" onclick="selectEmployees('1 a 5 empleados', this)" class="pi-option pi-employee">
+                                <span class="pi-icon"><i data-lucide="user"></i></span>
+                                <span><span class="pi-emp-num">1 a 5</span><span class="pi-emp-sub">Microempresa</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectEmployees('6 a 15 empleados', this)" class="pi-option pi-employee">
+                                <span class="pi-icon"><i data-lucide="users"></i></span>
+                                <span><span class="pi-emp-num">6 a 15</span><span class="pi-emp-sub">Pequeña Empresa</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectEmployees('16 a 50 empleados', this)" class="pi-option pi-employee">
+                                <span class="pi-icon"><i data-lucide="building-2"></i></span>
+                                <span><span class="pi-emp-num">16 a 50</span><span class="pi-emp-sub">Mediana Empresa</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectEmployees('Más de 50 empleados', this)" class="pi-option pi-employee">
+                                <span class="pi-icon"><i data-lucide="building"></i></span>
+                                <span><span class="pi-emp-num">50+</span><span class="pi-emp-sub">Corporativo</span></span>
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div id="other-industry-container" class="hidden mt-4 pt-2">
-                        <label class="block text-xs font-semibold uppercase text-emerald-400 mb-2">Especifique su Actividad Principal *</label>
-                        <input type="text" id="other-industry-input" placeholder="Ej: Importaciones, E-commerce, Servicios Financieros" class="w-full custom-input px-4 py-3 rounded-lg text-sm" oninput="updateOtherIndustry(this.value)">
+
+                    <!-- 4. DESAFÍO -->
+                    <div class="pi-step">
+                        <h2 class="pi-step-title"><span class="pi-step-num">4</span> Desafío Prioritario de Gestión *</h2>
+                        <div id="objective-container" class="pi-options objectives">
+                            <button type="button" aria-pressed="false" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="pi-option pi-objective">
+                                <span class="pi-icon"><i data-lucide="shield-check"></i></span>
+                                <span><span class="pi-obj-title">Auditoría & Cumplimiento Legal</span><span class="pi-obj-desc" style="display:block">Saneamiento de legajos, regulación normativa y mitigación de contingencias laborales.</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectObjective('Reclutar talento calificado', 'Pack 1: Esencial', this)" class="pi-option pi-objective">
+                                <span class="pi-icon"><i data-lucide="user-check"></i></span>
+                                <span><span class="pi-obj-title">Atracción de Talento Clave</span><span class="pi-obj-desc" style="display:block">Selección profesionalizada, exámenes preocupacionales y perfilado por competencias.</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectObjective('Capacitar mandos medios', 'Pack 2: Evolución', this)" class="pi-option pi-objective">
+                                <span class="pi-icon"><i data-lucide="award"></i></span>
+                                <span><span class="pi-obj-title">Liderazgo & Desarrollo Interno</span><span class="pi-obj-desc" style="display:block">Formación ejecutiva para mandos medios, alineación de mandos y clima laboral.</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectObjective('Estructurar la gestión con indicadores', 'Pack 2: Evolución', this)" class="pi-option pi-objective">
+                                <span class="pi-icon"><i data-lucide="trending-up"></i></span>
+                                <span><span class="pi-obj-title">Indicadores de Gestión (KPIs)</span><span class="pi-obj-desc" style="display:block">Monitoreo de rotación, ausentismo, nivel de eNPS y definición de roles RACI.</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectObjective('Transformación completa y 360', 'Pack 3: Estratégico', this)" class="pi-option pi-objective">
+                                <span class="pi-icon"><i data-lucide="briefcase"></i></span>
+                                <span><span class="pi-obj-title">Gestión Integral 360°</span><span class="pi-obj-desc" style="display:block">Evaluaciones de desempeño multidireccionales y planes de retención estratégica.</span></span>
+                            </button>
+                            <button type="button" aria-pressed="false" onclick="selectObjective('Optimización de procesos y ROI', 'Pack 3: Estratégico', this)" class="pi-option pi-objective">
+                                <span class="pi-icon"><i data-lucide="bar-chart-3"></i></span>
+                                <span><span class="pi-obj-title">Optimización Estratégica & ROI</span><span class="pi-obj-desc" style="display:block">Diagramación de procesos BPMN, estructuración salarial e impacto directo en rentabilidad.</span></span>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- SECCIÓN 3: CANTIDAD DE EMPLEADOS -->
-                <div class="space-y-4 pt-6 border-t border-slate-800">
-                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">3</span>
-                        Nómina Activa de Personal *
-                    </h2>
-                    <div id="employees-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <button type="button" onclick="selectEmployees('1 a 5 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
-                            <div class="icon-box"><i data-lucide="user" class="w-5 h-5"></i></div>
-                            <div>
-                                <span class="font-bold text-white text-base md:text-lg block">1 a 5</span>
-                                <span class="text-xs text-slate-400">Microempresa</span>
-                            </div>
-                        </button>
-                        <button type="button" onclick="selectEmployees('6 a 15 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
-                            <div class="icon-box"><i data-lucide="users" class="w-5 h-5"></i></div>
-                            <div>
-                                <span class="font-bold text-white text-base md:text-lg block">6 a 15</span>
-                                <span class="text-xs text-slate-400">Pequeña Empresa</span>
-                            </div>
-                        </button>
-                        <button type="button" onclick="selectEmployees('16 a 50 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
-                            <div class="icon-box"><i data-lucide="building-2" class="w-5 h-5"></i></div>
-                            <div>
-                                <span class="font-bold text-white text-base md:text-lg block">16 a 50</span>
-                                <span class="text-xs text-slate-400">Mediana Empresa</span>
-                            </div>
-                        </button>
-                        <button type="button" onclick="selectEmployees('Más de 50 empleados', this)" class="employee-btn interactive-card p-5 rounded-xl text-center flex flex-col items-center justify-center gap-2">
-                            <div class="icon-box"><i data-lucide="building" class="w-5 h-5"></i></div>
-                            <div>
-                                <span class="font-bold text-white text-base md:text-lg block">50+</span>
-                                <span class="text-xs text-slate-400">Corporativo</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- SECCIÓN 4: OBJETIVOS / SOLUCIONES DE RRHH -->
-                <div class="space-y-4 pt-6 border-t border-slate-800">
-                    <h2 class="text-base md:text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center border border-emerald-500/40">4</span>
-                        Desafío Prioritario de Gestión *
-                    </h2>
-                    <div id="objective-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button type="button" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                            <div>
-                                <div class="text-sm font-bold text-white">Auditoría & Cumplimiento Legal</div>
-                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Saneamiento de legajos, regulación normativa y mitigación de contingencias laborales.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Reclutar talento calificado', 'Pack 1: Esencial', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="user-check" class="w-5 h-5"></i></div>
-                            <div>
-                                <div class="text-base font-bold text-white">Atracción de Talento Clave</div>
-                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Selección profesionalizada, exámenes preocupacionales y perfilado por competencias.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Capacitar mandos medios', 'Pack 2: Evolución', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="award" class="w-5 h-5"></i></div>
-                            <div>
-                                <div class="text-base font-bold text-white">Liderazgo & Desarrollo Interno</div>
-                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Formación ejecutiva para mandos medios, alineación de mandos y clima laboral.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Estructurar la gestión con indicadores', 'Pack 2: Evolución', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                            <div>
-                                <div class="text-base font-bold text-white">Indicadores de Gestión (KPIs)</div>
-                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Monitoreo de rotación, ausentismo, nivel de eNPS y definición de roles RACI.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Transformación completa y 360', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
-                            <div>
-                                <div class="text-base font-bold text-white">Gestión Integral 360°</div>
-                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Evaluaciones de desempeño multidireccionales y planes de retención estratégica.</div>
-                            </div>
-                        </button>
-
-                        <button type="button" onclick="selectObjective('Optimización de procesos y ROI', 'Pack 3: Estratégico', this)" class="objective-btn interactive-card p-5 rounded-xl text-left flex items-start gap-4">
-                            <div class="icon-box shrink-0"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
-                            <div>
-                                <div class="text-base font-bold text-white">Optimización Estratégica & ROI</div>
-                                <div class="text-xs text-slate-400 mt-1 leading-relaxed">Diagramación de procesos BPMN, estructuración salarial e impacto directo en rentabilidad.</div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- BOTÓN PRINCIPAL DE CÁLCULO -->
-                <div class="pt-4">
-                    <button type="submit" class="w-full bg-emeraldAccent hover:bg-emeraldHover text-white font-bold py-4 px-8 rounded-lg text-center text-base md:text-lg shadow-lg transition-all duration-200 flex items-center justify-center gap-2 tracking-wide">
-                        <i data-lucide="file-search" class="w-5 h-5"></i>
+                    <button type="submit" class="btn-primary pi-submit">
+                        <i data-lucide="file-search"></i>
                         <span>Generar Diagnóstico Recomendado</span>
                     </button>
-                </div>
+                </form>
 
-            </div>
-        </form>
+                <!-- RESULTADO -->
+                <div id="result-container" class="pi-result hidden">
+                    <div class="pi-result-head">
+                        <span class="hero-badge"><i data-lucide="check-circle"></i> Diagnóstico Finalizado</span>
+                        <h2>Propuesta Recomendada para <span id="res-company-name">tu organización</span></h2>
+                        <p>Basado en una estructura de <strong id="res-employees"></strong> del sector <strong id="res-industry"></strong>:</p>
+                    </div>
 
-        <!-- SECCIÓN RESULTADO -->
-        <div id="result-container" class="hidden space-y-6 pt-10 border-t border-slate-800 mt-10">
-            <div class="text-center space-y-2">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/80 border border-emerald-600/50 text-emerald-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2">
-                    <i data-lucide="check-circle" class="w-4 h-4"></i> Diagnóstico Finalizado
-                </div>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-white">
-                    Propuesta Recomendada para <span id="res-company-name" class="text-emerald-400">Su Organización</span>
-                </h2>
-                <p class="text-slate-300 text-sm md:text-base">Basado en una estructura de <span id="res-employees" class="text-white font-semibold"></span> del sector <span id="res-industry" class="text-white font-semibold"></span>:</p>
-            </div>
+                    <div class="pi-perspective">
+                        <div id="card-flipper" class="pi-flipper">
 
-            <!-- TARJETA RECOMENDADA EJECUTIVA -->
-            <div class="card-perspective max-w-3xl mx-auto w-full">
-                <div id="card-flipper" class="card-flipper">
-                    
-                    <!-- LADO FRONTAL (BENEFICIOS) -->
-                    <div class="card-face card-front bg-slate-900/95 border border-emerald-600/60 rounded-xl shadow-2xl p-6 md:p-8 flex flex-col justify-between">
-                        
-                        <div class="absolute -top-3.5 right-6 bg-emerald-600 text-white text-xs font-bold uppercase px-3 py-1 rounded shadow-md z-20 tracking-wider">
-                            Plan Sugerido
-                        </div>
-
-                        <div class="space-y-6">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 border-b border-slate-800 pb-4">
+                            <!-- FRENTE: componentes -->
+                            <div class="pi-face pi-front">
+                                <span class="pi-ribbon">Plan Sugerido</span>
                                 <div>
-                                    <h3 id="res-pack-name" class="text-2xl md:text-3xl font-extrabold text-white">Pack 2: Evolución</h3>
-                                    <p id="res-pack-tagline" class="text-emerald-400 font-semibold text-sm mt-0.5">Crecimiento y Estructura</p>
-                                    <p id="res-pack-desc" class="text-slate-400 text-xs md:text-sm mt-1">Estructura operativa de Recursos Humanos diseñada para organizaciones en fase de consolidación.</p>
+                                    <div class="pi-pack-head">
+                                        <h3 id="res-pack-name">Pack 2: Evolución</h3>
+                                        <p id="res-pack-tagline" class="pi-tagline">Crecimiento y Estructura</p>
+                                        <p id="res-pack-desc" class="pi-pack-desc">Estructura operativa de Recursos Humanos diseñada para organizaciones en fase de consolidación.</p>
+                                    </div>
+                                    <p class="pi-mini-title">Componentes del Servicio:</p>
+                                    <ul id="res-features" class="pi-features"></ul>
+                                </div>
+                                <div class="pi-actions">
+                                    <button type="button" onclick="flipCard()" class="btn-secondary pi-wide">
+                                        <span><i data-lucide="bar-chart-2"></i> Ver Entregables e Indicadores Clave (KPIs)</span>
+                                        <span>▲</span>
+                                    </button>
+                                    <a id="whatsapp-btn" href="#" target="_blank" rel="noopener" class="btn-primary pi-cta">
+                                        <i data-lucide="message-square"></i>
+                                        <span>Solicitar Propuesta Formal de <span id="btn-pack-label">Pack</span></span>
+                                    </a>
                                 </div>
                             </div>
 
-                            <div class="space-y-3">
-                                <p class="text-xs uppercase font-extrabold text-slate-300 tracking-wider">Componentes del Servicio:</p>
-                                <ul id="res-features" class="space-y-2.5 text-sm text-slate-300"></ul>
-                            </div>
-                        </div>
-
-                        <!-- CONTROLES ABAJO FRONTAL -->
-                        <div class="space-y-3 pt-6 border-t border-slate-800 mt-6">
-                            <button type="button" onclick="flipCard()" class="w-full bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold py-3 px-6 rounded-lg text-center transition-all flex items-center justify-between text-xs md:text-sm">
-                                <span class="flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i> Ver Entregables e Indicadores Clave (KPIs)</span>
-                                <span>▲</span>
-                            </button>
-                            <a id="whatsapp-btn" href="#" target="_blank" class="w-full bg-emeraldAccent hover:bg-emeraldHover text-white font-bold py-3.5 px-6 rounded-lg text-center shadow-md transition-all flex items-center justify-center gap-2 text-sm md:text-base">
-                                <i data-lucide="message-square" class="w-4 h-4"></i>
-                                <span>Solicitar Propuesta Formal de <span id="btn-pack-label">Pack</span></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- LADO TRASERO (INDICADORES) -->
-                    <div class="card-face card-back bg-slate-900/95 border border-emerald-600/60 rounded-xl shadow-2xl p-6 md:p-8 flex flex-col justify-between">
-                        
-                        <div class="absolute -top-3.5 right-6 bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold uppercase px-3 py-1 rounded shadow-md z-20">
-                            Métricas & Reportes
-                        </div>
-
-                        <div class="space-y-4">
-                            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                                <h4 class="text-base md:text-lg font-bold text-white flex items-center gap-2">
-                                    <i data-lucide="bar-chart-2" class="w-5 h-5 text-emerald-400"></i> Indicadores y Entregables de Gestión
-                                </h4>
-                                <button type="button" onclick="flipCard()" class="text-xs font-semibold text-slate-400 hover:text-white bg-slate-800 px-2.5 py-1 rounded transition-all">
-                                    ✕ Volver
-                                </button>
+                            <!-- DORSO: entregables y KPIs -->
+                            <div class="pi-face pi-back">
+                                <span class="pi-ribbon muted">Métricas &amp; Reportes</span>
+                                <div>
+                                    <div class="pi-back-head">
+                                        <h4><i data-lucide="bar-chart-2"></i> Indicadores y Entregables de Gestión</h4>
+                                        <button type="button" onclick="flipCard()" class="pi-close">✕ Volver</button>
+                                    </div>
+                                    <p class="pi-back-intro">Herramientas de medición continua para garantizar el retorno de inversión en Capital Humano y la toma de decisiones basada en datos.</p>
+                                    <div id="inline-indicators-content"></div>
+                                </div>
+                                <div class="pi-actions">
+                                    <button type="button" onclick="flipCard()" class="btn-secondary pi-wide">
+                                        <span><i data-lucide="arrow-left"></i> Volver a Componentes del Plan</span>
+                                        <span>▼</span>
+                                    </button>
+                                    <a id="whatsapp-btn-back" href="#" target="_blank" rel="noopener" class="btn-primary pi-cta">
+                                        <i data-lucide="message-square"></i>
+                                        <span>Coordinar Entrevista Estratégica</span>
+                                    </a>
+                                </div>
                             </div>
 
-                            <p class="text-slate-400 text-xs italic leading-relaxed">
-                                Herramientas de medición continua para garantizar el retorno de inversión en Capital Humano y la toma de decisiones basada en datos.
-                            </p>
-
-                            <div id="inline-indicators-content" class="space-y-4"></div>
-                        </div>
-
-                        <!-- CONTROLES ABAJO TRASERO -->
-                        <div class="space-y-3 pt-6 border-t border-slate-800 mt-6">
-                            <button type="button" onclick="flipCard()" class="w-full bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold py-3 px-6 rounded-lg text-center transition-all flex items-center justify-between text-xs md:text-sm">
-                                <span class="flex items-center gap-2"><i data-lucide="arrow-left" class="w-4 h-4 text-emerald-400"></i> Volver a Componentes del Plan</span>
-                                <span>▼</span>
-                            </button>
-                            <a id="whatsapp-btn-back" href="#" target="_blank" class="w-full bg-emeraldAccent hover:bg-emeraldHover text-white font-bold py-3.5 px-6 rounded-lg text-center shadow-md transition-all flex items-center justify-center gap-2 text-sm md:text-base">
-                                <i data-lucide="message-square" class="w-4 h-4"></i>
-                                <span>Coordinar Entrevista Estratégica</span>
-                            </a>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="max-w-6xl mx-auto w-full text-center py-4 text-xs text-slate-400">
-        © 2026 CHG Capital Humano Group. Todos los derechos reservados.
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- COLUMNA 1: LOGO Y SOBRE CHG -->
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo">CHG <span>Capital Humano</span></a>
+                <p class="footer-desc">Consultora estratégica especializada en estructurar y potenciar el área de personas en PyMEs con metodologías ágiles de gestión organizativa.</p>
+            </div>
+
+            <!-- COLUMNA 2: NAVEGACIÓN RÁPIDA -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#packs">Packs de Servicios</a></li>
+                    <li><a href="index.html#extras">Servicios Extras</a></li>
+                    <li><a href="index.html#servicios-chg">Beneficios CHG</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMNA 3: INFORMACIÓN INSTITUCIONAL -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Candidatos & Talento</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank">Cargar CV / Postularse</a></li>
+                    <li><a href="#">Búsquedas Activas</a></li>
+                    <li><a href="#">Sobre CHG Group</a></li>
+                    <li><a href="codigo-de-etica.html">Código de Ética</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMNA 4: CONTACTO Y SOPORTE -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Contacto</h4>
+                <ul class="footer-contact">
+                    <li>📧 <span>contacto@chgcapitalhumano.com</span></li>
+                    <li>💬 <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20información" target="_blank">WhatsApp Directo</a></li>
+                    <li>📍 <span>Argentina / Asesoramiento Regional</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>© 2026 CHG Capital Humano Group. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Políticas de Privacidad</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC INTEGRADA -->
+    <!-- LÓGICA DEL DIAGNÓSTICO -->
     <script>
+        // Para que el botón final de WhatsApp llegue directo a tu número, completalo acá:
+        // código de país + área + número, sin "+", espacios ni guiones. Ej: '5491112345678'
+        const WHATSAPP_NUMBER = '';
+
         const formData = {
             companyName: '',
             contactName: '',
@@ -543,7 +733,7 @@
                     '<strong>Diagnóstico Organizacional:</strong> Relevamiento inicial de procesos y estructura.',
                     '<strong>Auditoría Laboral Preventiva:</strong> Verificación de normativas y mitigación de riesgos.',
                     '<strong>Reclutamiento Estratégico:</strong> Selección con garantía de adaptación de 90 días.',
-                    '<strong>Gestión de Salud Occupacional:</strong> Coordinación de exámenes preocupacionales.',
+                    '<strong>Gestión de Salud Ocupacional:</strong> Coordinación de exámenes preocupacionales.',
                     '<strong>Estructuración Digital de Legajos:</strong> Centralización segura de documentación.'
                 ],
                 entregables: [
@@ -650,9 +840,12 @@
         function highlightSelection(containerId, activeEl) {
             const container = document.getElementById(containerId);
             if (!container) return;
-            const buttons = container.querySelectorAll('.interactive-card');
-            buttons.forEach(btn => btn.classList.remove('selected'));
+            container.querySelectorAll('.pi-option').forEach(btn => {
+                btn.classList.remove('selected');
+                btn.setAttribute('aria-pressed', 'false');
+            });
             activeEl.classList.add('selected');
+            activeEl.setAttribute('aria-pressed', 'true');
         }
 
         function flipCard() {
@@ -662,36 +855,18 @@
             const isFlipped = flipper.classList.contains('flipped');
 
             if (!isFlipped) {
-                const currentPackKey = formData.recommendedPack || "Pack 2: Evolución";
-                const packData = packsDatabase[currentPackKey] || packsDatabase["Pack 2: Evolución"];
+                const currentPackKey = formData.recommendedPack || 'Pack 2: Evolución';
+                const packData = packsDatabase[currentPackKey] || packsDatabase['Pack 2: Evolución'];
                 const contentArea = document.getElementById('inline-indicators-content');
 
                 if (contentArea && packData) {
-                    let htmlContent = `
-                        <div>
-                            <p class="text-xs uppercase font-bold text-emerald-400 mb-2 tracking-wider">Entregables Formales:</p>
-                            <ul class="space-y-1.5">
+                    const list = items => `<ul class="pi-dots">${items.map(i => `<li><span>${i}</span></li>`).join('')}</ul>`;
+                    contentArea.innerHTML = `
+                        <p class="pi-mini-title blue">Entregables Formales:</p>
+                        ${list(packData.entregables)}
+                        <p class="pi-mini-title blue">KPIs e Indicadores de Rendimiento:</p>
+                        ${list(packData.kpis)}
                     `;
-
-                    packData.entregables.forEach(item => {
-                        htmlContent += `<li class="text-xs md:text-sm text-slate-300 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span> <span>${item}</span></li>`;
-                    });
-
-                    htmlContent += `
-                            </ul>
-                        </div>
-                        <div class="pt-3 border-t border-slate-800">
-                            <p class="text-xs uppercase font-bold text-emerald-400 mb-2 tracking-wider">KPIs e Indicadores de Rendimiento:</p>
-                            <ul class="space-y-1.5">
-                    `;
-
-                    packData.kpis.forEach(item => {
-                        htmlContent += `<li class="text-xs md:text-sm text-slate-300 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span> <span>${item}</span></li>`;
-                    });
-
-                    htmlContent += `</ul></div>`;
-
-                    contentArea.innerHTML = htmlContent;
                 }
             }
 
@@ -715,27 +890,27 @@
 
             const packInfo = packsDatabase[formData.recommendedPack];
 
-            document.getElementById('res-company-name').innerText = formData.companyName || 'su empresa';
-            document.getElementById('res-employees').innerText = formData.employees || 'Estructura no indicada';
-            document.getElementById('res-industry').innerText = formData.industry || 'Rubro no indicado';
+            document.getElementById('res-company-name').textContent = formData.companyName || 'tu empresa';
+            document.getElementById('res-employees').textContent = formData.employees || 'estructura no indicada';
+            document.getElementById('res-industry').textContent = formData.industry || 'rubro no indicado';
 
-            document.getElementById('res-pack-name').innerText = formData.recommendedPack;
-            document.getElementById('res-pack-tagline').innerText = packInfo.tagline;
-            document.getElementById('res-pack-desc').innerText = packInfo.desc;
-            document.getElementById('btn-pack-label').innerText = formData.recommendedPack;
+            document.getElementById('res-pack-name').textContent = formData.recommendedPack;
+            document.getElementById('res-pack-tagline').textContent = packInfo.tagline;
+            document.getElementById('res-pack-desc').textContent = packInfo.desc;
+            document.getElementById('btn-pack-label').textContent = formData.recommendedPack;
 
             const featEl = document.getElementById('res-features');
             if (featEl) {
                 featEl.innerHTML = packInfo.features.map(f => `
-                    <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded border border-slate-800">
-                        <span class="text-emerald-400 font-bold text-xs shrink-0 mt-0.5">✓</span>
-                        <span class="leading-relaxed text-xs md:text-sm">${f}</span>
+                    <li class="pi-feature">
+                        <span class="pi-check">✓</span>
+                        <span>${f}</span>
                     </li>
                 `).join('');
             }
 
             const message = `Estimados, he completado la evaluación para ${formData.companyName || 'mi empresa'} (${formData.employees}, Sector: ${formData.industry}). La propuesta recomendada fue ${formData.recommendedPack}. Solicito el envío de la propuesta detallada.`;
-            const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
             document.getElementById('whatsapp-btn').href = waUrl;
             document.getElementById('whatsapp-btn-back').href = waUrl;
@@ -751,10 +926,180 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+            if (window.lucide) lucide.createIcons();
         });
+    </script>
+
+  <!-- SCRIPT DE CURSOR PERSONALIZADO (azul) -->
+    <script>
+      (function() {
+        // Solo en dispositivos con mouse real
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+        var dot = document.getElementById('cursorGlow');
+        var ring = document.getElementById('cursorRing');
+
+        if (!dot) {
+          dot = document.createElement('div');
+          dot.id = 'cursorGlow';
+          document.body.appendChild(dot);
+        }
+        if (!ring) {
+          ring = document.createElement('div');
+          ring.id = 'cursorRing';
+          document.body.appendChild(ring);
+        }
+
+        // Recién ahora se oculta el cursor del sistema
+        document.documentElement.classList.add('has-custom-cursor');
+
+        var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        var ringX = mouseX, ringY = mouseY;
+        var shown = false;
+        var INTERACTIVE = 'a, button, input, select, textarea, label, .interactive-card, .card-3d, .btn-pack, .card-link, .faq-btn';
+
+        window.addEventListener('mousemove', function(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          dot.style.left = mouseX + 'px';
+          dot.style.top = mouseY + 'px';
+          if (!shown) {
+            shown = true;
+            ringX = mouseX; ringY = mouseY;
+            dot.classList.add('cursor-visible');
+            ring.classList.add('cursor-visible');
+          }
+        }, { passive: true });
+
+        function renderCursor() {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          ring.style.left = ringX + 'px';
+          ring.style.top = ringY + 'px';
+          requestAnimationFrame(renderCursor);
+        }
+        requestAnimationFrame(renderCursor);
+
+        document.addEventListener('mouseover', function(e) {
+          if (e.target.closest && e.target.closest(INTERACTIVE)) {
+            dot.classList.add('cursor-active');
+            ring.classList.add('cursor-active');
+          }
+        });
+        document.addEventListener('mouseout', function(e) {
+          if (e.target.closest && e.target.closest(INTERACTIVE)) {
+            dot.classList.remove('cursor-active');
+            ring.classList.remove('cursor-active');
+          }
+        });
+
+        // Ocultar al salir de la ventana, mostrar al volver
+        document.addEventListener('mouseleave', function() {
+          dot.classList.remove('cursor-visible'); ring.classList.remove('cursor-visible'); shown = false;
+        });
+      })();
+    </script>
+
+    <!-- EFECTO DE LETRAS REACTIVAS (.fx-heading títulos / .fx-text subtítulos) -->
+    <script>
+      (function() {
+        var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!fine || reduce) return;
+
+        var GREEN = [31, 166, 122];
+
+        document.querySelectorAll('.fx-heading, .fx-text').forEach(function(h) {
+          var RADIUS = parseFloat(h.dataset.fxRadius) || 150;   // alcance en px
+          var LIFT = parseFloat(h.dataset.fxLift) || 10;        // cuánto suben las letras
+          var MODE = h.dataset.fx || 'reveal';                  // 'reveal' (foco de luz) o 'wave' (letras que saltan)
+
+          if (MODE === 'reveal') {
+            h.style.setProperty('--fx-rmax', RADIUS + 'px');
+            var pending = false, px = 0, py = 0;
+            function setPos() {
+              pending = false;
+              h.style.setProperty('--mx', px + 'px');
+              h.style.setProperty('--my', py + 'px');
+            }
+            h.addEventListener('mouseenter', function(e) {
+              var r = h.getBoundingClientRect();
+              h.style.setProperty('--ox', (e.clientX - r.left) + 'px');
+              px = e.clientX - r.left; py = e.clientY - r.top; setPos();
+            });
+            h.addEventListener('mousemove', function(e) {
+              var r = h.getBoundingClientRect();
+              px = e.clientX - r.left; py = e.clientY - r.top;
+              if (!pending) { pending = true; requestAnimationFrame(setPos); }
+            });
+            return;
+          }
+
+          // Color base del texto (blanco en títulos, gris en subtítulos)
+          var m = getComputedStyle(h).color.match(/[\d.]+/g) || [255, 255, 255];
+          var BASE = [parseFloat(m[0]), parseFloat(m[1]), parseFloat(m[2])];
+
+          var text = h.textContent.trim().replace(/\s+/g, ' ');
+          h.setAttribute('aria-label', text);
+          h.textContent = '';
+
+          var letters = [];
+          text.split(' ').forEach(function(word, i, arr) {
+            var w = document.createElement('span');
+            w.className = 'fx-word';
+            w.setAttribute('aria-hidden', 'true');
+            Array.from(word).forEach(function(ch) {
+              var s = document.createElement('span');
+              s.className = 'fx-ch';
+              s.textContent = ch;
+              w.appendChild(s);
+              letters.push({ el: s, cx: 0, cy: 0 });
+            });
+            h.appendChild(w);
+            if (i < arr.length - 1) h.appendChild(document.createElement('wbr'));
+          });
+
+          function measure() {
+            letters.forEach(function(l) {
+              l.cx = l.el.offsetLeft + l.el.offsetWidth / 2;
+              l.cy = l.el.offsetTop + l.el.offsetHeight / 2;
+            });
+          }
+
+          var mx = 0, my = 0, ticking = false;
+
+          function paint() {
+            ticking = false;
+            letters.forEach(function(l) {
+              var d = Math.hypot(l.cx - mx, l.cy - my);
+              var p = Math.max(0, 1 - d / RADIUS);
+              p = p * p * (3 - 2 * p);
+              var r = Math.round(BASE[0] + (GREEN[0] - BASE[0]) * p);
+              var g = Math.round(BASE[1] + (GREEN[1] - BASE[1]) * p);
+              var b = Math.round(BASE[2] + (GREEN[2] - BASE[2]) * p);
+              l.el.style.transform = 'translateY(' + (-p * LIFT).toFixed(2) + 'px) scale(' + (1 + p * LIFT * 0.02).toFixed(3) + ')';
+              l.el.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+              l.el.style.textShadow = '0 0 ' + (p * LIFT * 2).toFixed(1) + 'px rgba(31,166,122,' + (p * 0.8).toFixed(2) + ')';
+            });
+          }
+
+          h.addEventListener('mouseenter', measure);
+          h.addEventListener('mousemove', function(e) {
+            var rect = h.getBoundingClientRect();
+            mx = e.clientX - rect.left;
+            my = e.clientY - rect.top;
+            if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+          });
+          h.addEventListener('mouseleave', function() {
+            letters.forEach(function(l) {
+              l.el.style.transform = '';
+              l.el.style.color = '';
+              l.el.style.textShadow = '';
+            });
+          });
+          window.addEventListener('resize', measure);
+        });
+      })();
     </script>
 </body>
 </html>

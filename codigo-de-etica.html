@@ -3,532 +3,521 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Código de Ética y Conducta Profesional - Capital Humano Group</title>
-    
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
-    
-    <!-- CSS Principal -->
+    <title>Código de Ética y Conducta Profesional | Capital Humano Group</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- FontAwesome para Íconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* --- ESTILOS BASE DE SEGURIDAD --- */
-        body {
-            background-color: #0B1120;
-            color: #F8FAFC;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            cursor: default;
+        /* ===== Menú: en celular queda solo el botón de volver ===== */
+        .nav-links li.nav-back { display: none; }
+        @media (max-width: 768px) {
+            .nav-links { display: flex !important; }
+            .nav-links li { display: none; }
+            .nav-links li.nav-back { display: list-item; }
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- CURSOR PERSONALIZADO ESMERALDA --- */
-        .custom-cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 8px;
-            background-color: #10B981;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px #10B981, 0 0 16px rgba(16, 185, 129, 0.8);
-            transition: transform 0.08s ease-out;
-        }
-
-        /* --- HEADER MINIMALISTA Y BRANDING --- */
-        .custom-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px 0;
-        }
-
-        .header-container-custom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-custom {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .logo-text-container {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .logo-main-text {
-            color: #FFFFFF;
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-sub-text {
-            color: #10B981;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .btn-back-header {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #10B981;
-            padding: 8px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-back-header:hover {
-            background: #10B981;
-            color: #0F172A;
-            box-shadow: 0 0 18px rgba(16, 185, 129, 0.5);
-            transform: translateY(-1px);
-        }
-
-        /* --- PÁGINA Y TÍTULO INCANDESCENTE --- */
-        .page-header {
-            padding: 150px 0 60px 0;
-            background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+        /* ===== HERO ===== */
+        .eth-hero {
+            padding: 80px 0 56px;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: radial-gradient(ellipse at top center, rgba(59, 130, 246, 0.16) 0%, transparent 65%);
+            border-bottom: 1px solid var(--border-glow);
         }
-
-        .page-title {
-            font-size: 2.8rem;
+        .eth-hero .hero-badge { display: inline-flex; align-items: center; gap: 8px; }
+        .eth-hero h1 {
+            font-size: clamp(2rem, 4.6vw, 3.3rem);
             font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 15px;
-            line-height: 1.2;
-            display: inline-block;
-            transition: all 0.4s ease;
-        }
-
-        .page-title:hover {
-            color: #34D399;
-            text-shadow: 0 0 15px rgba(16, 185, 129, 0.8),
-                         0 0 30px rgba(16, 185, 129, 0.5),
-                         0 0 45px rgba(16, 185, 129, 0.3);
-            transform: scale(1.02);
-        }
-
-        .page-subtitle {
-            font-size: 1.1rem;
-            color: #94A3B8;
-            max-width: 650px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .badge-ethics {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #10B981;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .content-section {
-            padding: 60px 0 100px 0;
-            overflow: hidden;
-        }
-
-        .ethics-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            letter-spacing: -0.03em;
+            line-height: 1.12;
+            margin: 0 auto 20px;
             max-width: 900px;
+        }
+        .eth-lead {
+            --fx-base: #CBD5E1;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 680px;
             margin: 0 auto;
         }
 
-        /* --- ANIMACIÓN DESLIZANTE --- */
-        .ethics-card, .ethics-highlight-box {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 30px;
-            
-            /* Estado Inicial */
+        /* ===== CONTENIDO ===== */
+        .eth-section { padding: 70px 0 110px; overflow: hidden; }
+        .eth-grid { display: grid; gap: 26px; max-width: 920px; margin: 0 auto; }
+
+        .eth-card {
+            background: rgba(30, 41, 59, 0.55);
+            border: 1px solid var(--border-glow);
+            border-radius: 18px;
+            padding: 32px 34px;
             opacity: 0;
-            transform: translateX(-50px);
-            
-            /* Transición Suave y Fluida */
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.8s ease-out,
-                        border-color 0.3s ease,
-                        box-shadow 0.3s ease;
+            transform: translateX(-40px);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out,
+                        border-color 0.3s ease, box-shadow 0.3s ease;
             will-change: transform, opacity;
         }
-
-        /* Estado Visible */
-        .ethics-card.animate-in, .ethics-highlight-box.animate-in {
-            opacity: 1;
-            transform: translateX(0);
+        .eth-card.animate-in { opacity: 1; transform: translateX(0); }
+        .eth-card.animate-in:hover {
+            transform: translateY(-4px);
+            border-color: #3B82F6;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.2);
         }
 
-        .ethics-card:hover {
-            border-color: rgba(16, 185, 129, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .ethics-card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
-        .ethics-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.3);
+        .eth-card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+        .eth-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #10B981;
             font-size: 1.25rem;
-            flex-shrink: 0;
+            color: #60A5FA;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0.06) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.35);
         }
+        .eth-card-head h2 { font-size: 1.3rem; font-weight: 700; line-height: 1.3; color: #FFFFFF; }
 
-        .ethics-card-header h2 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: #FFFFFF;
-            margin: 0;
-        }
+        .eth-body p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.75; margin-bottom: 14px; }
+        .eth-body p:last-child { margin-bottom: 0; }
+        .eth-body strong { color: #FFFFFF; font-weight: 700; }
 
-        .ethics-card-body p {
-            color: #94A3B8;
-            line-height: 1.7;
-            font-size: 0.98rem;
-            margin-bottom: 15px;
-        }
-
-        .ethics-card-body p:last-child {
-            margin-bottom: 0;
-        }
-
-        .ethics-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0 0 0;
-        }
-
-        .ethics-list li {
+        .eth-list { list-style: none; margin: 16px 0 0; padding: 0; }
+        .eth-list li {
             position: relative;
-            padding-left: 28px;
+            padding-left: 30px;
+            margin-bottom: 14px;
             color: #CBD5E1;
-            margin-bottom: 12px;
-            line-height: 1.6;
             font-size: 0.95rem;
+            line-height: 1.65;
         }
-
-        .ethics-list li:last-child {
-            margin-bottom: 0;
-        }
-
-        .ethics-list li::before {
+        .eth-list li:last-child { margin-bottom: 0; }
+        .eth-list li::before {
             content: "\f00c";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
             left: 0;
-            top: 2px;
-            color: #10B981;
+            top: 3px;
             font-size: 0.85rem;
+            color: #3B82F6;
         }
 
-        .ethics-highlight-box {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 16px;
-            padding: 35px;
+        /* Caja final: canal de reportes */
+        .eth-highlight {
+            margin-top: 28px;
+            padding: 42px 34px;
             text-align: center;
-            margin-top: 40px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
         }
+        .eth-highlight.animate-in { opacity: 1; transform: translateX(0); }
+        .eth-highlight .eth-icon { margin: 0 auto 18px; }
+        .eth-highlight h2 { font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; }
+        .eth-highlight p { color: var(--text-muted); max-width: 650px; margin: 0 auto 22px; line-height: 1.7; }
+        .eth-mail { padding: 14px 30px; border-radius: 999px; text-decoration: none; }
 
-        .ethics-highlight-box h3 {
-            color: #FFFFFF;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+        @media (max-width: 640px) {
+            .eth-card { padding: 24px 20px; }
+            .eth-card-head { align-items: flex-start; }
+            .eth-highlight { padding: 32px 20px; }
         }
-
-        .ethics-email-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #10B981;
-            color: #0F172A;
-            font-weight: 700;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .ethics-email-btn:hover {
-            background: #34D399;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+        @media (prefers-reduced-motion: reduce) {
+            .eth-card, .eth-highlight { transition: none; transform: none; opacity: 1; }
         }
     </style>
+    <noscript><style>.eth-card, .eth-highlight { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
 
-    <!-- CURSOR ESMERALDA -->
-    <div class="custom-cursor-dot" id="cursorDot"></div>
-
-    <!-- CABECERA DE MARCA -->
-    <header class="custom-header">
-        <div class="header-container-custom">
-            <a href="index.html" class="logo-custom">
-                <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group Logo" class="logo-img">
-                <div class="logo-text-container">
-                    <span class="logo-main-text">CAPITAL HUMANO</span>
-                    <span class="logo-sub-text">GROUP</span>
-                </div>
-            </a>
-            <a href="index.html" class="btn-back-header">
-                <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
-            </a>
-        </div>
-    </header>
-
-    <!-- HÉROE DE PÁGINA -->
-    <section class="page-header">
-        <div class="container">
-            <div class="badge-ethics">
-                <i class="fa-solid fa-shield-halved"></i> Marco Institucional
+    <nav class="navbar">
+        <div class="container nav-container">
+        <a href="index.html" class="logo-container">
+            <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="brand-logo-img">
+            <div class="brand-text-group">
+                <span class="brand-title">CAPITAL HUMANO</span>
+                <span class="brand-subtitle">GROUP</span>
             </div>
-            <br>
-            <h1 class="page-title">Código de Ética y Conducta Profesional</h1>
-            <p class="page-subtitle">Nuestros principios de transparencia, legalidad y respeto que rigen todas las operaciones de Capital Humano Group[cite: 11, 12].</p>
+        </a>
+            <ul class="nav-links">
+                <li class="nav-back"><a href="index.html">← Volver al inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#packs">Packs</a></li>
+                <li><a href="index.html#extras">Servicios Extras</a></li>
+                <li><a href="index.html#servicios-chg">¿Por qué CHG?</a></li>
+                <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank" class="btn-nav-outline">¡Postulate acá!</a></li>
+                <li><a href="pack-ideal.html" class="btn-nav">Descubrí tu pack ideal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="eth-hero">
+        <div class="container">
+            <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Marco Institucional</span>
+            <h1 class="fx-heading" data-fx="reveal">Código de Ética y Conducta Profesional</h1>
+            <p class="fx-text eth-lead" data-fx="reveal" data-fx-radius="110" data-fx-lift="5">Nuestros principios de transparencia, legalidad y respeto que rigen todas las operaciones de Capital Humano Group.</p>
         </div>
     </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <section class="content-section">
+    <!-- CONTENIDO -->
+    <main class="eth-section">
         <div class="container">
-            <div class="ethics-grid">
+            <div class="eth-grid">
 
-                <!-- 1. Propósito y Alcance -->
-                <article class="ethics-card">
-                    <div class="ethics-card-header">
-                        <div class="ethics-icon">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
+                <!-- 1 -->
+                <article class="eth-card">
+                    <div class="eth-card-head">
+                        <div class="eth-icon"><i class="fa-solid fa-compass"></i></div>
                         <h2>1. Propósito y Alcance</h2>
                     </div>
-                    <div class="ethics-card-body">
-                        <p>En <strong>Capital Humano Group</strong> brindamos soluciones integrales en Recursos Humanos bajo estrictos estándares de transparencia, legalidad y respeto[cite: 11, 12]. Este código rige para todos nuestros directivos, consultores, personal administrativo y profesionales tercerizados, y define cómo nos relacionamos con nuestros clientes, sus trabajadores y los candidatos[cite: 11, 12].</p>
+                    <div class="eth-body">
+                        <p>En <strong>Capital Humano Group</strong> brindamos soluciones integrales en Recursos Humanos bajo estrictos estándares de transparencia, legalidad y respeto. Este código rige para todos nuestros directivos, consultores, personal administrativo y profesionales tercerizados, y define cómo nos relacionamos con nuestros clientes, sus trabajadores y los candidatos.</p>
                     </div>
                 </article>
 
-                <!-- 2. Legalidad y Cumplimiento Normativo -->
-                <article class="ethics-card">
-                    <div class="ethics-card-header">
-                        <div class="ethics-icon">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
+                <!-- 2 -->
+                <article class="eth-card">
+                    <div class="eth-card-head">
+                        <div class="eth-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                         <h2>2. Legalidad y Cumplimiento Normativo (Compliance Laboral)</h2>
                     </div>
-                    <div class="ethics-card-body">
-                        <p>Como expertos en servicios de Recursos Humanos, nuestro asesoramiento y gestión deben ajustarse estrictamente al marco legal argentino[cite: 11, 12]:</p>
-                        <ul class="ethics-list">
-                            <li><strong>Normativa Base:</strong> Respetamos y hacemos cumplir la Ley de Contrato de Trabajo (LCT N° 20.744), las Leyes de Empleo y las normativas de la Agencia de Recaudación y Control Aduanero (ARCA) y el Ministerio de Capital Humano (o autoridad laboral nacional vigente)[cite: 11, 12].</li>
-                            <li><strong>Encuadramiento Convencional:</strong> Nos comprometemos a asesorar a nuestros clientes con objetividad respecto al correcto encuadramiento de los trabajadores en los Convenios Colectivos de Trabajo (CCT) correspondientes, rechazando cualquier práctica que precarice el empleo o fomente el trabajo informal ("en negro")[cite: 11, 12].</li>
+                    <div class="eth-body">
+                        <p>Como expertos en servicios de Recursos Humanos, nuestro asesoramiento y gestión deben ajustarse estrictamente al marco legal argentino:</p>
+                        <ul class="eth-list">
+                            <li><strong>Normativa Base:</strong> Respetamos y hacemos cumplir la Ley de Contrato de Trabajo (LCT N° 20.744), las Leyes de Empleo y las normativas de la Agencia de Recaudación y Control Aduanero (ARCA) y el Ministerio de Capital Humano (o autoridad laboral nacional vigente).</li>
+                            <li><strong>Encuadramiento Convencional:</strong> Nos comprometemos a asesorar a nuestros clientes con objetividad respecto al correcto encuadramiento de los trabajadores en los Convenios Colectivos de Trabajo (CCT) correspondientes, rechazando cualquier práctica que precarice el empleo o fomente el trabajo informal ("en negro").</li>
                         </ul>
                     </div>
                 </article>
 
-                <!-- 3. Confidencialidad y Secreto Profesional -->
-                <article class="ethics-card">
-                    <div class="ethics-card-header">
-                        <div class="ethics-icon">
-                            <i class="fa-solid fa-lock"></i>
-                        </div>
+                <!-- 3 -->
+                <article class="eth-card">
+                    <div class="eth-card-head">
+                        <div class="eth-icon"><i class="fa-solid fa-lock"></i></div>
                         <h2>3. Confidencialidad y Secreto Profesional</h2>
                     </div>
-                    <div class="ethics-card-body">
-                        <p>Manejamos activos de información extremadamente críticos bajo la Ley N° 25.326 de Protección de Datos Personales[cite: 11, 12]:</p>
-                        <ul class="ethics-list">
-                            <li><strong>Liquidación y Datos Hard:</strong> Toda la información relacionada con grillas salariales, datos bancarios, embargos judiciales, deducciones de ganancias, afiliaciones sindicales e historias clínicas y legajos de los empleados de nuestros clientes será tratada bajo el más estricto secreto profesional[cite: 11, 12].</li>
-                            <li><strong>Seguridad Informática:</strong> Implementamos accesos restringidos y perfiles de seguridad para que sólo el personal autorizado tenga acceso a los sistemas de gestión de nómina y legajos digitales[cite: 11, 12].</li>
+                    <div class="eth-body">
+                        <p>Manejamos activos de información extremadamente críticos bajo la Ley N° 25.326 de Protección de Datos Personales:</p>
+                        <ul class="eth-list">
+                            <li><strong>Liquidación y Datos Hard:</strong> Toda la información relacionada con grillas salariales, datos bancarios, embargos judiciales, deducciones de ganancias, afiliaciones sindicales e historias clínicas y legajos de los empleados de nuestros clientes será tratada bajo el más estricto secreto profesional.</li>
+                            <li><strong>Seguridad Informática:</strong> Implementamos accesos restringidos y perfiles de seguridad para que sólo el personal autorizado tenga acceso a los sistemas de gestión de nómina y legajos digitales.</li>
                         </ul>
                     </div>
                 </article>
 
-                <!-- 4. Transparencia en Auditorías y Consultoría -->
-                <article class="ethics-card">
-                    <div class="ethics-card-header">
-                        <div class="ethics-icon">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
+                <!-- 4 -->
+                <article class="eth-card">
+                    <div class="eth-card-head">
+                        <div class="eth-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h2>4. Transparencia en Auditorías y Consultoría</h2>
                     </div>
-                    <div class="ethics-card-body">
-                        <ul class="ethics-list">
-                            <li><strong>Diagnósticos Honestos:</strong> En servicios de auditoría laboral, clima organizacional o consultoría estratégica, nos comprometemos a entregar informes realistas, basados en datos objetivos, sin falsear resultados para complacer a la dirección del cliente o encubrir malas prácticas internas[cite: 11, 12].</li>
-                            <li><strong>Prevención de Riesgos:</strong> Alertamos proactivamente a nuestros clientes si detectamos desvíos normativos en su gestión (como irregularidades en aportes de la seguridad social, falta de cobertura de ART o incumplimiento de normas de Higiene y Seguridad)[cite: 11, 12].</li>
+                    <div class="eth-body">
+                        <ul class="eth-list">
+                            <li><strong>Diagnósticos Honestos:</strong> En servicios de auditoría laboral, clima organizacional o consultoría estratégica, nos comprometemos a entregar informes realistas, basados en datos objetivos, sin falsear resultados para complacer a la dirección del cliente o encubrir malas prácticas internas.</li>
+                            <li><strong>Prevención de Riesgos:</strong> Alertamos proactivamente a nuestros clientes si detectamos desvíos normativos en su gestión (como irregularidades en aportes de la seguridad social, falta de cobertura de ART o incumplimiento de normas de Higiene y Seguridad).</li>
                         </ul>
                     </div>
                 </article>
 
-                <!-- 5. Relación con Candidatos y Trabajadores -->
-                <article class="ethics-card">
-                    <div class="ethics-card-header">
-                        <div class="ethics-icon">
-                            <i class="fa-solid fa-handshake-angle"></i>
-                        </div>
+                <!-- 5 -->
+                <article class="eth-card">
+                    <div class="eth-card-head">
+                        <div class="eth-icon"><i class="fa-solid fa-handshake-angle"></i></div>
                         <h2>5. Relación con Candidatos y Trabajadores</h2>
                     </div>
-                    <div class="ethics-card-body">
-                        <ul class="ethics-list">
-                            <li><strong>Igualdad de Oportunidades (Ley N° 23.592):</strong> Garantizamos procesos de selección, evaluación y planes de carrera libres de discriminación por género, edad, orientación sexual, religión, ideología o condición socioeconómica[cite: 11, 12].</li>
-                            <li><strong>Gratuidad:</strong> Bajo ninguna circunstancia se cobrará dinero o se retendrá porcentaje salarial alguno a candidatos o empleados por su postulación, contratación o participación en capacitaciones dictadas por la consultora[cite: 11, 12].</li>
-                            <li><strong>Trato Digno:</strong> Velamos por la salud mental y emocional en los espacios de trabajo, rechazando activamente cualquier forma de acoso laboral (mobbing), violencia de género o persecución sindical en los proyectos que administramos[cite: 11, 12].</li>
+                    <div class="eth-body">
+                        <ul class="eth-list">
+                            <li><strong>Igualdad de Oportunidades (Ley N° 23.592):</strong> Garantizamos procesos de selección, evaluación y planes de carrera libres de discriminación por género, edad, orientación sexual, religión, ideología o condición socioeconómica.</li>
+                            <li><strong>Gratuidad:</strong> Bajo ninguna circunstancia se cobrará dinero o se retendrá porcentaje salarial alguno a candidatos o empleados por su postulación, contratación o participación en capacitaciones dictadas por la consultora.</li>
+                            <li><strong>Trato Digno:</strong> Velamos por la salud mental y emocional en los espacios de trabajo, rechazando activamente cualquier forma de acoso laboral (mobbing), violencia de género o persecución sindical en los proyectos que administramos.</li>
                         </ul>
                     </div>
                 </article>
 
-                <!-- 6. Conflicto de Intereses y Lealtad Comercial -->
-                <article class="ethics-card">
-                    <div class="ethics-card-header">
-                        <div class="ethics-icon">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
+                <!-- 6 -->
+                <article class="eth-card">
+                    <div class="eth-card-head">
+                        <div class="eth-icon"><i class="fa-solid fa-user-shield"></i></div>
                         <h2>6. Conflicto de Intereses y Lealtad Comercial</h2>
                     </div>
-                    <div class="ethics-card-body">
-                        <ul class="ethics-list">
-                            <li><strong>Independencia de Criterio:</strong> Los consultores deben reportar de inmediato si la empresa de un familiar o allegado solicita nuestros servicios, o si un candidato en un proceso selectivo tiene un vínculo directo con ellos[cite: 11, 12].</li>
-                            <li><strong>Cláusula Off-Limits:</strong> No realizaremos búsquedas de personal ni ofreceremos activamente cambiar de empleo a los colaboradores actuales de las empresas que sean clientes activos de nuestra consultora[cite: 11, 12].</li>
+                    <div class="eth-body">
+                        <ul class="eth-list">
+                            <li><strong>Independencia de Criterio:</strong> Los consultores deben reportar de inmediato si la empresa de un familiar o allegado solicita nuestros servicios, o si un candidato en un proceso selectivo tiene un vínculo directo con ellos.</li>
+                            <li><strong>Cláusula Off-Limits:</strong> No realizaremos búsquedas de personal ni ofreceremos activamente cambiar de empleo a los colaboradores actuales de las empresas que sean clientes activos de nuestra consultora.</li>
                         </ul>
                     </div>
                 </article>
 
-                <!-- 7. Canal de Reportes y Comité de Ética -->
-                <div class="ethics-highlight-box">
-                    <div class="ethics-icon" style="margin: 0 auto 15px auto;">
-                        <i class="fa-solid fa-bullhorn"></i>
-                    </div>
-                    <h3>7. Canal de Reportes y Comité de Ética</h3>
-                    <p style="color: #94A3B8; max-width: 650px; margin: 0 auto 15px auto; line-height: 1.6;">
-                        Habilitamos nuestro canal oficial para recibir denuncias sobre violaciones a este código[cite: 11, 12]. Garantizamos la confidencialidad de la investigación, el debido proceso y la absoluta prohibición de represalias contra cualquier colaborador o tercero que denuncie prácticas carentes de buena fe[cite: 11, 12].
-                    </p>
-                    <a href="mailto:capitalhumanogroup@gmail.com" class="ethics-email-btn">
+                <!-- 7 -->
+                <div class="eth-highlight">
+                    <div class="eth-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h2>7. Canal de Reportes y Comité de Ética</h2>
+                    <p>Habilitamos nuestro canal oficial para recibir denuncias sobre violaciones a este código. Garantizamos la confidencialidad de la investigación, el debido proceso y la absoluta prohibición de represalias contra cualquier colaborador o tercero que denuncie prácticas carentes de buena fe.</p>
+                    <a href="mailto:capitalhumanogroup@gmail.com" class="btn-primary eth-mail">
                         <i class="fa-solid fa-envelope"></i> capitalhumanogroup@gmail.com
                     </a>
                 </div>
 
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- FOOTER -->
-    <footer style="background: rgba(15, 23, 42, 0.98); border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 0; text-align: center;">
-        <div class="container">
-            <a href="index.html" class="logo-custom" style="justify-content: center; margin-bottom: 15px;">
-                <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group Logo" class="logo-img">
-                <div class="logo-text-container" style="text-align: left;">
-                    <span class="logo-main-text">CAPITAL HUMANO</span>
-                    <span class="logo-sub-text">GROUP</span>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- COLUMNA 1: LOGO Y SOBRE CHG -->
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo">CHG <span>Capital Humano</span></a>
+                <p class="footer-desc">Consultora estratégica especializada en estructurar y potenciar el área de personas en PyMEs con metodologías ágiles de gestión organizativa.</p>
+            </div>
+
+            <!-- COLUMNA 2: NAVEGACIÓN RÁPIDA -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#packs">Packs de Servicios</a></li>
+                    <li><a href="index.html#extras">Servicios Extras</a></li>
+                    <li><a href="index.html#servicios-chg">Beneficios CHG</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMNA 3: INFORMACIÓN INSTITUCIONAL -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Candidatos & Talento</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank">Cargar CV / Postularse</a></li>
+                    <li><a href="#">Búsquedas Activas</a></li>
+                    <li><a href="#">Sobre CHG Group</a></li>
+                    <li><a href="codigo-de-etica.html">Código de Ética</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMNA 4: CONTACTO Y SOPORTE -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Contacto</h4>
+                <ul class="footer-contact">
+                    <li>📧 <span>contacto@chgcapitalhumano.com</span></li>
+                    <li>💬 <a href="https://wa.me/?text=Hola!%20Quisiera%20recibir%20información" target="_blank">WhatsApp Directo</a></li>
+                    <li>📍 <span>Argentina / Asesoramiento Regional</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>© 2026 CHG Capital Humano Group. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Políticas de Privacidad</a>
                 </div>
-            </a>
-            <p style="color: #64748B; font-size: 0.88rem; margin: 0;">&copy; 2026 CHG Capital Humano Group. Todos los derechos reservados[cite: 12].</p>
+            </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS ROBUSTOS -->
+    <!-- Animación de las tarjetas al hacer scroll -->
     <script>
-        // 1. Movimiento del punto cursor
-        const dot = document.getElementById('cursorDot');
-        if (dot) {
-            document.addEventListener('mousemove', (e) => {
-                dot.style.left = `${e.clientX}px`;
-                dot.style.top = `${e.clientY}px`;
-            });
+        document.addEventListener('DOMContentLoaded', function () {
+            var items = document.querySelectorAll('.eth-card, .eth-highlight');
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduce || !('IntersectionObserver' in window)) {
+                items.forEach(function (el) { el.classList.add('animate-in'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);   // se anima una sola vez
+                    }
+                });
+            }, { threshold: 0.05 });
+
+            items.forEach(function (el) { observer.observe(el); });
+        });
+    </script>
+
+  <!-- SCRIPT DE CURSOR PERSONALIZADO (azul) -->
+    <script>
+      (function() {
+        // Solo en dispositivos con mouse real
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+        var dot = document.getElementById('cursorGlow');
+        var ring = document.getElementById('cursorRing');
+
+        if (!dot) {
+          dot = document.createElement('div');
+          dot.id = 'cursorGlow';
+          document.body.appendChild(dot);
+        }
+        if (!ring) {
+          ring = document.createElement('div');
+          ring.id = 'cursorRing';
+          document.body.appendChild(ring);
         }
 
-        // 2. Control Seguro de Animación al Scroll
-        document.addEventListener("DOMContentLoaded", () => {
-            const cards = document.querySelectorAll('.ethics-card, .ethics-highlight-box');
-            
-            if ('IntersectionObserver' in window) {
-                const observerOptions = {
-                    root: null,
-                    threshold: 0.05
-                };
+        // Recién ahora se oculta el cursor del sistema
+        document.documentElement.classList.add('has-custom-cursor');
 
-                const cardObserver = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate-in');
-                        } else {
-                            entry.target.classList.remove('animate-in');
-                        }
-                    });
-                }, observerOptions);
+        var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        var ringX = mouseX, ringY = mouseY;
+        var shown = false;
+        var INTERACTIVE = 'a, button, input, select, textarea, label, .interactive-card, .card-3d, .btn-pack, .card-link, .faq-btn';
 
-                cards.forEach(card => cardObserver.observe(card));
-            } else {
-                // Fallback para navegadores sin IntersectionObserver
-                cards.forEach(card => card.classList.add('animate-in'));
-            }
+        window.addEventListener('mousemove', function(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          dot.style.left = mouseX + 'px';
+          dot.style.top = mouseY + 'px';
+          if (!shown) {
+            shown = true;
+            ringX = mouseX; ringY = mouseY;
+            dot.classList.add('cursor-visible');
+            ring.classList.add('cursor-visible');
+          }
+        }, { passive: true });
+
+        function renderCursor() {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          ring.style.left = ringX + 'px';
+          ring.style.top = ringY + 'px';
+          requestAnimationFrame(renderCursor);
+        }
+        requestAnimationFrame(renderCursor);
+
+        document.addEventListener('mouseover', function(e) {
+          if (e.target.closest && e.target.closest(INTERACTIVE)) {
+            dot.classList.add('cursor-active');
+            ring.classList.add('cursor-active');
+          }
         });
+        document.addEventListener('mouseout', function(e) {
+          if (e.target.closest && e.target.closest(INTERACTIVE)) {
+            dot.classList.remove('cursor-active');
+            ring.classList.remove('cursor-active');
+          }
+        });
+
+        // Ocultar al salir de la ventana, mostrar al volver
+        document.addEventListener('mouseleave', function() {
+          dot.classList.remove('cursor-visible'); ring.classList.remove('cursor-visible'); shown = false;
+        });
+      })();
+    </script>
+
+    <!-- EFECTO DE LETRAS REACTIVAS (.fx-heading títulos / .fx-text subtítulos) -->
+    <script>
+      (function() {
+        var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!fine || reduce) return;
+
+        var GREEN = [31, 166, 122];
+
+        document.querySelectorAll('.fx-heading, .fx-text').forEach(function(h) {
+          var RADIUS = parseFloat(h.dataset.fxRadius) || 150;   // alcance en px
+          var LIFT = parseFloat(h.dataset.fxLift) || 10;        // cuánto suben las letras
+          var MODE = h.dataset.fx || 'reveal';                  // 'reveal' (foco de luz) o 'wave' (letras que saltan)
+
+          if (MODE === 'reveal') {
+            h.style.setProperty('--fx-rmax', RADIUS + 'px');
+            var pending = false, px = 0, py = 0;
+            function setPos() {
+              pending = false;
+              h.style.setProperty('--mx', px + 'px');
+              h.style.setProperty('--my', py + 'px');
+            }
+            h.addEventListener('mouseenter', function(e) {
+              var r = h.getBoundingClientRect();
+              h.style.setProperty('--ox', (e.clientX - r.left) + 'px');
+              px = e.clientX - r.left; py = e.clientY - r.top; setPos();
+            });
+            h.addEventListener('mousemove', function(e) {
+              var r = h.getBoundingClientRect();
+              px = e.clientX - r.left; py = e.clientY - r.top;
+              if (!pending) { pending = true; requestAnimationFrame(setPos); }
+            });
+            return;
+          }
+
+          // Color base del texto (blanco en títulos, gris en subtítulos)
+          var m = getComputedStyle(h).color.match(/[\d.]+/g) || [255, 255, 255];
+          var BASE = [parseFloat(m[0]), parseFloat(m[1]), parseFloat(m[2])];
+
+          var text = h.textContent.trim().replace(/\s+/g, ' ');
+          h.setAttribute('aria-label', text);
+          h.textContent = '';
+
+          var letters = [];
+          text.split(' ').forEach(function(word, i, arr) {
+            var w = document.createElement('span');
+            w.className = 'fx-word';
+            w.setAttribute('aria-hidden', 'true');
+            Array.from(word).forEach(function(ch) {
+              var s = document.createElement('span');
+              s.className = 'fx-ch';
+              s.textContent = ch;
+              w.appendChild(s);
+              letters.push({ el: s, cx: 0, cy: 0 });
+            });
+            h.appendChild(w);
+            if (i < arr.length - 1) h.appendChild(document.createElement('wbr'));
+          });
+
+          function measure() {
+            letters.forEach(function(l) {
+              l.cx = l.el.offsetLeft + l.el.offsetWidth / 2;
+              l.cy = l.el.offsetTop + l.el.offsetHeight / 2;
+            });
+          }
+
+          var mx = 0, my = 0, ticking = false;
+
+          function paint() {
+            ticking = false;
+            letters.forEach(function(l) {
+              var d = Math.hypot(l.cx - mx, l.cy - my);
+              var p = Math.max(0, 1 - d / RADIUS);
+              p = p * p * (3 - 2 * p);
+              var r = Math.round(BASE[0] + (GREEN[0] - BASE[0]) * p);
+              var g = Math.round(BASE[1] + (GREEN[1] - BASE[1]) * p);
+              var b = Math.round(BASE[2] + (GREEN[2] - BASE[2]) * p);
+              l.el.style.transform = 'translateY(' + (-p * LIFT).toFixed(2) + 'px) scale(' + (1 + p * LIFT * 0.02).toFixed(3) + ')';
+              l.el.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+              l.el.style.textShadow = '0 0 ' + (p * LIFT * 2).toFixed(1) + 'px rgba(31,166,122,' + (p * 0.8).toFixed(2) + ')';
+            });
+          }
+
+          h.addEventListener('mouseenter', measure);
+          h.addEventListener('mousemove', function(e) {
+            var rect = h.getBoundingClientRect();
+            mx = e.clientX - rect.left;
+            my = e.clientY - rect.top;
+            if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+          });
+          h.addEventListener('mouseleave', function() {
+            letters.forEach(function(l) {
+              l.el.style.transform = '';
+              l.el.style.color = '';
+              l.el.style.textShadow = '';
+            });
+          });
+          window.addEventListener('resize', measure);
+        });
+      })();
     </script>
 </body>
 </html>

@@ -12,7 +12,10 @@
     <!-- Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script>document.documentElement.classList.add('eth-js');</script>
     <style>
+        :root { --eth-green: #1FA67A; --eth-green-soft: #34D399; }
+
         /* ===== Menú: en celular queda solo el botón de volver ===== */
         .nav-links li.nav-back { display: none; }
         @media (max-width: 768px) {
@@ -21,14 +24,35 @@
             .nav-links li.nav-back { display: list-item; }
         }
 
+        /* ===== Fondo con luces verdes y azules en movimiento ===== */
+        .eth-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .eth-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.26; animation: ethDrift 24s ease-in-out infinite alternate; }
+        .eth-orb.o1 { width: 520px; height: 520px; left: -160px; top: 10%; background: #1FA67A; }
+        .eth-orb.o2 { width: 600px; height: 600px; right: -220px; top: 45%; background: #3B82F6; animation-duration: 30s; animation-delay: -9s; }
+        .eth-orb.o3 { width: 420px; height: 420px; left: 35%; bottom: -180px; background: #1FA67A; opacity: 0.18; animation-duration: 27s; animation-delay: -15s; }
+        @keyframes ethDrift {
+            0%   { transform: translate3d(0, 0, 0) scale(1); }
+            50%  { transform: translate3d(60px, -40px, 0) scale(1.12); }
+            100% { transform: translate3d(-40px, 50px, 0) scale(0.95); }
+        }
+
         /* ===== HERO ===== */
         .eth-hero {
             padding: 80px 0 56px;
             text-align: center;
-            background: radial-gradient(ellipse at top center, rgba(59, 130, 246, 0.16) 0%, transparent 65%);
+            background:
+                radial-gradient(ellipse at 20% 0%, rgba(31, 166, 122, 0.20) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 0%, rgba(59, 130, 246, 0.18) 0%, transparent 55%);
             border-bottom: 1px solid var(--border-glow);
         }
-        .eth-hero .hero-badge { display: inline-flex; align-items: center; gap: 8px; }
+        .eth-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(31, 166, 122, 0.14) !important;
+            color: #34D399 !important;
+            border-color: rgba(31, 166, 122, 0.45) !important;
+        }
         .eth-hero h1 {
             font-size: clamp(2rem, 4.6vw, 3.3rem);
             font-weight: 800;
@@ -37,50 +61,80 @@
             margin: 0 auto 20px;
             max-width: 900px;
         }
-        .eth-lead {
-            --fx-base: #CBD5E1;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 680px;
-            margin: 0 auto;
+        .eth-lead { --fx-base: #CBD5E1; font-size: 1.1rem; line-height: 1.6; max-width: 680px; margin: 0 auto; }
+        .eth-pillars { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+        .eth-pillars span {
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 9px 16px; border-radius: 999px;
+            font-size: 0.85rem; font-weight: 600; color: var(--white-soft);
+            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(31, 166, 122, 0.4);
+            backdrop-filter: blur(8px);
+            animation: ethFloat 5s ease-in-out infinite;
         }
+        .eth-pillars span:nth-child(2) { animation-delay: -1.6s; }
+        .eth-pillars span:nth-child(3) { animation-delay: -3.2s; }
+        .eth-pillars i { color: var(--eth-green-soft); }
+        @keyframes ethFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
         /* ===== CONTENIDO ===== */
-        .eth-section { padding: 70px 0 110px; overflow: hidden; }
-        .eth-grid { display: grid; gap: 26px; max-width: 920px; margin: 0 auto; }
+        .eth-section { padding: 70px 0 130px; overflow: hidden; position: relative; }
+        .eth-grid { display: grid; gap: 34px; max-width: 920px; margin: 0 auto; perspective: 1200px; }
 
         .eth-card {
-            background: rgba(30, 41, 59, 0.55);
+            position: relative;
+            background: rgba(30, 41, 59, 0.62);
             border: 1px solid var(--border-glow);
             border-radius: 18px;
             padding: 32px 34px;
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out,
-                        border-color 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(6px);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+        }
+        /* línea de color arriba: verde -> azul */
+        .eth-card::before {
+            content: ""; position: absolute; top: -1px; left: 10%; right: 10%; height: 2px;
+            background: linear-gradient(90deg, transparent, #1FA67A, #3B82F6, transparent);
+            opacity: 0.55; transition: opacity 0.4s ease;
+        }
+        .eth-card.active {
+            border-color: rgba(31, 166, 122, 0.7);
+            background: rgba(30, 41, 59, 0.78);
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4), 0 0 38px rgba(31, 166, 122, 0.20);
+        }
+        .eth-card.active::before { opacity: 1; }
+        .eth-card:hover { border-color: #34D399; }
+
+        /* MODO PROFUNDIDAD: las tarjetas entran y salen según tu posición en la página (reversible) */
+        .eth-js .eth-mode-depth .eth-card, .eth-js .eth-mode-depth .eth-highlight {
+            opacity: var(--o, 0);
+            transform: translate3d(var(--tx, 0px), var(--ty, 70px), 0) rotateX(var(--rx, -12deg)) scale(var(--sc, 0.93));
+            filter: blur(var(--bl, 6px));
             will-change: transform, opacity;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
         }
-        .eth-card.animate-in { opacity: 1; transform: translateX(0); }
-        .eth-card.animate-in:hover {
-            transform: translateY(-4px);
-            border-color: #3B82F6;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.2);
+        /* MODO CLÁSICO: entran y se van (como tu versión original) */
+        .eth-js .eth-mode-classic .eth-card, .eth-js .eth-mode-classic .eth-highlight {
+            opacity: 0; transform: translateX(-40px);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
         }
+        .eth-js .eth-mode-classic .animate-in { opacity: 1; transform: none; }
+        .eth-js .eth-mode-classic .eth-card:nth-child(even) { transform: translateX(40px); }
+        .eth-js .eth-mode-classic .eth-card:nth-child(even).animate-in { transform: none; }
 
         .eth-card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
         .eth-icon {
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
+            flex-shrink: 0; width: 50px; height: 50px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+            color: #34D399;
+            background: linear-gradient(135deg, rgba(31, 166, 122, 0.26) 0%, rgba(31, 166, 122, 0.06) 100%);
+            border: 1px solid rgba(31, 166, 122, 0.5);
+            transition: transform 0.4s cubic-bezier(0.2, 1.4, 0.4, 1), background 0.3s ease, color 0.3s ease;
+        }
+        .eth-card:nth-child(even) .eth-icon {
             color: #60A5FA;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0.06) 100%);
-            border: 1px solid rgba(59, 130, 246, 0.35);
+            border-color: rgba(59, 130, 246, 0.4);
         }
+        .eth-card.active .eth-icon { transform: scale(1.1) rotate(-4deg); background: var(--eth-green); color: #FFFFFF; border-color: var(--eth-green); }
         .eth-card-head h2 { font-size: 1.3rem; font-weight: 700; line-height: 1.3; color: #FFFFFF; }
 
         .eth-body p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.75; margin-bottom: 14px; }
@@ -88,43 +142,39 @@
         .eth-body strong { color: #FFFFFF; font-weight: 700; }
 
         .eth-list { list-style: none; margin: 16px 0 0; padding: 0; }
-        .eth-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 14px;
-            color: #CBD5E1;
-            font-size: 0.95rem;
-            line-height: 1.65;
-        }
+        .eth-list li { position: relative; padding-left: 30px; margin-bottom: 14px; color: #CBD5E1; font-size: 0.95rem; line-height: 1.65; }
         .eth-list li:last-child { margin-bottom: 0; }
         .eth-list li::before {
-            content: "\f00c";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 3px;
-            font-size: 0.85rem;
-            color: #3B82F6;
+            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; top: 3px; font-size: 0.85rem; color: var(--eth-green-soft);
         }
 
         /* Caja final: canal de reportes */
         .eth-highlight {
-            margin-top: 28px;
-            padding: 42px 34px;
-            text-align: center;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+            margin-top: 6px; padding: 42px 34px; text-align: center; border-radius: 18px;
+            background: linear-gradient(135deg, rgba(31, 166, 122, 0.20) 0%, rgba(15, 23, 42, 0.88) 60%, rgba(59, 130, 246, 0.14) 100%);
+            border: 1px solid rgba(31, 166, 122, 0.55);
+            box-shadow: 0 0 40px rgba(31, 166, 122, 0.14);
         }
-        .eth-highlight.animate-in { opacity: 1; transform: translateX(0); }
-        .eth-highlight .eth-icon { margin: 0 auto 18px; }
+        .eth-highlight .eth-icon { margin: 0 auto 18px; color: #FFFFFF; background: var(--eth-green); border-color: var(--eth-green); box-shadow: 0 0 22px rgba(31, 166, 122, 0.55); }
         .eth-highlight h2 { font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; }
         .eth-highlight p { color: var(--text-muted); max-width: 650px; margin: 0 auto 22px; line-height: 1.7; }
         .eth-mail { padding: 14px 30px; border-radius: 999px; text-decoration: none; }
+
+        /* ===== Riel de progreso (solo pantallas anchas) ===== */
+        .eth-rail { position: fixed; left: 26px; top: 50%; transform: translateY(-50%); z-index: 50; display: none; flex-direction: column; align-items: center; gap: 0; opacity: 0; transition: opacity 0.4s ease; }
+        .eth-rail.show { opacity: 1; }
+        .eth-rail-line { position: absolute; top: 8px; bottom: 8px; width: 2px; background: rgba(255, 255, 255, 0.12); border-radius: 2px; }
+        .eth-rail-fill { position: absolute; top: 8px; width: 2px; height: 0; background: linear-gradient(180deg, #34D399, #3B82F6); border-radius: 2px; box-shadow: 0 0 10px rgba(52, 211, 153, 0.7); transition: height 0.25s linear; }
+        .eth-dot {
+            position: relative; width: 14px; height: 14px; border-radius: 50%; margin: 13px 0; padding: 0;
+            background: #0F172A; border: 2px solid rgba(148, 163, 184, 0.5); cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+        }
+        .eth-dot.seen { border-color: var(--eth-green); }
+        .eth-dot.on { background: var(--eth-green-soft); border-color: var(--eth-green-soft); transform: scale(1.5); box-shadow: 0 0 14px rgba(52, 211, 153, 0.8); }
+        .eth-dot:focus-visible { outline: 2px solid #60A5FA; outline-offset: 3px; }
+        @media (min-width: 1200px) { .eth-rail { display: flex; } }
 
         @media (max-width: 640px) {
             .eth-card { padding: 24px 20px; }
@@ -132,14 +182,18 @@
             .eth-highlight { padding: 32px 20px; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .eth-card, .eth-highlight { transition: none; transform: none; opacity: 1; }
+            .eth-orb, .eth-pillars span { animation: none; }
+            .eth-js .eth-mode-depth .eth-card, .eth-js .eth-mode-depth .eth-highlight,
+            .eth-js .eth-mode-classic .eth-card, .eth-js .eth-mode-classic .eth-highlight { opacity: 1 !important; transform: none !important; filter: none !important; }
         }
     </style>
-    <noscript><style>.eth-card, .eth-highlight { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
 
-    <nav class="navbar">
+    <div class="eth-bg" aria-hidden="true"><span class="eth-orb o1"></span><span class="eth-orb o2"></span><span class="eth-orb o3"></span></div>
+    <div class="eth-rail" id="ethRail" aria-label="Progreso del código"><span class="eth-rail-line"></span><span class="eth-rail-fill" id="ethRailFill"></span></div>
+
+<nav class="navbar">
         <div class="container nav-container">
         <a href="index.html" class="logo-container">
             <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="brand-logo-img">
@@ -166,6 +220,7 @@
             <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Marco Institucional</span>
             <h1 class="fx-heading" data-fx="reveal">Código de Ética y Conducta Profesional</h1>
             <p class="fx-text eth-lead" data-fx="reveal" data-fx-radius="110" data-fx-lift="5">Nuestros principios de transparencia, legalidad y respeto que rigen todas las operaciones de Capital Humano Group.</p>
+            <div class="eth-pillars"><span><i class="fa-solid fa-scale-balanced"></i> Legalidad</span><span><i class="fa-solid fa-eye"></i> Transparencia</span><span><i class="fa-solid fa-lock"></i> Confidencialidad</span></div>
         </div>
     </section>
 
@@ -272,7 +327,7 @@
         </div>
     </main>
 
-    <footer class="footer">
+<footer class="footer">
         <div class="container footer-grid">
             <!-- COLUMNA 1: LOGO Y SOBRE CHG -->
             <div class="footer-col brand-col">
@@ -323,28 +378,90 @@
             </div>
         </div>
     </footer>
-
-    <!-- Animación de las tarjetas al hacer scroll -->
+    <!-- Efecto de scroll de las tarjetas -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var items = document.querySelectorAll('.eth-card, .eth-highlight');
-            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        /* ELEGÍ EL EFECTO:
+           'depth'   -> (nuevo) las tarjetas emergen con profundidad 3D al acercarte, se enfocan en el centro
+                        y se alejan/desvanecen al irte. Funciona subiendo y bajando.
+           'classic' -> el efecto original: entran y salen desde los costados.            */
+        const MODE = 'depth';
 
-            if (reduce || !('IntersectionObserver' in window)) {
-                items.forEach(function (el) { el.classList.add('animate-in'); });
-                return;
+        document.addEventListener('DOMContentLoaded', function () {
+            var grid = document.querySelector('.eth-grid');
+            var items = Array.prototype.slice.call(document.querySelectorAll('.eth-card, .eth-highlight'));
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var rail = document.getElementById('ethRail');
+            var fill = document.getElementById('ethRailFill');
+            var dots = [];
+
+            grid.classList.add(MODE === 'classic' ? 'eth-mode-classic' : 'eth-mode-depth');
+
+            // riel de puntos
+            items.forEach(function (el, i) {
+                var b = document.createElement('button');
+                b.type = 'button'; b.className = 'eth-dot';
+                b.setAttribute('aria-label', 'Ir a la sección ' + (i + 1));
+                b.addEventListener('click', function () { el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); });
+                rail.appendChild(b); dots.push(b);
+            });
+
+            if (reduce) { items.forEach(function (el) { el.classList.add('animate-in'); }); return; }
+
+            if (MODE === 'classic') {
+                if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('animate-in'); }); }
+                else {
+                    var io = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (en) { en.target.classList.toggle('animate-in', en.isIntersecting); });
+                    }, { threshold: 0.12 });
+                    items.forEach(function (el) { io.observe(el); });
+                }
             }
 
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                        observer.unobserve(entry.target);   // se anima una sola vez
+            var ticking = false;
+            function update() {
+                ticking = false;
+                var vh = window.innerHeight, focus = vh * 0.52, best = -1, bestD = 1e9;
+                items.forEach(function (el, i) {
+                    var r = el.getBoundingClientRect();
+                    var c = r.top + r.height / 2;
+                    var d = (c - focus) / (vh * 0.62);          // -1 arriba ... 0 foco ... +1 abajo
+                    var a = Math.min(1, Math.abs(d));
+                    if (MODE === 'depth') {
+                        var k = a * a;
+                        el.style.setProperty('--o', (1 - k * 0.97).toFixed(3));
+                        el.style.setProperty('--sc', (1 - k * 0.09).toFixed(3));
+                        el.style.setProperty('--bl', (k * 7).toFixed(1) + 'px');
+                        if (d > 0) {                           // entrando desde abajo
+                            el.style.setProperty('--ty', (k * 90).toFixed(1) + 'px');
+                            el.style.setProperty('--rx', (-k * 14).toFixed(2) + 'deg');
+                            el.style.setProperty('--tx', (-k * 30).toFixed(1) + 'px');
+                        } else {                               // alejándose hacia arriba
+                            el.style.setProperty('--ty', (-k * 50).toFixed(1) + 'px');
+                            el.style.setProperty('--rx', (k * 10).toFixed(2) + 'deg');
+                            el.style.setProperty('--tx', (k * 30).toFixed(1) + 'px');
+                        }
                     }
+                    var dist = Math.abs(c - focus);
+                    if (dist < bestD) { bestD = dist; best = i; }
                 });
-            }, { threshold: 0.05 });
+                items.forEach(function (el, i) {
+                    var on = i === best && bestD < vh * 0.5;
+                    el.classList.toggle('active', on && el.classList.contains('eth-card'));
+                    dots[i].classList.toggle('on', on);
+                    if (on) dots[i].classList.add('seen');
+                });
+                for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('seen', j <= best);
 
-            items.forEach(function (el) { observer.observe(el); });
+                var g = grid.getBoundingClientRect();
+                rail.classList.toggle('show', g.top < vh * 0.6 && g.bottom > vh * 0.4);
+                var first = dots[0].offsetTop, lastD = dots[dots.length - 1].offsetTop;
+                fill.style.height = (best >= 0 ? (dots[best].offsetTop - first) + 6 : 0) + 'px';
+                fill.style.top = (first + 7) + 'px';
+            }
+            function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+            window.addEventListener('scroll', req, { passive: true });
+            window.addEventListener('resize', req);
+            update();
         });
     </script>
 

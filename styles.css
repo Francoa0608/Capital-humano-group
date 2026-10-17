@@ -1947,11 +1947,11 @@ h2.title-glow:hover {
     justify-content: center;
     gap: 0.6em;
     background: linear-gradient(135deg, #10B981 0%, #34D399 100%) !important;
-    color: #04261C !important;
+    color: #FFFFFF !important;
     font-weight: 800 !important;
     letter-spacing: 0.1px;
     border: none !important;
-    text-shadow: none !important;
+    text-shadow: 0 1px 2px rgba(4, 38, 28, 0.45) !important;
     box-shadow: 0 8px 24px rgba(16, 185, 129, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
     outline: 2px solid rgba(16, 185, 129, 0);
     outline-offset: 0;
@@ -1987,10 +1987,11 @@ h2.title-glow:hover {
 .btn-primary:hover,
 .nav-links a.btn-nav:hover {
     background: linear-gradient(135deg, #34D399 0%, #10B981 100%) !important;
-    color: #04261C !important;
+    color: #FFFFFF !important;
     transform: translateY(-4px) scale(1.05) !important;
     box-shadow: 0 16px 38px rgba(16, 185, 129, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
     filter: saturate(1.1);
+    text-shadow: 0 1px 3px rgba(4, 38, 28, 0.55) !important;
     animation-play-state: paused;
     outline-color: rgba(16, 185, 129, 0);
 }

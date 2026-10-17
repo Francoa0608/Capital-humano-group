@@ -11,27 +11,110 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Íconos vectoriales -->
     <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+    <!-- Si falla el JavaScript, todo el contenido queda visible igual -->
+    <script>document.documentElement.classList.add('pi-js');</script>
 
     <style>
+        @property --pi-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+        :root { --pi-green: #1FA67A; --pi-green-soft: #34D399; }
         .hidden { display: none !important; }
 
-        /* ===== Menú: en celular queda solo el botón de volver ===== */
-        .nav-links li.nav-back { display: none; }
+        /* ===== Menú: acá NO va el botón "Descubrí tu pack ideal" (ya estás en esa sección) ===== */
+        .nav-links li.nav-back { display: list-item; }
+        .nav-links li.nav-back a {
+            display: inline-flex;
+            align-items: center;
+            padding: 9px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.06);
+            color: #FFFFFF;
+            transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+        }
+        .nav-links li.nav-back a:hover {
+            border-color: var(--pi-green);
+            background: rgba(31, 166, 122, 0.14);
+            transform: translateX(-3px);
+        }
         @media (max-width: 768px) {
             .nav-links { display: flex !important; }
             .nav-links li { display: none; }
             .nav-links li.nav-back { display: list-item; }
         }
 
-        /* ===== HERO DE LA PÁGINA ===== */
+        /* ==========================================================
+           FONDO: fotos con movimiento + luces + grilla (da relieve)
+           ========================================================== */
+        .pi-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .pi-bg-photos { position: absolute; inset: -8% 0; will-change: transform; }
+        .pi-bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+        }
+        .pi-bg-slide.active { opacity: 1; animation: piKen 18s ease-in-out infinite alternate; }
+        @keyframes piKen {
+            from { transform: scale(1.02); }
+            to   { transform: scale(1.1) translate(-1%, -1%); }
+        }
+        .pi-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.84) 40%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        .pi-orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.34; animation: piDrift 22s ease-in-out infinite alternate; }
+        .pi-orb.o1 { width: 520px; height: 520px; left: -140px; top: 8%;  background: #1FA67A; }
+        .pi-orb.o2 { width: 620px; height: 620px; right: -200px; top: 38%; background: #3B82F6; animation-duration: 28s; animation-delay: -8s; }
+        .pi-orb.o3 { width: 420px; height: 420px; left: 30%; bottom: -160px; background: #1FA67A; opacity: 0.22; animation-duration: 25s; animation-delay: -14s; }
+        @keyframes piDrift {
+            0%   { transform: translate3d(0, 0, 0) scale(1); }
+            50%  { transform: translate3d(60px, -40px, 0) scale(1.12); }
+            100% { transform: translate3d(-40px, 50px, 0) scale(0.95); }
+        }
+        .pi-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 64px 64px;
+            -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+        }
+
+        /* ===== HERO ===== */
         .pi-hero {
-            padding: 80px 0 52px;
+            padding: 84px 0 56px;
             text-align: center;
-            background: radial-gradient(ellipse at top center, rgba(59, 130, 246, 0.16) 0%, transparent 65%);
+            background:
+                radial-gradient(ellipse at 18% 0%, rgba(31, 166, 122, 0.20) 0%, transparent 55%),
+                radial-gradient(ellipse at 82% 0%, rgba(59, 130, 246, 0.20) 0%, transparent 55%);
             border-bottom: 1px solid var(--border-glow);
         }
-        .pi-hero .hero-badge { display: inline-flex; align-items: center; gap: 8px; }
+        .pi-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background-color: rgba(31, 166, 122, 0.14) !important;
+            color: #34D399 !important;
+            border-color: rgba(31, 166, 122, 0.45) !important;
+        }
         .pi-hero .hero-badge svg { width: 15px; height: 15px; }
+        .pi-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #34D399;
+            box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+            animation: piPulse 1.8s ease-out infinite;
+        }
+        @keyframes piPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.65); }
+            100% { box-shadow: 0 0 0 12px rgba(52, 211, 153, 0); }
+        }
         .pi-hero h1 {
             font-size: clamp(2rem, 4.4vw, 3.2rem);
             font-weight: 800;
@@ -40,26 +123,95 @@
             margin: 0 auto 18px;
             max-width: 880px;
         }
-        .pi-lead {
-            --fx-base: #CBD5E1;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 680px;
-            margin: 0 auto;
-        }
+        .pi-lead { --fx-base: #CBD5E1; font-size: 1.1rem; line-height: 1.6; max-width: 680px; margin: 0 auto; }
 
-        /* ===== PANEL DEL FORMULARIO ===== */
-        .pi-section { padding: 60px 0 100px; }
+        .pi-facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+        .pi-fact {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white-soft);
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-glow);
+            backdrop-filter: blur(8px);
+            animation: piFloat 5s ease-in-out infinite;
+        }
+        .pi-fact:nth-child(2) { animation-delay: -1.6s; }
+        .pi-fact:nth-child(3) { animation-delay: -3.2s; }
+        .pi-fact i { width: 7px; height: 7px; border-radius: 50%; background: var(--pi-green-soft); display: block; }
+        @keyframes piFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+        /* ===== PANEL ===== */
+        .pi-section { padding: 56px 0 100px; }
         .pi-panel {
-            background: rgba(30, 41, 59, 0.55);
+            position: relative;
+            background: rgba(30, 41, 59, 0.58);
             border: 1px solid var(--border-glow);
             border-radius: 20px;
-            padding: 44px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(10px);
+            padding: 36px 44px 44px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
         }
-        .pi-step { margin-top: 38px; padding-top: 38px; border-top: 1px solid var(--border-glow); }
-        .pi-step:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+        .pi-panel::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #1FA67A, #3B82F6, transparent);
+        }
+
+        /* Progreso (queda pegado arriba mientras completás) */
+        .pi-progress {
+            position: sticky;
+            top: 88px;
+            z-index: 20;
+            margin: 0 -14px 34px;
+            padding: 14px 18px 16px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .pi-chips { list-style: none; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+        .pi-chip { display: flex; align-items: center; gap: 9px; font-size: 0.8rem; font-weight: 700; color: #64748B; transition: color 0.4s ease; }
+        .pi-chip-n {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .pi-chip.done { color: var(--pi-green-soft); }
+        .pi-chip.done .pi-chip-n { background: var(--pi-green); border-color: var(--pi-green); color: #fff; transform: scale(1.12); box-shadow: 0 0 14px rgba(31, 166, 122, 0.6); }
+        .pi-bar { height: 5px; border-radius: 5px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+        .pi-bar i {
+            display: block;
+            height: 100%;
+            width: 0;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #1FA67A, #34D399, #3B82F6);
+            background-size: 200% 100%;
+            transition: width 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            animation: piShimmer 2.4s linear infinite;
+        }
+        @keyframes piShimmer { to { background-position: -200% 0; } }
+
+        /* Pasos (aparecen al hacer scroll) */
+        .pi-step { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-glow); }
+        .pi-step:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        .pi-js .pi-step { opacity: 0; transform: translateY(36px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .pi-js .pi-step.in { opacity: 1; transform: none; }
         .pi-step-title {
             display: flex;
             align-items: center;
@@ -71,6 +223,7 @@
             color: #FFFFFF;
             margin-bottom: 22px;
         }
+        .pi-step-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(31, 166, 122, 0.6), transparent); }
         .pi-step-num {
             flex-shrink: 0;
             width: 30px;
@@ -81,22 +234,13 @@
             justify-content: center;
             font-size: 0.85rem;
             font-weight: 800;
-            background: rgba(59, 130, 246, 0.15);
-            color: #60A5FA;
-            border: 1px solid rgba(59, 130, 246, 0.4);
+            background: rgba(31, 166, 122, 0.16);
+            color: var(--pi-green-soft);
+            border: 1px solid rgba(31, 166, 122, 0.55);
         }
 
-        /* Campos de texto */
         .pi-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .pi-label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--white-soft);
-            margin-bottom: 8px;
-        }
+        .pi-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white-soft); margin-bottom: 8px; }
         .pi-input {
             width: 100%;
             padding: 14px 16px;
@@ -109,15 +253,11 @@
             transition: border-color 0.25s ease, box-shadow 0.25s ease;
         }
         .pi-input::placeholder { color: #64748B; }
-        .pi-input:focus {
-            outline: none;
-            border-color: #3B82F6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
-        }
+        .pi-input:focus { outline: none; border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); }
         .pi-other { margin-top: 20px; }
-        .pi-other .pi-label { color: #60A5FA; }
+        .pi-other .pi-label { color: var(--pi-green-soft); }
 
-        /* Tarjetas de opción (rubro / nómina / desafío) */
+        /* Opciones: inclinación 3D + foco de luz al pasar el cursor */
         .pi-options { display: grid; gap: 14px; }
         .pi-options.industries { grid-template-columns: repeat(5, 1fr); }
         .pi-options.employees  { grid-template-columns: repeat(4, 1fr); }
@@ -131,20 +271,31 @@
             border: 1px solid var(--border-glow);
             border-radius: 14px;
             cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease,
-                        background 0.25s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            transition: transform 0.25s ease-out, border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
+        }
+        .pi-option::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            background: radial-gradient(140px circle at var(--sx, 50%) var(--sy, 50%), rgba(52, 211, 153, 0.20), transparent 70%);
         }
         .pi-option:hover {
-            transform: translateY(-4px);
+            transform: perspective(800px) translateY(-4px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
             border-color: #3B82F6;
             background: #243349;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.25);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(59, 130, 246, 0.25);
         }
+        .pi-option:hover::before { opacity: 1; }
         .pi-option:focus-visible { outline: 2px solid #60A5FA; outline-offset: 2px; }
         .pi-option.selected {
-            border-color: #3B82F6;
-            background: rgba(59, 130, 246, 0.14);
-            box-shadow: 0 0 22px rgba(59, 130, 246, 0.28);
+            border-color: var(--pi-green);
+            background: rgba(31, 166, 122, 0.14);
+            box-shadow: 0 0 24px rgba(31, 166, 122, 0.32);
         }
         .pi-option.selected::after {
             content: "\2713";
@@ -157,11 +308,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #1FA67A;
+            background: var(--pi-green);
             color: #FFFFFF;
             font-size: 0.75rem;
             font-weight: 800;
+            animation: piPop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both;
         }
+        @keyframes piPop { from { transform: scale(0); } to { transform: scale(1); } }
 
         .pi-icon {
             flex-shrink: 0;
@@ -174,99 +327,182 @@
             background: rgba(59, 130, 246, 0.12);
             color: #60A5FA;
             border: 1px solid rgba(59, 130, 246, 0.25);
-            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
         }
         .pi-icon svg { width: 22px; height: 22px; }
-        .pi-option:hover .pi-icon,
-        .pi-option.selected .pi-icon { background: #3B82F6; color: #FFFFFF; border-color: #3B82F6; }
+        .pi-option:hover .pi-icon { background: #3B82F6; color: #FFFFFF; border-color: #3B82F6; transform: scale(1.1) rotate(-4deg); }
+        .pi-option.selected .pi-icon { background: var(--pi-green); color: #FFFFFF; border-color: var(--pi-green); }
 
-        .pi-industry {
-            aspect-ratio: 1.25 / 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 10px;
-            text-align: center;
-        }
+        .pi-industry { aspect-ratio: 1.25 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px 10px; text-align: center; }
         .pi-opt-label { font-size: 0.9rem; font-weight: 700; color: var(--white-soft); line-height: 1.25; }
         .pi-option.dashed { border-style: dashed; border-color: rgba(148, 163, 184, 0.5); }
-        .pi-option.dashed .pi-opt-label { color: #60A5FA; }
+        .pi-option.dashed .pi-opt-label { color: var(--pi-green-soft); }
 
-        .pi-employee {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 24px 14px;
-            text-align: center;
-        }
+        .pi-employee { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 14px; text-align: center; }
         .pi-emp-num { display: block; font-size: 1.35rem; font-weight: 800; color: #FFFFFF; }
         .pi-emp-sub { font-size: 0.8rem; color: var(--text-muted); }
 
-        .pi-objective {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 22px 46px 22px 22px;
-            text-align: left;
-        }
+        .pi-objective { display: flex; align-items: flex-start; gap: 16px; padding: 22px 46px 22px 22px; text-align: left; }
         .pi-obj-title { font-size: 1rem; font-weight: 700; color: #FFFFFF; }
-        .pi-obj-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+        .pi-obj-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; display: block; }
 
-        /* Botón principal del formulario (usa el estilo .btn-primary del sitio) */
-        .pi-submit {
-            width: 100%;
-            margin-top: 42px;
-            padding: 18px 28px;
-            font-size: 1.05rem;
-            font-family: inherit;
-            border-radius: 12px;
-            cursor: pointer;
-        }
+        .pi-submit { width: 100%; margin-top: 44px; padding: 18px 28px; font-size: 1.05rem; font-family: inherit; border-radius: 12px; cursor: pointer; }
         .pi-submit svg, .pi-cta svg { width: 20px; height: 20px; flex-shrink: 0; }
         .pi-submit:hover { transform: translateY(-3px) scale(1.01) !important; }
+        .pi-submit.ready { animation: piReady 1.6s ease-in-out infinite; }
+        @keyframes piReady {
+            0%, 100% { box-shadow: 0 8px 24px rgba(16, 185, 129, 0.38), 0 0 0 0 rgba(52, 211, 153, 0.5); }
+            50%      { box-shadow: 0 8px 24px rgba(16, 185, 129, 0.38), 0 0 0 14px rgba(52, 211, 153, 0); }
+        }
 
-        /* ===== RESULTADO ===== */
-        .pi-result { margin-top: 60px; padding-top: 48px; border-top: 1px solid var(--border-glow); }
-        .pi-result-head { text-align: center; margin-bottom: 40px; }
-        .pi-result-head .hero-badge { display: inline-flex; align-items: center; gap: 8px; }
+        /* ==========================================================
+           PANTALLA DE ANÁLISIS (suspenso antes del resultado)
+           ========================================================== */
+        .pi-analyzing {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: radial-gradient(circle at 50% 40%, rgba(31, 166, 122, 0.22), rgba(8, 13, 26, 0.94) 62%);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s;
+        }
+        .pi-analyzing.show { opacity: 1; visibility: visible; }
+        .pi-an-card { width: min(440px, 100%); text-align: center; }
+        .pi-ring { position: relative; width: 132px; height: 132px; margin: 0 auto 28px; }
+        .pi-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .pi-ring .bg { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 6; }
+        .pi-ring .fg { fill: none; stroke: url(#piGrad); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 339.3; stroke-dashoffset: 339.3; filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.7)); }
+        .pi-ring-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: #FFFFFF; }
+        .pi-an-card h3 { font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin-bottom: 6px; }
+        .pi-an-card > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 26px; }
+        .pi-an-card > p strong { color: var(--pi-green-soft); }
+        .pi-an-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+        .pi-an-steps li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #64748B;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s ease;
+        }
+        .pi-an-steps li::before {
+            content: "";
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid rgba(148, 163, 184, 0.35);
+            transition: all 0.3s ease;
+        }
+        .pi-an-steps li.active { color: #FFFFFF; border-color: rgba(59, 130, 246, 0.5); background: rgba(59, 130, 246, 0.1); }
+        .pi-an-steps li.active::before { border-color: #60A5FA; border-top-color: transparent; animation: piSpinR 0.8s linear infinite; }
+        .pi-an-steps li.done { color: var(--white-soft); border-color: rgba(31, 166, 122, 0.4); }
+        .pi-an-steps li.done::before { content: "\2713"; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; color: #fff; background: var(--pi-green); border-color: var(--pi-green); }
+        @keyframes piSpinR { to { transform: rotate(360deg); } }
+
+        /* ==========================================================
+           RESULTADO
+           ========================================================== */
+        .pi-result { position: relative; margin-top: 60px; padding-top: 48px; border-top: 1px solid var(--border-glow); scroll-margin-top: 96px; }
+        .pi-result-head { text-align: center; margin-bottom: 36px; }
+        .pi-result-head .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(31, 166, 122, 0.16) !important;
+            color: #34D399 !important;
+            border-color: rgba(31, 166, 122, 0.5) !important;
+        }
         .pi-result-head .hero-badge svg { width: 15px; height: 15px; }
-        .pi-result-head h2 {
-            font-size: clamp(1.6rem, 3vw, 2.3rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 10px;
+        .pi-result-head h2 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }
+        .pi-result-head h2 span { background: linear-gradient(135deg, #34D399, #60A5FA); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .pi-result-head > p { color: var(--white-soft); font-size: 1rem; }
+        .pi-profile { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+        .pi-profile span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            background: rgba(30, 41, 59, 0.75);
+            border: 1px solid rgba(31, 166, 122, 0.4);
         }
-        .pi-result-head h2 span { color: #60A5FA; }
-        .pi-result-head p { color: var(--white-soft); font-size: 1rem; }
-        .pi-result-head p strong { color: #FFFFFF; }
+        .pi-profile span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pi-green-soft); }
 
-        /* Giro 3D de la tarjeta recomendada */
-        .pi-perspective { perspective: 1200px; max-width: 760px; margin: 0 auto; }
-        .pi-flipper {
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        /* Entrada espectacular */
+        .pi-result.reveal .pi-result-head > * { animation: piUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .pi-result.reveal .pi-result-head > *:nth-child(1) { animation-delay: 0.05s; }
+        .pi-result.reveal .pi-result-head > *:nth-child(2) { animation-delay: 0.18s; }
+        .pi-result.reveal .pi-result-head > *:nth-child(3) { animation-delay: 0.30s; }
+        .pi-result.reveal .pi-result-head > *:nth-child(4) { animation-delay: 0.42s; }
+        @keyframes piUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+        .pi-stage { position: relative; max-width: 760px; margin: 0 auto; }
+        .pi-burst, .pi-burst-ring { position: absolute; left: 50%; top: 45%; border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        .pi-burst { width: 760px; height: 760px; background: radial-gradient(circle, rgba(52, 211, 153, 0.55), rgba(59, 130, 246, 0.25) 45%, transparent 70%); }
+        .pi-burst-ring { width: 420px; height: 420px; border: 2px solid rgba(52, 211, 153, 0.7); }
+        .pi-result.reveal .pi-burst { animation: piBurst 1.5s ease-out 0.45s both; }
+        .pi-result.reveal .pi-burst-ring { animation: piRing 1.4s ease-out 0.5s both; }
+        .pi-result.reveal .pi-burst-ring.r2 { animation-delay: 0.8s; border-color: rgba(96, 165, 250, 0.7); }
+        @keyframes piBurst { 0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.95; } 100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; } }
+        @keyframes piRing  { 0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0.9; } 100% { transform: translate(-50%, -50%) scale(2.1); opacity: 0; } }
+
+        .pi-perspective { position: relative; perspective: 1200px; }
+        .pi-result.reveal .pi-perspective { animation: piCardIn 1s cubic-bezier(0.2, 0.9, 0.2, 1) 0.45s both; }
+        @keyframes piCardIn {
+            0%   { opacity: 0; transform: translateY(70px) scale(0.88) rotateX(14deg); filter: blur(10px); }
+            100% { opacity: 1; transform: none; filter: blur(0); }
         }
+
+        .pi-flipper { position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
         .pi-flipper.flipped { transform: rotateY(180deg); }
+
+        /* Borde con degradé que gira + destello */
         .pi-face {
+            --pi-angle: 0deg;
             width: 100%;
             padding: 36px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             gap: 28px;
-            background: linear-gradient(180deg, #1E293B 0%, rgba(59, 130, 246, 0.1) 100%), #0F172A;
-            border: 2px solid #3B82F6;
+            border: 2px solid transparent;
             border-radius: 20px;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 30px 60px rgba(0, 0, 0, 0.45);
+            background:
+                linear-gradient(180deg, #1B2742 0%, #101A2F 100%) padding-box,
+                conic-gradient(from var(--pi-angle), #3B82F6, #1FA67A, #34D399, #60A5FA, #3B82F6) border-box;
+            box-shadow: 0 0 40px rgba(31, 166, 122, 0.22), 0 30px 60px rgba(0, 0, 0, 0.5);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            animation: piSpin 7s linear infinite;
         }
+        @keyframes piSpin { to { --pi-angle: 360deg; } }
+        .pi-face::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            pointer-events: none;
+            background: linear-gradient(110deg, transparent 38%, rgba(255, 255, 255, 0.10) 50%, transparent 62%);
+            background-size: 260% 100%;
+            background-position: 160% 0;
+            animation: piSheen 5.5s ease-in-out 1.8s infinite;
+        }
+        @keyframes piSheen { 0% { background-position: 160% 0; } 45%, 100% { background-position: -60% 0; } }
         .pi-front { position: relative; }
         .pi-back { position: absolute; inset: 0; transform: rotateY(180deg); }
         .pi-flipper.flipped .pi-front { position: absolute; inset: 0; }
@@ -279,29 +515,24 @@
             z-index: 5;
             padding: 6px 16px;
             border-radius: 999px;
-            background: #3B82F6;
+            background: linear-gradient(135deg, #14866A, #1FA67A);
             color: #FFFFFF;
             font-size: 0.72rem;
             font-weight: 800;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 14px rgba(31, 166, 122, 0.5);
         }
         .pi-ribbon.muted { background: #334155; box-shadow: none; }
 
         .pi-pack-head { padding-bottom: 20px; margin-bottom: 22px; border-bottom: 1px solid var(--border-glow); }
-        .pi-pack-head h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em; }
-        .pi-tagline { color: #60A5FA; font-weight: 700; font-size: 0.95rem; margin-top: 2px; }
+        .pi-pack-head h3 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em; }
+        .pi-result.reveal .pi-pack-head h3 { animation: piWipe 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s both; }
+        @keyframes piWipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+        .pi-tagline { color: var(--pi-green-soft); font-weight: 700; font-size: 0.95rem; margin-top: 2px; }
         .pi-pack-desc { color: var(--text-muted); font-size: 0.92rem; margin-top: 6px; }
-        .pi-mini-title {
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--white-soft);
-            margin-bottom: 12px;
-        }
-        .pi-mini-title.blue { color: #60A5FA; }
+        .pi-mini-title { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white-soft); margin-bottom: 12px; }
+        .pi-mini-title.green { color: var(--pi-green-soft); }
 
         .pi-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
         .pi-feature {
@@ -315,74 +546,118 @@
             color: var(--white-soft);
             font-size: 0.9rem;
             line-height: 1.5;
+            animation: piFeat 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+            animation-delay: calc(1.1s + var(--i, 0) * 0.1s);
         }
         .pi-feature strong { color: #FFFFFF; }
-        .pi-check { flex-shrink: 0; color: #60A5FA; font-weight: 800; margin-top: 1px; }
+        .pi-check { flex-shrink: 0; color: var(--pi-green-soft); font-weight: 800; margin-top: 1px; }
+        @keyframes piFeat { from { opacity: 0; transform: translateX(-26px); } to { opacity: 1; transform: none; } }
 
         .pi-dots { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
         .pi-dots li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--white-soft); }
-        .pi-dots li::before {
-            content: "";
-            flex-shrink: 0;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #3B82F6;
-        }
+        .pi-dots li::before { content: ""; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--pi-green-soft); box-shadow: 0 0 8px rgba(52, 211, 153, 0.6); }
         .pi-back-intro { color: var(--text-muted); font-size: 0.85rem; font-style: italic; line-height: 1.6; margin: 14px 0 18px; }
         .pi-back-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border-glow); }
         .pi-back-head h4 { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 800; color: #FFFFFF; }
-        .pi-back-head h4 svg { width: 20px; height: 20px; color: #60A5FA; }
-        .pi-close {
-            font-family: inherit;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--white-soft);
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border-glow);
-            border-radius: 20px;
-            padding: 6px 14px;
-            cursor: pointer;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .pi-close:hover { background: rgba(59, 130, 246, 0.2); border-color: #3B82F6; }
+        .pi-back-head h4 svg { width: 20px; height: 20px; color: var(--pi-green-soft); }
+        .pi-close { font-family: inherit; font-size: 0.78rem; font-weight: 700; color: var(--white-soft); background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glow); border-radius: 20px; padding: 6px 14px; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; }
+        .pi-close:hover { background: rgba(31, 166, 122, 0.2); border-color: var(--pi-green); }
 
         .pi-actions { display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid var(--border-glow); }
-        .pi-wide {
+        .pi-wide { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 14px 22px; font-family: inherit; font-size: 0.9rem; cursor: pointer; text-align: left; }
+        .pi-wide > span:first-child { display: flex; align-items: center; gap: 10px; }
+        .pi-wide svg { width: 18px; height: 18px; color: var(--pi-green-soft); }
+        .pi-cta { width: 100%; padding: 17px 24px; font-size: 1.02rem; border-radius: 12px; text-align: center; text-decoration: none; }
+        .pi-cta:hover { transform: translateY(-3px) scale(1.01) !important; }
+        .pi-cta-row { display: grid; grid-template-columns: 1.35fr 1fr; gap: 12px; }
+        .pi-agenda {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            width: 100%;
-            padding: 14px 22px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            cursor: pointer;
-            text-align: left;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #FFFFFF;
+            text-decoration: none;
+            background: rgba(31, 166, 122, 0.12);
+            border: 1.5px solid rgba(31, 166, 122, 0.65);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .pi-wide > span:first-child { display: flex; align-items: center; gap: 10px; }
-        .pi-wide svg { width: 18px; height: 18px; color: #60A5FA; }
-        .pi-cta { width: 100%; padding: 16px 24px; font-size: 1rem; border-radius: 12px; text-align: center; text-decoration: none; }
-        .pi-cta:hover { transform: translateY(-3px) scale(1.01) !important; }
+        .pi-agenda svg { width: 18px; height: 18px; color: var(--pi-green-soft); }
+        .pi-agenda:hover { background: rgba(31, 166, 122, 0.28); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(31, 166, 122, 0.3); }
+        .pi-note { text-align: center; font-size: 0.78rem; color: var(--text-muted); }
+
+        /* Barra flotante de acción */
+        .pi-floatbar {
+            position: fixed;
+            left: 50%;
+            bottom: 18px;
+            z-index: 900;
+            width: min(640px, calc(100% - 28px));
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px 12px 20px;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(31, 166, 122, 0.55);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(31, 166, 122, 0.25);
+            transform: translate(-50%, 160%);
+            transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.2, 1);
+        }
+        .pi-floatbar.show { transform: translate(-50%, 0); }
+        .pi-float-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; }
+        .pi-float-text strong { color: #FFFFFF; font-size: 0.95rem; }
+        .pi-float-text span { color: var(--pi-green-soft); font-size: 0.8rem; font-weight: 600; }
+        .pi-floatbar .btn-primary { padding: 12px 20px; font-size: 0.9rem; border-radius: 10px; white-space: nowrap; }
+        .pi-float-x { font-family: inherit; width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--border-glow); background: rgba(255, 255, 255, 0.06); color: var(--white-soft); cursor: pointer; font-size: 0.8rem; }
+        .pi-float-x:hover { background: rgba(255, 255, 255, 0.14); }
+
+        .pi-confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 6000; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
-            .pi-panel { padding: 26px 20px; }
+            .pi-panel { padding: 22px 18px 30px; }
+            .pi-progress { margin: 0 0 28px; top: 78px; }
+            .pi-chip-t { display: none; }
+            .pi-chips { justify-content: space-around; }
             .pi-fields { grid-template-columns: 1fr; }
+            .pi-options.industries { grid-template-columns: repeat(4, 1fr); }
             .pi-options.employees { grid-template-columns: repeat(2, 1fr); }
             .pi-options.objectives { grid-template-columns: 1fr; }
             .pi-face { padding: 26px 20px; }
-        }
-        @media (max-width: 900px) {
-            .pi-options.industries { grid-template-columns: repeat(4, 1fr); }
+            .pi-cta-row { grid-template-columns: 1fr; }
         }
         @media (max-width: 560px) {
             .pi-options.industries { grid-template-columns: repeat(2, 1fr); }
             .pi-industry { aspect-ratio: auto; min-height: 112px; }
+            .pi-floatbar { flex-wrap: wrap; padding: 12px 14px; }
+            .pi-floatbar .btn-primary { flex: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .pi-bg-slide.active, .pi-orb, .pi-fact, .pi-dot, .pi-face, .pi-face::before, .pi-bar i, .pi-submit.ready { animation: none !important; }
+            .pi-js .pi-step { opacity: 1; transform: none; transition: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- FONDO CON MOVIMIENTO -->
+    <div class="pi-bg" aria-hidden="true">
+        <div class="pi-bg-photos" id="piPhotos">
+            <div class="pi-bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="pi-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="pi-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <div class="pi-bg-overlay"></div>
+        <span class="pi-orb o1"></span>
+        <span class="pi-orb o2"></span>
+        <span class="pi-orb o3"></span>
+        <div class="pi-grid"></div>
+    </div>
 
     <nav class="navbar">
         <div class="container nav-container">
@@ -400,7 +675,6 @@
                 <li><a href="index.html#extras">Servicios Extras</a></li>
                 <li><a href="index.html#servicios-chg">¿Por qué CHG?</a></li>
                 <li><a href="https://wa.me/?text=Hola!%20Quisiera%20enviar%20mi%20CV%20para%20futuras%20b%C3%BAsquedas%20laborales" target="_blank" class="btn-nav-outline">¡Postulate acá!</a></li>
-                <li><a href="#diagnostico" class="btn-nav">Descubrí tu pack ideal</a></li>
             </ul>
         </div>
     </nav>
@@ -408,9 +682,14 @@
     <!-- HERO -->
     <section class="pi-hero">
         <div class="container">
-            <span class="hero-badge"><i data-lucide="clipboard-check"></i> Diagnóstico Organizacional</span>
+            <span class="hero-badge"><span class="pi-dot"></span> Diagnóstico Organizacional</span>
             <h1 class="fx-heading" data-fx="reveal">Evaluación de Necesidades de Capital Humano</h1>
             <p class="fx-text pi-lead" data-fx="reveal" data-fx-radius="110" data-fx-lift="5">Completá los datos de tu estructura para determinar la propuesta estratégica óptima para tu empresa.</p>
+            <div class="pi-facts">
+                <span class="pi-fact"><i></i> 4 pasos simples</span>
+                <span class="pi-fact"><i></i> Resultado al instante</span>
+                <span class="pi-fact"><i></i> Propuesta a tu medida</span>
+            </div>
         </div>
     </section>
 
@@ -421,8 +700,19 @@
 
                 <form id="calculator-form" onsubmit="calculateRecommendation(event)">
 
+                    <!-- Progreso -->
+                    <div class="pi-progress" id="pi-progress" role="group" aria-label="Progreso del diagnóstico">
+                        <ol class="pi-chips">
+                            <li class="pi-chip" data-chip="1"><span class="pi-chip-n">1</span><span class="pi-chip-t">Datos</span></li>
+                            <li class="pi-chip" data-chip="2"><span class="pi-chip-n">2</span><span class="pi-chip-t">Rubro</span></li>
+                            <li class="pi-chip" data-chip="3"><span class="pi-chip-n">3</span><span class="pi-chip-t">Nómina</span></li>
+                            <li class="pi-chip" data-chip="4"><span class="pi-chip-n">4</span><span class="pi-chip-t">Desafío</span></li>
+                        </ol>
+                        <div class="pi-bar"><i id="pi-bar-fill"></i></div>
+                    </div>
+
                     <!-- 1. DATOS -->
-                    <div class="pi-step">
+                    <div class="pi-step" data-step="1">
                         <h2 class="pi-step-title"><span class="pi-step-num">1</span> Datos de la Organización</h2>
                         <div class="pi-fields">
                             <div>
@@ -441,7 +731,7 @@
                     </div>
 
                     <!-- 2. RUBRO -->
-                    <div class="pi-step">
+                    <div class="pi-step" data-step="2">
                         <h2 class="pi-step-title"><span class="pi-step-num">2</span> Sector o Rubro de la Empresa *</h2>
                         <div id="industry-container" class="pi-options industries">
                             <button type="button" aria-pressed="false" onclick="selectIndustry('Comercio y Kioscos', this)" class="pi-option pi-industry">
@@ -532,7 +822,7 @@
                     </div>
 
                     <!-- 3. NÓMINA -->
-                    <div class="pi-step">
+                    <div class="pi-step" data-step="3">
                         <h2 class="pi-step-title"><span class="pi-step-num">3</span> Nómina Activa de Personal *</h2>
                         <div id="employees-container" class="pi-options employees">
                             <button type="button" aria-pressed="false" onclick="selectEmployees('1 a 5 empleados', this)" class="pi-option pi-employee">
@@ -555,7 +845,7 @@
                     </div>
 
                     <!-- 4. DESAFÍO -->
-                    <div class="pi-step">
+                    <div class="pi-step" data-step="4">
                         <h2 class="pi-step-title"><span class="pi-step-num">4</span> Desafío Prioritario de Gestión *</h2>
                         <div id="objective-container" class="pi-options objectives">
                             <button type="button" aria-pressed="false" onclick="selectObjective('Ordenar legajos y legalidad', 'Pack 1: Esencial', this)" class="pi-option pi-objective">
@@ -585,70 +875,90 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-primary pi-submit">
+                    <button type="submit" id="pi-submit" class="btn-primary pi-submit">
                         <i data-lucide="file-search"></i>
                         <span>Generar Diagnóstico Recomendado</span>
                     </button>
                 </form>
 
                 <!-- RESULTADO -->
-                <div id="result-container" class="pi-result hidden">
+                <div id="result-container" class="pi-result hidden" aria-live="polite">
                     <div class="pi-result-head">
-                        <span class="hero-badge"><i data-lucide="check-circle"></i> Diagnóstico Finalizado</span>
-                        <h2>Propuesta Recomendada para <span id="res-company-name">tu organización</span></h2>
-                        <p>Basado en una estructura de <strong id="res-employees"></strong> del sector <strong id="res-industry"></strong>:</p>
+                        <span class="hero-badge"><i data-lucide="check-circle"></i> Diagnóstico completado</span>
+                        <h2><span id="res-company-name">Tu empresa</span>, esta es tu propuesta ideal</h2>
+                        <p>Basado en una estructura de <strong id="res-employees"></strong> del sector <strong id="res-industry"></strong></p>
+                        <div class="pi-profile" id="pi-profile"></div>
                     </div>
 
-                    <div class="pi-perspective">
-                        <div id="card-flipper" class="pi-flipper">
+                    <div class="pi-stage">
+                        <span class="pi-burst"></span>
+                        <span class="pi-burst-ring"></span>
+                        <span class="pi-burst-ring r2"></span>
 
-                            <!-- FRENTE: componentes -->
-                            <div class="pi-face pi-front">
-                                <span class="pi-ribbon">Plan Sugerido</span>
-                                <div>
-                                    <div class="pi-pack-head">
-                                        <h3 id="res-pack-name">Pack 2: Evolución</h3>
-                                        <p id="res-pack-tagline" class="pi-tagline">Crecimiento y Estructura</p>
-                                        <p id="res-pack-desc" class="pi-pack-desc">Estructura operativa de Recursos Humanos diseñada para organizaciones en fase de consolidación.</p>
+                        <div class="pi-perspective">
+                            <div id="card-flipper" class="pi-flipper">
+
+                                <!-- FRENTE -->
+                                <div class="pi-face pi-front">
+                                    <span class="pi-ribbon">★ Plan Sugerido</span>
+                                    <div>
+                                        <div class="pi-pack-head">
+                                            <h3 id="res-pack-name">Pack 2: Evolución</h3>
+                                            <p id="res-pack-tagline" class="pi-tagline">Crecimiento y Estructura</p>
+                                            <p id="res-pack-desc" class="pi-pack-desc">Estructura operativa de Recursos Humanos diseñada para organizaciones en fase de consolidación.</p>
+                                        </div>
+                                        <p class="pi-mini-title">Componentes del Servicio:</p>
+                                        <ul id="res-features" class="pi-features"></ul>
                                     </div>
-                                    <p class="pi-mini-title">Componentes del Servicio:</p>
-                                    <ul id="res-features" class="pi-features"></ul>
-                                </div>
-                                <div class="pi-actions">
-                                    <button type="button" onclick="flipCard()" class="btn-secondary pi-wide">
-                                        <span><i data-lucide="bar-chart-2"></i> Ver Entregables e Indicadores Clave (KPIs)</span>
-                                        <span>▲</span>
-                                    </button>
-                                    <a id="whatsapp-btn" href="#" target="_blank" rel="noopener" class="btn-primary pi-cta">
-                                        <i data-lucide="message-square"></i>
-                                        <span>Solicitar Propuesta Formal de <span id="btn-pack-label">Pack</span></span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- DORSO: entregables y KPIs -->
-                            <div class="pi-face pi-back">
-                                <span class="pi-ribbon muted">Métricas &amp; Reportes</span>
-                                <div>
-                                    <div class="pi-back-head">
-                                        <h4><i data-lucide="bar-chart-2"></i> Indicadores y Entregables de Gestión</h4>
-                                        <button type="button" onclick="flipCard()" class="pi-close">✕ Volver</button>
+                                    <div class="pi-actions">
+                                        <button type="button" onclick="flipCard()" class="btn-secondary pi-wide">
+                                            <span><i data-lucide="bar-chart-2"></i> Ver Entregables e Indicadores Clave (KPIs)</span>
+                                            <span>▲</span>
+                                        </button>
+                                        <div class="pi-cta-row">
+                                            <a id="whatsapp-btn" href="#" target="_blank" rel="noopener" class="btn-primary pi-cta">
+                                                <i data-lucide="message-square"></i>
+                                                <span>Quiero mi propuesta formal</span>
+                                            </a>
+                                            <a id="agenda-btn" href="#" target="_blank" rel="noopener" class="pi-agenda">
+                                                <i data-lucide="calendar-check"></i>
+                                                <span>Agendar una consulta</span>
+                                            </a>
+                                        </div>
+                                        <p class="pi-note">Se abre WhatsApp con tu diagnóstico ya cargado.</p>
                                     </div>
-                                    <p class="pi-back-intro">Herramientas de medición continua para garantizar el retorno de inversión en Capital Humano y la toma de decisiones basada en datos.</p>
-                                    <div id="inline-indicators-content"></div>
                                 </div>
-                                <div class="pi-actions">
-                                    <button type="button" onclick="flipCard()" class="btn-secondary pi-wide">
-                                        <span><i data-lucide="arrow-left"></i> Volver a Componentes del Plan</span>
-                                        <span>▼</span>
-                                    </button>
-                                    <a id="whatsapp-btn-back" href="#" target="_blank" rel="noopener" class="btn-primary pi-cta">
-                                        <i data-lucide="message-square"></i>
-                                        <span>Coordinar Entrevista Estratégica</span>
-                                    </a>
-                                </div>
-                            </div>
 
+                                <!-- DORSO -->
+                                <div class="pi-face pi-back">
+                                    <span class="pi-ribbon muted">Métricas &amp; Reportes</span>
+                                    <div>
+                                        <div class="pi-back-head">
+                                            <h4><i data-lucide="bar-chart-2"></i> Indicadores y Entregables de Gestión</h4>
+                                            <button type="button" onclick="flipCard()" class="pi-close">✕ Volver</button>
+                                        </div>
+                                        <p class="pi-back-intro">Herramientas de medición continua para garantizar el retorno de inversión en Capital Humano y la toma de decisiones basada en datos.</p>
+                                        <div id="inline-indicators-content"></div>
+                                    </div>
+                                    <div class="pi-actions">
+                                        <button type="button" onclick="flipCard()" class="btn-secondary pi-wide">
+                                            <span><i data-lucide="arrow-left"></i> Volver a Componentes del Plan</span>
+                                            <span>▼</span>
+                                        </button>
+                                        <div class="pi-cta-row">
+                                            <a id="whatsapp-btn-back" href="#" target="_blank" rel="noopener" class="btn-primary pi-cta">
+                                                <i data-lucide="message-square"></i>
+                                                <span>Coordinar entrevista estratégica</span>
+                                            </a>
+                                            <a id="agenda-btn-back" href="#" target="_blank" rel="noopener" class="pi-agenda">
+                                                <i data-lucide="calendar-check"></i>
+                                                <span>Agendar una consulta</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -709,11 +1019,51 @@
         </div>
     </footer>
 
+    <!-- PANTALLA DE ANÁLISIS -->
+    <div class="pi-analyzing" id="pi-analyzing" role="status" aria-live="polite">
+        <div class="pi-an-card">
+            <div class="pi-ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="piGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#34D399"/>
+                            <stop offset="1" stop-color="#60A5FA"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="bg" cx="60" cy="60" r="54"/>
+                    <circle class="fg" id="pi-ring-fg" cx="60" cy="60" r="54"/>
+                </svg>
+                <span class="pi-ring-pct" id="pi-an-pct">0%</span>
+            </div>
+            <h3>Analizando tu diagnóstico</h3>
+            <p>Estamos armando la propuesta para <strong id="pi-an-company">tu empresa</strong></p>
+            <ul class="pi-an-steps" id="pi-an-steps">
+                <li>Analizando la estructura de tu organización</li>
+                <li>Cruzando los datos con tu rubro y tu desafío</li>
+                <li>Seleccionando tu pack ideal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- BARRA FLOTANTE -->
+    <div class="pi-floatbar" id="pi-floatbar">
+        <div class="pi-float-text">
+            <strong id="pi-float-pack">Tu propuesta</strong>
+            <span>Tu propuesta está lista para consultar</span>
+        </div>
+        <a id="pi-float-cta" href="#" target="_blank" rel="noopener" class="btn-primary">Consultar ahora</a>
+        <button type="button" class="pi-float-x" aria-label="Cerrar aviso" onclick="closeFloat()">✕</button>
+    </div>
+
     <!-- LÓGICA DEL DIAGNÓSTICO -->
     <script>
-        // Para que el botón final de WhatsApp llegue directo a tu número, completalo acá:
+        // Para que los botones de WhatsApp lleguen directo a tu número, completalo acá:
         // código de país + área + número, sin "+", espacios ni guiones. Ej: '5491112345678'
         const WHATSAPP_NUMBER = '';
+
+        const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const $ = id => document.getElementById(id);
 
         const formData = {
             companyName: '',
@@ -800,45 +1150,49 @@
             }
         };
 
+        /* ---------- Selección de opciones ---------- */
         function selectIndustry(val, el) {
-            const otherContainer = document.getElementById('other-industry-container');
-            const otherInput = document.getElementById('other-industry-input');
+            const otherContainer = $('other-industry-container');
+            const otherInput = $('other-industry-input');
 
             if (val === 'Otro Rubro') {
-                if (otherContainer) otherContainer.classList.remove('hidden');
-                if (otherInput) {
-                    otherInput.required = true;
-                    formData.industry = otherInput.value.trim() ? `Otro Rubro (${otherInput.value.trim()})` : 'Otro Rubro';
-                }
+                otherContainer.classList.remove('hidden');
+                otherInput.required = true;
+                formData.industry = otherInput.value.trim() ? `Otro Rubro (${otherInput.value.trim()})` : 'Otro Rubro';
+                setTimeout(() => otherInput.focus({ preventScroll: true }), 200);
             } else {
-                if (otherContainer) otherContainer.classList.add('hidden');
-                if (otherInput) {
-                    otherInput.required = false;
-                    otherInput.value = '';
-                }
+                otherContainer.classList.add('hidden');
+                otherInput.required = false;
+                otherInput.value = '';
                 formData.industry = val;
+                nudgeNext(2);
             }
-
             highlightSelection('industry-container', el);
+            updateProgress();
         }
 
         function updateOtherIndustry(val) {
             formData.industry = val.trim() ? `Otro Rubro (${val.trim()})` : 'Otro Rubro';
+            updateProgress();
         }
 
         function selectEmployees(val, el) {
             formData.employees = val;
             highlightSelection('employees-container', el);
+            updateProgress();
+            nudgeNext(3);
         }
 
         function selectObjective(val, defaultPack, el) {
             formData.objective = val;
             formData.recommendedPack = defaultPack;
             highlightSelection('objective-container', el);
+            updateProgress();
+            nudgeNext(4);
         }
 
         function highlightSelection(containerId, activeEl) {
-            const container = document.getElementById(containerId);
+            const container = $(containerId);
             if (!container) return;
             container.querySelectorAll('.pi-option').forEach(btn => {
                 btn.classList.remove('selected');
@@ -848,37 +1202,71 @@
             activeEl.setAttribute('aria-pressed', 'true');
         }
 
+        /* ---------- Progreso ---------- */
+        function updateProgress() {
+            const filled = id => $(id).value.trim().length > 0;
+            const done = [
+                filled('company-name') && filled('contact-name') && filled('contact-phone'),
+                !!formData.industry && formData.industry !== 'Otro Rubro',
+                !!formData.employees,
+                !!formData.objective
+            ];
+            document.querySelectorAll('.pi-chip').forEach((chip, i) => {
+                chip.classList.toggle('done', done[i]);
+                chip.querySelector('.pi-chip-n').textContent = done[i] ? '✓' : String(i + 1);
+            });
+            const count = done.filter(Boolean).length;
+            $('pi-bar-fill').style.width = (count / 4 * 100) + '%';
+            $('pi-submit').classList.toggle('ready', count === 4);
+        }
+
+        // Lleva suavemente al siguiente paso si todavía no se ve
+        function nudgeNext(n) {
+            if (REDUCED) return;
+            setTimeout(() => {
+                const target = n < 4 ? document.querySelector(`.pi-step[data-step="${n + 1}"]`) : $('pi-submit');
+                if (!target) return;
+                const r = target.getBoundingClientRect();
+                if (n < 4 && r.top > window.innerHeight * 0.66) {
+                    window.scrollTo({ top: window.scrollY + r.top - 190, behavior: 'smooth' });
+                } else if (n === 4 && r.bottom > window.innerHeight - 30) {
+                    window.scrollTo({ top: window.scrollY + r.bottom - window.innerHeight + 120, behavior: 'smooth' });
+                }
+            }, 380);
+        }
+
+        /* ---------- Giro de la tarjeta ---------- */
         function flipCard() {
-            const flipper = document.getElementById('card-flipper');
+            const flipper = $('card-flipper');
             if (!flipper) return;
 
-            const isFlipped = flipper.classList.contains('flipped');
-
-            if (!isFlipped) {
-                const currentPackKey = formData.recommendedPack || 'Pack 2: Evolución';
-                const packData = packsDatabase[currentPackKey] || packsDatabase['Pack 2: Evolución'];
-                const contentArea = document.getElementById('inline-indicators-content');
-
+            if (!flipper.classList.contains('flipped')) {
+                const packData = packsDatabase[formData.recommendedPack] || packsDatabase['Pack 2: Evolución'];
+                const contentArea = $('inline-indicators-content');
                 if (contentArea && packData) {
                     const list = items => `<ul class="pi-dots">${items.map(i => `<li><span>${i}</span></li>`).join('')}</ul>`;
                     contentArea.innerHTML = `
-                        <p class="pi-mini-title blue">Entregables Formales:</p>
+                        <p class="pi-mini-title green">Entregables Formales:</p>
                         ${list(packData.entregables)}
-                        <p class="pi-mini-title blue">KPIs e Indicadores de Rendimiento:</p>
+                        <p class="pi-mini-title green">KPIs e Indicadores de Rendimiento:</p>
                         ${list(packData.kpis)}
                     `;
                 }
             }
-
             flipper.classList.toggle('flipped');
         }
 
+        /* ---------- Envío: análisis -> resultado ---------- */
+        let busy = false;
+
         function calculateRecommendation(e) {
             if (e) e.preventDefault();
+            if (busy) return;
+            busy = true;
 
-            formData.companyName = document.getElementById('company-name').value.trim();
-            formData.contactName = document.getElementById('contact-name').value.trim();
-            formData.contactPhone = document.getElementById('contact-phone').value.trim();
+            formData.companyName = $('company-name').value.trim();
+            formData.contactName = $('contact-name').value.trim();
+            formData.contactPhone = $('contact-phone').value.trim();
 
             if (formData.employees === 'Más de 50 empleados' || formData.objective.includes('360') || formData.objective.includes('ROI')) {
                 formData.recommendedPack = 'Pack 3: Estratégico';
@@ -888,45 +1276,229 @@
                 formData.recommendedPack = 'Pack 1: Esencial';
             }
 
-            const packInfo = packsDatabase[formData.recommendedPack];
-
-            document.getElementById('res-company-name').textContent = formData.companyName || 'tu empresa';
-            document.getElementById('res-employees').textContent = formData.employees || 'estructura no indicada';
-            document.getElementById('res-industry').textContent = formData.industry || 'rubro no indicado';
-
-            document.getElementById('res-pack-name').textContent = formData.recommendedPack;
-            document.getElementById('res-pack-tagline').textContent = packInfo.tagline;
-            document.getElementById('res-pack-desc').textContent = packInfo.desc;
-            document.getElementById('btn-pack-label').textContent = formData.recommendedPack;
-
-            const featEl = document.getElementById('res-features');
-            if (featEl) {
-                featEl.innerHTML = packInfo.features.map(f => `
-                    <li class="pi-feature">
-                        <span class="pi-check">✓</span>
-                        <span>${f}</span>
-                    </li>
-                `).join('');
-            }
-
-            const message = `Estimados, he completado la evaluación para ${formData.companyName || 'mi empresa'} (${formData.employees}, Sector: ${formData.industry}). La propuesta recomendada fue ${formData.recommendedPack}. Solicito el envío de la propuesta detallada.`;
-            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-            document.getElementById('whatsapp-btn').href = waUrl;
-            document.getElementById('whatsapp-btn-back').href = waUrl;
-
-            const flipper = document.getElementById('card-flipper');
-            if (flipper) flipper.classList.remove('flipped');
-
-            const resContainer = document.getElementById('result-container');
-            if (resContainer) {
-                resContainer.classList.remove('hidden');
-                resContainer.scrollIntoView({ behavior: 'smooth' });
-            }
+            runAnalysis(formData.companyName, () => {
+                renderResult();
+                revealResult();
+                busy = false;
+            });
         }
 
+        function runAnalysis(company, done) {
+            const ov = $('pi-analyzing');
+            const steps = ov.querySelectorAll('.pi-an-steps li');
+            const pct = $('pi-an-pct');
+            const ring = $('pi-ring-fg');
+            const C = 339.3;
+            const total = REDUCED ? 300 : 2800;
+
+            $('pi-an-company').textContent = company || 'tu empresa';
+            steps.forEach(s => (s.className = ''));
+            ring.style.strokeDashoffset = C;
+            pct.textContent = '0%';
+            ov.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            const t0 = performance.now();
+            function tick(now) {
+                const p = Math.min(1, (now - t0) / total);
+                const eased = 1 - Math.pow(1 - p, 2);
+                pct.textContent = Math.round(eased * 100) + '%';
+                ring.style.strokeDashoffset = C * (1 - eased);
+                const idx = Math.min(steps.length, Math.floor(p * steps.length));
+                steps.forEach((s, i) => (s.className = i < idx ? 'done' : i === idx ? 'active' : ''));
+                if (p < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    steps.forEach(s => (s.className = 'done'));
+                    setTimeout(() => {
+                        ov.classList.remove('show');
+                        document.body.style.overflow = '';
+                        done();
+                    }, REDUCED ? 0 : 450);
+                }
+            }
+            requestAnimationFrame(tick);
+        }
+
+        function renderResult() {
+            const packInfo = packsDatabase[formData.recommendedPack];
+
+            $('res-company-name').textContent = formData.companyName || 'Tu empresa';
+            $('res-employees').textContent = formData.employees || 'estructura no indicada';
+            $('res-industry').textContent = formData.industry || 'rubro no indicado';
+
+            const chips = [formData.industry, formData.employees, formData.objective].filter(Boolean);
+            $('pi-profile').innerHTML = chips.map(c => `<span></span>`).join('');
+            $('pi-profile').querySelectorAll('span').forEach((s, i) => (s.textContent = chips[i]));
+
+            $('res-pack-name').textContent = formData.recommendedPack;
+            $('res-pack-tagline').textContent = packInfo.tagline;
+            $('res-pack-desc').textContent = packInfo.desc;
+            $('pi-float-pack').textContent = formData.recommendedPack;
+
+            $('res-features').innerHTML = packInfo.features.map((f, i) => `
+                <li class="pi-feature" style="--i:${i}">
+                    <span class="pi-check">✓</span>
+                    <span>${f}</span>
+                </li>
+            `).join('');
+
+            const who = formData.companyName || 'mi empresa';
+            const base = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
+            const msgPropuesta = `Estimados, he completado la evaluación para ${who} (${formData.employees}, Sector: ${formData.industry}). La propuesta recomendada fue ${formData.recommendedPack}. Solicito el envío de la propuesta detallada.`;
+            const msgAgenda = `Hola! Completé el diagnóstico para ${who} (${formData.employees}, Sector: ${formData.industry}) y me gustaría agendar una consulta para conversar sobre el ${formData.recommendedPack}.`;
+            const urlPropuesta = base + encodeURIComponent(msgPropuesta);
+            const urlAgenda = base + encodeURIComponent(msgAgenda);
+
+            $('whatsapp-btn').href = urlPropuesta;
+            $('whatsapp-btn-back').href = urlPropuesta;
+            $('pi-float-cta').href = urlPropuesta;
+            $('agenda-btn').href = urlAgenda;
+            $('agenda-btn-back').href = urlAgenda;
+
+            $('card-flipper').classList.remove('flipped');
+        }
+
+        let floatReady = false, floatClosed = false, resultVisible = false;
+
+        function revealResult() {
+            const rc = $('result-container');
+            rc.classList.remove('hidden', 'reveal');
+            void rc.offsetWidth;                 // reinicia las animaciones
+            rc.classList.add('reveal');
+            if (window.lucide) lucide.createIcons();
+            rc.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
+
+            floatReady = false; floatClosed = false;
+            syncFloat();
+            if (!REDUCED) setTimeout(launchConfetti, 700);
+            setTimeout(() => { floatReady = true; syncFloat(); }, REDUCED ? 0 : 2200);
+        }
+
+        function syncFloat() {
+            $('pi-floatbar').classList.toggle('show', floatReady && !floatClosed && resultVisible);
+        }
+        function closeFloat() { floatClosed = true; syncFloat(); }
+
+        /* ---------- Confeti ---------- */
+        function launchConfetti() {
+            const canvas = document.createElement('canvas');
+            canvas.className = 'pi-confetti';
+            document.body.appendChild(canvas);
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const W = canvas.width = window.innerWidth * dpr;
+            const H = canvas.height = window.innerHeight * dpr;
+            const ctx = canvas.getContext('2d');
+            const colors = ['#3B82F6', '#60A5FA', '#1FA67A', '#34D399', '#FFFFFF', '#A7F3D0'];
+            const N = window.innerWidth < 600 ? 90 : 160;
+            const parts = [];
+            for (let i = 0; i < N; i++) {
+                const side = i % 2 ? 1 : -1;                       // dos cañones, uno a cada lado
+                const ang = (-90 + side * (10 + Math.random() * 38)) * Math.PI / 180;
+                const sp = (9 + Math.random() * 11) * dpr;
+                parts.push({
+                    x: (side === 1 ? 0.12 : 0.88) * W,
+                    y: 0.72 * H,
+                    vx: Math.cos(ang) * sp * -side * -1 * (side === 1 ? 1 : 1),
+                    vy: Math.sin(ang) * sp,
+                    s: (5 + Math.random() * 7) * dpr,
+                    r: Math.random() * Math.PI,
+                    vr: (Math.random() - 0.5) * 0.35,
+                    c: colors[(Math.random() * colors.length) | 0],
+                    round: Math.random() < 0.3,
+                    life: 0,
+                    max: 150 + Math.random() * 90
+                });
+            }
+            // los de la izquierda salen hacia la derecha y viceversa
+            parts.forEach((p, i) => { p.vx = Math.abs(p.vx) * (i % 2 ? 1 : -1); });
+
+            let frame = 0;
+            (function loop() {
+                ctx.clearRect(0, 0, W, H);
+                let alive = 0;
+                parts.forEach(p => {
+                    p.life++;
+                    if (p.life > p.max) return;
+                    alive++;
+                    p.vy += 0.34 * dpr;
+                    p.vx *= 0.985; p.vy *= 0.99;
+                    p.x += p.vx; p.y += p.vy; p.r += p.vr;
+                    ctx.save();
+                    ctx.globalAlpha = Math.min(1, (p.max - p.life) / 40);
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.r);
+                    ctx.fillStyle = p.c;
+                    if (p.round) { ctx.beginPath(); ctx.arc(0, 0, p.s / 2, 0, 6.283); ctx.fill(); }
+                    else ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+                    ctx.restore();
+                });
+                if (alive && ++frame < 400) requestAnimationFrame(loop);
+                else canvas.remove();
+            })();
+        }
+
+        /* ---------- Fondo, tilt, aparición por scroll ---------- */
         document.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) lucide.createIcons();
+
+            ['company-name', 'contact-name', 'contact-phone'].forEach(id => $(id).addEventListener('input', updateProgress));
+            updateProgress();
+
+            // Pasos que aparecen al hacer scroll
+            const steps = document.querySelectorAll('.pi-step');
+            if ('IntersectionObserver' in window && !REDUCED) {
+                const io = new IntersectionObserver(entries => {
+                    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+                }, { threshold: 0.08 });
+                steps.forEach(s => io.observe(s));
+            } else {
+                steps.forEach(s => s.classList.add('in'));
+            }
+
+            // Barra flotante: solo mientras el resultado está a la vista
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(en => { resultVisible = en[0].isIntersecting; syncFloat(); }, { threshold: 0.12 })
+                    .observe($('result-container'));
+            }
+
+            // Tilt 3D + foco de luz en las opciones
+            if (FINE && !REDUCED) {
+                document.querySelectorAll('.pi-option').forEach(el => {
+                    el.addEventListener('mousemove', e => {
+                        const r = el.getBoundingClientRect();
+                        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+                        el.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+                        el.style.setProperty('--rx', ((0.5 - y) * 10).toFixed(2) + 'deg');
+                        el.style.setProperty('--sx', (x * 100).toFixed(1) + '%');
+                        el.style.setProperty('--sy', (y * 100).toFixed(1) + '%');
+                    });
+                    el.addEventListener('mouseleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+                });
+            }
+
+            // Fondo: fotos que rotan + parallax suave
+            const slides = document.querySelectorAll('.pi-bg-slide');
+            if (slides.length > 1 && !REDUCED) {
+                let cur = 0;
+                setInterval(() => {
+                    slides[cur].classList.remove('active');
+                    cur = (cur + 1) % slides.length;
+                    slides[cur].classList.add('active');
+                }, 8000);
+            }
+            const photos = $('piPhotos');
+            if (photos && !REDUCED) {
+                let tick = false;
+                window.addEventListener('scroll', () => {
+                    if (tick) return;
+                    tick = true;
+                    requestAnimationFrame(() => {
+                        photos.style.transform = `translate3d(0, ${Math.min(70, window.scrollY * 0.04).toFixed(1)}px, 0)`;
+                        tick = false;
+                    });
+                }, { passive: true });
+            }
         });
     </script>
 

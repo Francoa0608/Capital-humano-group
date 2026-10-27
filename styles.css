@@ -2084,3 +2084,72 @@ p.fx-text[data-fx="reveal"]:hover {
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
+
+
+/* ===== BOTÓN FLOTANTE DE WHATSAPP (esquina inferior izquierda) ===== */
+.wa-float {
+    position: fixed;
+    left: 22px;
+    bottom: 22px;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.wa-float-btn {
+    position: relative;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    color: #FFFFFF;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45), 0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.3s ease;
+    animation: waBounceIn 0.8s cubic-bezier(0.2, 1.4, 0.4, 1) 1.2s both;
+}
+.wa-float-btn svg { width: 34px; height: 34px; }
+.wa-float-btn::before,
+.wa-float-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 211, 102, 0.7);
+    animation: waRipple 2.6s ease-out infinite;
+    pointer-events: none;
+}
+.wa-float-btn::after { animation-delay: 1.3s; }
+.wa-float-label {
+    order: 2;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(37, 211, 102, 0.55);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.wa-float:hover .wa-float-label,
+.wa-float:focus-visible .wa-float-label { opacity: 1; transform: none; }
+.wa-float:hover .wa-float-btn { transform: scale(1.1) rotate(-6deg); box-shadow: 0 14px 34px rgba(37, 211, 102, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35); }
+.wa-float:focus-visible { outline: none; }
+.wa-float:focus-visible .wa-float-btn { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+@keyframes waRipple { from { transform: scale(1); opacity: 0.9; } to { transform: scale(1.7); opacity: 0; } }
+@keyframes waBounceIn { from { transform: scale(0) rotate(-40deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (max-width: 768px) {
+    .wa-float { left: 14px; bottom: 14px; }
+    .wa-float-btn { width: 56px; height: 56px; }
+    .wa-float-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .wa-float-btn, .wa-float-btn::before, .wa-float-btn::after { animation: none !important; }
+}

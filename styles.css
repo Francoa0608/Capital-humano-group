@@ -2086,10 +2086,10 @@ p.fx-text[data-fx="reveal"]:hover {
 }
 
 
-/* ===== BOTÓN FLOTANTE DE WHATSAPP (esquina inferior izquierda) ===== */
+/* ===== BOTÓN FLOTANTE DE WHATSAPP (esquina inferior derecha) ===== */
 .wa-float {
     position: fixed;
-    left: 22px;
+    right: 22px;
     bottom: 22px;
     z-index: 1500;
     display: flex;
@@ -2124,7 +2124,7 @@ p.fx-text[data-fx="reveal"]:hover {
 }
 .wa-float-btn::after { animation-delay: 1.3s; }
 .wa-float-label {
-    order: 2;
+    order: 0;
     padding: 9px 16px;
     border-radius: 999px;
     background: rgba(15, 23, 42, 0.92);
@@ -2134,7 +2134,7 @@ p.fx-text[data-fx="reveal"]:hover {
     font-weight: 600;
     white-space: nowrap;
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(10px);
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -2146,7 +2146,7 @@ p.fx-text[data-fx="reveal"]:hover {
 @keyframes waRipple { from { transform: scale(1); opacity: 0.9; } to { transform: scale(1.7); opacity: 0; } }
 @keyframes waBounceIn { from { transform: scale(0) rotate(-40deg); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (max-width: 768px) {
-    .wa-float { left: 14px; bottom: 14px; }
+    .wa-float { right: 14px; bottom: 14px; }
     .wa-float-btn { width: 56px; height: 56px; }
     .wa-float-label { display: none; }
 }

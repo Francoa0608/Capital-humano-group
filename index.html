@@ -312,7 +312,7 @@
                 <span class="brand-subtitle">GROUP</span>
             </div>
         </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#packs">Packs</a></li>
                 <li><a href="#extras">Servicios Extras</a></li>
@@ -320,6 +320,9 @@
                 <li><a href="postulate.html" class="btn-nav-outline">¡Postulate acá!</a></li>
                 <li><a href="pack-ideal.html" class="btn-nav">Descubrí tu pack ideal</a></li>
             </ul>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -1710,6 +1713,65 @@
           window.addEventListener('resize', measure);
         });
       })();
+    </script>
+
+    <!-- MENÚ DESPLEGABLE PARA CELULAR -->
+    <script>
+    (function () {
+        var nav = document.querySelector('.navbar');
+        var btn = document.getElementById('navToggle');
+        if (!nav || !btn) return;
+        function setOpen(open) {
+            nav.classList.toggle('nav-open', open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+        }
+        btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+        nav.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+        document.addEventListener('click', function (e) { if (!nav.contains(e.target)) setOpen(false); });
+        window.addEventListener('resize', function () { if (window.innerWidth > 1080) setOpen(false); });
+    })();
+    </script>
+
+    <!-- CARRUSEL DE PACKS (celular y tablet) -->
+    <script>
+    (function () {
+        var grid = document.querySelector('.packs-grid');
+        if (!grid) return;
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.pack-card'));
+        var nav = document.createElement('div');
+        nav.className = 'packs-nav';
+        nav.innerHTML = '<button type="button" class="packs-arrow" data-dir="-1" aria-label="Pack anterior">‹</button>' +
+            '<div class="packs-dots">' + cards.map(function (c, i) { return '<button type="button" class="packs-dot" data-i="' + i + '" aria-label="Ir al pack ' + (i + 1) + '"></button>'; }).join('') + '</div>' +
+            '<button type="button" class="packs-arrow" data-dir="1" aria-label="Pack siguiente">›</button>';
+        grid.parentNode.insertBefore(nav, grid.nextSibling);
+        var dots = nav.querySelectorAll('.packs-dot');
+        var arrows = nav.querySelectorAll('.packs-arrow');
+        var cur = 0;
+
+        function goTo(i) {
+            i = Math.max(0, Math.min(cards.length - 1, i));
+            var c = cards[i];
+            grid.scrollTo({ left: c.offsetLeft - (grid.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+        }
+        function update() {
+            var mid = grid.scrollLeft + grid.clientWidth / 2, best = 0, bd = 1e9;
+            cards.forEach(function (c, i) {
+                var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+                if (d < bd) { bd = d; best = i; }
+            });
+            cur = best;
+            dots.forEach(function (d, i) { d.classList.toggle('active', i === best); });
+            arrows[0].disabled = best === 0;
+            arrows[1].disabled = best === cards.length - 1;
+        }
+        arrows.forEach(function (a) { a.addEventListener('click', function () { goTo(cur + parseInt(a.getAttribute('data-dir'), 10)); }); });
+        dots.forEach(function (d) { d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-i'), 10)); }); });
+        var t; grid.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(update, 40); }, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    })();
     </script>
 </body>
 </html>

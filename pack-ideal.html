@@ -37,11 +37,6 @@
             background: rgba(31, 166, 122, 0.14);
             transform: translateX(3px);
         }
-        @media (max-width: 768px) {
-            .nav-links { display: flex !important; }
-            .nav-links li { display: none; }
-            .nav-links li.nav-back { display: list-item; }
-        }
 
         /* ==========================================================
            FONDO: fotos con movimiento + luces + grilla (da relieve)
@@ -668,7 +663,7 @@
                 <span class="brand-subtitle">GROUP</span>
             </div>
         </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#nosotros">Nosotros</a></li>
                 <li><a href="index.html#packs">Packs</a></li>
                 <li><a href="index.html#extras">Servicios Extras</a></li>
@@ -676,6 +671,9 @@
                 <li><a href="postulate.html" class="btn-nav-outline">¡Postulate acá!</a></li>
                 <li class="nav-back"><a href="index.html">← Volver al inicio</a></li>
             </ul>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -1674,6 +1672,25 @@
           window.addEventListener('resize', measure);
         });
       })();
+    </script>
+
+    <!-- MENÚ DESPLEGABLE PARA CELULAR -->
+    <script>
+    (function () {
+        var nav = document.querySelector('.navbar');
+        var btn = document.getElementById('navToggle');
+        if (!nav || !btn) return;
+        function setOpen(open) {
+            nav.classList.toggle('nav-open', open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+        }
+        btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+        nav.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+        document.addEventListener('click', function (e) { if (!nav.contains(e.target)) setOpen(false); });
+        window.addEventListener('resize', function () { if (window.innerWidth > 1080) setOpen(false); });
+    })();
     </script>
 </body>
 </html>

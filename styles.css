@@ -2153,3 +2153,149 @@ p.fx-text[data-fx="reveal"]:hover {
 @media (prefers-reduced-motion: reduce) {
     .wa-float-btn, .wa-float-btn::before, .wa-float-btn::after { animation: none !important; }
 }
+
+
+/* ==========================================================================
+   VERSIÓN CELULAR / TABLET
+   ========================================================================== */
+
+/* ----- Menú desplegable (hamburguesa) ----- */
+.nav-toggle { display: none; }
+
+@media (max-width: 1080px) {
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 46px;
+        height: 46px;
+        padding: 0 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(96, 165, 250, 0.4);
+        background: rgba(59, 130, 246, 0.12);
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .nav-toggle:hover { background: rgba(59, 130, 246, 0.25); border-color: #60A5FA; }
+    .nav-toggle span {
+        display: block;
+        height: 2px;
+        border-radius: 2px;
+        background: #FFFFFF;
+        transition: transform 0.3s ease, opacity 0.25s ease;
+    }
+    .navbar.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    .navbar.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-links {
+        display: flex !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 14px 20px 24px;
+        background: rgba(15, 23, 42, 0.985);
+        border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        box-shadow: 0 28px 44px rgba(0, 0, 0, 0.5);
+        max-height: calc(100vh - 84px);
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+    .navbar.nav-open .nav-links { opacity: 1; visibility: visible; transform: none; }
+
+    .nav-links li { display: block !important; }
+    .nav-links a {
+        display: block !important;
+        width: 100%;
+        padding: 15px 18px;
+        border-radius: 12px;
+        font-size: 1.02rem;
+        text-align: left;
+    }
+    .nav-links a:hover { transform: none; }
+    .nav-links li > a:not(.btn-nav):not(.btn-nav-outline) { background: rgba(255, 255, 255, 0.04); }
+    .nav-links a.btn-nav,
+    .nav-links a.btn-nav-outline {
+        text-align: center;
+        padding: 15px 18px;
+        margin-top: 4px;
+    }
+}
+
+/* ----- Sección "Nosotros": foto arriba y texto abajo ----- */
+@media (max-width: 900px) {
+    .about-section { padding: 60px 0; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-image-wrapper { min-height: 0; height: 320px; }
+}
+@media (max-width: 480px) {
+    .about-image-wrapper { height: 250px; border-radius: 14px; }
+}
+
+/* ----- Packs: carrusel deslizable ----- */
+.packs-nav { display: none; }
+
+@media (max-width: 992px) {
+    .packs-grid {
+        display: flex;
+        position: relative;
+        gap: 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 0 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 26px 20px 20px;
+        margin: 0 -20px;
+        align-items: stretch;
+    }
+    .packs-grid::-webkit-scrollbar { display: none; }
+    .packs-grid .pack-card {
+        flex: 0 0 min(86%, 440px);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .packs-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 8px;
+    }
+    .packs-dots { display: flex; gap: 10px; }
+    .packs-dot {
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        border-radius: 50%;
+        border: none;
+        background: rgba(148, 163, 184, 0.45);
+        cursor: pointer;
+        transition: width 0.3s ease, background 0.3s ease;
+    }
+    .packs-dot.active { width: 28px; border-radius: 6px; background: #34D399; }
+    .packs-arrow {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid rgba(96, 165, 250, 0.45);
+        background: rgba(59, 130, 246, 0.12);
+        color: #FFFFFF;
+        font-size: 1.6rem;
+        line-height: 1;
+        cursor: pointer;
+        transition: background 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+    }
+    .packs-arrow:hover:not(:disabled) { background: rgba(59, 130, 246, 0.3); transform: scale(1.08); }
+    .packs-arrow:disabled { opacity: 0.3; cursor: default; }
+}

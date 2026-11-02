@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diagnóstico Organizacional | Capital Humano Group</title>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-51VP3W7R5L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-51VP3W7R5L');
+    </script>
+    <script src="analytics.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1253,6 +1262,7 @@
                     `;
                 }
             }
+            if (window.chgTrack && !flipper.classList.contains('flipped')) chgTrack('ver_kpis_entregables', { pack: formData.recommendedPack });
             flipper.classList.toggle('flipped');
         }
 
@@ -1366,6 +1376,11 @@
             rc.classList.remove('hidden', 'reveal');
             void rc.offsetWidth;                 // reinicia las animaciones
             rc.classList.add('reveal');
+            if (window.chgTrack) chgTrack('diagnostico_completado', {
+                pack: formData.recommendedPack,
+                empleados: formData.employees,
+                rubro: formData.industry.indexOf('Otro Rubro') === 0 ? 'Otro Rubro' : formData.industry
+            });
             if (window.lucide) lucide.createIcons();
             rc.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
 

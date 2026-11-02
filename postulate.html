@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Postulate | Capital Humano Group</title>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-51VP3W7R5L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-51VP3W7R5L');
+    </script>
+    <script src="analytics.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -540,6 +549,7 @@
             e.preventDefault();
             const bad = validate();
             if (bad) { bad.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'center' }); return; }
+            if (window.chgTrack) chgTrack('postulacion_preparada', { areas: state.areas.length, experiencia: state.exp });
             const msg = buildMessage();
             $('po-msg').textContent = msg;
             $('po-done-name').textContent = val('po-name').split(/\s+/)[0];

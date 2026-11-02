@@ -3,192 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Código de Ética y Conducta Profesional | Capital Humano Group</title>
+    <title>Postulate | Capital Humano Group</title>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-51VP3W7R5L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-51VP3W7R5L');
+    </script>
+    <script src="analytics.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Íconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+    <script>document.documentElement.classList.add('po-js');</script>
 
-    <script>document.documentElement.classList.add('eth-js');</script>
     <style>
-        :root { --eth-green: #1FA67A; --eth-green-soft: #34D399; }
+        :root { --po-green: #1FA67A; --po-green-soft: #34D399; }
+        .hidden { display: none !important; }
 
-        /* ===== Menú: en celular queda solo el botón de volver ===== */
-        .nav-links li.nav-back { display: none; }
-
-        /* ===== Fondo con luces verdes y azules en movimiento ===== */
-        .eth-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-        .eth-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.26; animation: ethDrift 24s ease-in-out infinite alternate; }
-        .eth-orb.o1 { width: 520px; height: 520px; left: -160px; top: 10%; background: #1FA67A; }
-        .eth-orb.o2 { width: 600px; height: 600px; right: -220px; top: 45%; background: #3B82F6; animation-duration: 30s; animation-delay: -9s; }
-        .eth-orb.o3 { width: 420px; height: 420px; left: 35%; bottom: -180px; background: #1FA67A; opacity: 0.18; animation-duration: 27s; animation-delay: -15s; }
-        @keyframes ethDrift {
-            0%   { transform: translate3d(0, 0, 0) scale(1); }
-            50%  { transform: translate3d(60px, -40px, 0) scale(1.12); }
-            100% { transform: translate3d(-40px, 50px, 0) scale(0.95); }
+        /* ===== Menú: acá no va el botón "¡Postulate acá!" (ya estás en esa sección) ===== */
+        .nav-links li.nav-back { display: list-item; }
+        .nav-links li.nav-back a {
+            display: inline-flex; align-items: center; padding: 9px 18px; border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.06); color: #FFFFFF;
+            transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
         }
+        .nav-links li.nav-back a:hover { border-color: var(--po-green); background: rgba(31, 166, 122, 0.14); transform: translateX(3px); }
+
+        /* ===== Fondo ===== */
+        .po-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .po-photo { position: absolute; inset: -6% 0; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80') center / cover; animation: poKen 20s ease-in-out infinite alternate; }
+        @keyframes poKen { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1%, -1%); } }
+        .po-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.85) 45%, rgba(15, 23, 42, 0.96) 100%); }
+        .po-orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.32; animation: poDrift 24s ease-in-out infinite alternate; }
+        .po-orb.o1 { width: 520px; height: 520px; left: -150px; top: 8%; background: #1FA67A; }
+        .po-orb.o2 { width: 600px; height: 600px; right: -200px; top: 42%; background: #3B82F6; animation-duration: 29s; animation-delay: -9s; }
+        .po-orb.o3 { width: 420px; height: 420px; left: 32%; bottom: -170px; background: #1FA67A; opacity: 0.2; animation-duration: 26s; animation-delay: -15s; }
+        @keyframes poDrift { 0% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(60px, -40px, 0) scale(1.12); } 100% { transform: translate3d(-40px, 50px, 0) scale(0.95); } }
+        .po-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); }
 
         /* ===== HERO ===== */
-        .eth-hero {
-            padding: 80px 0 56px;
-            text-align: center;
-            background:
-                radial-gradient(ellipse at 20% 0%, rgba(31, 166, 122, 0.20) 0%, transparent 55%),
-                radial-gradient(ellipse at 80% 0%, rgba(59, 130, 246, 0.18) 0%, transparent 55%);
+        .po-hero {
+            padding: 80px 0 52px; text-align: center;
+            background: radial-gradient(ellipse at 18% 0%, rgba(31, 166, 122, 0.20) 0%, transparent 55%), radial-gradient(ellipse at 82% 0%, rgba(59, 130, 246, 0.20) 0%, transparent 55%);
             border-bottom: 1px solid var(--border-glow);
         }
-        .eth-hero .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: rgba(31, 166, 122, 0.14) !important;
-            color: #34D399 !important;
-            border-color: rgba(31, 166, 122, 0.45) !important;
-        }
-        .eth-hero h1 {
-            font-size: clamp(2rem, 4.6vw, 3.3rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.12;
-            margin: 0 auto 20px;
-            max-width: 900px;
-        }
-        .eth-lead { --fx-base: #CBD5E1; font-size: 1.1rem; line-height: 1.6; max-width: 680px; margin: 0 auto; }
-        .eth-pillars { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
-        .eth-pillars span {
-            display: inline-flex; align-items: center; gap: 9px;
-            padding: 9px 16px; border-radius: 999px;
-            font-size: 0.85rem; font-weight: 600; color: var(--white-soft);
-            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(31, 166, 122, 0.4);
-            backdrop-filter: blur(8px);
-            animation: ethFloat 5s ease-in-out infinite;
-        }
-        .eth-pillars span:nth-child(2) { animation-delay: -1.6s; }
-        .eth-pillars span:nth-child(3) { animation-delay: -3.2s; }
-        .eth-pillars i { color: var(--eth-green-soft); }
-        @keyframes ethFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .po-hero .hero-badge { display: inline-flex; align-items: center; gap: 9px; background-color: rgba(31, 166, 122, 0.14) !important; color: #34D399 !important; border-color: rgba(31, 166, 122, 0.45) !important; }
+        .po-dot { width: 8px; height: 8px; border-radius: 50%; background: #34D399; animation: poPulse 1.8s ease-out infinite; }
+        @keyframes poPulse { 0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.65); } 100% { box-shadow: 0 0 0 12px rgba(52, 211, 153, 0); } }
+        .po-hero h1 { font-size: clamp(2rem, 4.6vw, 3.3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.13; margin: 0 auto 18px; max-width: 860px; }
+        .po-lead { --fx-base: #CBD5E1; font-size: 1.1rem; line-height: 1.6; max-width: 680px; margin: 0 auto; }
+        .po-facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+        .po-fact { display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; color: var(--white-soft); background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(31, 166, 122, 0.4); backdrop-filter: blur(8px); animation: poFloat 5s ease-in-out infinite; }
+        .po-fact:nth-child(2) { animation-delay: -1.6s; } .po-fact:nth-child(3) { animation-delay: -3.2s; }
+        .po-fact svg { width: 15px; height: 15px; color: var(--po-green-soft); }
+        @keyframes poFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-        /* ===== CONTENIDO ===== */
-        .eth-section { padding: 70px 0 130px; overflow: hidden; position: relative; }
-        .eth-grid { display: grid; gap: 34px; max-width: 920px; margin: 0 auto; perspective: 1200px; }
+        /* ===== PANEL ===== */
+        .po-section { padding: 56px 0 110px; }
+        .po-panel { position: relative; max-width: 920px; margin: 0 auto; background: rgba(30, 41, 59, 0.6); border: 1px solid var(--border-glow); border-radius: 20px; padding: 36px 44px 44px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); backdrop-filter: blur(12px); }
+        .po-panel::before { content: ""; position: absolute; top: -1px; left: 8%; right: 8%; height: 2px; background: linear-gradient(90deg, transparent, #1FA67A, #3B82F6, transparent); }
 
-        .eth-card {
-            position: relative;
-            background: rgba(30, 41, 59, 0.62);
-            border: 1px solid var(--border-glow);
-            border-radius: 18px;
-            padding: 32px 34px;
-            backdrop-filter: blur(6px);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-        }
-        /* línea de color arriba: verde -> azul */
-        .eth-card::before {
-            content: ""; position: absolute; top: -1px; left: 10%; right: 10%; height: 2px;
-            background: linear-gradient(90deg, transparent, #1FA67A, #3B82F6, transparent);
-            opacity: 0.55; transition: opacity 0.4s ease;
-        }
-        .eth-card.active {
-            border-color: rgba(31, 166, 122, 0.7);
-            background: rgba(30, 41, 59, 0.78);
-            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4), 0 0 38px rgba(31, 166, 122, 0.20);
-        }
-        .eth-card.active::before { opacity: 1; }
-        .eth-card:hover { border-color: #34D399; }
+        .po-progress { position: sticky; top: 88px; z-index: 20; margin: 0 -14px 32px; padding: 14px 18px 16px; border-radius: 14px; background: rgba(15, 23, 42, 0.88); border: 1px solid var(--border-glow); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .po-chips { list-style: none; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+        .po-chip { display: flex; align-items: center; gap: 9px; font-size: 0.8rem; font-weight: 700; color: #64748B; transition: color 0.4s ease; }
+        .po-chip-n { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; border: 1px solid rgba(148,163,184,0.35); transition: all 0.4s cubic-bezier(0.2,0.8,0.2,1); }
+        .po-chip.done { color: var(--po-green-soft); }
+        .po-chip.done .po-chip-n { background: var(--po-green); border-color: var(--po-green); color: #fff; transform: scale(1.12); box-shadow: 0 0 14px rgba(31,166,122,0.6); }
+        .po-bar { height: 5px; border-radius: 5px; background: rgba(255,255,255,0.08); overflow: hidden; }
+        .po-bar i { display: block; height: 100%; width: 0; border-radius: 5px; background: linear-gradient(90deg, #1FA67A, #34D399, #3B82F6); background-size: 200% 100%; transition: width 0.7s cubic-bezier(0.2,0.8,0.2,1); animation: poShimmer 2.4s linear infinite; }
+        @keyframes poShimmer { to { background-position: -200% 0; } }
 
-        /* MODO PROFUNDIDAD: las tarjetas entran y salen según tu posición en la página (reversible) */
-        .eth-js .eth-mode-depth .eth-card, .eth-js .eth-mode-depth .eth-highlight {
-            opacity: var(--o, 0);
-            transform: translate3d(var(--tx, 0px), var(--ty, 70px), 0) rotateX(var(--rx, -12deg)) scale(var(--sc, 0.93));
-            filter: blur(var(--bl, 6px));
-            will-change: transform, opacity;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-        }
-        /* MODO CLÁSICO: entran y se van (como tu versión original) */
-        .eth-js .eth-mode-classic .eth-card, .eth-js .eth-mode-classic .eth-highlight {
-            opacity: 0; transform: translateX(-40px);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .eth-js .eth-mode-classic .animate-in { opacity: 1; transform: none; }
-        .eth-js .eth-mode-classic .eth-card:nth-child(even) { transform: translateX(40px); }
-        .eth-js .eth-mode-classic .eth-card:nth-child(even).animate-in { transform: none; }
+        .po-step { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-glow); }
+        .po-step:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        .po-js .po-step { opacity: 0; transform: translateY(34px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2,0.8,0.2,1); }
+        .po-js .po-step.in { opacity: 1; transform: none; }
+        .po-step-title { display: flex; align-items: center; gap: 12px; font-size: 1.02rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 22px; }
+        .po-step-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(31,166,122,0.6), transparent); }
+        .po-step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; background: rgba(31,166,122,0.16); color: var(--po-green-soft); border: 1px solid rgba(31,166,122,0.55); }
+        .po-hint { color: var(--text-muted); font-size: 0.85rem; margin: -10px 0 18px; }
 
-        .eth-card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-        .eth-icon {
-            flex-shrink: 0; width: 50px; height: 50px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
-            color: #34D399;
-            background: linear-gradient(135deg, rgba(31, 166, 122, 0.26) 0%, rgba(31, 166, 122, 0.06) 100%);
-            border: 1px solid rgba(31, 166, 122, 0.5);
-            transition: transform 0.4s cubic-bezier(0.2, 1.4, 0.4, 1), background 0.3s ease, color 0.3s ease;
-        }
-        .eth-card:nth-child(even) .eth-icon {
-            color: #60A5FA;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0.06) 100%);
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-        .eth-card.active .eth-icon { transform: scale(1.1) rotate(-4deg); background: var(--eth-green); color: #FFFFFF; border-color: var(--eth-green); }
-        .eth-card-head h2 { font-size: 1.3rem; font-weight: 700; line-height: 1.3; color: #FFFFFF; }
+        .po-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .po-field.full { grid-column: 1 / -1; }
+        .po-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white-soft); margin-bottom: 8px; }
+        .po-label small { text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--text-muted); }
+        .po-input { width: 100%; padding: 14px 16px; border-radius: 10px; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.15); color: #FFFFFF; font-size: 0.95rem; font-family: inherit; transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+        textarea.po-input { min-height: 110px; resize: vertical; line-height: 1.55; }
+        .po-input::placeholder { color: #64748B; }
+        .po-input:focus { outline: none; border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59,130,246,0.25); }
+        .po-field.err .po-input, .po-field.err .po-drop { border-color: #F87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.18); }
+        .po-error { display: none; margin-top: 7px; font-size: 0.8rem; font-weight: 600; color: #FCA5A5; }
+        .po-field.err .po-error { display: block; }
+        .po-count { text-align: right; font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
 
-        .eth-body p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.75; margin-bottom: 14px; }
-        .eth-body p:last-child { margin-bottom: 0; }
-        .eth-body strong { color: #FFFFFF; font-weight: 700; }
+        /* Opciones (chips) */
+        .po-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        .po-opt { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 999px; font-family: inherit; font-size: 0.9rem; font-weight: 600; color: var(--white-soft); background: var(--card-blue); border: 1px solid var(--border-glow); cursor: pointer; transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease; }
+        .po-opt svg { width: 17px; height: 17px; color: #60A5FA; transition: color 0.25s ease; }
+        .po-opt:hover { transform: translateY(-3px); border-color: #3B82F6; background: #243349; box-shadow: 0 10px 22px rgba(0,0,0,0.35); }
+        .po-opt:focus-visible { outline: 2px solid #60A5FA; outline-offset: 2px; }
+        .po-opt.selected { border-color: var(--po-green); background: rgba(31,166,122,0.16); color: #FFFFFF; box-shadow: 0 0 20px rgba(31,166,122,0.3); }
+        .po-opt.selected svg { color: var(--po-green-soft); }
+        .po-opt.selected::after { content: "\2713"; font-weight: 800; font-size: 0.8rem; color: var(--po-green-soft); animation: poPop 0.4s cubic-bezier(0.2,1.6,0.4,1) both; }
+        @keyframes poPop { from { transform: scale(0); } to { transform: scale(1); } }
+        .po-sub { margin-top: 22px; }
 
-        .eth-list { list-style: none; margin: 16px 0 0; padding: 0; }
-        .eth-list li { position: relative; padding-left: 30px; margin-bottom: 14px; color: #CBD5E1; font-size: 0.95rem; line-height: 1.65; }
-        .eth-list li:last-child { margin-bottom: 0; }
-        .eth-list li::before {
-            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; left: 0; top: 3px; font-size: 0.85rem; color: var(--eth-green-soft);
-        }
+        /* Carga del CV */
+        .po-drop { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding: 38px 22px; border-radius: 16px; border: 2px dashed rgba(52,211,153,0.5); background: rgba(15,23,42,0.55); cursor: pointer; transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease; overflow: hidden; }
+        .po-drop::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(31,166,122,0.22), transparent 65%); opacity: 0.6; transition: opacity 0.3s ease; pointer-events: none; }
+        .po-drop:hover, .po-drop.over { background: rgba(31,166,122,0.12); border-color: #34D399; transform: translateY(-2px); }
+        .po-drop:hover::before, .po-drop.over::before { opacity: 1; }
+        .po-drop:focus-within { outline: 2px solid #60A5FA; outline-offset: 3px; }
+        .po-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+        .po-drop-ico { width: 62px; height: 62px; border-radius: 18px; display: flex; align-items: center; justify-content: center; background: rgba(31,166,122,0.18); border: 1px solid rgba(31,166,122,0.55); color: var(--po-green-soft); animation: poFloat 4s ease-in-out infinite; }
+        .po-drop-ico svg { width: 28px; height: 28px; }
+        .po-drop strong { font-size: 1.05rem; color: #FFFFFF; }
+        .po-drop span { color: var(--text-muted); font-size: 0.85rem; }
+        .po-drop em { font-style: normal; color: var(--po-green-soft); font-weight: 700; }
+        .po-file { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; background: rgba(31,166,122,0.12); border: 1px solid rgba(31,166,122,0.55); animation: poIn 0.5s cubic-bezier(0.2,0.8,0.2,1) both; }
+        @keyframes poIn { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+        .po-file-ico { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--po-green); color: #FFF; }
+        .po-file-ico svg { width: 22px; height: 22px; }
+        .po-file-info { flex: 1; min-width: 0; }
+        .po-file-name { display: block; color: #FFFFFF; font-weight: 700; font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .po-file-size { color: var(--po-green-soft); font-size: 0.8rem; font-weight: 600; }
+        .po-file button { font-family: inherit; flex-shrink: 0; font-size: 0.78rem; font-weight: 700; color: var(--white-soft); background: rgba(255,255,255,0.08); border: 1px solid var(--border-glow); border-radius: 20px; padding: 7px 14px; cursor: pointer; transition: background 0.2s ease; }
+        .po-file button:hover { background: rgba(248,113,113,0.2); border-color: #F87171; }
 
-        /* Caja final: canal de reportes */
-        .eth-highlight {
-            margin-top: 6px; padding: 42px 34px; text-align: center; border-radius: 18px;
-            background: linear-gradient(135deg, rgba(31, 166, 122, 0.20) 0%, rgba(15, 23, 42, 0.88) 60%, rgba(59, 130, 246, 0.14) 100%);
-            border: 1px solid rgba(31, 166, 122, 0.55);
-            box-shadow: 0 0 40px rgba(31, 166, 122, 0.14);
-        }
-        .eth-highlight .eth-icon { margin: 0 auto 18px; color: #FFFFFF; background: var(--eth-green); border-color: var(--eth-green); box-shadow: 0 0 22px rgba(31, 166, 122, 0.55); }
-        .eth-highlight h2 { font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; }
-        .eth-highlight p { color: var(--text-muted); max-width: 650px; margin: 0 auto 22px; line-height: 1.7; }
-        .eth-mail { padding: 14px 30px; border-radius: 999px; text-decoration: none; }
+        .po-consent { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; padding: 16px 18px; border-radius: 12px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-glow); font-size: 0.85rem; line-height: 1.55; color: var(--white-soft); cursor: pointer; }
+        .po-consent input { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; accent-color: #1FA67A; cursor: pointer; }
+        .po-consent a { color: var(--po-green-soft); font-weight: 700; text-decoration: underline; }
+        .po-field.err.po-consent-wrap .po-consent { border-color: #F87171; }
 
-        /* ===== Riel de progreso (solo pantallas anchas) ===== */
-        .eth-rail { position: fixed; left: 26px; top: 50%; transform: translateY(-50%); z-index: 50; display: none; flex-direction: column; align-items: center; gap: 0; opacity: 0; transition: opacity 0.4s ease; }
-        .eth-rail.show { opacity: 1; }
-        .eth-rail-line { position: absolute; top: 8px; bottom: 8px; width: 2px; background: rgba(255, 255, 255, 0.12); border-radius: 2px; }
-        .eth-rail-fill { position: absolute; top: 8px; width: 2px; height: 0; background: linear-gradient(180deg, #34D399, #3B82F6); border-radius: 2px; box-shadow: 0 0 10px rgba(52, 211, 153, 0.7); transition: height 0.25s linear; }
-        .eth-dot {
-            position: relative; width: 14px; height: 14px; border-radius: 50%; margin: 13px 0; padding: 0;
-            background: #0F172A; border: 2px solid rgba(148, 163, 184, 0.5); cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
-        }
-        .eth-dot.seen { border-color: var(--eth-green); }
-        .eth-dot.on { background: var(--eth-green-soft); border-color: var(--eth-green-soft); transform: scale(1.5); box-shadow: 0 0 14px rgba(52, 211, 153, 0.8); }
-        .eth-dot:focus-visible { outline: 2px solid #60A5FA; outline-offset: 3px; }
-        @media (min-width: 1200px) { .eth-rail { display: flex; } }
+        .po-submit { width: 100%; margin-top: 26px; padding: 18px 28px; font-size: 1.05rem; font-family: inherit; border-radius: 12px; cursor: pointer; }
+        .po-submit svg { width: 20px; height: 20px; flex-shrink: 0; }
+        .po-submit:hover { transform: translateY(-3px) scale(1.01) !important; }
+        .po-submit.ready { animation: poReady 1.6s ease-in-out infinite; }
+        @keyframes poReady { 0%, 100% { box-shadow: 0 8px 24px rgba(16,185,129,0.38), 0 0 0 0 rgba(52,211,153,0.5); } 50% { box-shadow: 0 8px 24px rgba(16,185,129,0.38), 0 0 0 14px rgba(52,211,153,0); } }
+        .po-note { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 14px; }
 
-        @media (max-width: 640px) {
-            .eth-card { padding: 24px 20px; }
-            .eth-card-head { align-items: flex-start; }
-            .eth-highlight { padding: 32px 20px; }
+        /* ===== ÉXITO: último paso ===== */
+        .po-done { text-align: center; }
+        .po-done.show > * { animation: poIn 0.7s cubic-bezier(0.2,0.8,0.2,1) both; }
+        .po-done.show > *:nth-child(2) { animation-delay: 0.12s; } .po-done.show > *:nth-child(3) { animation-delay: 0.24s; } .po-done.show > *:nth-child(4) { animation-delay: 0.36s; } .po-done.show > *:nth-child(5) { animation-delay: 0.48s; }
+        .po-check { position: relative; width: 92px; height: 92px; margin: 0 auto 22px; }
+        .po-check::before, .po-check::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(52,211,153,0.7); animation: poRipple 2.2s ease-out infinite; }
+        .po-check::after { animation-delay: 1.1s; }
+        @keyframes poRipple { from { transform: scale(0.7); opacity: 0.9; } to { transform: scale(1.7); opacity: 0; } }
+        .po-check span { position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #14866A, #34D399); box-shadow: 0 0 40px rgba(31,166,122,0.6); color: #FFF; }
+        .po-check svg { width: 44px; height: 44px; stroke-dasharray: 40; stroke-dashoffset: 40; animation: poDraw 0.7s ease 0.35s forwards; }
+        @keyframes poDraw { to { stroke-dashoffset: 0; } }
+        .po-done h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+        .po-done h2 span { background: linear-gradient(135deg, #34D399, #60A5FA); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .po-done > p { color: var(--white-soft); max-width: 560px; margin: 0 auto 28px; line-height: 1.6; }
+        .po-steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; margin-bottom: 28px; }
+        .po-steps li { position: relative; padding: 18px 16px; border-radius: 14px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-glow); font-size: 0.88rem; line-height: 1.5; color: var(--white-soft); }
+        .po-steps li b { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; margin-bottom: 10px; background: var(--po-green); color: #fff; font-size: 0.8rem; }
+        .po-steps li strong { color: #FFFFFF; }
+        .po-steps li.hl { border-color: rgba(31,166,122,0.7); box-shadow: 0 0 24px rgba(31,166,122,0.25); }
+        .po-preview { text-align: left; margin-bottom: 26px; border-radius: 14px; border: 1px solid var(--border-glow); background: rgba(15,23,42,0.7); overflow: hidden; }
+        .po-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 16px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--po-green-soft); border-bottom: 1px solid var(--border-glow); background: rgba(31,166,122,0.08); }
+        .po-copy { font-family: inherit; font-size: 0.75rem; font-weight: 700; color: var(--white-soft); background: rgba(255,255,255,0.08); border: 1px solid var(--border-glow); border-radius: 20px; padding: 5px 12px; cursor: pointer; text-transform: none; letter-spacing: 0; }
+        .po-copy:hover { background: rgba(31,166,122,0.25); }
+        .po-preview pre { white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: 0.85rem; line-height: 1.65; color: var(--white-soft); padding: 16px; max-height: 240px; overflow: auto; }
+        .po-cta-stack { display: flex; flex-direction: column; gap: 12px; align-items: stretch; max-width: 520px; margin: 0 auto; }
+        .po-cta { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 17px 24px; font-size: 1.05rem; border-radius: 12px; text-decoration: none; font-family: inherit; cursor: pointer; }
+        .po-cta svg { width: 20px; height: 20px; }
+        .po-cta:hover { transform: translateY(-3px) scale(1.01) !important; }
+        .po-share { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; border-radius: 12px; font-family: inherit; font-weight: 700; font-size: 0.92rem; color: #FFF; cursor: pointer; background: rgba(31,166,122,0.12); border: 1.5px solid rgba(31,166,122,0.65); transition: background 0.3s ease, transform 0.3s ease; }
+        .po-share:hover { background: rgba(31,166,122,0.28); transform: translateY(-3px); }
+        .po-share svg { width: 18px; height: 18px; color: var(--po-green-soft); }
+        .po-back-link { background: none; border: none; color: var(--text-muted); font-family: inherit; font-size: 0.85rem; text-decoration: underline; cursor: pointer; margin-top: 4px; }
+        .po-back-link:hover { color: #FFF; }
+
+        @media (max-width: 900px) {
+            .po-panel { padding: 22px 18px 30px; }
+            .po-progress { margin: 0 0 26px; top: 78px; }
+            .po-chip-t { display: none; }
+            .po-chips { justify-content: space-around; }
+            .po-fields { grid-template-columns: 1fr; }
+            .po-steps { grid-template-columns: 1fr; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .eth-orb, .eth-pillars span { animation: none; }
-            .eth-js .eth-mode-depth .eth-card, .eth-js .eth-mode-depth .eth-highlight,
-            .eth-js .eth-mode-classic .eth-card, .eth-js .eth-mode-classic .eth-highlight { opacity: 1 !important; transform: none !important; filter: none !important; }
+            .po-photo, .po-orb, .po-fact, .po-dot, .po-bar i, .po-submit.ready, .po-drop-ico, .po-check::before, .po-check::after { animation: none !important; }
+            .po-js .po-step { opacity: 1; transform: none; transition: none; }
+            .po-check svg { stroke-dashoffset: 0; animation: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="eth-bg" aria-hidden="true"><span class="eth-orb o1"></span><span class="eth-orb o2"></span><span class="eth-orb o3"></span></div>
-    <div class="eth-rail" id="ethRail" aria-label="Progreso del código"><span class="eth-rail-line"></span><span class="eth-rail-fill" id="ethRailFill"></span></div>
+    <div class="po-bg" aria-hidden="true">
+        <div class="po-photo"></div><div class="po-overlay"></div>
+        <span class="po-orb o1"></span><span class="po-orb o2"></span><span class="po-orb o3"></span>
+        <div class="po-grid"></div>
+    </div>
 
-<nav class="navbar">
+    <nav class="navbar">
         <div class="container nav-container">
         <a href="index.html" class="logo-container">
             <img src="CHG_logo_fondo_transparente_final.png" alt="Capital Humano Group" class="brand-logo-img">
@@ -202,7 +217,6 @@
                 <li><a href="index.html#packs">Packs</a></li>
                 <li><a href="index.html#extras">Servicios Extras</a></li>
                 <li><a href="index.html#servicios-chg">¿Por qué CHG?</a></li>
-                <li><a href="postulate.html" class="btn-nav-outline">¡Postulate acá!</a></li>
                 <li><a href="pack-ideal.html" class="btn-nav">Descubrí tu pack ideal</a></li>
                 <li class="nav-back"><a href="index.html">← Volver al inicio</a></li>
             </ul>
@@ -212,120 +226,172 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="eth-hero">
+    <section class="po-hero">
         <div class="container">
-            <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Marco Institucional</span>
-            <h1 class="fx-heading" data-fx="reveal">Código de Ética y Conducta Profesional</h1>
-            <p class="fx-text eth-lead" data-fx="reveal" data-fx-radius="110" data-fx-lift="5">Nuestros principios de transparencia, legalidad y respeto que rigen todas las operaciones de Capital Humano Group.</p>
-            <div class="eth-pillars"><span><i class="fa-solid fa-scale-balanced"></i> Legalidad</span><span><i class="fa-solid fa-eye"></i> Transparencia</span><span><i class="fa-solid fa-lock"></i> Confidencialidad</span></div>
+            <span class="hero-badge"><span class="po-dot"></span> Postulaciones abiertas</span>
+            <h1 class="fx-heading" data-fx="reveal">Sumate a nuestra red de talentos</h1>
+            <p class="fx-text po-lead" data-fx="reveal" data-fx-radius="110" data-fx-lift="5">Dejanos tus datos y tu CV para que podamos tenerte en cuenta en las próximas búsquedas de las pymes con las que trabajamos.</p>
+            <div class="po-facts">
+                <span class="po-fact"><i data-lucide="badge-check"></i> Sin costo para el candidato</span>
+                <span class="po-fact"><i data-lucide="lock"></i> Tus datos son confidenciales</span>
+                <span class="po-fact"><i data-lucide="zap"></i> Te lleva 2 minutos</span>
+            </div>
         </div>
     </section>
 
-    <!-- CONTENIDO -->
-    <main class="eth-section">
+    <main class="po-section" id="postulacion">
         <div class="container">
-            <div class="eth-grid">
+            <div class="po-panel">
 
-                <!-- 1 -->
-                <article class="eth-card">
-                    <div class="eth-card-head">
-                        <div class="eth-icon"><i class="fa-solid fa-compass"></i></div>
-                        <h2>1. Propósito y Alcance</h2>
+                <form id="po-form" novalidate>
+                    <div class="po-progress" role="group" aria-label="Progreso de la postulación">
+                        <ol class="po-chips">
+                            <li class="po-chip" data-chip="1"><span class="po-chip-n">1</span><span class="po-chip-t">Tus datos</span></li>
+                            <li class="po-chip" data-chip="2"><span class="po-chip-n">2</span><span class="po-chip-t">Tu perfil</span></li>
+                            <li class="po-chip" data-chip="3"><span class="po-chip-n">3</span><span class="po-chip-t">Tu CV</span></li>
+                        </ol>
+                        <div class="po-bar"><i id="po-bar-fill"></i></div>
                     </div>
-                    <div class="eth-body">
-                        <p>En <strong>Capital Humano Group</strong> brindamos soluciones integrales en Recursos Humanos bajo estrictos estándares de transparencia, legalidad y respeto. Este código rige para todos nuestros directivos, consultores, personal administrativo y profesionales tercerizados, y define cómo nos relacionamos con nuestros clientes, sus trabajadores y los candidatos.</p>
-                    </div>
-                </article>
 
-                <!-- 2 -->
-                <article class="eth-card">
-                    <div class="eth-card-head">
-                        <div class="eth-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <h2>2. Legalidad y Cumplimiento Normativo (Compliance Laboral)</h2>
+                    <!-- 1. DATOS -->
+                    <div class="po-step" data-step="1">
+                        <h2 class="po-step-title"><span class="po-step-num">1</span> Tus datos de contacto</h2>
+                        <div class="po-fields">
+                            <div class="po-field">
+                                <label class="po-label" for="po-name">Nombre y Apellido *</label>
+                                <input class="po-input" id="po-name" type="text" autocomplete="name" placeholder="Ej: Lucía Fernández">
+                                <p class="po-error">Escribí tu nombre y apellido.</p>
+                            </div>
+                            <div class="po-field">
+                                <label class="po-label" for="po-phone">Teléfono / WhatsApp *</label>
+                                <input class="po-input" id="po-phone" type="tel" autocomplete="tel" placeholder="Ej: +54 9 11 1234 5678">
+                                <p class="po-error">Ingresá un teléfono válido.</p>
+                            </div>
+                            <div class="po-field">
+                                <label class="po-label" for="po-email">Email *</label>
+                                <input class="po-input" id="po-email" type="email" autocomplete="email" placeholder="tuemail@ejemplo.com">
+                                <p class="po-error">Ingresá un email válido.</p>
+                            </div>
+                            <div class="po-field">
+                                <label class="po-label" for="po-city">Ciudad / Zona *</label>
+                                <input class="po-input" id="po-city" type="text" autocomplete="address-level2" placeholder="Ej: Rosario, Santa Fe">
+                                <p class="po-error">Indicá dónde vivís.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="eth-body">
-                        <p>Como expertos en servicios de Recursos Humanos, nuestro asesoramiento y gestión deben ajustarse estrictamente al marco legal argentino:</p>
-                        <ul class="eth-list">
-                            <li><strong>Normativa Base:</strong> Respetamos y hacemos cumplir la Ley de Contrato de Trabajo (LCT N° 20.744), las Leyes de Empleo y las normativas de la Agencia de Recaudación y Control Aduanero (ARCA) y el Ministerio de Capital Humano (o autoridad laboral nacional vigente).</li>
-                            <li><strong>Encuadramiento Convencional:</strong> Nos comprometemos a asesorar a nuestros clientes con objetividad respecto al correcto encuadramiento de los trabajadores en los Convenios Colectivos de Trabajo (CCT) correspondientes, rechazando cualquier práctica que precarice el empleo o fomente el trabajo informal ("en negro").</li>
-                        </ul>
-                    </div>
-                </article>
 
-                <!-- 3 -->
-                <article class="eth-card">
-                    <div class="eth-card-head">
-                        <div class="eth-icon"><i class="fa-solid fa-lock"></i></div>
-                        <h2>3. Confidencialidad y Secreto Profesional</h2>
+                    <!-- 2. PERFIL -->
+                    <div class="po-step" data-step="2">
+                        <h2 class="po-step-title"><span class="po-step-num">2</span> Tu perfil profesional</h2>
+                        <div class="po-field" id="po-area-field">
+                            <label class="po-label">Áreas de interés * <small>(elegí hasta 3)</small></label>
+                            <div class="po-options" id="po-areas">
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Administración y Contable',this,true,3)"><i data-lucide="calculator"></i><span>Administración y Contable</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Atención al Cliente',this,true,3)"><i data-lucide="headset"></i><span>Atención al Cliente</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Ventas y Comercial',this,true,3)"><i data-lucide="trending-up"></i><span>Ventas y Comercial</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Logística y Depósito',this,true,3)"><i data-lucide="truck"></i><span>Logística y Depósito</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Producción e Industria',this,true,3)"><i data-lucide="factory"></i><span>Producción e Industria</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Tecnología',this,true,3)"><i data-lucide="laptop"></i><span>Tecnología</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Salud',this,true,3)"><i data-lucide="heart-pulse"></i><span>Salud</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Gastronomía y Hotelería',this,true,3)"><i data-lucide="utensils"></i><span>Gastronomía y Hotelería</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Recursos Humanos',this,true,3)"><i data-lucide="users"></i><span>Recursos Humanos</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Oficios y Mantenimiento',this,true,3)"><i data-lucide="wrench"></i><span>Oficios y Mantenimiento</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Marketing y Diseño',this,true,3)"><i data-lucide="palette"></i><span>Marketing y Diseño</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('areas','Otra área',this,true,3)"><i data-lucide="plus"></i><span>Otra área</span></button>
+                            </div>
+                            <p class="po-error">Elegí al menos un área.</p>
+                        </div>
+                        <div class="po-field po-sub" id="po-exp-field">
+                            <label class="po-label">Años de experiencia *</label>
+                            <div class="po-options" id="po-exp">
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('exp','Sin experiencia',this)"><span>Sin experiencia</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('exp','Hasta 1 año',this)"><span>Hasta 1 año</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('exp','1 a 3 años',this)"><span>1 a 3 años</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('exp','3 a 5 años',this)"><span>3 a 5 años</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('exp','Más de 5 años',this)"><span>Más de 5 años</span></button>
+                            </div>
+                            <p class="po-error">Elegí tu nivel de experiencia.</p>
+                        </div>
+                        <div class="po-field po-sub">
+                            <label class="po-label">Modalidad preferida <small>(opcional)</small></label>
+                            <div class="po-options" id="po-mode">
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('mode','Presencial',this)"><i data-lucide="building-2"></i><span>Presencial</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('mode','Híbrido',this)"><i data-lucide="repeat"></i><span>Híbrido</span></button>
+                                <button type="button" class="po-opt" aria-pressed="false" onclick="toggleChip('mode','Remoto',this)"><i data-lucide="home"></i><span>Remoto</span></button>
+                            </div>
+                        </div>
+                        <div class="po-fields po-sub">
+                            <div class="po-field full">
+                                <label class="po-label" for="po-linkedin">LinkedIn <small>(opcional)</small></label>
+                                <input class="po-input" id="po-linkedin" type="url" placeholder="https://www.linkedin.com/in/tu-perfil">
+                            </div>
+                            <div class="po-field full">
+                                <label class="po-label" for="po-about">Contanos brevemente sobre vos <small>(opcional)</small></label>
+                                <textarea class="po-input" id="po-about" maxlength="400" placeholder="Ej: Tengo 4 años de experiencia en atención al cliente y busco crecer en un rol administrativo."></textarea>
+                                <div class="po-count"><span id="po-count">0</span>/400</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="eth-body">
-                        <p>Manejamos activos de información extremadamente críticos bajo la Ley N° 25.326 de Protección de Datos Personales:</p>
-                        <ul class="eth-list">
-                            <li><strong>Liquidación y Datos Hard:</strong> Toda la información relacionada con grillas salariales, datos bancarios, embargos judiciales, deducciones de ganancias, afiliaciones sindicales e historias clínicas y legajos de los empleados de nuestros clientes será tratada bajo el más estricto secreto profesional.</li>
-                            <li><strong>Seguridad Informática:</strong> Implementamos accesos restringidos y perfiles de seguridad para que sólo el personal autorizado tenga acceso a los sistemas de gestión de nómina y legajos digitales.</li>
-                        </ul>
-                    </div>
-                </article>
 
-                <!-- 4 -->
-                <article class="eth-card">
-                    <div class="eth-card-head">
-                        <div class="eth-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                        <h2>4. Transparencia en Auditorías y Consultoría</h2>
-                    </div>
-                    <div class="eth-body">
-                        <ul class="eth-list">
-                            <li><strong>Diagnósticos Honestos:</strong> En servicios de auditoría laboral, clima organizacional o consultoría estratégica, nos comprometemos a entregar informes realistas, basados en datos objetivos, sin falsear resultados para complacer a la dirección del cliente o encubrir malas prácticas internas.</li>
-                            <li><strong>Prevención de Riesgos:</strong> Alertamos proactivamente a nuestros clientes si detectamos desvíos normativos en su gestión (como irregularidades en aportes de la seguridad social, falta de cobertura de ART o incumplimiento de normas de Higiene y Seguridad).</li>
-                        </ul>
-                    </div>
-                </article>
+                    <!-- 3. CV -->
+                    <div class="po-step" data-step="3">
+                        <h2 class="po-step-title"><span class="po-step-num">3</span> Cargá tu Curriculum Vitae</h2>
+                        <div class="po-field" id="po-cv-field">
+                            <label class="po-drop" id="po-drop">
+                                <input type="file" id="po-cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                                <span class="po-drop-ico"><i data-lucide="file-up"></i></span>
+                                <strong>Arrastrá tu CV acá o <em>tocá para elegirlo</em></strong>
+                                <span>PDF, DOC o DOCX · hasta 10 MB</span>
+                            </label>
+                            <div class="po-file hidden" id="po-file">
+                                <span class="po-file-ico"><i data-lucide="file-text"></i></span>
+                                <span class="po-file-info"><span class="po-file-name" id="po-file-name"></span><span class="po-file-size" id="po-file-size"></span></span>
+                                <button type="button" id="po-file-x">Quitar</button>
+                            </div>
+                            <p class="po-error" id="po-cv-error">Cargá tu CV en PDF, DOC o DOCX.</p>
+                        </div>
 
-                <!-- 5 -->
-                <article class="eth-card">
-                    <div class="eth-card-head">
-                        <div class="eth-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-                        <h2>5. Relación con Candidatos y Trabajadores</h2>
-                    </div>
-                    <div class="eth-body">
-                        <ul class="eth-list">
-                            <li><strong>Igualdad de Oportunidades (Ley N° 23.592):</strong> Garantizamos procesos de selección, evaluación y planes de carrera libres de discriminación por género, edad, orientación sexual, religión, ideología o condición socioeconómica.</li>
-                            <li><strong>Gratuidad:</strong> Bajo ninguna circunstancia se cobrará dinero o se retendrá porcentaje salarial alguno a candidatos o empleados por su postulación, contratación o participación en capacitaciones dictadas por la consultora.</li>
-                            <li><strong>Trato Digno:</strong> Velamos por la salud mental y emocional en los espacios de trabajo, rechazando activamente cualquier forma de acoso laboral (mobbing), violencia de género o persecución sindical en los proyectos que administramos.</li>
-                        </ul>
-                    </div>
-                </article>
+                        <div class="po-field po-consent-wrap" id="po-consent-field">
+                            <label class="po-consent">
+                                <input type="checkbox" id="po-consent">
+                                <span>Acepto que Capital Humano Group use mis datos y mi CV para evaluarme en búsquedas laborales, de forma confidencial y sin costo para mí. Conocé nuestro <a href="codigo-de-etica.html" target="_blank" rel="noopener">Código de Ética</a>.</span>
+                            </label>
+                            <p class="po-error">Necesitamos tu conformidad para continuar.</p>
+                        </div>
 
-                <!-- 6 -->
-                <article class="eth-card">
-                    <div class="eth-card-head">
-                        <div class="eth-icon"><i class="fa-solid fa-user-shield"></i></div>
-                        <h2>6. Conflicto de Intereses y Lealtad Comercial</h2>
+                        <button type="submit" id="po-submit" class="btn-primary po-submit">
+                            <i data-lucide="send"></i><span>Preparar mi postulación</span>
+                        </button>
+                        <p class="po-note">En el siguiente paso se abre WhatsApp con tu mensaje listo y solo tenés que adjuntar tu CV.</p>
                     </div>
-                    <div class="eth-body">
-                        <ul class="eth-list">
-                            <li><strong>Independencia de Criterio:</strong> Los consultores deben reportar de inmediato si la empresa de un familiar o allegado solicita nuestros servicios, o si un candidato en un proceso selectivo tiene un vínculo directo con ellos.</li>
-                            <li><strong>Cláusula Off-Limits:</strong> No realizaremos búsquedas de personal ni ofreceremos activamente cambiar de empleo a los colaboradores actuales de las empresas que sean clientes activos de nuestra consultora.</li>
-                        </ul>
-                    </div>
-                </article>
+                </form>
 
-                <!-- 7 -->
-                <div class="eth-highlight">
-                    <div class="eth-icon"><i class="fa-solid fa-bullhorn"></i></div>
-                    <h2>7. Canal de Reportes y Comité de Ética</h2>
-                    <p>Habilitamos nuestro canal oficial para recibir denuncias sobre violaciones a este código. Garantizamos la confidencialidad de la investigación, el debido proceso y la absoluta prohibición de represalias contra cualquier colaborador o tercero que denuncie prácticas carentes de buena fe.</p>
-                    <a href="mailto:chgcapitalhumanogroup@gmail.com" class="btn-primary eth-mail">
-                        <i class="fa-solid fa-envelope"></i> chgcapitalhumanogroup@gmail.com
-                    </a>
+                <!-- ÉXITO -->
+                <div class="po-done hidden" id="po-done" aria-live="polite">
+                    <div class="po-check"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+                    <h2>¡Listo, <span id="po-done-name">te esperamos</span>! Falta un paso</h2>
+                    <p>Tu mensaje ya está preparado. Enviarlo por WhatsApp nos permite recibir tu CV y escribirte directamente.</p>
+                    <ol class="po-steps">
+                        <li><b>1</b><strong>Abrí WhatsApp</strong><br>Con el botón verde de abajo. Tu mensaje aparece ya escrito.</li>
+                        <li class="hl"><b>2</b><strong>Adjuntá tu CV</strong><br>Tocá el clip 📎 y elegí <span id="po-done-file" style="color:#34D399;font-weight:700">tu archivo</span>.</li>
+                        <li><b>3</b><strong>Enviá</strong><br>Nuestro equipo revisa tu perfil y te contacta si hay una búsqueda afín.</li>
+                    </ol>
+                    <div class="po-preview">
+                        <div class="po-preview-head"><span>Vista previa de tu mensaje</span><button type="button" class="po-copy" id="po-copy">Copiar</button></div>
+                        <pre id="po-msg"></pre>
+                    </div>
+                    <div class="po-cta-stack">
+                        <a id="po-wa" href="#" target="_blank" rel="noopener" class="btn-primary po-cta"><i data-lucide="message-circle"></i><span>Abrir WhatsApp y enviar</span></a>
+                        <button type="button" class="po-share hidden" id="po-share"><i data-lucide="share-2"></i><span>Compartir mensaje + CV (desde el celular)</span></button>
+                        <button type="button" class="po-back-link" id="po-edit">← Corregir mis datos</button>
+                    </div>
                 </div>
 
             </div>
         </div>
     </main>
 
-<footer class="footer">
+    <footer class="footer">
         <div class="container footer-grid">
             <!-- COLUMNA 1: LOGO Y SOBRE CHG -->
             <div class="footer-col brand-col">
@@ -376,90 +442,160 @@
             </div>
         </div>
     </footer>
-    <!-- Efecto de scroll de las tarjetas -->
+
     <script>
-        /* ELEGÍ EL EFECTO:
-           'depth'   -> (nuevo) las tarjetas emergen con profundidad 3D al acercarte, se enfocan en el centro
-                        y se alejan/desvanecen al irte. Funciona subiendo y bajando.
-           'classic' -> el efecto original: entran y salen desde los costados.            */
-        const MODE = 'depth';
+        // Para recibir las postulaciones en tu WhatsApp, completá tu número acá:
+        // código de país + área + número, sin "+", espacios ni guiones. Ej: '5491112345678'
+        const WHATSAPP_NUMBER = '5493512153619';
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var grid = document.querySelector('.eth-grid');
-            var items = Array.prototype.slice.call(document.querySelectorAll('.eth-card, .eth-highlight'));
-            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            var rail = document.getElementById('ethRail');
-            var fill = document.getElementById('ethRailFill');
-            var dots = [];
+        const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const $ = id => document.getElementById(id);
+        const state = { areas: [], exp: '', mode: '', file: null };
+        const MAX_BYTES = 10 * 1024 * 1024;
 
-            grid.classList.add(MODE === 'classic' ? 'eth-mode-classic' : 'eth-mode-depth');
+        function toggleChip(group, val, el, multi, max) {
+            if (multi) {
+                const i = state.areas.indexOf(val);
+                if (i >= 0) { state.areas.splice(i, 1); el.classList.remove('selected'); }
+                else if (state.areas.length < max) { state.areas.push(val); el.classList.add('selected'); }
+                else { el.animate([{ transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'none' }], { duration: 250 }); }
+                el.setAttribute('aria-pressed', el.classList.contains('selected'));
+            } else {
+                const same = state[group] === val;
+                el.parentElement.querySelectorAll('.po-opt').forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
+                state[group] = same && group === 'mode' ? '' : val;
+                if (state[group]) { el.classList.add('selected'); el.setAttribute('aria-pressed', 'true'); }
+            }
+            const f = el.closest('.po-field'); if (f) f.classList.remove('err');
+            updateProgress();
+        }
 
-            // riel de puntos
-            items.forEach(function (el, i) {
-                var b = document.createElement('button');
-                b.type = 'button'; b.className = 'eth-dot';
-                b.setAttribute('aria-label', 'Ir a la sección ' + (i + 1));
-                b.addEventListener('click', function () { el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); });
-                rail.appendChild(b); dots.push(b);
+        const val = id => $(id).value.trim();
+        const okEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+        const okPhone = v => v.replace(/\D/g, '').length >= 8;
+
+        function stepsDone() {
+            return [
+                val('po-name').length > 2 && okPhone(val('po-phone')) && okEmail(val('po-email')) && val('po-city').length > 1,
+                state.areas.length > 0 && !!state.exp,
+                !!state.file && $('po-consent').checked
+            ];
+        }
+        function updateProgress() {
+            const d = stepsDone();
+            document.querySelectorAll('.po-chip').forEach((c, i) => {
+                c.classList.toggle('done', d[i]);
+                c.querySelector('.po-chip-n').textContent = d[i] ? '✓' : String(i + 1);
+            });
+            const n = d.filter(Boolean).length;
+            $('po-bar-fill').style.width = (n / 3 * 100) + '%';
+            $('po-submit').classList.toggle('ready', n === 3);
+        }
+
+        function fmtSize(b) { return b > 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+
+        function setFile(f) {
+            const field = $('po-cv-field'), err = $('po-cv-error');
+            if (!f) return;
+            const okExt = /\.(pdf|docx?)$/i.test(f.name);
+            if (!okExt) { err.textContent = 'El archivo tiene que ser PDF, DOC o DOCX.'; field.classList.add('err'); return; }
+            if (f.size > MAX_BYTES) { err.textContent = 'El archivo pesa más de 10 MB. Probá con uno más liviano.'; field.classList.add('err'); return; }
+            state.file = f;
+            field.classList.remove('err');
+            $('po-file-name').textContent = f.name;
+            $('po-file-size').textContent = fmtSize(f.size) + ' · listo ✓';
+            $('po-file').classList.remove('hidden');
+            $('po-drop').classList.add('hidden');
+            updateProgress();
+        }
+        function clearFile() {
+            state.file = null; $('po-cv').value = '';
+            $('po-file').classList.add('hidden'); $('po-drop').classList.remove('hidden');
+            updateProgress();
+        }
+
+        function buildMessage() {
+            const line = (k, v) => v ? `*${k}:* ${v}\n` : '';
+            return `¡Hola Capital Humano Group! 👋 Me postulo para sumarme a su base de talentos.\n\n` +
+                line('Nombre', val('po-name')) +
+                line('Teléfono', val('po-phone')) +
+                line('Email', val('po-email')) +
+                line('Zona', val('po-city')) +
+                line('Áreas de interés', state.areas.join(', ')) +
+                line('Experiencia', state.exp) +
+                line('Modalidad', state.mode) +
+                line('LinkedIn', val('po-linkedin')) +
+                (val('po-about') ? `\n*Sobre mí:* ${val('po-about')}\n` : '') +
+                `\nTe envío mi CV adjunto${state.file ? ' (' + state.file.name + ')' : ''}. ¡Muchas gracias y quedo atento/a a novedades!`;
+        }
+
+        function validate() {
+            let first = null;
+            const mark = (id, bad) => { const f = $(id).closest('.po-field'); f.classList.toggle('err', bad); if (bad && !first) first = f; };
+            mark('po-name', val('po-name').split(/\s+/).filter(Boolean).length < 2 || val('po-name').length < 4);
+            mark('po-phone', !okPhone(val('po-phone')));
+            mark('po-email', !okEmail(val('po-email')));
+            mark('po-city', val('po-city').length < 2);
+            const af = $('po-area-field'); af.classList.toggle('err', !state.areas.length); if (!state.areas.length && !first) first = af;
+            const ef = $('po-exp-field'); ef.classList.toggle('err', !state.exp); if (!state.exp && !first) first = ef;
+            const cf = $('po-cv-field'); if (!state.file) { $('po-cv-error').textContent = 'Cargá tu CV en PDF, DOC o DOCX.'; cf.classList.add('err'); if (!first) first = cf; }
+            const kf = $('po-consent-field'); kf.classList.toggle('err', !$('po-consent').checked); if (!$('po-consent').checked && !first) first = kf;
+            const lk = val('po-linkedin');
+            if (lk && !/^https?:\/\//i.test(lk)) $('po-linkedin').value = 'https://' + lk;
+            return first;
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const bad = validate();
+            if (bad) { bad.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'center' }); return; }
+            if (window.chgTrack) chgTrack('postulacion_preparada', { areas: state.areas.length, experiencia: state.exp });
+            const msg = buildMessage();
+            $('po-msg').textContent = msg;
+            $('po-done-name').textContent = val('po-name').split(/\s+/)[0];
+            $('po-done-file').textContent = state.file.name;
+            $('po-wa').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+            $('po-form').classList.add('hidden');
+            const d = $('po-done'); d.classList.remove('hidden', 'show'); void d.offsetWidth; d.classList.add('show');
+            if (window.lucide) lucide.createIcons();
+            $('po-share').classList.toggle('hidden', !(navigator.canShare && navigator.canShare({ files: [state.file] })));
+            d.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            $('po-form').addEventListener('submit', submitForm);
+            ['po-name', 'po-phone', 'po-email', 'po-city', 'po-linkedin', 'po-about'].forEach(id =>
+                $(id).addEventListener('input', () => { $(id).closest('.po-field').classList.remove('err'); updateProgress(); }));
+            $('po-about').addEventListener('input', () => ($('po-count').textContent = $('po-about').value.length));
+            $('po-consent').addEventListener('change', () => { $('po-consent-field').classList.remove('err'); updateProgress(); });
+
+            const cv = $('po-cv'), drop = $('po-drop');
+            cv.addEventListener('change', () => setFile(cv.files[0]));
+            ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+            ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+            drop.addEventListener('drop', e => { if (e.dataTransfer.files.length) setFile(e.dataTransfer.files[0]); });
+            $('po-file-x').addEventListener('click', clearFile);
+
+            $('po-edit').addEventListener('click', () => {
+                $('po-done').classList.add('hidden'); $('po-form').classList.remove('hidden');
+                window.scrollTo({ top: document.querySelector('.po-section').offsetTop - 60, behavior: REDUCED ? 'auto' : 'smooth' });
+            });
+            $('po-copy').addEventListener('click', async () => {
+                try { await navigator.clipboard.writeText($('po-msg').textContent); $('po-copy').textContent = '¡Copiado!'; }
+                catch (_) { $('po-copy').textContent = 'Copiá a mano'; }
+                setTimeout(() => ($('po-copy').textContent = 'Copiar'), 1800);
+            });
+            $('po-share').addEventListener('click', async () => {
+                try { await navigator.share({ files: [state.file], text: $('po-msg').textContent, title: 'Postulación CHG' }); } catch (_) {}
             });
 
-            if (reduce) { items.forEach(function (el) { el.classList.add('animate-in'); }); return; }
-
-            if (MODE === 'classic') {
-                if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('animate-in'); }); }
-                else {
-                    var io = new IntersectionObserver(function (entries) {
-                        entries.forEach(function (en) { en.target.classList.toggle('animate-in', en.isIntersecting); });
-                    }, { threshold: 0.12 });
-                    items.forEach(function (el) { io.observe(el); });
-                }
-            }
-
-            var ticking = false;
-            function update() {
-                ticking = false;
-                var vh = window.innerHeight, focus = vh * 0.52, best = -1, bestD = 1e9;
-                items.forEach(function (el, i) {
-                    var r = el.getBoundingClientRect();
-                    var c = r.top + r.height / 2;
-                    var d = (c - focus) / (vh * 0.62);          // -1 arriba ... 0 foco ... +1 abajo
-                    var a = Math.min(1, Math.abs(d));
-                    if (MODE === 'depth') {
-                        var k = a * a;
-                        el.style.setProperty('--o', (1 - k * 0.97).toFixed(3));
-                        el.style.setProperty('--sc', (1 - k * 0.09).toFixed(3));
-                        el.style.setProperty('--bl', (k * 7).toFixed(1) + 'px');
-                        if (d > 0) {                           // entrando desde abajo
-                            el.style.setProperty('--ty', (k * 90).toFixed(1) + 'px');
-                            el.style.setProperty('--rx', (-k * 14).toFixed(2) + 'deg');
-                            el.style.setProperty('--tx', (-k * 30).toFixed(1) + 'px');
-                        } else {                               // alejándose hacia arriba
-                            el.style.setProperty('--ty', (-k * 50).toFixed(1) + 'px');
-                            el.style.setProperty('--rx', (k * 10).toFixed(2) + 'deg');
-                            el.style.setProperty('--tx', (k * 30).toFixed(1) + 'px');
-                        }
-                    }
-                    var dist = Math.abs(c - focus);
-                    if (dist < bestD) { bestD = dist; best = i; }
-                });
-                items.forEach(function (el, i) {
-                    var on = i === best && bestD < vh * 0.5;
-                    el.classList.toggle('active', on && el.classList.contains('eth-card'));
-                    dots[i].classList.toggle('on', on);
-                    if (on) dots[i].classList.add('seen');
-                });
-                for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('seen', j <= best);
-
-                var g = grid.getBoundingClientRect();
-                rail.classList.toggle('show', g.top < vh * 0.6 && g.bottom > vh * 0.4);
-                var first = dots[0].offsetTop, lastD = dots[dots.length - 1].offsetTop;
-                fill.style.height = (best >= 0 ? (dots[best].offsetTop - first) + 6 : 0) + 'px';
-                fill.style.top = (first + 7) + 'px';
-            }
-            function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-            window.addEventListener('scroll', req, { passive: true });
-            window.addEventListener('resize', req);
-            update();
+            const steps = document.querySelectorAll('.po-step');
+            if ('IntersectionObserver' in window && !REDUCED) {
+                const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { threshold: 0.08 });
+                steps.forEach(s => io.observe(s));
+            } else steps.forEach(s => s.classList.add('in'));
+            updateProgress();
         });
     </script>
 

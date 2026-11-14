@@ -448,6 +448,28 @@
         // código de país + área + número, sin "+", espacios ni guiones. Ej: '5491112345678'
         const WHATSAPP_NUMBER = '5493512153619';
 
+        // Web app de Google Apps Script: guarda el CV y los datos en la carpeta de Drive
+        const DRIVE_URL = 'https://script.google.com/macros/s/AKfycbyYmyMSQjB0iMtY6LxlDs9l6ybVfQENKJppMXZsRjlmvVdFz4VPE4P04zT77_Qphrq8/exec';
+
+        function archivoABase64(file) {
+            return new Promise((ok, fail) => {
+                const r = new FileReader();
+                r.onload = () => ok(String(r.result).split(',')[1]);
+                r.onerror = fail;
+                r.readAsDataURL(file);
+            });
+        }
+        async function enviarADrive(datos, file) {
+            const payload = { ...datos };
+            if (file) payload.cv = { name: file.name, mime: file.type || 'application/pdf', base64: await archivoABase64(file) };
+            await fetch(DRIVE_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            });
+        }
+
         const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const $ = id => document.getElementById(id);
         const state = { areas: [], exp: '', mode: '', file: null };
@@ -545,10 +567,30 @@
             return first;
         }
 
-        function submitForm(e) {
+        let enviando = false;
+        async function submitForm(e) {
             e.preventDefault();
+            if (enviando) return;
             const bad = validate();
             if (bad) { bad.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'center' }); return; }
+
+            // Guardar la postulación (datos + CV) en Drive. Si falla, igual seguimos a WhatsApp.
+            enviando = true;
+            const btn = $('po-submit'), btnTxt = btn.querySelector('span');
+            const txtOriginal = btnTxt.textContent;
+            btn.disabled = true; btnTxt.textContent = 'Enviando tu postulación…';
+            try {
+                await Promise.race([
+                    enviarADrive({
+                        nombre: val('po-name'), telefono: val('po-phone'), email: val('po-email'), zona: val('po-city'),
+                        areas: state.areas.join(', '), experiencia: state.exp, modalidad: state.mode,
+                        linkedin: val('po-linkedin'), sobreMi: val('po-about')
+                    }, state.file),
+                    new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 20000))
+                ]);
+            } catch (err) { console.warn('No se pudo guardar en Drive:', err); }
+            enviando = false;
+            btn.disabled = false; btnTxt.textContent = txtOriginal;
             if (window.chgTrack) chgTrack('postulacion_preparada', { areas: state.areas.length, experiencia: state.exp });
             const msg = buildMessage();
             $('po-msg').textContent = msg;

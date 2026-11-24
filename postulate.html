@@ -193,25 +193,6 @@
             .po-js .po-step { opacity: 1; transform: none; transition: none; }
             .po-check svg { stroke-dashoffset: 0; animation: none; }
         }
-
-        /* Búsquedas activas */
-        .po-search { padding: 56px 0 8px; text-align: center; }
-        .po-search h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 10px; }
-        .po-search h2 em { font-style: normal; background: linear-gradient(90deg, #34D399, #3B82F6); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .po-search p.po-search-lead { color: var(--white-soft); max-width: 600px; margin: 0 auto 28px; }
-        .po-search-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 920px; margin: 0 auto; }
-        .po-job { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 26px 18px 22px; border-radius: 18px; font-family: inherit; color: #fff; background: rgba(30, 41, 59, 0.6); border: 1px solid var(--border-glow); cursor: pointer; backdrop-filter: blur(10px); transition: transform .25s ease, border-color .25s ease, box-shadow .3s ease; }
-        .po-job:hover { transform: translateY(-5px); border-color: var(--po-green); box-shadow: 0 14px 30px rgba(0,0,0,.4), 0 0 24px rgba(31,166,122,.25); }
-        .po-job:focus-visible { outline: 2px solid #60A5FA; outline-offset: 3px; }
-        .po-job.selected { border-color: var(--po-green); background: rgba(31,166,122,.16); }
-        .po-job-ico { width: 60px; height: 60px; border-radius: 16px; display: grid; place-items: center; background: rgba(31,166,122,.16); border: 1px solid rgba(31,166,122,.4); }
-        .po-job-ico svg { width: 28px; height: 28px; color: var(--po-green-soft); }
-        .po-job-txt { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-        .po-search { color: #fff; }
-        .po-job strong { font-size: 1.05rem; font-weight: 700; }
-        .po-job small { font-size: .8rem; color: var(--white-soft); opacity: .85; }
-        .po-job .po-job-cta { font-size: .82rem; font-weight: 700; color: var(--po-green-soft); }
-        @media (max-width: 720px) { .po-search-grid { grid-template-columns: 1fr; max-width: 420px; } .po-job { flex-direction: row; text-align: left; padding: 16px 18px; } .po-job-ico { flex: none; width: 52px; height: 52px; } .po-job-txt { display: flex; flex-direction: column; gap: 2px; flex: 1; } }
     </style>
 </head>
 <body>
@@ -254,29 +235,6 @@
                 <span class="po-fact"><i data-lucide="badge-check"></i> Sin costo para el candidato</span>
                 <span class="po-fact"><i data-lucide="lock"></i> Tus datos son confidenciales</span>
                 <span class="po-fact"><i data-lucide="zap"></i> Te lleva 2 minutos</span>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="po-search" id="busquedas">
-        <div class="container">
-            <span class="hero-badge"><span class="po-dot"></span> Búsquedas activas</span>
-            <h2>Perfiles que <em>estamos buscando</em></h2>
-            <p class="po-search-lead">Elegí el que se parezca a vos y completá tu postulación en 2 minutos. Si tu perfil es otro, también podés sumarte a la base.</p>
-            <div class="po-search-grid">
-                <button type="button" class="po-job" data-job="Secretario/a recepcionista" data-area="Atención al Cliente" onclick="pickJob(this)">
-                    <span class="po-job-ico"><i data-lucide="headset"></i></span>
-                    <span class="po-job-txt"><strong>Secretario/a recepcionista</strong><small>Área: Atención al Cliente</small><span class="po-job-cta">Postularme →</span></span>
-                </button>
-                <button type="button" class="po-job" data-job="Administrativo/a contable" data-area="Administración y Contable" onclick="pickJob(this)">
-                    <span class="po-job-ico"><i data-lucide="calculator"></i></span>
-                    <span class="po-job-txt"><strong>Administrativo/a contable</strong><small>Área: Administración y Contable</small><span class="po-job-cta">Postularme →</span></span>
-                </button>
-                <button type="button" class="po-job" data-job="Cocinero/a" data-area="Gastronomía y Hotelería" onclick="pickJob(this)">
-                    <span class="po-job-ico"><i data-lucide="chef-hat"></i></span>
-                    <span class="po-job-txt"><strong>Cocinero/a</strong><small>Área: Gastronomía y Hotelería</small><span class="po-job-cta">Postularme →</span></span>
-                </button>
             </div>
         </div>
     </section>
@@ -514,19 +472,8 @@
 
         const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const $ = id => document.getElementById(id);
-        const state = { areas: [], exp: '', mode: '', file: null, busqueda: '' };
+        const state = { areas: [], exp: '', mode: '', file: null };
         const MAX_BYTES = 10 * 1024 * 1024;
-
-        // Búsquedas activas: preselecciona el rubro y baja al formulario
-        function pickJob(btn) {
-            const area = btn.dataset.area;
-            state.busqueda = btn.dataset.job;
-            document.querySelectorAll('.po-job').forEach(b => b.classList.toggle('selected', b === btn));
-            const chip = [...document.querySelectorAll('#po-areas .po-opt')].find(b => b.textContent.trim() === area);
-            if (chip && !state.areas.includes(area)) toggleChip('areas', area, chip, true, 3);
-            $('postulacion').scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
-            if (window.chgTrack) chgTrack('busqueda_activa', { puesto: state.busqueda });
-        }
 
         function toggleChip(group, val, el, multi, max) {
             if (multi) {
@@ -596,7 +543,6 @@
                 line('Teléfono', val('po-phone')) +
                 line('Email', val('po-email')) +
                 line('Zona', val('po-city')) +
-                line('Búsqueda activa', state.busqueda) +
                 line('Áreas de interés', state.areas.join(', ')) +
                 line('Experiencia', state.exp) +
                 line('Modalidad', state.mode) +
@@ -637,7 +583,7 @@
                 await Promise.race([
                     enviarADrive({
                         nombre: val('po-name'), telefono: val('po-phone'), email: val('po-email'), zona: val('po-city'),
-                        areas: state.areas.join(', '), busqueda: state.busqueda, experiencia: state.exp, modalidad: state.mode,
+                        areas: state.areas.join(', '), experiencia: state.exp, modalidad: state.mode,
                         linkedin: val('po-linkedin'), sobreMi: val('po-about')
                     }, state.file),
                     new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 20000))

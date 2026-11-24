@@ -324,20 +324,29 @@
         }
     
         /* ==========================================
-           PRECIOS DE LOS PACKS (USD / ARS)
+           PRECIO EN EL PIE DE CADA PACK (USD / ARS)
+           Mismo lenguaje visual que las tarjetas de "Impulsá tu empresa":
+           línea divisoria, píldora y botón redondeado.
            ========================================== */
-        .pack-price { margin: 18px 0 8px; padding: 18px 18px 16px; border-radius: 16px; text-align: center; background: linear-gradient(135deg, rgba(31,166,122,0.14), rgba(59,130,246,0.10)); border: 1px solid rgba(52,211,153,0.35); position: relative; }
-        .pp-from { display: block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: #34D399; margin-bottom: 4px; }
-        .pp-row { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        .pp-cur { font-size: 1rem; font-weight: 700; color: #93C5FD; letter-spacing: 0.06em; }
-        .pp-amt { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF; transition: opacity .2s ease, transform .2s ease; }
-        .pp-amt.swap { opacity: 0; transform: translateY(6px); }
-        .pp-per { font-size: 0.9rem; font-weight: 600; color: #B6C2DD; }
-        .pp-tag { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #06231A; background: linear-gradient(90deg, #34D399, #60A5FA); }
-        .pp-toggle { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 9px 18px; border-radius: 999px; font-family: inherit; font-size: 0.85rem; font-weight: 700; color: #FFFFFF; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.28); cursor: pointer; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
-        .pp-toggle:hover { background: rgba(31,166,122,0.25); border-color: #34D399; transform: translateY(-2px); }
+        .pack-price { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 14px; margin: 0 0 16px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.10); }
+        .pp-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+        .pp-top { display: flex; align-items: center; gap: 8px; min-height: 22px; }
+        .pp-from { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: #94A3B8; }
+        .pp-tag { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; color: #6FD3B0; background: rgba(31,166,122,0.14); border: 1px solid rgba(31,166,122,0.4); white-space: nowrap; }
+        .pp-row { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+        .pp-cur { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; color: #60A5FA; transition: opacity .2s ease, transform .2s ease; }
+        .pp-amt { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #FFFFFF; font-variant-numeric: tabular-nums; transition: opacity .2s ease, transform .2s ease; }
+        .pp-amt.swap, .pp-cur.swap { opacity: 0; transform: translateY(6px); }
+        .pp-per { font-size: 0.8rem; font-weight: 600; color: #94A3B8; }
+        .pp-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 24px; font-family: inherit; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.2px; color: #60A5FA; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); cursor: pointer; white-space: nowrap; transition: background .3s ease, border-color .3s ease, color .3s ease, transform .3s ease; }
+        .pp-toggle .pp-ico { display: inline-block; font-size: 0.95rem; line-height: 1; transition: transform .45s cubic-bezier(0.2,0.8,0.2,1); }
+        .pp-toggle:hover { background: rgba(59,130,246,0.18); border-color: #3B82F6; color: #FFFFFF; transform: translateY(-2px); }
+        .pp-toggle:hover .pp-ico { transform: rotate(180deg); }
+        .pp-toggle.is-ars .pp-ico { transform: rotate(180deg); }
+        .pp-toggle.is-ars:hover .pp-ico { transform: rotate(360deg); }
         .pp-toggle:focus-visible { outline: 2px solid #60A5FA; outline-offset: 2px; }
-        .pp-note { display: block; margin-top: 8px; font-size: 0.72rem; color: #8FA2CC; }
+        @media (max-width: 420px) { .pp-amt { font-size: 1.75rem; } .pp-toggle { width: 100%; justify-content: center; } }
+        @media (prefers-reduced-motion: reduce) { .pp-amt, .pp-cur, .pp-toggle, .pp-ico { transition: none; } }
     </style>
 </head>
 <body>
@@ -812,13 +821,6 @@
                         <h3>Pack 1: Esencial</h3>
                         <p class="pack-tagline">Cimientos Firmes</p>
                         <p class="pack-desc">Ideal para ordenar el área de personal, cumplir normativas legales y construir una base sólida.</p>
-                        <div class="pack-price" data-usd="570" data-ars="900.000">
-                            <span class="pp-from">Desde</span>
-                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">570</span><span class="pp-per">/ mes</span></div>
-                            
-                            <div><button type="button" class="pp-toggle" aria-pressed="false">Ver precio en ARS</button></div>
-                            <span class="pp-note">Valor referencial mensual</span>
-                        </div>
                     </div>
                   <ul class="pack-features">
                       <li>
@@ -844,6 +846,13 @@
                   </ul>
                     <button class="accordion-trigger-btn"><span>📊 Mediciones e Indicadores</span> <span>▲</span></button>
 
+                    <div class="pack-price" data-usd="570" data-ars="900.000">
+                        <div class="pp-info">
+                            <div class="pp-top"><span class="pp-from">Desde</span></div>
+                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">570</span><span class="pp-per">/ mes</span></div>
+                        </div>
+                        <button type="button" class="pp-toggle" aria-pressed="false"><span class="pp-ico" aria-hidden="true">&#8644;</span><span class="pp-label">Ver precio en ARS</span></button>
+                    </div>
                     <div class="pack-overlay-panel">
                         <div class="overlay-header">
                             <h4>📊 Mediciones e Indicadores</h4>
@@ -874,13 +883,6 @@
                         <h3>Pack 2: Evolución</h3>
                         <p class="pack-tagline">Crecimiento y Estructura</p>
                         <p class="pack-desc">Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.</p>
-                        <div class="pack-price" data-usd="950" data-ars="1.500.000">
-                            <span class="pp-from">Desde</span>
-                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">950</span><span class="pp-per">/ mes</span></div>
-                            
-                            <div><button type="button" class="pp-toggle" aria-pressed="false">Ver precio en ARS</button></div>
-                            <span class="pp-note">Valor referencial mensual</span>
-                        </div>
                     </div>
                    <ul class="pack-features">
                     <li>
@@ -907,6 +909,13 @@
 
                     <button class="accordion-trigger-btn"><span>📊 Mediciones e Indicadores</span> <span>▲</span></button>
 
+                    <div class="pack-price" data-usd="950" data-ars="1.500.000">
+                        <div class="pp-info">
+                            <div class="pp-top"><span class="pp-from">Desde</span></div>
+                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">950</span><span class="pp-per">/ mes</span></div>
+                        </div>
+                        <button type="button" class="pp-toggle" aria-pressed="false"><span class="pp-ico" aria-hidden="true">&#8644;</span><span class="pp-label">Ver precio en ARS</span></button>
+                    </div>
                     <div class="pack-overlay-panel">
                         <div class="overlay-header">
                             <h4>📊 Mediciones e Indicadores</h4>
@@ -940,13 +949,6 @@
                         <h3>Pack 3: Estratégico</h3>
                         <p class="pack-tagline">Máximo Rendimiento</p>
                         <p class="pack-desc">Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.</p>
-                        <div class="pack-price" data-usd="1.270" data-ars="2.000.000">
-                            <span class="pp-from">Desde</span>
-                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">1.270</span><span class="pp-per">/ mes</span></div>
-                            <span class="pp-tag">Precio imbatible</span>
-                            <div><button type="button" class="pp-toggle" aria-pressed="false">Ver precio en ARS</button></div>
-                            <span class="pp-note">Valor referencial mensual</span>
-                        </div>
                     </div>
                     <ul class="pack-features">
                         <li>
@@ -972,6 +974,13 @@
                     </ul>
                     <button class="accordion-trigger-btn"><span>📊 Mediciones e Indicadores</span> <span>▲</span></button>
 
+                    <div class="pack-price" data-usd="1.270" data-ars="2.000.000">
+                        <div class="pp-info">
+                            <div class="pp-top"><span class="pp-from">Desde</span><span class="pp-tag">Precio imbatible</span></div>
+                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">1.270</span><span class="pp-per">/ mes</span></div>
+                        </div>
+                        <button type="button" class="pp-toggle" aria-pressed="false"><span class="pp-ico" aria-hidden="true">&#8644;</span><span class="pp-label">Ver precio en ARS</span></button>
+                    </div>
                     <div class="pack-overlay-panel">
                         <div class="overlay-header">
                             <h4>📊 Mediciones e Indicadores</h4>
@@ -1835,27 +1844,55 @@
     })();
     </script>
     <script>
-    // Precios de los packs: alterna USD <-> ARS en las 3 tarjetas a la vez
+    // Precios de los packs: alterna USD <-> ARS en las 3 tarjetas a la vez + conteo animado al aparecer
     (function () {
         var prices = document.querySelectorAll('.pack-price');
         if (!prices.length) return;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var ars = false;
+        function num(txt) { return parseInt(String(txt).replace(/\./g, ''), 10) || 0; }
+        function fmt(n) { return n.toLocaleString('es-AR'); }
+        function countTo(el, target, prefix) {
+            if (reduce) { el.textContent = prefix + fmt(target); return; }
+            var t0 = null, dur = 900;
+            function step(ts) {
+                if (!t0) t0 = ts;
+                var k = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+                el.textContent = prefix + fmt(Math.round(target * e));
+                if (k < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
         function render() {
             prices.forEach(function (p) {
-                var amt = p.querySelector('.pp-amt'), cur = p.querySelector('.pp-cur'), btn = p.querySelector('.pp-toggle');
-                amt.classList.add('swap');
+                var amt = p.querySelector('.pp-amt'), cur = p.querySelector('.pp-cur'),
+                    btn = p.querySelector('.pp-toggle'), lab = btn.querySelector('.pp-label');
+                amt.classList.add('swap'); cur.classList.add('swap');
                 setTimeout(function () {
-                    amt.textContent = ars ? '$' + p.getAttribute('data-ars') : p.getAttribute('data-usd');
                     cur.textContent = ars ? 'ARS' : 'USD';
-                    amt.classList.remove('swap');
-                }, 180);
-                btn.textContent = ars ? 'Ver precio en USD' : 'Ver precio en ARS';
+                    amt.classList.remove('swap'); cur.classList.remove('swap');
+                    countTo(amt, num(p.getAttribute(ars ? 'data-ars' : 'data-usd')), ars ? '$' : '');
+                }, reduce ? 0 : 180);
+                lab.textContent = ars ? 'Ver precio en USD' : 'Ver precio en ARS';
+                btn.classList.toggle('is-ars', ars);
                 btn.setAttribute('aria-pressed', ars ? 'true' : 'false');
             });
         }
         prices.forEach(function (p) {
             p.querySelector('.pp-toggle').addEventListener('click', function (e) { e.stopPropagation(); ars = !ars; render(); });
         });
+        // Conteo al entrar en pantalla (una sola vez)
+        if ('IntersectionObserver' in window && !reduce) {
+            prices.forEach(function (p) { p.querySelector('.pp-amt').textContent = '0'; });
+            var io = new IntersectionObserver(function (es) {
+                es.forEach(function (en) {
+                    if (!en.isIntersecting) return;
+                    var p = en.target; io.unobserve(p);
+                    countTo(p.querySelector('.pp-amt'), num(p.getAttribute('data-usd')), '');
+                });
+            }, { threshold: 0.6 });
+            prices.forEach(function (p) { io.observe(p); });
+        }
     })();
     </script>
 </body>

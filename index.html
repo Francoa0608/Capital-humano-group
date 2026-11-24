@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHG Capital Humano Group | Consultoría Estratégica en RRHH</title>
+    <title>Capital Humano Group | Consultoría de RRHH para pymes en Córdoba</title>
+    <meta name="description" content="Consultora de RRHH en Córdoba para pymes: selección de personal, legajos digitales, auditoría laboral, liquidación de sueldos y asesoría legal laboral. Packs mensuales desde USD 570.">
+    <link rel="canonical" href="https://capitalhumanogroup.vercel.app/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0F172A">
+    <meta property="og:site_name" content="Capital Humano Group">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:url" content="https://capitalhumanogroup.vercel.app/">
+    <meta property="og:title" content="Capital Humano Group | Consultoría de RRHH para pymes en Córdoba">
+    <meta property="og:description" content="Mové tu empresa hacia adelante. Selección de personal, legajos, auditoría laboral y más, con packs mensuales para pymes.">
+    <meta property="og:image" content="https://capitalhumanogroup.vercel.app/CHG_logo_fondo_transparente_final.png">
+    <meta name="twitter:card" content="summary">
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-51VP3W7R5L"></script>
     <script>
@@ -14,10 +26,13 @@
     </script>
     <script src="analytics.js" defer></script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="CHG_logo_fondo_transparente_final.png?v=2">
+    <link rel="apple-touch-icon" href="CHG_logo_fondo_transparente_final.png?v=2">
     <link rel="shortcut icon" type="image/png" href="CHG_logo_fondo_transparente_final.png?v=2">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://capitalhumanogroup.vercel.app/#website", "name": "Capital Humano Group", "alternateName": ["CHG", "CHG Capital Humano Group"], "url": "https://capitalhumanogroup.vercel.app/", "inLanguage": "es-AR"}, {"@type": "ProfessionalService", "@id": "https://capitalhumanogroup.vercel.app/#org", "name": "Capital Humano Group", "alternateName": "CHG", "description": "Consultora de recursos humanos para pymes en Córdoba: selección de personal, legajos digitales, auditoría y cumplimiento laboral, liquidación de sueldos, asesoría legal laboral, higiene y seguridad y team building.", "url": "https://capitalhumanogroup.vercel.app/", "logo": "https://capitalhumanogroup.vercel.app/CHG_logo_fondo_transparente_final.png", "image": "https://capitalhumanogroup.vercel.app/CHG_logo_fondo_transparente_final.png", "telephone": "+5493512153619", "email": "chgcapitalhumanogroup@gmail.com", "sameAs": ["https://www.instagram.com/chgcapitalhumano"], "address": {"@type": "PostalAddress", "addressLocality": "Córdoba", "addressRegion": "Córdoba", "addressCountry": "AR"}, "areaServed": [{"@type": "City", "name": "Córdoba"}, {"@type": "Country", "name": "Argentina"}], "knowsAbout": ["Consultoría de recursos humanos", "Selección de personal", "Reclutamiento", "Legajos de personal", "Liquidación de sueldos", "Auditoría laboral", "Asesoría legal laboral", "Higiene y seguridad laboral", "Team building"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Packs de servicios mensuales de RRHH", "itemListElement": [{"@type": "Offer", "name": "Pack 1: Esencial", "description": "Relevamiento, cumplimiento normativo laboral, reclutamiento y selección, exámenes preocupacionales y legajos digitales.", "priceCurrency": "USD", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 570, "priceCurrency": "USD", "unitText": "MONTH"}, "url": "https://capitalhumanogroup.vercel.app/#packs", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "Pack 2: Evolución", "description": "Todo lo incluido en Pack Esencial, para empresas en proceso de ordenamiento continuo.", "priceCurrency": "USD", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 950, "priceCurrency": "USD", "unitText": "MONTH"}, "url": "https://capitalhumanogroup.vercel.app/#packs", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "Pack 3: Estratégico", "description": "Transformación organizacional, optimización de procesos e impacto en la rentabilidad.", "priceCurrency": "USD", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 1270, "priceCurrency": "USD", "unitText": "MONTH"}, "url": "https://capitalhumanogroup.vercel.app/#packs", "availability": "https://schema.org/InStock"}]}}]}
+    </script>
     <style>
     
         /* ==========================================
@@ -307,6 +322,22 @@
                 grid-template-columns: 1fr;
             }
         }
+    
+        /* ==========================================
+           PRECIOS DE LOS PACKS (USD / ARS)
+           ========================================== */
+        .pack-price { margin: 18px 0 8px; padding: 18px 18px 16px; border-radius: 16px; text-align: center; background: linear-gradient(135deg, rgba(31,166,122,0.14), rgba(59,130,246,0.10)); border: 1px solid rgba(52,211,153,0.35); position: relative; }
+        .pp-from { display: block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: #34D399; margin-bottom: 4px; }
+        .pp-row { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .pp-cur { font-size: 1rem; font-weight: 700; color: #93C5FD; letter-spacing: 0.06em; }
+        .pp-amt { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF; transition: opacity .2s ease, transform .2s ease; }
+        .pp-amt.swap { opacity: 0; transform: translateY(6px); }
+        .pp-per { font-size: 0.9rem; font-weight: 600; color: #B6C2DD; }
+        .pp-tag { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #06231A; background: linear-gradient(90deg, #34D399, #60A5FA); }
+        .pp-toggle { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 9px 18px; border-radius: 999px; font-family: inherit; font-size: 0.85rem; font-weight: 700; color: #FFFFFF; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.28); cursor: pointer; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+        .pp-toggle:hover { background: rgba(31,166,122,0.25); border-color: #34D399; transform: translateY(-2px); }
+        .pp-toggle:focus-visible { outline: 2px solid #60A5FA; outline-offset: 2px; }
+        .pp-note { display: block; margin-top: 8px; font-size: 0.72rem; color: #8FA2CC; }
     </style>
 </head>
 <body>
@@ -347,8 +378,8 @@
 
         <div class="container hero-content">
             <span class="hero-badge">Gestión Integral y Estratégica de tus Recursos Humanos</span>
-            <h1>Potenciamos tu PyME al <br><span>máximo rendimiento</span></h1>
-            <p>Estructuramos, ordenamos y profesionalizamos tu área de Capital Humano. Diseñamos culturas organizacionales sólidas y procesos innovadores que otorgan competitividad, posicionamiento y crecimiento sostenido en el mercado.</p>
+            <h1>Consultoría de RRHH para pymes <br><span>en Córdoba</span></h1>
+            <p>Somos una consultora de recursos humanos: selección de personal, legajos digitales, cumplimiento y auditoría laboral, liquidación de sueldos y asesoría legal laboral. Estructuramos, ordenamos y profesionalizamos tu área de Capital Humano. Diseñamos culturas organizacionales sólidas y procesos innovadores que otorgan competitividad, posicionamiento y crecimiento sostenido en el mercado.</p>
             <div class="hero-btns">
                 <a href="#packs" class="btn-primary">Ver Packs de Servicios</a>
                 <a href="https://wa.me/5493512153619?text=Hola!%20Quisiera%20recibir%20asesoramiento%20sobre%20los%20servicios%20de%20CHG" target="_blank" class="btn-secondary">Consultar por WhatsApp</a>
@@ -781,6 +812,13 @@
                         <h3>Pack 1: Esencial</h3>
                         <p class="pack-tagline">Cimientos Firmes</p>
                         <p class="pack-desc">Ideal para ordenar el área de personal, cumplir normativas legales y construir una base sólida.</p>
+                        <div class="pack-price" data-usd="570" data-ars="900.000">
+                            <span class="pp-from">Desde</span>
+                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">570</span><span class="pp-per">/ mes</span></div>
+                            
+                            <div><button type="button" class="pp-toggle" aria-pressed="false">Ver precio en ARS</button></div>
+                            <span class="pp-note">Valor referencial mensual</span>
+                        </div>
                     </div>
                   <ul class="pack-features">
                       <li>
@@ -836,6 +874,13 @@
                         <h3>Pack 2: Evolución</h3>
                         <p class="pack-tagline">Crecimiento y Estructura</p>
                         <p class="pack-desc">Tu departamento de RRHH en expansión. Para empresas en proceso de ordenamiento continuo.</p>
+                        <div class="pack-price" data-usd="950" data-ars="1.500.000">
+                            <span class="pp-from">Desde</span>
+                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">950</span><span class="pp-per">/ mes</span></div>
+                            
+                            <div><button type="button" class="pp-toggle" aria-pressed="false">Ver precio en ARS</button></div>
+                            <span class="pp-note">Valor referencial mensual</span>
+                        </div>
                     </div>
                    <ul class="pack-features">
                     <li>
@@ -895,6 +940,13 @@
                         <h3>Pack 3: Estratégico</h3>
                         <p class="pack-tagline">Máximo Rendimiento</p>
                         <p class="pack-desc">Transformación organizacional, optimización de procesos e impacto directo en la rentabilidad.</p>
+                        <div class="pack-price" data-usd="1.270" data-ars="2.000.000">
+                            <span class="pp-from">Desde</span>
+                            <div class="pp-row"><span class="pp-cur">USD</span><span class="pp-amt">1.270</span><span class="pp-per">/ mes</span></div>
+                            <span class="pp-tag">Precio imbatible</span>
+                            <div><button type="button" class="pp-toggle" aria-pressed="false">Ver precio en ARS</button></div>
+                            <span class="pp-note">Valor referencial mensual</span>
+                        </div>
                     </div>
                     <ul class="pack-features">
                         <li>
@@ -1357,8 +1409,8 @@
                 <h4 class="footer-heading">Candidatos & Talento</h4>
                 <ul class="footer-links">
                     <li><a href="postulate.html">Cargar CV / Postularse</a></li>
-                    <li><a href="#">Búsquedas Activas</a></li>
-                    <li><a href="#">Sobre CHG Group</a></li>
+                    <li><a href="postulate.html#busquedas">Búsquedas Activas</a></li>
+                    <li><a href="#nosotros">Sobre CHG Group</a></li>
                     <li><a href="codigo-de-etica.html">Código de Ética</a></li>
                 </ul>
             </div>
@@ -1369,7 +1421,7 @@
                 <ul class="footer-contact">
                     <li>📧 <span>chgcapitalhumanogroup@gmail.com</span></li>
                     <li>💬 <a href="https://wa.me/5493512153619?text=Hola!%20Quisiera%20recibir%20información" target="_blank">WhatsApp Directo</a></li>
-                    <li>📍 <span>Argentina / Asesoramiento Regional</span></li>
+                    <li>📍 <span>Córdoba, Argentina · Asesoramiento en todo el país</span></li>
                 </ul>
             </div>
         </div>
@@ -1780,6 +1832,30 @@
         var t; grid.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(update, 40); }, { passive: true });
         window.addEventListener('resize', update);
         update();
+    })();
+    </script>
+    <script>
+    // Precios de los packs: alterna USD <-> ARS en las 3 tarjetas a la vez
+    (function () {
+        var prices = document.querySelectorAll('.pack-price');
+        if (!prices.length) return;
+        var ars = false;
+        function render() {
+            prices.forEach(function (p) {
+                var amt = p.querySelector('.pp-amt'), cur = p.querySelector('.pp-cur'), btn = p.querySelector('.pp-toggle');
+                amt.classList.add('swap');
+                setTimeout(function () {
+                    amt.textContent = ars ? '$' + p.getAttribute('data-ars') : p.getAttribute('data-usd');
+                    cur.textContent = ars ? 'ARS' : 'USD';
+                    amt.classList.remove('swap');
+                }, 180);
+                btn.textContent = ars ? 'Ver precio en USD' : 'Ver precio en ARS';
+                btn.setAttribute('aria-pressed', ars ? 'true' : 'false');
+            });
+        }
+        prices.forEach(function (p) {
+            p.querySelector('.pp-toggle').addEventListener('click', function (e) { e.stopPropagation(); ars = !ars; render(); });
+        });
     })();
     </script>
 </body>
